@@ -26,3 +26,7 @@ ssh ubuntu@{LIGHTSAIL_IP_ADDRESS} / J01_Webserver
 // root:
 sudo su
 
+
+// Docker::
+bash into docker container: docker exec -it #ID /bin/bash
+get id : docker ps

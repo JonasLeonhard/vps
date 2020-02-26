@@ -1,7 +1,7 @@
 Website Project:
 
 Contains Dockerfile & DockerCompose for 
-- nginx 
+- nginx + amplify ? + ssl cert (lets encrypt?)
 - Frontend
 - Backend
 - Database
