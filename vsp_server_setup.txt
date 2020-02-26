@@ -1,0 +1,28 @@
+-------------------------------------Vps Setup: 
+
+AWS Lightsail console:
+	create static ip adress.
+	
+Server Side:
+	01: Update apt
+	sudo apt update
+	sudo apt upgrade
+
+Local: 
+	(SSH):
+	download a new private key .pem
+	place default / private key in ~/.ssh
+	edit it (getInfo) and remove users besides you in sharing & permission.
+		ssh-add -K ./PRIVATEKEY.pem
+	generate a new public key: 
+		ssh-keygen -y -f ~/.ssh/J01_webserver.pem > ~/.ssh/J01_webserver.pub
+	copy pub key into ~/.ssh/authorized_keys file on vps.
+		ssh -i J01_webserver.cer ubuntu@IPHERE
+	create alias for terminal for easy access 
+		nano ~/.zshrc && source ~/.zshrc
+
+// login as:
+ssh ubuntu@{LIGHTSAIL_IP_ADDRESS} / J01_Webserver
+// root:
+sudo su
+
