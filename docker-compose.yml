@@ -10,4 +10,4 @@ services:
       - 80:80
       - 443:443
     environment:
-      - DOCKERHOST=test
+      - DOCKERHOST=127.0.0.1
