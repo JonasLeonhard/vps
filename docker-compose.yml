@@ -11,3 +11,9 @@ services:
       - 443:443
     environment:
       - DOCKERHOST=127.0.0.1
+  backend_express:
+    build: ./backend_express
+    container_name: backend_express
+    ports:
+      - 8080:8080
+
