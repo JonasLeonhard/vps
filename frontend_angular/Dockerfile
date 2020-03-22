@@ -4,7 +4,7 @@
 FROM node:13
 
 # 1. Frontend build dist
-WORKDIR /app/server/frontend
+WORKDIR /app/frontend
 COPY ./server/package*.json ./
 RUN npm install
 COPY ./frontend ./
