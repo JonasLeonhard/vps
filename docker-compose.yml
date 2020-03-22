@@ -11,14 +11,9 @@ services:
       - 443:443
     environment:
       - DOCKERHOST=127.0.0.1
-  backend_express:
-    build: ./backend_express
-    container_name: backend_express
+  fullstack_express_angular:
+    build: ./fullstack_express_angular
+    container_name: fullstack_express_angular
     ports:
-      - 8080:8080
-  frontend_angular:
-    container_name: angular-container
-    build: ./frontend_angular
-    ports:
-      - 4200:4200
+      - 3200:3200
 
