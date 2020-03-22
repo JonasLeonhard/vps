@@ -16,4 +16,9 @@ services:
     container_name: backend_express
     ports:
       - 8080:8080
+  frontend_angular:
+    container_name: angular-container
+    build: ./frontend_angular
+    ports:
+      - 4200:4200
 
