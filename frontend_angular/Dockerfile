@@ -3,12 +3,19 @@
 # 'docker run --name <NAME> -p 80:80 <dockerImageName>:tag << 'docker run -p 80:80 backend_express:express' <- run image
 FROM node:13
 
-# 1. Backend
-WORKDIR /app/
-COPY ./package*.json ./
+# 1. Frontend build dist
+WORKDIR /app/server/frontend
+COPY ./server/package*.json ./
 RUN npm install
-COPY . ./
+COPY ./frontend ./
+RUN npm run build:docker
+
+# 2. Backend
+WORKDIR /app/server
+COPY ./server/package*.json ./
+RUN npm install
+COPY ./server ./
 
 # 3. Start Server
-EXPOSE 80
+EXPOSE 4200
 CMD [ "node", "server.js" ]

@@ -10,5 +10,5 @@ RUN npm install
 COPY . ./
 
 # 3. Start Server
-EXPOSE 80
+EXPOSE 3200
 CMD [ "node", "server.js" ]
