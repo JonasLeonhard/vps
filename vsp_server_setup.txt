@@ -30,3 +30,7 @@ sudo su
 // Docker::
 bash into docker container: docker exec -it #ID /bin/bash
 get id : docker ps
+
+// Jenkins Master
+brew services start jenkins
+
