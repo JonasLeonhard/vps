@@ -16,9 +16,11 @@ services:
     container_name: backend_express
     ports:
       - 3200:3200
-  frontend_angular:
+  frontend_angular_nginx_server:
     build: ./frontend_angular
-    container_name: frontend_angular
+    container_name: frontend_angular_nginx_server
     ports: 
-      - 4200:4200
+      - 4200:80
+    volumes:
+      - /Users/Jonas/Documents/AWS_Vps/frontend_angular/server/logs
 
