@@ -21,6 +21,4 @@ services:
     container_name: frontend_angular_nginx_server
     ports: 
       - 4200:80
-    volumes:
-      - /Users/Jonas/Documents/AWS_Vps/frontend_angular/server/logs
 

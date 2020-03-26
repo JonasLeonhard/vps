@@ -16,8 +16,8 @@ RUN npm run build:docker
 # STAGE_2 - Put dist into nginx
 FROM nginx:latest
 
-# Create Volume folder, on host /logs mount volume should contain: [access.log ,error.log ,nginx.pid]
-VOLUME ./etc/nginx/logs 
+# Create Volume folder, on host /logs mount volume should contain: [access.log ,error.log ,nginx.pid] ? VOLUME ./etc/nginx/logs 
+RUN mkdir /etc/nginx/logs
 RUN cd /etc/nginx/logs && touch access.log && touch error.log && touch nginx.pid && cd
 # 1. Nginx config & dist copy
 COPY --from=build-stage /app/dist/frontend/ /usr/share/nginx/html
