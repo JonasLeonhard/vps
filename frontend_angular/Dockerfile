@@ -3,7 +3,7 @@
 # 'docker run --name <NAME> -p 80:80 --volume="<COPY_ABS_PATH>" <dockerImageName>:tag << 'docker run -p 80:80 --volume="<COPY_ABS_PATH>" frontend:prod' <- run image
 
 # STAGE_1 - Build Stage building application
-FROM node:12 as build-stage
+FROM node:latest as build-stage
 
 # 1. Frontend. Build dist
 WORKDIR /app
