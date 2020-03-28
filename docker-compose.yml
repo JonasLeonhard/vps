@@ -1,24 +1,19 @@
 version: '3'
 services:
   nginx: 
-    image: nginx:latest
-    container_name: nginx
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/nginx.html:/usr/share/nginx.html
+    build: ./nginx
+    image: nginx:prod
     ports:
       - 80:80
       - 443:443
-    environment:
-      - DOCKERHOST=127.0.0.1
   backend_express:
     build: ./backend_express
-    container_name: backend_express
+    image: backend_express:prod
     ports:
-      - 3200:3200
+      - 3000:3000
   frontend_angular_nginx_server:
     build: ./frontend_angular
-    container_name: frontend_angular_nginx_server
+    image: frontend_angular_nginx_server:prod
     ports: 
-      - 4200:80
+      - 4200:4200
 
