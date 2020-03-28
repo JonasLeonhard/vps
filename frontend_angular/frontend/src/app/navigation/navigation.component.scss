@@ -1,0 +1,40 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #fff;
+  border-bottom: 1px solid #ececec;
+  height: 50px;
+  padding: 0 1em 0 1em;
+
+  img.logo {
+    cursor: pointer;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  nav.navigation-middle-container{
+    width: 100%;
+    margin-left: 3em;
+
+    ul.links {
+      list-style: none;
+
+      li {
+        display: inline-block;
+        padding: 0 0.5em;
+      }
+    }
+  }
+
+  nav.navigation-right-container{
+    justify-content: center;
+  }
+}
+
+

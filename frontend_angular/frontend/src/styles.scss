@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles: */
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+html{
+  min-height: 100vh;
+  height: 100%;
+  background: #f7f7f7;
+}
+
+app-root {
+  display: block;
+  height: 100%;
+}
+
+* {
+  font-family: 'Muli', 'Arial', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #611762;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2e0d3d;
+}
