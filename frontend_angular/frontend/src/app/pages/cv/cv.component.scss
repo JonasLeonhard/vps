@@ -5,7 +5,7 @@
   background: #2e0d3d;
 
   .content-left {
-    width: 100%;
+    width: max-content;
 
     h1, span {
       color: white;
@@ -20,17 +20,27 @@
     }
 
     .sub-content-left{
-      color: #f7f7f7;
       font-size: 12px;
       margin-top: 4em;
       display: flex;
       align-items: center;
       width: max-content;
-      cursor: pointer;
+      padding: 0.5em 1em;
+      border-left: 2px solid #431359;
 
+      cursor: pointer;
+      a {
+        display: flex;
+        align-items: center;
+        color: #f7f7f7;
+      }
       img {
         margin-left: 1em;
+        width: 20px;
       }
+    }
+    .sub-content-left:hover{
+      background: #752fb9;
     }
   }
   .content-right {
@@ -38,11 +48,8 @@
     display: flex;
     justify-content: center;
 
-    .circle {
-      width: 20em;
-      height: 20em;
-      background: #611762;
-      border-radius: 50%;
+    img {
+      width: 30em;
     }
   }
 }
