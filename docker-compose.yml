@@ -1,16 +1,24 @@
 version: '3'
 services:
+
   nginx: 
     build: ./nginx
     image: nginx:prod
     ports:
       - 80:80
       - 443:443
+    # create a volume from ./nginx/certbot_letsencrypt to /etc/letsencrypt. Ssl cert lives in /etc/letsencrypt/live/jonasleonhard.de/fullchain.pem
+    # run a reload nginx script when there is a new certificate
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    #command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
   backend_express:
     build: ./backend_express
     image: backend_express:prod
     ports:
       - 3000:3000
+
   frontend_angular_nginx_server:
     build: ./frontend_angular
     image: frontend_angular_nginx_server:prod
