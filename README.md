@@ -7,27 +7,22 @@ Contains Dockerfile & DockerCompose for
 - Database
 
 
+Now start the containers with:
+````
+    docker-compose up -d
+````
+
+Now start the non-containerized nginx server with:
+````
+    sudo cp ./nginx/nginx.conf /etc/nginx/nginx.conf && sudo nginx
+````
+
 To start get certbot .pem installed - run:
 ````
-    sudo certbot --nginx --certonly
-````
-These certs land in 
-````            
-    ssl_certificate /etc/letsencrypt/live/jonasleonhard.de/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/jonasleonhard.de/privkey.pem;
+    sudo certbot --nginx
 ````
 
 Start the certbot renewal with
 ````
     sudo certbot renew --dry-run // dry-run for testing!
-````
-
-Now start the containers with:
-````
-    docker-compose up
-````
-
-Now start the non-containerized nginx server with:
-````
-    /usr/bin/nginx -c ./nginx/nginx.conf
 ````
