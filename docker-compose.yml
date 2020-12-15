@@ -1,27 +1,32 @@
-version: '3'
-services:
+version: "3"
 
-  nginx: 
-    build: ./nginx
-    image: nginx:prod
+services:
+  nginx:
+    container_name: nginx
+    image: jwilder/nginx-proxy
     ports:
       - 80:80
       - 443:443
-    # create a volume from ./nginx/certbot_letsencrypt to /etc/letsencrypt. Ssl cert lives in /etc/letsencrypt/live/jonasleonhard.de/fullchain.pem
-    # run a reload nginx script when there is a new certificate
     volumes:
-      - ./nginx/certbot_letsencrypt:/etc/letsencrypt
-    #command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+      - ./nginx/nginx.conf:/etc/nginx/proxy.conf
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/letsencrypt/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/letsencrypt/certs:/etc/nginx/certs:ro
+      - ./nginx/static:/usr/share/nginx/html
+  
+  letsencrypt-nginx-proxy-companion:
+    restart: always
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: letsencrypt-nginx-proxy-companion
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./nginx/letsencrypt/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/letsencrypt/certs:/etc/nginx/certs:rw
+      - ./nginx/static:/usr/share/nginx/html
+    environment:
+      - NGINX_PROXY_CONTAINER=nginx
 
   backend_express:
     build: ./backend_express
     image: backend_express:prod
-    ports:
-      - 3000:3000
-
-  frontend_angular_nginx_server:
-    build: ./frontend_angular
-    image: frontend_angular_nginx_server:prod
-    ports: 
-      - 4200:4200
-
+    container_name: backend_express
