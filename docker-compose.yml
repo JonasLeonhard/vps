@@ -12,10 +12,7 @@ services:
       - ./nginx/letsencrypt/vhost.d:/etc/nginx/vhost.d
       - ./nginx/letsencrypt/certs:/etc/nginx/certs:ro
       - ./nginx/static:/usr/share/nginx/html
-    environment:
-      VIRTUAL_HOST: jonasleonhard.de
-      LETSENCRYPT_HOST: jonasleonhard.de
-  
+
   letsencrypt-nginx-proxy-companion:
     restart: always
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -33,7 +30,6 @@ services:
     image: backend_express:prod
     container_name: backend_express
     environment:
-      VIRTUAL_HOST: api.jonasleonhard.de
-      LETSENCRYPT_HOST: jonasleonhard.de
-    expose:
-      - 3000
+      - VIRTUAL_HOST=jonasleonhard.de
+      - LETSENCRYPT_HOST=jonasleonhard.de
+      - VIRTUAL_PORT=3000
