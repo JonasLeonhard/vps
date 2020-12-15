@@ -8,11 +8,13 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/proxy.conf
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx/letsencrypt/vhost.d:/etc/nginx/vhost.d
       - ./nginx/letsencrypt/certs:/etc/nginx/certs:ro
       - ./nginx/static:/usr/share/nginx/html
+    environment:
+      VIRTUAL_HOST: jonasleonhard.de
+      LETSENCRYPT_HOST: jonasleonhard.de
   
   letsencrypt-nginx-proxy-companion:
     restart: always
@@ -30,3 +32,6 @@ services:
     build: ./backend_express
     image: backend_express:prod
     container_name: backend_express
+    environment:
+      VIRTUAL_HOST: api.jonasleonhard.de
+      LETSENCRYPT_HOST: jonasleonhard.de
