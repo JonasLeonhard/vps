@@ -33,3 +33,5 @@ services:
       - VIRTUAL_HOST=jonasleonhard.de
       - LETSENCRYPT_HOST=jonasleonhard.de
       - VIRTUAL_PORT=3000
+    expose:
+      - "3000"
