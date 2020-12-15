@@ -35,3 +35,5 @@ services:
     environment:
       VIRTUAL_HOST: api.jonasleonhard.de
       LETSENCRYPT_HOST: jonasleonhard.de
+    expose:
+      - 3000
