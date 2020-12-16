@@ -28,7 +28,7 @@ services:
       - ./nginx/letsencrypt/dhparam:/etc/nginx/dhparam
       - ./nginx/static:/usr/share/nginx/html
     environment:
-      - NGINX_PROXY_CONTAINER=nginx
+      - NGINX_PROXY_CONTAINER=nginx-proxy
 
   backend_express:
     build: ./backend_express
