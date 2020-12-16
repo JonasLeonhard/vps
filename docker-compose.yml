@@ -6,10 +6,9 @@ services:
     volumes:
       - "./nginx/nginx.conf/:/etc/nginx/conf.d/default.conf"
     environment:
-      environment:
-        - VIRTUAL_HOST=jonasleonhard.de
-        - LETSENCRYPT_HOST=jonasleonhard.de
-        - VIRTUAL_PORT=3000
+      - VIRTUAL_HOST=jonasleonhard.de
+      - LETSENCRYPT_HOST=jonasleonhard.de
+      - VIRTUAL_PORT=3000
     expose:
       - 80
 
