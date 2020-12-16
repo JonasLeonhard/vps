@@ -1,4 +1,6 @@
+# Created by letsencrypt-docker companion
 nginx/letsencrypt/certs
 nginx/letsencrypt/vhost.d
 nginx/letsencrypt/acme
 nginx/letsencrypt/dhparam
+nginx/static/.well-known
