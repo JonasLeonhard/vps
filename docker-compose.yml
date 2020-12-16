@@ -1,17 +1,6 @@
 version: "3.3"
 
 services:
-  nginx:
-    image: nginx
-    volumes:
-      - "./nginx/nginx.conf/:/etc/nginx/conf.d/default.conf"
-    environment:
-      - VIRTUAL_HOST=jonasleonhard.de
-      - LETSENCRYPT_HOST=jonasleonhard.de
-      - VIRTUAL_PORT=3000
-    expose:
-      - 80
-
   nginx-proxy:
     container_name: nginx-proxy
     image: jwilder/nginx-proxy
