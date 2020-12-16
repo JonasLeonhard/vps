@@ -1,4 +1,4 @@
-version: "3"
+version: "3.9"
 
 services:
   nginx:
@@ -22,8 +22,11 @@ services:
       - nginx
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./nginx/letsencrypt/vhost.d:/etc/nginx/vhost.d
       - ./nginx/letsencrypt/certs:/etc/nginx/certs:rw
       - ./nginx/letsencrypt/acme/:/etc/acme.sh
+      - ./nginx/letsencrypt/dhparam:/etc/nginx/dhparam
+      - ./nginx/static:/usr/share/nginx/html
     environment:
       - NGINX_PROXY_CONTAINER=nginx
 
