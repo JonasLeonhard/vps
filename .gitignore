@@ -1,4 +1,0 @@
-# Created by letsencrypt-docker companion
-nginx/certs
-nginx/conf.d
-nginx/htpasswd
