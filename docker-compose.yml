@@ -1,7 +1,7 @@
 version: "3.3"
 
 services:
-  nginx:
+  nginx-proxy:
     container_name: nginx-proxy
     image: jwilder/nginx-proxy
     ports:
