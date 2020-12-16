@@ -1,5 +1,4 @@
 # Created by letsencrypt-docker companion
-nginx/letsencrypt/certs
-nginx/letsencrypt/acme
-nginx/letsencrypt/dhparam
-nginx/static/.well-known
+nginx/certs
+nginx/conf.d
+nginx/htpasswd
