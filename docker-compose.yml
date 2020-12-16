@@ -1,6 +1,18 @@
 version: "3.3"
 
 services:
+  nginx:
+    image: nginx
+    volumes:
+      - "./nginx/nginx.conf/:/etc/nginx/conf.d/default.conf"
+    environment:
+      environment:
+        - VIRTUAL_HOST=jonasleonhard.de
+        - LETSENCRYPT_HOST=jonasleonhard.de
+        - VIRTUAL_PORT=3000
+    expose:
+      - 80
+
   nginx-proxy:
     container_name: nginx-proxy
     image: jwilder/nginx-proxy
@@ -29,17 +41,14 @@ services:
       - ./nginx/static:/usr/share/nginx/html
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
+      - DEFAULT_EMAIL=mail@jonasleonhard.de
 
   backend_express:
     build: ./backend_express
     image: backend_express:prod
     container_name: backend_express
-    environment:
-      - VIRTUAL_HOST=jonasleonhard.de
-      - LETSENCRYPT_HOST=jonasleonhard.de
-      - VIRTUAL_PORT=3000
     expose:
-      - "3000"
+      - 3000
 
 networks:
   default:
