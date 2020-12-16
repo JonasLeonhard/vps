@@ -1,3 +1,4 @@
 nginx/letsencrypt/certs
 nginx/letsencrypt/vhost.d
 nginx/letsencrypt/acme
+nginx/letsencrypt/dhparam

@@ -11,17 +11,18 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx/letsencrypt/vhost.d:/etc/nginx/vhost.d
       - ./nginx/letsencrypt/certs:/etc/nginx/certs:ro
+      - ./nginx/letsencrypt/dhparam:/etc/nginx/dhparam
       - ./nginx/static:/usr/share/nginx/html
 
   letsencrypt-nginx-proxy-companion:
     restart: always
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: letsencrypt-nginx-proxy-companion
+    volumes_from:
+      - nginx
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./nginx/letsencrypt/vhost.d:/etc/nginx/vhost.d
       - ./nginx/letsencrypt/certs:/etc/nginx/certs:rw
-      - ./nginx/static:/usr/share/nginx/html
       - ./nginx/letsencrypt/acme/:/etc/acme.sh
     environment:
       - NGINX_PROXY_CONTAINER=nginx
