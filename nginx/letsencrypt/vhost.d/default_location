@@ -1,0 +1,3 @@
+location / {
+ proxy_pass http://backend_express:3000;
+}
