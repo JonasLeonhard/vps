@@ -1,8 +1,8 @@
 version: '3'
 services:
-  backend_express:
-    build: ./backend_express
-    image: backend_express:prod
-    container_name: backend_express
+  next-frontend:
+    build: ./frontend
+    image: next-frontend
+    container_name: next-frontend
     ports:
       - 127.0.0.1:3000:3000
