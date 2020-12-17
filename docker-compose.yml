@@ -5,4 +5,4 @@ services:
     image: backend_express:prod
     container_name: backend_express
     ports:
-      - 127.0.0.1:3000:3000"
+      - 127.0.0.1:3000:3000
