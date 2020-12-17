@@ -4,5 +4,5 @@ services:
     build: ./backend_express
     image: backend_express:prod
     container_name: backend_express
-    expose:
-      - 3000
+    ports:
+      - 127.0.0.1:3000:3000"
