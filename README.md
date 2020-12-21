@@ -3,6 +3,11 @@ Start the Application: then go to localhost:3000
     docker-compose up -d
 ````
 
+# Strapi Admin
+```text
+    go to localhost:1337/admin
+```
+
 # Nginx-Letsencrypt Proxy Root Server:
 ```text
 # Root Nginx Installation:

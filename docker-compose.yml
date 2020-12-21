@@ -1,8 +1,39 @@
 version: '3'
 services:
-  next-frontend:
-    build: ./frontend
-    image: next-frontend
-    container_name: next-frontend
+  # next-frontend:
+  #   build: ./frontend
+  #   image: next-frontend
+  #   container_name: next-frontend
+  #   ports:
+  #     - 127.0.0.1:3000:3000
+  #   depends_on:
+  #     - strapi
+  strapi:
+    build: ./backend
+    image: strapi-backend
+    container_name: strapi-backend
     ports:
-      - 127.0.0.1:3000:3000
+      - 127.0.0.1:1337:1337
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_NAME: strapidb
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+    depends_on: 
+      - postgres
+
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - postgres-strapidb:/var/lib/postgresql/data
+      - ./postgres:/docker-entrypoint-initdb.d/
+    ports:
+      - 127.0.0.1:15432:5432
+volumes:
+  postgres-strapidb:
+      driver: local
