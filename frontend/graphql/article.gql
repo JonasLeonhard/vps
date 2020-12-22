@@ -1,0 +1,6 @@
+query Article {
+  article(id: 1) {
+    id
+    title
+  }
+}

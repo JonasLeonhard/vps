@@ -2,7 +2,7 @@
   "name": "backend",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "Strapi Backend queried by Apollo Graphql Next app",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -11,20 +11,21 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "knex": "<0.20.0",
+    "pg": "latest",
     "strapi": "3.4.0",
     "strapi-admin": "3.4.0",
-    "strapi-utils": "3.4.0",
-    "strapi-plugin-content-type-builder": "3.4.0",
-    "strapi-plugin-content-manager": "3.4.0",
-    "strapi-plugin-users-permissions": "3.4.0",
-    "strapi-plugin-email": "3.4.0",
-    "strapi-plugin-upload": "3.4.0",
     "strapi-connector-bookshelf": "3.4.0",
-    "knex": "<0.20.0",
-    "pg": "latest"
+    "strapi-plugin-content-manager": "3.4.0",
+    "strapi-plugin-content-type-builder": "3.4.0",
+    "strapi-plugin-email": "3.4.0",
+    "strapi-plugin-graphql": "3.4.0",
+    "strapi-plugin-upload": "3.4.0",
+    "strapi-plugin-users-permissions": "3.4.0",
+    "strapi-utils": "3.4.0"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Jonas Leonhard"
   },
   "strapi": {
     "uuid": "2e8dfae5-9816-4fe6-b49e-2336bf699a8c"
