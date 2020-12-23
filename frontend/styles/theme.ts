@@ -37,15 +37,19 @@ const theme: Theme = {
         l: '64rem'
     },
     colors: {
-        red: {
-            100: 'red',
+        white: {
+            100: '#fff'
+        },
+        grey: {
+            100: '#333333',
+            50: '#1e1e1e'
         }
     },
     spacing: {
         xxxs: '5px',
         xxs: '12px',
         xs: '8px',
-        s: '20px',
+        s: '16px',
         m: '30px',
         l: '40px',
         xl: '60px',
