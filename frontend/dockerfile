@@ -1,21 +1,19 @@
-FROM node:12
+FROM node:16.3.0-alpine
 
-ENV PORT 3000
+ENV NODE_ENV development
 
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir /src
+WORKDIR /src
 
-# Installing dependencies
-COPY package*.json /usr/src/app/
-RUN npm install
+COPY . /src
 
-# Copying source files
-VOLUME ./ /usr/src/app
+# install node_modules !: this requires  - /src/node_modules Volumne to have them seperate from main volume and not shared with host
+RUN yarn
+RUN yarn env:docker
 
-# Building app
-RUN npm run build
+# prod:
+# RUN yarn build
+
+# Running the app | start for prod | dev for development
 EXPOSE 3000
-
-# Running the app
-CMD "npm" "run" "start"
+CMD "yarn" "dev"

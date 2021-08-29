@@ -1,4 +1,3 @@
-import { withApollo } from '../lib/apollo';
 import styled from 'styled-components';
 import { color, mq } from '../styles/helper';
 
@@ -63,4 +62,4 @@ Error.getInitialProps = async ctx => {
 };
 
 
-export default withApollo()(Error);
+export default Error;

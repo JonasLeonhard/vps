@@ -1,39 +1,50 @@
 version: '3'
 services:
-  # next-frontend:
-  #   build: ./frontend
-  #   image: next-frontend
-  #   container_name: next-frontend
-  #   ports:
-  #     - 127.0.0.1:3000:3000
-  #   depends_on:
-  #     - strapi
+  next-frontend:
+    build: ./frontend
+    image: next-frontend
+    container_name: next-frontend
+    volumes:
+      - ./frontend/:/src
+      - /src/node_modules
+    environment:
+      NEXT_PUBLIC_SERVERSIDE_APOLLO_CMS_URL: ${NEXT_PUBLIC_SERVERSIDE_APOLLO_CMS_URL:-http://strapi:1337}
+      NEXT_PUBLIC_CLIENT_APOLLO_CMS_URL: ${NEXT_PUBLIC_CLIENT_APOLLO_CMS_URL:-http://localhost:1337}
+    ports:
+      - 127.0.0.1:3000:3000
+    depends_on:
+      - strapi
+
   strapi:
     build: ./backend
     image: strapi-backend
     container_name: strapi-backend
     ports:
       - 127.0.0.1:1337:1337
+    volumes:
+      - ./backend/:/srv/app
+      - /srv/app/node_modules
     environment:
-      DATABASE_CLIENT: postgres
-      DATABASE_NAME: strapidb
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: postgres
+      DATABASE_CLIENT: ${DATABASE_CLIENT:-postgres}
+      DATABASE_NAME: ${DATABASE_NAME:-strapi}
+      DATABASE_HOST: ${DATABASE_HOST:-postgres}
+      DATABASE_PORT: ${DATABASE_PORT:-5432}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:-postgres}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
     depends_on: 
       - postgres
 
   postgres:
     image: postgres:12
     environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_USER: ${DATABASE_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
     volumes:
       - postgres-strapidb:/var/lib/postgresql/data
       - ./postgres:/docker-entrypoint-initdb.d/
     ports:
       - 127.0.0.1:15432:5432
+      
 volumes:
   postgres-strapidb:
       driver: local

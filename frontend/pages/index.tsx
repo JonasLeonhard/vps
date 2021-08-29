@@ -1,4 +1,4 @@
-import { withApollo } from '../lib/apollo';
+import apolloClient from "../lib/apollo";
 
 import articlesQuery from '../graphql/articles.gql';
 import { ArticlesQuery } from '../graphql/types';
@@ -7,7 +7,6 @@ import Default  from './templates/default';
 
 import Text from './components/text/text';
 import Container from './components/container/container';
-
 
 const Index = ({ data }: { data: ArticlesQuery } ) => {  
   return (
@@ -26,7 +25,7 @@ const Index = ({ data }: { data: ArticlesQuery } ) => {
 }
 
 
-Index.getInitialProps = async ({ apolloClient }) => {
+Index.getInitialProps = async () => {
   const { data }: { data: ArticlesQuery } = await apolloClient.query({
     query: articlesQuery
   });
@@ -35,4 +34,4 @@ Index.getInitialProps = async ({ apolloClient }) => {
   };
 };
 
-export default withApollo()(Index);
+export default Index;
