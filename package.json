@@ -1,0 +1,16 @@
+{
+  "name": "vps",
+  "version": "1.0.0",
+  "description": "VPS Setup for jonasleonhard.de, Contains my Website and a CMS",
+  "repository": "https://github.com/JonasLeonhard/vps.git",
+  "author": "JonasLeonhard <jonasleonhardfl@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "up": "docker compose up -d && yarn on:started",
+    "start": "docker compose start && yarn on:started",
+    "stop": "docker compose stop",
+    "down": "docker compose down",
+    "build": "docker compose build --no-cache",
+    "on:started": "echo '🐲 Frontend: http://localhost:3000/' \n echo '🐲 CMS: http://localhost:1337/admin/'"
+  }
+}
