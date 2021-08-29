@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-import { mq, color } from '../../styles/helper';
+import { mq, color } from '../styles/helper';
 
 const StyledDefault = styled.div`
-    .default__container {
+    .default__container { 
+        width: 100%;
+        margin: 0 auto;
         position: relative;
         z-index: 1;
         min-height: 100vh;

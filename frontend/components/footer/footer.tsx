@@ -1,11 +1,9 @@
 import StyledFooter from './footer.style';
 
-import Container from '../container/container';
-
 const Footer = () => {
   return (
       <StyledFooter>
-        <Container className="footer__inner">
+        <div className="footer__inner">
           <div className="footer__links">
             <div className="footer__card">
               <div>
@@ -25,7 +23,7 @@ const Footer = () => {
               Copyright 2020 Jonas Leonhard, All rights reserved.
               </div>
           </div>
-        </Container>
+        </div>
       </StyledFooter>
   )
 }

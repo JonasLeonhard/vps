@@ -3,23 +3,22 @@ import apolloClient from "../lib/apollo";
 import articlesQuery from '../graphql/articles.gql';
 import { ArticlesQuery } from '../graphql/types';
 
-import Default  from './templates/default';
+import Default  from '../templates/default';
 
-import Text from './components/text/text';
-import Container from './components/container/container';
+import StartScreen from '../components/startScreen/startScreen';
+import ProjectCarousel from '../components/projectCarousel/projectCarousel';
+import ProjectList from '../components/projectList/projectList';
+import ContactFormTeaser from '../components/contactFormTeaser/contactFormTeaser';
 
 const Index = ({ data }: { data: ArticlesQuery } ) => {  
   return (
     <Default title="Jonasleonhard.de" description="Jonas Leonhard Index Page">
-      <Text>
-      <h1>Lora Font</h1>
-      rendered index.tsx {data.articles.map(el => {
-        return el.title
-      })}
-      <Container>
-        testcontainer
-      </Container>
-      </Text>
+      <>
+        <StartScreen />
+        <ProjectCarousel />
+        <ProjectList />
+        <ContactFormTeaser />
+      </>
     </Default>
     )
 }

@@ -1,7 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
-import { fontResize, color } from './helper';
+import { fontResize, color, space } from './helper';
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --header-height: ${space('xl')};
+  }
+
   html,
   body {
     padding: 0;

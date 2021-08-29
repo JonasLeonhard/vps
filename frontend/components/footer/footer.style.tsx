@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { color, space, mq } from '../../../styles/helper';
+import { color, space, mq } from '../../styles/helper';
 
 const StyledFooter = styled.div`
     margin-top: auto;
