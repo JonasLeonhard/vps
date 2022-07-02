@@ -1,3 +1,9 @@
+<img src="https://shields.io/badge/jonasleonhard.de-offline-red?style=flat-square&logo=statuspal" />
+
+<img src="https://shields.io/badge/pipelines-offline-red?style=flat-square&logo=github" />
+
+<br/><br/>
+
 # Description
 > Website Stack for jonasleonhard.de, to be deployed via a simple docker compose. 
 
