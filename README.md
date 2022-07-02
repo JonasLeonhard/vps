@@ -66,4 +66,4 @@ $ cd frontend && yarn && yarn start
 ```
 
 ## Known Issues
-🚧🚧🚧
+🚧🚧🚧🚧
