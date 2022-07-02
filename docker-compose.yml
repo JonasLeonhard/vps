@@ -2,8 +2,8 @@ version: '3'
 services:
   next-frontend:
     build: ./frontend
-    image: next-frontend
-    container_name: next-frontend
+    image: frontend
+    container_name: frontend
     volumes:
       - ./frontend/:/src
       - /src/node_modules
@@ -17,8 +17,8 @@ services:
 
   strapi:
     build: ./backend
-    image: strapi-backend
-    container_name: strapi-backend
+    image: backend
+    container_name: backend
     ports:
       - 127.0.0.1:1337:1337
     volumes:
@@ -35,7 +35,8 @@ services:
       - postgres
 
   postgres:
-    image: postgres:12
+    image: postgres:14
+    container_name: postgres
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME:-postgres}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}

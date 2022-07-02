@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "VPS Setup for jonasleonhard.de, Contains my Website and a CMS",
   "repository": "https://github.com/JonasLeonhard/vps.git",
-  "author": "JonasLeonhard <jonasleonhardfl@gmail.com>",
+  "author": "https://github.com/JonasLeonhard",
   "license": "MIT",
   "scripts": {
     "up": "docker compose up -d && yarn on:started",
