@@ -9,7 +9,6 @@ COPY . /src
 
 # install node_modules !: this requires  - /src/node_modules Volumne to have them seperate from main volume and not shared with host
 RUN yarn
-RUN yarn env:docker
 
 # prod:
 # RUN yarn build

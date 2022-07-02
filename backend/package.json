@@ -2,7 +2,7 @@
   "name": "backend",
   "private": true,
   "version": "0.1.0",
-  "description": "Strapi Backend queried by Apollo Graphql Next app",
+  "description": "Strapi CMS for jonasleonhard.de",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -11,27 +11,20 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "knex": "<0.20.0",
-    "pg": "^8.7.1",
-    "strapi": "3.6.8",
-    "strapi-admin": "3.6.8",
-    "strapi-connector-bookshelf": "3.6.8",
-    "strapi-plugin-content-manager": "3.6.8",
-    "strapi-plugin-content-type-builder": "3.6.8",
-    "strapi-plugin-email": "3.6.8",
-    "strapi-plugin-graphql": "3.6.8",
-    "strapi-plugin-upload": "3.6.8",
-    "strapi-plugin-users-permissions": "3.6.8",
-    "strapi-utils": "3.6.8"
+    "@strapi/plugin-graphql": "^4.2.2",
+    "@strapi/plugin-i18n": "4.2.2",
+    "@strapi/plugin-users-permissions": "4.2.2",
+    "@strapi/strapi": "4.2.2",
+    "pg": "8.6.0"
   },
   "author": {
-    "name": "Jonas Leonhard"
+    "name": "https://github.com/JonasLeonhard"
   },
   "strapi": {
-    "uuid": "2e8dfae5-9816-4fe6-b49e-2336bf699a8c"
+    "uuid": "7f38dce7-33ca-4422-b507-88aac3008263"
   },
   "engines": {
-    "node": ">=10.16.0 <=14.x.x",
+    "node": ">=12.x.x <=16.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"

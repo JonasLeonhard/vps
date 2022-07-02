@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "env:local": "cp .env.localhost .env",
-    "env:docker": "cp .env.docker .env"
+    "start": "next start"
   },
   "dependencies": {
     "@apollo/client": "^3.4.10",
