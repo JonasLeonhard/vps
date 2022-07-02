@@ -1,6 +1,6 @@
 version: '3'
 services:
-  next-frontend:
+  frontend:
     build: ./frontend
     image: frontend
     container_name: frontend
@@ -22,8 +22,8 @@ services:
     ports:
       - 127.0.0.1:1337:1337
     volumes:
-      - ./backend/:/srv/app
-      - /srv/app/node_modules
+      - ./backend/:/opt/app
+      - /opt/app/node_modules
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT:-postgres}
       DATABASE_NAME: ${DATABASE_NAME:-strapi}
@@ -31,6 +31,9 @@ services:
       DATABASE_PORT: ${DATABASE_PORT:-5432}
       DATABASE_USERNAME: ${DATABASE_USERNAME:-postgres}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+      APP_KEYS: ${APP_KEYS}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
     depends_on: 
       - postgres
 
