@@ -1,8 +1,8 @@
 import StyledDefault from './default.style';
 
-import SeoHead from '../components/seoHead/seoHead';
-import Footer from '../components/footer/footer';
-import Header from '../components/header/header';
+import SeoHead from 'components/atoms/seoHead/seoHead';
+import Footer from 'components/organisms/footer/footer';
+import Header from 'components/organisms/header/header';
 
 const Default = ({ children, title, description, noindex, nofollow }: { children: JSX.Element | string, title: string, description: string, noindex?: boolean | undefined, nofollow?: boolean | undefined}) => {
   return (

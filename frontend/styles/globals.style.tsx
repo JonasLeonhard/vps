@@ -1,3 +1,4 @@
+import 'normalize.css';
 import { createGlobalStyle } from 'styled-components';
 import { fontResize, color, space } from './helper';
 

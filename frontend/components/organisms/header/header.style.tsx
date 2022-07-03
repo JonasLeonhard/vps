@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { space, color } from '../../styles/helper';
+import { space, color } from '../../../styles/helper';
 
 const StyledHeader = styled.header`
     height: var(--header-height);
@@ -21,8 +21,6 @@ const StyledHeader = styled.header`
 
     .header__nav {
         pointer-events: all;
-        background: ${color('grey', 50)};
-        color: ${color('white')};
     }
 `;
 

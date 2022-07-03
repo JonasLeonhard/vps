@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { mq, color } from '../styles/helper';
 
 const StyledDefault = styled.div`
     .default__container { 

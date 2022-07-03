@@ -1,11 +1,9 @@
-import apolloClient from "../lib/apollo";
-
 import Default  from '../templates/default';
 
-import StartScreen from '../components/startScreen/startScreen';
-import ProjectCarousel from '../components/projectCarousel/projectCarousel';
-import ProjectList from '../components/projectList/projectList';
-import ContactFormTeaser from '../components/contactFormTeaser/contactFormTeaser';
+import StartScreen from 'components/organisms/startScreen/startScreen';
+import ProjectCarousel from 'components/organisms/projectCarousel/projectCarousel';
+import ProjectList from 'components/organisms/projectList/projectList';
+import ContactFormTeaser from 'components/organisms/contactFormTeaser/contactFormTeaser';
 
 const Index = ({ data }) => {  
   return (

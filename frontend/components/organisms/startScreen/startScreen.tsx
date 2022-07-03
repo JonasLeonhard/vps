@@ -1,5 +1,5 @@
 import StyledStartScreen from './startScreen.style';
-import SplashSvg from '../../public/svg/splash.svg';
+import SplashSvg from '../../../public/svg/splash.svg';
 
 type HeaderProps = {};
 

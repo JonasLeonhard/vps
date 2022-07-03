@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { space, color } from '../../styles/helper';
+import { space, color } from '../../../styles/helper';
 
 const StyledContactFormTeaser = styled.div`
     display: flex;

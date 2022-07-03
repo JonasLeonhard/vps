@@ -1,9 +1,9 @@
-import apolloClient from "../../lib/apollo";
+import apolloClient from "lib/apollo";
 
-import articlesQuery from '../../graphql/articles.gql';
-import { ArticlesQuery } from '../../graphql/types';
+import articlesQuery from 'graphql/articles.gql';
+import { ArticlesQuery } from 'graphql/types';
 
-import Default  from '../../templates/default';
+import Default  from 'templates/default';
 
 const Blog = ({ data }: { data: ArticlesQuery } ) => {  
   return (

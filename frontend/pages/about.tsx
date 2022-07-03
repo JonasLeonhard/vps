@@ -1,11 +1,11 @@
-import apolloClient from "../lib/apollo";
+import apolloClient from "lib/apollo";
 
-import articlesQuery from '../graphql/articles.gql';
-import { ArticlesQuery } from '../graphql/types';
+import articlesQuery from 'graphql/articles.gql';
+import { ArticlesQuery } from 'graphql/types';
 
-import Default  from '../templates/default';
+import Default  from 'templates/default';
 
-import BannerTicker from '../components/bannerTicker/bannerTicker';
+import BannerTicker from 'components/organisms/bannerTicker/bannerTicker';
 
 const About = ({ data }: { data: ArticlesQuery } ) => {  
   return (

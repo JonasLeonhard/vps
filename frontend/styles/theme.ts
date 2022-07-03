@@ -40,15 +40,15 @@ const theme: Theme = {
         white: {
             100: '#fff'
         },
-        grey: {
+        gray: {
             100: '#333333',
             50: '#1e1e1e'
         }
     },
     spacing: {
         xxxs: '5px',
-        xxs: '12px',
-        xs: '8px',
+        xxs: '8px',
+        xs: '12px',
         s: '16px',
         m: '30px',
         l: '40px',

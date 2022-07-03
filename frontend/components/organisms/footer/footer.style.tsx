@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { color, space, mq } from '../../styles/helper';
+import { color, space, mq } from '../../../styles/helper';
 
 const StyledFooter = styled.div`
     margin-top: auto;
@@ -9,7 +9,7 @@ const StyledFooter = styled.div`
     margin-top: ${space('s')};
     
     .footer__card {
-        background: ${color('grey')};
+        background: ${color('gray')};
         color: ${color('white')};
         border-radius: 3px;
         max-width: max-content;
@@ -25,7 +25,7 @@ const StyledFooter = styled.div`
     }
     .footer__card:hover {
         cursor: pointer;
-        background: ${color('grey', 50)};
+        background: ${color('gray', 50)};
     }
 
     .footer__copyright {

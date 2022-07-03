@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { color, mq } from '../styles/helper';
+import { color, mq } from 'styles/helper';
 
-import Default  from '../templates/default';
+import Default  from 'templates/default';
 
 const StyledError = styled.div`
     margin: auto;
@@ -11,11 +11,11 @@ const StyledError = styled.div`
     span {
         padding: 1rem;
         margin: 1rem;
-        border-bottom: 1px solid ${color('grey')};
+        border-bottom: 1px solid ${color('gray')};
 
         ${mq('m')} {
             padding: 1rem 1rem 1rem 0;
-            border-right: 1px solid ${color('grey')};
+            border-right: 1px solid ${color('gray')};
             border-bottom: none;
             margin: 0 1rem 0 0;
         }

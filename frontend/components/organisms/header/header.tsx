@@ -1,5 +1,6 @@
 import StyledHeader from './header.style';
 import Link from 'next/link';
+import Button from 'components/atoms/button/button';
 
 type HeaderProps = {};
 
@@ -12,7 +13,7 @@ const Header = ({}: HeaderProps) => {
                 </a>
             </Link>
             <nav className="header__nav">
-                Bubble Hamburger Nav
+                <Button text="Contact" />
             </nav>
         </StyledHeader>
     )
