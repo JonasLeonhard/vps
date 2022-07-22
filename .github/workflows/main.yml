@@ -23,20 +23,23 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
 
 
-      - name: Build (Docker Images)
-        run: yarn build
+      # - name: Build (Docker Images)
+      #   run: yarn build
       
-      - name: Prepare (Saving Images to Transfer)
-        run: |
-          mkdir repository
-          docker images
-          docker save frontend | gzip > ./repository/frontend.tar.gz
-          docker save backend | gzip > ./repository/backend.tar.gz
-          docker save postgres | gzip > ./repository/postgres.tar.gz
-          cd repository && ls -la && cd ..
+      # - name: Prepare (Saving Images to Transfer)
+      #   run: |
+      #     mkdir repository
+      #     docker images
+      #     docker save frontend | gzip > ./repository/frontend.tar.gz
+      #     docker save backend | gzip > ./repository/backend.tar.gz
+      #     docker save postgres | gzip > ./repository/postgres.tar.gz
+      #     cd repository && ls -la && cd ..
 
       - name: Transfer (Transfer Images to Server)
-        run: "rsync -e 'ssh -p ${{ secrets.SSH_PORT }}' -r -v ./repository ${{ secrets.SSH_HOST }}@${{ secrets.SSH_USERNAME }}:~/vps"
+        run: |
+        echo ${{ secrets.SSH_PORT }} 
+        echo ${{ secrets.SSH_HOST }}@${{ secrets.SSH_USERNAME }}
+        rsync -e 'ssh -p ${{ secrets.SSH_PORT }}' -r -v ./repository ${{ secrets.SSH_HOST }}@${{ secrets.SSH_USERNAME }}:~/vps
 
 
       - name: SSH Deployment (Transfer Images)
