@@ -1,0 +1,34 @@
+name: Deployment
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH Deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            # Setup (workdir)
+            cd ~/vps
+
+            # Setup (checkout changes)
+            git pull
+
+            # Setup (env)
+            rm .env
+            touch .env
+            echo "${{ secrets.SERVER_ENV }}" > .env
+            cat .env
+
+            # Deploy (docker compose)
+            yarn build 
+            yarn stop
+            yarn start
