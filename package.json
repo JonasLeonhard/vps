@@ -11,6 +11,7 @@
     "stop": "docker compose stop",
     "down": "docker compose down",
     "build": "docker compose build",
-    "on:started": "echo '🐲 Frontend: http://localhost:3000/' \n echo '🐲 CMS: http://localhost:1337/admin/'"
+    "on:started": "echo '🐲 Frontend: http://localhost:3000/' \n echo '🐲 CMS: http://localhost:1337/admin/'",
+    "on:started-prod": "echo '🐲 Frontend: http://jonasleonhard.de' \n echo '🐲 CMS: http://cms.jonasleonhard.de/admin/'"
   }
 }

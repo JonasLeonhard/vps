@@ -17,17 +17,19 @@ jobs:
           echo "${{ secrets.SERVER_ENV }}" > .env
           cat .env 
 
-      # - name: Build (Docker Images)
-      #   run: yarn build
+      - name: Build (Docker Images)
+        run:
+        docker compose pull
+        docker compose build 
       
-      # - name: Prepare (Saving Images to Transfer)
-      #   run: |
-      #     mkdir repository
-      #     docker images
-      #     docker save frontend | gzip > ./repository/frontend.tar.gz
-      #     docker save backend | gzip > ./repository/backend.tar.gz
-      #     docker save postgres | gzip > ./repository/postgres.tar.gz
-      #     cd repository && ls -la && cd ..
+      - name: Prepare (Saving Images to Transfer)
+        run: |
+          mkdir repository
+          docker images
+          docker save frontend | gzip > ./repository/frontend.tar.gz
+          docker save backend | gzip > ./repository/backend.tar.gz
+          docker save postgres | gzip > ./repository/postgres.tar.gz
+          cd repository && ls -la && cd ..
 
 
       - name: Transfer (Transfer Images to Server)
@@ -62,4 +64,4 @@ jobs:
             cd .. 
 
             # Deploy (Restart with loaded images)
-            docker compose restart && yarn:started
+            docker compose restart && yarn on:started-prod
