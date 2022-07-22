@@ -61,5 +61,10 @@ jobs:
             gunzip postgres.tar.gz | pv && docker load -i postgres.tar | pv
             cd .. 
 
+            # Cleanup (transfered images)
+            sudo rm -rf ./repository
+
             # Deploy (Restart with loaded images)
             docker compose restart && yarn on:started-prod
+
+            
