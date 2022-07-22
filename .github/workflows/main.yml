@@ -17,12 +17,6 @@ jobs:
           echo "${{ secrets.SERVER_ENV }}" > .env
           cat .env 
 
-      - name: Setup (SSH)
-        run: |
-          mkdir ~/.ssh
-          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
-
-
       # - name: Build (Docker Images)
       #   run: yarn build
       
@@ -35,12 +29,18 @@ jobs:
       #     docker save postgres | gzip > ./repository/postgres.tar.gz
       #     cd repository && ls -la && cd ..
 
-      - name: Transfer (Transfer Images to Server)
-        run: |
-          echo ${{ secrets.SSH_PORT }} 
-          echo ${{ secrets.SSH_HOST }}@${{ secrets.SSH_USERNAME }}
-          rsync -rv -e 'ssh -p ${{ secrets.SSH_PORT }}' ./repository ${{ secrets.SSH_HOST }}@${{ secrets.SSH_USERNAME }}:~/vps
 
+      - name: Transfer (Transfer Images to Server)
+        uses: burnett01/rsync-deployments@5.2
+        with: 
+          switches: -rv
+          path: ./repository
+          remote_path: ~/vps
+          remote_host: ${{ secrets.SSH_HOST }} 
+          remote_port: ${{ secrets.SSH_PORT }} 
+          remote_user: ${{ secrets.SSH_USERNAME }}
+          remote_key: ${{ secrets.SSH_KEY }} 
+          
 
       - name: SSH Deployment (Transfer Images)
         uses: appleboy/ssh-action@master
