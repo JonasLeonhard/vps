@@ -39,7 +39,7 @@ jobs:
         run: |
           echo ${{ secrets.SSH_PORT }} 
           echo ${{ secrets.SSH_HOST }}@${{ secrets.SSH_USERNAME }}
-          rsync -e 'ssh -p ${{ secrets.SSH_PORT }}' -r -v ./repository ${{ secrets.SSH_HOST }}@${{ secrets.SSH_USERNAME }}:~/vps
+          rsync -rv -e 'ssh -p ${{ secrets.SSH_PORT }}' ./repository ${{ secrets.SSH_HOST }}@${{ secrets.SSH_USERNAME }}:~/vps
 
 
       - name: SSH Deployment (Transfer Images)
