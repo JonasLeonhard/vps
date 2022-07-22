@@ -1,4 +1,6 @@
 .env
 /.env
+/.env.prod
+.env.prod
 ./repository
 /repository

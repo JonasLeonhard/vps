@@ -53,6 +53,10 @@ jobs:
             cd ~/vps
             git pull
 
+            # Setup (Env)
+            rm .env && touch .env
+            echo "${{ secrets.SERVER_ENV }}" > .env
+
             # Setup (load transfered images)
             cd ./repository
             gunzip frontend.tar.gz | pv && docker load -i frontend.tar | pv
