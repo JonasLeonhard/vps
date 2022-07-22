@@ -15,4 +15,4 @@ RUN yarn
 
 # Running the app | start for prod | dev for development
 EXPOSE 3000
-CMD "yarn" "dev"
+CMD ["yarn", "dev"]

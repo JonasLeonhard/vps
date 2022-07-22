@@ -63,6 +63,7 @@ jobs:
             sudo rm -rf ./repository
 
             # Deploy (Restart with loaded images)
-            docker compose restart && yarn on:started-prod
+            docker compose stop
+            docker compose up -d && yarn on:started-prod
 
             
