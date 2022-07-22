@@ -26,7 +26,6 @@ jobs:
           docker images
           docker save frontend | gzip > ./repository/frontend.tar.gz
           docker save backend | gzip > ./repository/backend.tar.gz
-          docker save postgres | gzip > ./repository/postgres.tar.gz
           cd repository && ls -la && cd ..
 
 
@@ -58,7 +57,6 @@ jobs:
             cd ./repository
             gunzip frontend.tar.gz | pv && docker load -i frontend.tar | pv
             gunzip backend.tar.gz | pv && docker load -i backend.tar | pv
-            gunzip postgres.tar.gz | pv && docker load -i postgres.tar | pv
             cd .. 
 
             # Cleanup (transfered images)
