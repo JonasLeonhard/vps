@@ -18,9 +18,9 @@ jobs:
           cat .env 
 
       - name: Build (Docker Images)
-        run:
-        docker compose pull
-        docker compose build 
+        run: |
+          docker compose pull
+          docker compose build 
       
       - name: Prepare (Saving Images to Transfer)
         run: |
