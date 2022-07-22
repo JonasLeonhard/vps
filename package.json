@@ -10,7 +10,7 @@
     "start": "docker compose start && yarn on:started",
     "stop": "docker compose stop",
     "down": "docker compose down",
-    "build": "docker compose build --no-cache",
+    "build": "docker compose build",
     "on:started": "echo '🐲 Frontend: http://localhost:3000/' \n echo '🐲 CMS: http://localhost:1337/admin/'"
   }
 }
