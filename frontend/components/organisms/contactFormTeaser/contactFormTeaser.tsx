@@ -1,15 +1,12 @@
-import StyledContactFormTeaser from './contactFormTeaser.style';
+import React from "react";
+import StyledContactFormTeaser from "./contactFormTeaser.style";
 
-type ContactFormTeaserProps = {};
+const ContactFormTeaser = () => {
+  return (
+    <StyledContactFormTeaser>
+      <div>Contact Form Teaser</div>
+    </StyledContactFormTeaser>
+  );
+};
 
-const ContactFormTeaser = ({}: ContactFormTeaserProps) => {
-    return (
-        <StyledContactFormTeaser>
-           <div>
-                Contact Form Teaser
-           </div>
-        </StyledContactFormTeaser>
-    )
-}
-
-export default ContactFormTeaser
+export default ContactFormTeaser;

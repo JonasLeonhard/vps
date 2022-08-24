@@ -1,61 +1,61 @@
 interface Breakpoints {
-    s: string
-    m: string,
-    l: string,
+  s: string;
+  m: string;
+  l: string;
 }
 
 interface Spacing {
-    xxxs: string,
-    xxs: string,
-    xs: string,
-    s: string,
-    m: string,
-    l: string,
-    xl: string,
-    xxl: string,
-    xxxl: string
+  xxxs: string;
+  xxs: string;
+  xs: string;
+  s: string;
+  m: string;
+  l: string;
+  xl: string;
+  xxl: string;
+  xxxl: string;
 }
 
 interface Colors {
-    [index: string]: Color
+  [index: string]: Color;
 }
 
 interface Color {
-    [index: number]: string
+  [index: number]: string;
 }
 
 interface Theme {
-    breakpoints: Breakpoints,
-    colors: Colors,
-    spacing: Spacing
+  breakpoints: Breakpoints;
+  colors: Colors;
+  spacing: Spacing;
 }
 
 const theme: Theme = {
-    breakpoints: {
-        s: '24rem',
-        m: '48rem',
-        l: '64rem'
+  breakpoints: {
+    s: "24rem",
+    m: "48rem",
+    l: "64rem",
+  },
+  colors: {
+    white: {
+      100: "#fff",
     },
-    colors: {
-        white: {
-            100: '#fff'
-        },
-        gray: {
-            100: '#333333',
-            50: '#1e1e1e'
-        }
+    gray: {
+      100: "#333333",
+      50: "#1e1e1e",
     },
-    spacing: {
-        xxxs: '5px',
-        xxs: '8px',
-        xs: '12px',
-        s: '16px',
-        m: '30px',
-        l: '40px',
-        xl: '60px',
-        xxl: '80px',
-        xxxl: '120px'
-    }
-}
+  },
+  spacing: {
+    xxxs: "5px",
+    xxs: "8px",
+    xs: "12px",
+    s: "16px",
+    m: "30px",
+    l: "40px",
+    xl: "60px",
+    xxl: "80px",
+    xxxl: "120px",
+  },
+};
 
 export default theme;

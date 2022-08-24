@@ -1,11 +1,11 @@
 // ./articles.gql
 export interface ArticlesQuery {
-    articles: Array<ArticleQueryItem>
+  articles: Array<ArticleQueryItem>;
 }
 export interface ArticleQuery {
-    article: ArticleQueryItem
+  article: ArticleQueryItem;
 }
 interface ArticleQueryItem {
-    id: number,
-    title: string
+  id: number;
+  title: string;
 }

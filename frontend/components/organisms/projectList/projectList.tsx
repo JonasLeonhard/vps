@@ -1,15 +1,12 @@
-import StyledProjectList from './projectList.style';
+import React from "react";
+import StyledProjectList from "./projectList.style";
 
-type ProjectListProps = {};
+const ProjectList = () => {
+  return (
+    <StyledProjectList>
+      <div>project list</div>
+    </StyledProjectList>
+  );
+};
 
-const ProjectList = ({}: ProjectListProps) => {
-    return (
-        <StyledProjectList>
-           <div>
-                project list
-           </div>
-        </StyledProjectList>
-    )
-}
-
-export default ProjectList
+export default ProjectList;

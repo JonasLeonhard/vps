@@ -1,15 +1,12 @@
-import StyledProjectCarousel from './projectCarousel.style';
+import React from "react";
+import StyledProjectCarousel from "./projectCarousel.style";
 
-type ProjectCarouselProps = {};
+const ProjectCarousel = () => {
+  return (
+    <StyledProjectCarousel>
+      <div>project carousel</div>
+    </StyledProjectCarousel>
+  );
+};
 
-const ProjectCarousel = ({}: ProjectCarouselProps) => {
-    return (
-        <StyledProjectCarousel>
-           <div>
-                project carousel
-           </div>
-        </StyledProjectCarousel>
-    )
-}
-
-export default ProjectCarousel
+export default ProjectCarousel;

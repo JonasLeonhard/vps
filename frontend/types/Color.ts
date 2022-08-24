@@ -1,3 +1,3 @@
-declare type Color = String;
+declare type Color = string;
 
 export default Color;

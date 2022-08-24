@@ -1,13 +1,14 @@
+import React from "react";
 import apolloClient from "lib/apollo";
 
-import articlesQuery from '.graphql/articles.gql';
-import { ArticlesQuery } from 'graphql/types';
+import articlesQuery from ".graphql/articles.gql";
+import { ArticlesQuery } from "graphql/types";
 
-import Default  from 'templates/default';
+import Default from "templates/default";
 
-import ContactForm from 'components/organisms/contactForm/contactForm';
+import ContactForm from "components/organisms/contactForm/contactForm";
 
-const Contact = ({ data }: { data: ArticlesQuery } ) => {  
+const Contact = ({ data }: { data: ArticlesQuery }) => {
   return (
     <Default title="Jonasleonhard.de" description="Jonas Leonhard Contact Page">
       <>
@@ -15,17 +16,16 @@ const Contact = ({ data }: { data: ArticlesQuery } ) => {
         <ContactForm />
       </>
     </Default>
-    )
-}
-
+  );
+};
 
 Contact.getInitialProps = async () => {
   // Replace with about contact query
   const { data }: { data: ArticlesQuery } = await apolloClient.query({
-    query: articlesQuery
+    query: articlesQuery,
   });
   return {
-    data
+    data,
   };
 };
 

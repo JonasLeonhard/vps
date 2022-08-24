@@ -1,31 +1,31 @@
+import React from "react";
 import apolloClient from "lib/apollo";
 
-import articlesQuery from 'graphql/articles.gql';
-import { ArticlesQuery } from 'graphql/types';
+import articlesQuery from "graphql/articles.gql";
+import { ArticlesQuery } from "graphql/types";
 
-import Default  from 'templates/default';
+import Default from "templates/default";
 
-import BannerTicker from 'components/organisms/bannerTicker/bannerTicker';
+import BannerTicker from "components/organisms/bannerTicker/bannerTicker";
 
-const About = ({ data }: { data: ArticlesQuery } ) => {  
+const About = ({ data }: { data: ArticlesQuery }) => {
   return (
     <Default title="Jonasleonhard.de" description="Jonas Leonhard About Page">
       <>
-      about Page...
-       <BannerTicker />
+        about Page...
+        <BannerTicker />
       </>
     </Default>
-    )
-}
-
+  );
+};
 
 About.getInitialProps = async () => {
   // Replace with about page query
   const { data }: { data: ArticlesQuery } = await apolloClient.query({
-    query: articlesQuery
+    query: articlesQuery,
   });
   return {
-    data
+    data,
   };
 };
 

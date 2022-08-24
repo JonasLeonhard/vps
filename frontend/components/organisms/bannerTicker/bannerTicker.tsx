@@ -1,16 +1,12 @@
-import StyledBannerTicker from './bannerTicker.style';
+import React from "react";
+import StyledBannerTicker from "./bannerTicker.style";
 
-type BannerTickerProps = {};
+const BannerTicker = () => {
+  return (
+    <StyledBannerTicker>
+      <div>Banner Ticker</div>
+    </StyledBannerTicker>
+  );
+};
 
-const BannerTicker = ({ }: BannerTickerProps) => {
-    return (
-        <StyledBannerTicker>
-            <div>
-                Banner Ticker
-            </div>
-          
-        </StyledBannerTicker>
-    )
-}
-
-export default BannerTicker
+export default BannerTicker;

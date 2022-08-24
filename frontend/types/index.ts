@@ -1,5 +1,3 @@
-import Color from './Color';
+import Color from "./Color";
 
-export type {
-    Color    
-};
+export type { Color };

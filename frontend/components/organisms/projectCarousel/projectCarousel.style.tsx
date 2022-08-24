@@ -1,14 +1,12 @@
-import styled from 'styled-components';
-import { space, color } from '../../../styles/helper';
+import styled from "styled-components";
 
 const StyledProjectCarousel = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    background: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: orange;
 `;
-
 
 export default StyledProjectCarousel;
