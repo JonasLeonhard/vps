@@ -1,5 +1,7 @@
-import React from "react";
-import StyledContactFormTeaser from "./contactFormTeaser.style";
+'use client'; // styled-components fix
+
+import React from 'react';
+import StyledContactFormTeaser from './contactFormTeaser.style';
 
 const ContactFormTeaser = () => {
   return (

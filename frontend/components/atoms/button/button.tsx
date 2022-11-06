@@ -1,18 +1,19 @@
-import React from "react";
-import { useState } from "react";
-import StyledButton from "./button.style";
-import Image from "next/image";
+'use client';
 
-type ButtonProps = {
+import React, { useState } from 'react';
+import StyledButton from './button.style';
+import Image from 'next/image';
+
+interface ButtonProps {
   text: string;
-};
+}
 
 const Button = ({ text }: ButtonProps) => {
   const [clicked, setClicked] = useState(false);
 
   return (
     <StyledButton
-      className={clicked ? "button--clicked" : ""}
+      className={clicked ? 'button--clicked' : ''}
       onClick={() => setClicked(!clicked)}
     >
       <span className="button__text">{text}</span>

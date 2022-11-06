@@ -1,11 +1,11 @@
-import React from "react";
-import { NextSeo, DefaultSeo } from "next-seo";
+import React from 'react';
+import { NextSeo, DefaultSeo } from 'next-seo';
 
 const SeoHead = ({
   title,
   description,
   noindex,
-  nofollow,
+  nofollow
 }: {
   title: string;
   description: string;
@@ -16,15 +16,15 @@ const SeoHead = ({
     <>
       <DefaultSeo
         openGraph={{
-          type: "website",
-          locale: "de",
-          url: "https://www.jonasleonhard.de/",
-          site_name: "jonasleonhard.de",
+          type: 'website',
+          locale: 'de',
+          url: 'https://www.jonasleonhard.de/',
+          site_name: 'jonasleonhard.de'
         }}
         twitter={{
-          handle: "@handle",
-          site: "@site",
-          cardType: "summary_large_image",
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image'
         }}
       />
       <NextSeo
@@ -33,8 +33,8 @@ const SeoHead = ({
         noindex={noindex}
         nofollow={nofollow}
         openGraph={{
-          title: title,
-          description: description,
+          title,
+          description
         }}
       />
     </>

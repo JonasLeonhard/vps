@@ -1,5 +1,7 @@
-import React from "react";
-import StyledProjectList from "./projectList.style";
+'use client'; // styled-components fix
+
+import React from 'react';
+import StyledProjectList from './projectList.style';
 
 const ProjectList = () => {
   return (

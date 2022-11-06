@@ -1,13 +1,10 @@
 export default {
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(graphql|gql)$/,
-      exclude: /node_modules/,
-      loader: "graphql-tag/loader",
-    });
-    return config;
+  experimental: {
+    appDir: true
   },
-  webpackDevMiddleware: (config) => {
-    return config;
-  },
+  compiler: {
+    styledComponents: {
+      ssr: true
+    }
+  }
 };

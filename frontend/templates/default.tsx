@@ -1,16 +1,21 @@
-import React from "react";
-import StyledDefault from "./default.style";
+'use client'; // styled-components fix
 
-import SeoHead from "components/atoms/seoHead/seoHead";
-import Footer from "components/organisms/footer/footer";
-import Header from "components/organisms/header/header";
+import React from 'react';
+import StyledDefault from './default.style';
+import GlobalStyle from 'styles/globals.style';
+
+import SeoHead from 'components/atoms/seoHead/seoHead';
+import Footer from 'components/organisms/footer/footer';
+import Header from 'components/organisms/header/header';
+import { ThemeProvider } from 'styled-components';
+import theme from 'styles/theme';
 
 const Default = ({
   children,
   title,
   description,
   noindex,
-  nofollow,
+  nofollow
 }: {
   children: JSX.Element | string;
   title: string;
@@ -19,19 +24,22 @@ const Default = ({
   nofollow?: boolean | undefined;
 }) => {
   return (
-    <StyledDefault>
-      <SeoHead
-        title={title}
-        description={description}
-        noindex={noindex}
-        nofollow={nofollow}
-      />
-      <Header />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <StyledDefault>
+        <SeoHead
+          title={title}
+          description={description}
+          noindex={noindex}
+          nofollow={nofollow}
+        />
+        <Header />
 
-      <div className="default__container">{children}</div>
+        <div className="default__container">{children}</div>
 
-      <Footer />
-    </StyledDefault>
+        <Footer />
+      </StyledDefault>
+    </ThemeProvider>
   );
 };
 

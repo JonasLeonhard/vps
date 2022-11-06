@@ -1,19 +1,18 @@
-import React from "react";
-import StyledHeader from "./header.style";
-import Link from "next/link";
-import Button from "components/atoms/button/button";
+'use client'; // styled-components fix
 
-const Header = () => {
-  return (
-    <StyledHeader>
-      <Link href="/">
-        <a className="header__logo">Animated Logo</a>
-      </Link>
-      <nav className="header__nav">
-        <Button text="Contact" />
-      </nav>
-    </StyledHeader>
-  );
-};
+import React from 'react';
+import StyledHeader from './header.style';
+import Link from 'next/link';
+import Button from 'components/atoms/button/button';
 
+const Header = () => (
+  <StyledHeader>
+    <Link className="header__logo" href="/">
+      Animated Logo
+    </Link>
+    <nav className="header__nav">
+      <Button text="Contact" />
+    </nav>
+  </StyledHeader>
+);
 export default Header;

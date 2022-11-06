@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { space, color } from "styles/helper";
+import styled from 'styled-components';
 
 const StyledButton = styled.button`
   position: relative;
@@ -10,13 +9,10 @@ const StyledButton = styled.button`
   height: max-content;
   overflow: hidden;
   cursor: pointer;
-  padding: ${space("xs")} ${space("s")};
-  background: ${color("gray", 50)};
 
   .button__text {
     z-index: 1;
     position: relative;
-    color: ${color("white")};
   }
 
   &.button--clicked {

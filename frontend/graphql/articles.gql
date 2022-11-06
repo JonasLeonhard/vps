@@ -1,6 +1,0 @@
-query Articles {
-  articles {
-    id
-    title
-  }
-}

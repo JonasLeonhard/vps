@@ -1,5 +1,7 @@
-import React from "react";
-import StyledContactForm from "./contactForm.style";
+'use client'; // styled-components fix
+
+import React from 'react';
+import StyledContactForm from './contactForm.style';
 
 const ContactFormTeaser = () => {
   return (

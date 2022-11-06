@@ -1,5 +1,7 @@
-import React from "react";
-import StyledProjectCarousel from "./projectCarousel.style";
+'use client'; // styled-components fix
+
+import React from 'react';
+import StyledProjectCarousel from './projectCarousel.style';
 
 const ProjectCarousel = () => {
   return (

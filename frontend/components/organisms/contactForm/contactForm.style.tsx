@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { color } from "../../../styles/helper";
+import styled from 'styled-components';
 
 const StyledContactForm = styled.div`
   display: flex;
@@ -14,7 +13,6 @@ const StyledContactForm = styled.div`
   .contactForm__right {
     background: black;
     width: 100%;
-    color: ${color("white")};
     overflow: hidden;
   }
 

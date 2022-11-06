@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { space } from "../../../styles/helper";
+import styled from 'styled-components';
 
 const StyledHeader = styled.header`
   height: var(--header-height);
@@ -7,7 +6,6 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${space("m")};
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +14,6 @@ const StyledHeader = styled.header`
 
   .header__logo {
     pointer-events: all;
-    margin: ${space("m")};
   }
 
   .header__nav {
