@@ -2,6 +2,7 @@ import { Spacings, Theme } from '@types';
 
 /**
  * Gets space from theme
+ * import { space } from 'styles';
  * @example space('xl');
  */
 const space =
