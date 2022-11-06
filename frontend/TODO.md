@@ -1,8 +1,8 @@
 [x] - update to next 13
 [x] - add styled-components themeProvider
 [x] - update eslint rules to be stricter
-[ ] - define theme.ts breakpoints, colors, ...
-[ ] - add helpers functions for styled-components theme space, color, mq
+[~] - define theme.ts breakpoints, colors, ...
+[x] - add helpers functions for styled-components theme space, color, mq
 
 [ ] - refactor templates/default to be a app/layout.tsx instead?
 [ ] - add wAria eslinting
