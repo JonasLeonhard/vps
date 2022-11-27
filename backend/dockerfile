@@ -1,0 +1,8 @@
+FROM alpine:latest
+
+ARG PB_VERSION=0.8.0
+
+EXPOSE 8080
+
+# start PocketBase
+CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
