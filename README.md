@@ -8,7 +8,7 @@
 
 > Website Stack for jonasleonhard.de, to be deployed via a simple docker compose.
 
-This Project contains all files required for pocketbase backend and next.js frontend
+This Project contains all files required for svelte-kit frontend & tinaCMS backend.
 
 ## Status
 
@@ -48,10 +48,9 @@ UNDER CONSTRUCTION 🚧
 
 🚧 Main Technologies used in the project:
 
-- Frontend Service = Next.js
-  - Pocketbase Client for consuming Pocketbase's API
-  - Styled Components
-- Backend = Pocketbase
+- Frontend Service = svelte-kit
+  - Tailwind
+- Backend = TinaCMS
 
 ## Setup
 
