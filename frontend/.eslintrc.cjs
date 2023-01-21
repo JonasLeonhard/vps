@@ -1,29 +1,20 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2022: true,
-    node: true
-  },
-  extends: ['prettier', 'plugin:react/recommended', 'standard-with-typescript'],
-  overrides: [],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    jsx: true,
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['tsconfig.json'],
-    tsconfigRootDir: __dirname
-  },
-  plugins: ['prettier', 'react', '@typescript-eslint'],
-  rules: {
-    'react/prop-types': 'off',
-    'prettier/prettier': 'error',
-    semi: [2, 'always'],
-    '@typescript-eslint/semi': [2, 'always'],
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/strict-boolean-expressions': 'warn',
-    '@typescript-eslint/member-delimiter-style': 'off',
-    '@typescript-eslint/indent': 'off',
-    '@typescript-eslint/space-before-function-paren': 'off'
-  }
+	root: true,
+	parser: '@typescript-eslint/parser',
+	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+	plugins: ['svelte3', '@typescript-eslint'],
+	ignorePatterns: ['*.cjs'],
+	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
+	settings: {
+		'svelte3/typescript': () => require('typescript')
+	},
+	parserOptions: {
+		sourceType: 'module',
+		ecmaVersion: 2020
+	},
+	env: {
+		browser: true,
+		es2017: true,
+		node: true
+	}
 };
