@@ -7,9 +7,10 @@ install:
 frontend-dev: 
 	@cd frontend && yarn dev
 frontend-install:
-	@cd frontend && yarn
+	@cd frontend && yarn && cp .env.example .env
 
 backend-dev:
 	@cd backend && composer run start
 backend-install:
-	@cd backend && composer install
+	@cd backend && composer install && cp .env.example .env
+
