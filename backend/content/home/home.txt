@@ -2,4 +2,8 @@ Title: Home
 
 ----
 
+Text: Kirby CMS
+
+----
+
 Uuid: 0nqB5sq7HVQ1GpJB
