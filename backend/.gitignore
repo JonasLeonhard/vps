@@ -46,3 +46,15 @@ Icon
 # License
 # ---------------
 /site/config/.license
+
+# Environmet
+# ---------------
+.env
+
+# Vendor
+# ---------------
+/vendor/*
+
+# Kirbi
+# ---------------
+/kirby/*
