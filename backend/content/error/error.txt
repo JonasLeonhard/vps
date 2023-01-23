@@ -2,4 +2,8 @@ Title: Error
 
 ----
 
+Text: an Error occured in kirby-cms
+
+----
+
 Uuid: OVDOf8S5XtppgQnA
