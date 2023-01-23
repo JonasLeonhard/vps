@@ -1,10 +1,12 @@
-<script>
-	let name = 'test';
+<script lang="ts">
+	import type { PageData } from './$types';
+	export let data: PageData;
 </script>
 
 <h1 class="text-3xl font-bold underline">
-	Hello {name}!
+	Hello {data.test}!
 </h1>
+
 <div class="mx-auto max-w-lg p-8">
 	<details
 		class="rounded-lg p-6 open:bg-white open:shadow-lg open:ring-1 open:ring-black/5 dark:open:bg-slate-900 dark:open:ring-white/10"
@@ -18,6 +20,7 @@
 		</div>
 	</details>
 </div>
+
 <article class="prose">
 	<h1>test</h1>
 </article>

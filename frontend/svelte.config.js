@@ -17,8 +17,7 @@ const config = {
 		adapter: adapter(),
 		// aliases have to be added to tsconfig.json
 		alias: {
-			'@src': './src',
-			'@content': './content'
+			$src: './src'
 		}
 	}
 };

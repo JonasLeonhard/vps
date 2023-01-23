@@ -55,24 +55,11 @@ UNDER CONSTRUCTION 🚧
 ## Setup
 
 🚧
-[Env] Environment Setup:
-
-- configure the following .env variables:
-  (Docker compose) ./.env
-  (frontend) ./frontend/.env
-  (backend) ./backend/.env
-
-[Docker-compose] To run this project using docker compose
+[Make] To run this locally project using make
 
 ```bash
-$ yarn up       # build containers
-$ yarn start    # start containers
-$ yarn stop     # stop containers
-```
-
-```bash
-$ cd backend && && yarn && yarn develop
-$ cd frontend && yarn && yarn start
+$ make install # install yarn & composer dependencies
+$ make dev # start svelte-kit & cms on localhost
 ```
 
 ## Known Issues

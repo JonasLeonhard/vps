@@ -3,8 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "yarn tinacms dev -c 'vite dev'",
-		"dev:vite": "vite dev",
+		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -37,9 +36,5 @@
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0"
 	},
-	"type": "module",
-	"dependencies": {
-		"@tinacms/cli": "^1.0.6",
-		"tinacms": "^1.1.3"
-	}
+	"type": "module"
 }
