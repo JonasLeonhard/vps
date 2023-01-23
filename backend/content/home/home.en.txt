@@ -2,7 +2,7 @@ Title: Home
 
 ----
 
-Text: Kirby CMS
+Text: Kirby CMS (en)
 
 ----
 
