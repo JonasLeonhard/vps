@@ -1,8 +1,8 @@
 dev:
-	make -j 2 frontend-dev backend-dev
+	make -j 2 backend-dev frontend-dev
 
 install:
-	make -j 2 frontend-install backend-install
+	make -j 2 backend-install frontend-install
 
 frontend-dev: 
 	@cd frontend && yarn dev
