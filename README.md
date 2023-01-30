@@ -50,7 +50,7 @@ UNDER CONSTRUCTION 🚧
 
 - Frontend Service = svelte-kit
   - Tailwind
-- Backend = TinaCMS
+- Backend = KirbyCms
 
 ## Setup
 
