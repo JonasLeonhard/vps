@@ -59,7 +59,7 @@ UNDER CONSTRUCTION 🚧
 
 ```bash
 $ make install # install yarn & composer dependencies
-$ make dev # start svelte-kit & cms on localhost
+$ make dev # start svelte-kit & cms on 127.0.0.1:5173 && 127.0.0.1:8000
 ```
 
 ## Known Issues
