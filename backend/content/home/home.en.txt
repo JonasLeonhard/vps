@@ -2,7 +2,7 @@ Title: Home
 
 ----
 
-Text: Kirby CMS (en)
+Text: Kirby CMS (en) (link: /panel text: Go To Panel)
 
 ----
 

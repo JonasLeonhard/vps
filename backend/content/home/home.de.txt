@@ -2,4 +2,4 @@ Title: Home
 
 ----
 
-Text: Kirby CMS (de)
+Text: Kirby CMS (de) (link: /panel text: Zum Panel)
