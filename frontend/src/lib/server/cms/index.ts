@@ -7,8 +7,7 @@ export const getHeaders = (langCode: string) => {
 	console.log(backendAccount);
 	const header = {
 		Authorization: `Basic ${Buffer.from(backendAccount).toString('base64')}`,
-		'X-Language': langCode,
-		'Content-type': 'application/json; charset=UTF-8'
+		'X-Language': langCode
 	};
 	console.log(header);
 	return header;
