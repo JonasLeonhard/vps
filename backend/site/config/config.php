@@ -16,12 +16,22 @@ if ($_ENV['isLocal'] === 'true') {
 }
 
 return [
-  'debug' => $_ENV['isLocal'] === 'true', # only for local-development
+  'debug' => $_ENV['isLocal'] === 'true',
   'api' => [
     'basicAuth' => true,
-    'allowInsecure' => $_ENV['isLocal'] === 'true' # only for local-development
+    'allowInsecure' => $_ENV['isLocal'] === 'true'
   ],
   'languages' => [
     'detect' => true
-  ]
+  ],
+  # kirby-git plugin:
+  # path to .git
+  'oblik.git.repo' => '..',
+  'oblik.git.merge' => 'master',
+  # when to commit changes:
+  # https://getkirby.com/docs/reference/plugins/hooks
+  'oblik.git.hooks' => [
+    'user.logout:after',
+  ],
+  'oblik.git.log' => './kirby-git.log'
 ];

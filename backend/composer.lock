@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6adbbc01f36c7bac3483820521e97a0",
+    "content-hash": "e1ec0a65c0e9343eae5cea55da2b2bbf",
     "packages": [
         {
             "name": "claviska/simpleimage",
@@ -589,6 +589,64 @@
                 "source": "https://github.com/michelf/php-smartypants/tree/1.8.1"
             },
             "time": "2016-12-13T01:01:17+00:00"
+        },
+        {
+            "name": "oblik/kirby-git",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/OblikStudio/kirby-git.git",
+                "reference": "899a87cb3c8b420d31ac91f4eb0e3780e770afb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/OblikStudio/kirby-git/zipball/899a87cb3c8b420d31ac91f4eb0e3780e770afb1",
+                "reference": "899a87cb3c8b420d31ac91f4eb0e3780e770afb1",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/cms": "^3.7",
+                "getkirby/composer-installer": "^1.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.2"
+            },
+            "type": "kirby-plugin",
+            "extra": {
+                "installer-name": "git"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oblik Studio",
+                    "email": "hello@oblik.studio",
+                    "homepage": "https://oblik.studio/"
+                },
+                {
+                    "name": "Hristiyan Dodov",
+                    "email": "h.dodov@gmail.com",
+                    "homepage": "https://dodov.dev/"
+                }
+            ],
+            "description": "Shows you Git changes in the Kirby panel and allows you to add/commit/push them, manually or automatically.",
+            "keywords": [
+                "kirby",
+                "kirby-plugin"
+            ],
+            "support": {
+                "issues": "https://github.com/OblikStudio/kirby-git/issues",
+                "source": "https://github.com/OblikStudio/kirby-git"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/OblikStudio",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-07-05T07:02:04+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
