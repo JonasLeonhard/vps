@@ -164,9 +164,7 @@ class Git
       $email = 'kirby-git';
     }
 
-    $name = escapeshellarg($name);
-    $email = escapeshellarg($email);
-    $message = escapeshellarg($message) . " #KirbyGit:($name, $email)";
+    $message = escapeshellarg($message . " #KirbyGit:($name, $email)");
 
     return $this->exec("commit --message={$message} --no-status");
   }
