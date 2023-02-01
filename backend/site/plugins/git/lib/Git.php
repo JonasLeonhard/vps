@@ -90,7 +90,7 @@ class Git
       strpos($message, 'usage: git ') !== false ||
       strpos($message, 'not a git command') !== false
     ) {
-      return 'It seems you have an outdated Git version: ' . $this->version();
+      return 'It seems you have an outdated Git version: ' . $this->version() . $message;
     }
 
     if (
@@ -164,12 +164,11 @@ class Git
       $email = 'kirby-git';
     }
 
-    $message = escapeshellarg($message);
     $name = escapeshellarg($name);
     $email = escapeshellarg($email);
-    $message . " KirbyGit:($name, $email)";
+    $message = escapeshellarg($message) . " #KirbyGit:($name, $email)";
 
-    return $this->exec("-c commit --message={$message} --no-status");
+    return $this->exec("commit --message={$message} --no-status");
   }
 
   public function log(int $page, int $limit)
