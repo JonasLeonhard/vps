@@ -28,10 +28,12 @@ return [
   # path to .git
   'oblik.git.repo' => '..',
   'oblik.git.merge' => 'master',
+  # find by $'which git'
+  'oblik.git.bin' => '/usr/bin/git',
   # when to commit changes:
   # https://getkirby.com/docs/reference/plugins/hooks
-  'oblik.git.hooks' => [
-    'user.logout:after',
-  ],
+  // 'oblik.git.hooks' => [
+  //   'user.logout:after',
+  // ],
   'oblik.git.log' => './kirby-git.log'
 ];
