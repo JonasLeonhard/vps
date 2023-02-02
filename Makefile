@@ -14,3 +14,7 @@ backend-dev:
 backend-install:
 	@cd backend && composer install && cp .env.example .env
 
+nginx-update:
+	rsync -a ./nginx/** /etc/nginx/sites-enabled
+	sudo nginx -s reload
+
