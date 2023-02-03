@@ -21,6 +21,7 @@ return [
     'basicAuth' => true,
     'allowInsecure' => $_ENV['isLocal'] === 'true'
   ],
+  'url' => $_ENV['url'],
   'languages' => [
     'detect' => true
   ],
