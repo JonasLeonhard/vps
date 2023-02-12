@@ -2,7 +2,7 @@ name: Deployment CI&CD
 
 on:
   push:
-    branches: ["master"]
+    branches: ["master", "live"]
 
 jobs:
   deploy-production:
@@ -19,6 +19,7 @@ jobs:
             # Setup (workdir)
             cd ~/vps
             git pull origin master
+            git pull origin live
             git push
 
             # Deploy (Restart with pm2)
