@@ -131,3 +131,20 @@ git -C /Users/jonas/Documents/Git/vps push origin master 2>&1
 git -C /Users/jonas/Documents/Git/vps rev-list --count master 2>&1
 git -C /Users/jonas/Documents/Git/vps log origin/master..master --format=%h 2>&1
 git -C /Users/jonas/Documents/Git/vps log master --pretty=format:"%h|%an|%ae|%ad|%s" --skip='0' --max-count='15' 2>&1
+git -C /home/ubuntu/vps status -u --porcelain 2>&1
+git -C /home/ubuntu/vps rev-list --count live 2>&1
+git -C /home/ubuntu/vps log origin/live..live --format=%h 2>&1
+git -C /home/ubuntu/vps log live --pretty=format:"%h|%an|%ae|%ad|%s" --skip='0' --max-count='15' 2>&1
+git -C /home/ubuntu/vps status -u --porcelain 2>&1
+git -C /home/ubuntu/vps rev-list --count live 2>&1
+git -C /home/ubuntu/vps log origin/live..live --format=%h 2>&1
+git -C /home/ubuntu/vps log live --pretty=format:"%h|%an|%ae|%ad|%s" --skip='0' --max-count='15' 2>&1
+git -C /home/ubuntu/vps status -u --porcelain 2>&1
+git -C /home/ubuntu/vps rev-list --count live 2>&1
+git -C /home/ubuntu/vps log origin/live..live --format=%h 2>&1
+git -C /home/ubuntu/vps log live --pretty=format:"%h|%an|%ae|%ad|%s" --skip='0' --max-count='15' 2>&1
+git -C /home/ubuntu/vps status -u --porcelain 2>&1
+git -C /home/ubuntu/vps rev-list --count live 2>&1
+git -C /home/ubuntu/vps log origin/live..live --format=%h 2>&1
+git -C /home/ubuntu/vps log live --pretty=format:"%h|%an|%ae|%ad|%s" --skip='0' --max-count='15' 2>&1
+git -C /home/ubuntu/vps add . --verbose 2>&1
