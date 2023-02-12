@@ -35,7 +35,7 @@
       "Composer\\Config::disableProcessTimeout",
       "@php -S 127.0.0.1:8000 kirby/router.php"
     ],
-    "kirby": "export PATH=$(composer -n config --global home):$PATH && kirby"
+    "kirby": "$(composer -n config --global home)/vendor/bin/kirby"
   },
   "config": {
     "optimize-autoloader": true,
