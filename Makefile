@@ -33,14 +33,18 @@ nginx-update:
 	sudo nginx -s reload
 
 pm2-start: 
-	sudo pm2 start "make start" --name vps
+	sudo pm2 start "make backend-start" --name vps:backend
+	sudo pm2 start "make frontend-start" --name vps:frontend
 
 pm2-stop:
-	sudo pm2 stop vps
+	sudo pm2 stop vps:backend
+	sudo pm2 stop vps:frontend
 
 pm2-delete:
-	sudo pm2 delete vps
+	sudo pm2 delete vps:backend
+	sudo pm2 delete vps:frontend
 
 pm2-restart:
-	sudo pm2 restart vps
+	sudo pm2 restart vps:backend
+	sudo pm2 restart vps:frontend
 
