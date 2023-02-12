@@ -11,6 +11,7 @@ jobs:
       - name: SSH Deployment
         uses: appleboy/ssh-action@master
         with:
+          script_stop: true,
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
