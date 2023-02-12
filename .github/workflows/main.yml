@@ -7,9 +7,6 @@ on:
 jobs:
   deploy-production:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
     steps:
       - name: SSH Deployment
         uses: appleboy/ssh-action@master
@@ -20,6 +17,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             # Setup (workdir + update repo)
+            nvm current 
+
             cd ~/vps
             git pull origin master
             git pull origin live
