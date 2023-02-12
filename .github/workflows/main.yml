@@ -16,14 +16,19 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            # Setup (workdir)
+            # Setup (workdir + update repo)
             cd ~/vps
             git pull origin master
             git pull origin live
             git push
 
-            # build frontend
-            cd frontend
+            # Backend (build)
+            cd ~/vps/backend
+            composer install
+
+            # Frontend (build) 
+            cd ~/vps/frontend
+            yarn
             yarn build
 
             # Deploy (Restart with pm2)
