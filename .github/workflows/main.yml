@@ -19,6 +19,7 @@ jobs:
             # Setup (workdir)
             cd ~/vps
             git pull origin master
+            git push
 
             # Deploy (Restart with pm2)
             make pm2-restart
