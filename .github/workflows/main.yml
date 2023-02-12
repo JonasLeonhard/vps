@@ -22,5 +22,9 @@ jobs:
             git pull origin live
             git push
 
+            # build frontend
+            cd frontend
+            yarn build
+
             # Deploy (Restart with pm2)
             make pm2-restart
