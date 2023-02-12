@@ -2,46 +2,13 @@ name: Deployment CI&CD
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   deploy-production:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup (Checkout)
-        uses: actions/checkout@v3
-
-      - name: Setup (Env)
-        run: |
-          touch .env
-          echo "${{ secrets.SERVER_ENV }}" > .env
-          cat .env 
-
-      - name: Build (Docker Images)
-        run: docker compose build --pull
-      
-      - name: Prepare (Saving Images to Transfer)
-        run: |
-          mkdir repository
-          docker images
-          docker save frontend | gzip > ./repository/frontend.tar.gz
-          docker save backend | gzip > ./repository/backend.tar.gz
-          cd repository && ls -la && cd ..
-
-
-      - name: Transfer (Transfer Images to Server)
-        uses: burnett01/rsync-deployments@5.2
-        with: 
-          switches: -rv
-          path: ./repository
-          remote_path: ~/vps
-          remote_host: ${{ secrets.SSH_HOST }} 
-          remote_port: ${{ secrets.SSH_PORT }} 
-          remote_user: ${{ secrets.SSH_USERNAME }}
-          remote_key: ${{ secrets.SSH_KEY }} 
-          
-
-      - name: SSH Deployment (Transfer Images)
+      - name: SSH Deployment
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -51,23 +18,7 @@ jobs:
           script: |
             # Setup (workdir)
             cd ~/vps
-            git pull
+            git pull origin master
 
-            # Setup (Env)
-            rm .env && touch .env
-            echo "${{ secrets.SERVER_ENV }}" > .env
-
-            # Setup (load transfered images)
-            cd ./repository
-            gunzip frontend.tar.gz | pv && docker load -i frontend.tar | pv
-            gunzip backend.tar.gz | pv && docker load -i backend.tar | pv
-            cd .. 
-
-            # Cleanup (transfered images)
-            sudo rm -rf ./repository
-
-            # Deploy (Restart with loaded images)
-            docker compose stop
-            docker compose up -d && yarn on:started-prod
-
-            
+            # Deploy (Restart with pm2)
+            make pm2-restart
