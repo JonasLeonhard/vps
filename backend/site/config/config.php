@@ -7,7 +7,7 @@ if ($_ENV['isLocal'] === 'true') {
   header('Access-Control-Max-Age: 86400'); // cache for 1 day
 
   // Access-Control headers are received during OPTIONS requests
-  if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+  if ($_SERVER['REQUEST_METHOD'] ?? null == 'OPTIONS') {
     if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
       header("HTTP/1.1 200 OK");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
