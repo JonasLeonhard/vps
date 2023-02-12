@@ -21,9 +21,14 @@ return [
     'basicAuth' => true,
     'allowInsecure' => $_ENV['isLocal'] === 'true'
   ],
-  'url' => $_ENV['url'],
+  'url' => $_ENV['url'] ?? 'http://127.0.0.1:8000/',
   'languages' => [
     'detect' => true
+  ],
+  'cache' => [
+    'pages' => [
+      'active' => true,
+    ]
   ],
   # kirby-git plugin:
   # path to .git
