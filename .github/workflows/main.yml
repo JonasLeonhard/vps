@@ -32,4 +32,5 @@ jobs:
             yarn build
 
             # Deploy (Restart with pm2)
+            cd ~/vps
             make pm2-restart
