@@ -2,7 +2,7 @@ name: Deployment CI&CD
 
 on:
   push:
-    branches: ["master", "live"]
+    branches: ["master"]
 
 jobs:
   deploy-production:
