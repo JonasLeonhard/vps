@@ -17,8 +17,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             # Setup (workdir + update repo)
-            nvm current 
-
             cd ~/vps
             git pull origin master
             git pull origin live
