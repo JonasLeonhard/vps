@@ -1,15 +1,17 @@
 <script lang="ts">
+	import LanguageSelect from '$src/lib/components/LanguageSelect.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
+
+	// TODO: why does the import get removed without this?
+	console.log(LanguageSelect);
 </script>
 
 <h1 class="text-3xl font-bold underline">
 	Hello {data.currentLanguage.code}!
 </h1>
 
-{#each data.languages as lang}
-	{lang.code},
-{/each}
+<LanguageSelect languages={data.languages} currentLanguage={data.currentLanguage} />
 
 <div class="mx-auto max-w-lg p-8">
 	<details

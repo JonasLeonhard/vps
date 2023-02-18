@@ -1,19 +1,12 @@
-import { backendUrl, getHeaders } from '$lib/server/cms';
-import type { PageServerLoad } from './$types';
+import { redirect } from '@sveltejs/kit';
+import type { Actions } from './$types';
 
-type Data = { test: string };
+export const actions: Actions = {
+	setLang: async ({ cookies, request }) => {
+		const formData = await request.formData();
+		const lang = formData.get('lang') || 'de';
+		cookies.set('lang', lang.toString());
 
-export const load: PageServerLoad<Data> = async ({ fetch }) => {
-	const data = await fetch(`${backendUrl}/api/pages/home`, {
-		method: 'GET',
-		headers: getHeaders('de')
-	})
-		.then((res) => res.json())
-		.catch((err) => console.error(err));
-
-	console.log('data:', data);
-
-	return {
-		test: data?.data?.content?.text
-	} as Data;
+		throw redirect(303, lang.toString());
+	}
 };
