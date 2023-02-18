@@ -1,4 +1,4 @@
-import { backendUrl } from '$lib/server/cms';
+import { backendUrl, getHeaders } from '$lib/server/cms';
 import type { PageServerLoad } from './$types';
 
 interface Language {
@@ -11,21 +11,26 @@ interface Language {
 	url: string;
 }
 
-type Data = { languages: Language[] };
+type Data = {
+	languages: Language[];
+	currentLanguage: Language;
+	preferedBrowserLanguage: Language['code'];
+};
 
-export const load: PageServerLoad<Data> = async ({ fetch }) => {
+export const load: PageServerLoad<Data> = async ({ fetch, params }) => {
 	// get backend languages
 	const res = await fetch(`${backendUrl}/api/languages`, {
-		method: 'GET'
+		method: 'GET',
+		headers: getHeaders('de')
 	})
 		.then((res) => res.json())
 		.catch((err) => console.error(err));
 
-	// try to get the prefered browser language
 	console.log('languages:', res);
 
 	return {
 		languages: res?.data,
+		currentLanguage: res?.data?.find((language: Language) => language.code === params.lang),
 		preferedBrowserLanguage: 'de'
-	};
+	} as Data;
 };

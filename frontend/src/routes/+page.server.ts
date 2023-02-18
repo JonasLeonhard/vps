@@ -15,5 +15,5 @@ export const load: PageServerLoad<Data> = async ({ fetch }) => {
 
 	return {
 		test: data?.data?.content?.text
-	};
+	} as Data;
 };
