@@ -47,15 +47,16 @@ export const load: LayoutServerLoad<Data> = async ({ cookies, fetch, request, pa
 
 	const defaultLanguage = getDefaultLanguage(languages);
 	const preferedBrowserLanguage = getPreferedBrowserLanguage(languages, request.headers);
-	const cookieLanguageCode = cookies.get('lang');
-
-	if (!cookieLanguageCode) {
-		cookies.set('lang', preferedBrowserLanguage?.code || defaultLanguage.code);
-	}
 
 	if (!requestedLanguageCodeExists(languages, params.lang)) {
-		throw redirect(303, defaultLanguage.code);
+		cookies.set('lang', preferedBrowserLanguage?.code || defaultLanguage.code, { path: '/' });
+		throw redirect(
+			303,
+			cms.getLangReplacedUrl(request.url, cookies.get('lang') || defaultLanguage.code)
+		);
 	}
+
+	cookies.set('lang', params.lang, { path: '/' });
 
 	return {
 		languages: languages,
