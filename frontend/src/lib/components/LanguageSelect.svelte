@@ -1,12 +1,13 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { enhance } from '$app/forms';
 	import type { Language } from '$lib/types/index';
+
 	export let languages: Language[];
 	export let currentLanguage: Language;
 
-	// TODO: why does the import get removed without this?
-	console.log(enhance);
-
+	// TODO: what is the correct type here?
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const onSelectChange = (event: any) => {
 		event.target.parentElement.submit();
 	};
@@ -19,5 +20,6 @@
 				<option value={lang.code}>{lang.name}</option>
 			{/each}
 		</select>
+		<input name="url" aria-hidden="true" class="hidden" bind:value={$page.url} />
 	</form>
 </h2>

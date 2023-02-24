@@ -30,6 +30,7 @@ return [
       'active' => true,
     ]
   ],
+  'home' => 'admin-panel',
   # kirby-git plugin:
   # path to .git
   'oblik.git.repo' => '..',
