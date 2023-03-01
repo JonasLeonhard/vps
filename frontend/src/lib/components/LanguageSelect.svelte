@@ -13,13 +13,11 @@
 	};
 </script>
 
-<h2>
-	<form method="POST" action="/?/setLang" use:enhance>
-		<select name="lang" bind:value={currentLanguage.code} on:change={onSelectChange}>
-			{#each languages as lang}
-				<option value={lang.code} selected={lang.code === currentLanguage.code}>{lang.name}</option>
-			{/each}
-		</select>
-		<input name="url" aria-hidden="true" class="hidden" bind:value={$page.url} />
-	</form>
-</h2>
+<form method="POST" action="/?/setLang" use:enhance>
+	<select name="lang" bind:value={currentLanguage.code} on:change={onSelectChange}>
+		{#each languages as lang}
+			<option value={lang.code} selected={lang.code === currentLanguage.code}>{lang.name}</option>
+		{/each}
+	</select>
+	<input name="url" aria-hidden="true" class="hidden" bind:value={$page.url} />
+</form>
