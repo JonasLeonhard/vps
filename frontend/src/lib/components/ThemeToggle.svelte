@@ -1,15 +1,17 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { enhance } from '$app/forms';
-	import type { Theme } from '$lib/types/index';
+	import SlideToggle from '$lib/components/SlideToggle.svelte';
+	import { theme } from '$lib/stores/theme';
 
-	// TODO: what is the correct type here?
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const onThemeChange = (event: any) => {
-		event.target.parentElement.submit();
+	let formRef: HTMLFormElement;
+	$: checked = $theme === 'light';
+
+	const onThemeChange = () => {
+		// TODO: instead of submitting, can we just change the theme here?
+		// formRef.submit();
+		theme.set(checked ? 'light' : 'dark');
 	};
 </script>
 
-<form method="POST" action="/?/setTheme" use:enhance>
-	<input name="theme" type="checkbox" class="rounded-sm" />
+<form method="POST" action="/?/setTheme" bind:this={formRef}>
+	<SlideToggle name="theme" bind:checked label="testToggle" on:change={onThemeChange} />
 </form>
