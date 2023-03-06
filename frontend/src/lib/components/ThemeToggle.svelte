@@ -2,16 +2,24 @@
 	import SlideToggle from '$lib/components/SlideToggle.svelte';
 	import { theme } from '$lib/stores/theme';
 
-	let formRef: HTMLFormElement;
 	$: checked = $theme === 'light';
 
 	const onThemeChange = () => {
-		// TODO: instead of submitting, can we just change the theme here?
-		// formRef.submit();
 		theme.set(checked ? 'light' : 'dark');
 	};
 </script>
 
-<form method="POST" action="/?/setTheme" bind:this={formRef}>
-	<SlideToggle name="theme" bind:checked label="testToggle" on:change={onThemeChange} />
-</form>
+<svelte:head>
+	<script defer>
+		const renderedTheme = document.documentElement.dataset.theme;
+
+		if (renderedTheme == '%theme%') {
+			const userPrefersLightTheme = window.matchMedia('(prefers-color-scheme: light)').matches;
+			const userPreferedTheme = userPrefersLightTheme ? 'light' : 'dark';
+
+			document.documentElement.dataset.theme = userPreferedTheme;
+		}
+	</script>
+</svelte:head>
+
+<SlideToggle name="theme" bind:checked label="testToggle" on:change={onThemeChange} />

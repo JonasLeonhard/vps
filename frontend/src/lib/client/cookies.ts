@@ -15,8 +15,13 @@ const cookies: Cookies = {
 		return value;
 	},
 
-	set(_name: string, _value: string, _opts: any) {
-		console.error('set is not implemented yet');
+	set(name: string, value: string, opts: any) {
+		const date = new Date();
+		date.setTime(date.getTime() + (opts?.maxAge || 24 * 60 * 60 * 364));
+		const expires = 'expires=' + date.toUTCString();
+		document.cookie = `${name}=${value};${expires};path=${opts?.path || '/'};SameSite=${
+			opts?.sameSite || 'Lax'
+		}`;
 	},
 
 	delete(_name: string, _opts: any) {

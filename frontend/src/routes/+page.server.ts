@@ -1,5 +1,4 @@
 import cms from '$lib/server/cms';
-import type { Theme } from '$lib/types';
 import { redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -18,13 +17,5 @@ export const actions: Actions = {
 
 		cookies.set('lang', formLang, { path: '/', maxAge: 60 * 60 * 24 * 365 });
 		throw redirect(303, cms.getLangReplacedUrl(formUrl, formLang));
-	},
-
-	setTheme: async ({ cookies, request }) => {
-		const formData = await request.formData();
-		const formTheme: Theme = formData.get('theme')?.toString() === 'on' ? 'light' : 'dark';
-
-		cookies.set('theme', formTheme, { path: '/', maxAge: 60 * 60 * 24 * 365 });
-		return { sucess: true };
 	}
 };
