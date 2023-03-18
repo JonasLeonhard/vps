@@ -29,7 +29,8 @@
     "getkirby/cms": "^3.0",
     "vlucas/phpdotenv": "^5.5",
     "oblik/kirby-git": "^1.4",
-    "belugadigital/kirby-navigation": "^3.0"
+    "belugadigital/kirby-navigation": "^3.0",
+    "getkirby/kql": "^2.0"
   },
   "scripts": {
     "start": [
