@@ -28,7 +28,8 @@
     "php": ">=7.1.0",
     "getkirby/cms": "^3.0",
     "vlucas/phpdotenv": "^5.5",
-    "oblik/kirby-git": "^1.4"
+    "oblik/kirby-git": "^1.4",
+    "belugadigital/kirby-navigation": "^3.0"
   },
   "scripts": {
     "start": [

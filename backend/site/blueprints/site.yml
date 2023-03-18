@@ -1,3 +1,23 @@
 title: Site
-preset: pages
-unlisted: true
+icon: 📖
+
+columns:
+  - width: 3/3
+    sections:
+      listed:
+        type: pages
+        create: default
+        status: listed
+        label: Listed
+
+      unlisted:
+        type: pages
+        create: default
+        status: unlisted
+        label: Unlisted
+
+      draft:
+        type: pages
+        create: default
+        status: draft
+        label: Draft

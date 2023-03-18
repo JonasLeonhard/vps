@@ -1,0 +1,12 @@
+title: Navigation
+
+icon: ⚙️
+
+columns:
+  - width: 3/3
+    fields:
+      navigation:
+        label: Navigation
+        type: navigation
+        levels: 5
+        help: Header Menu Navigation

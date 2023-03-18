@@ -17,6 +17,13 @@
 		</div>
 		<!-- Items: Right -->
 		<div class="ml-auto flex items-center gap-3">
+			<!-- Nav-Items -->
+			<nav>
+				<ul>
+					<li>blog</li>
+				</ul>
+			</nav>
+
 			<LanguageSelect {languages} {currentLanguage} />
 			<ThemeToggle />
 		</div>

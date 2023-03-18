@@ -1,0 +1,18 @@
+Title: Header
+
+----
+
+Navigation:
+
+- 
+  children: [ ]
+  text: blog
+  url: /blog
+  popup: false
+  uuid: 2xppg8s9wwi
+- 
+  children: [ ]
+  id: error
+  text: Error
+  url: http://localhost:8000/en/error
+  uuid: 5cj02u22q1j
