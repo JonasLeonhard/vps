@@ -14,7 +14,7 @@
 </script>
 
 <form
-	class="languageSelect text-text-light dark:text-text-light"
+	class="text-text-light dark:text-text-light"
 	method="POST"
 	action="/?/setLang"
 	bind:this={formRef}

@@ -22,4 +22,4 @@
 	</script>
 </svelte:head>
 
-<SlideToggle name="theme" bind:checked label="testToggle" on:change={onThemeChange} />
+<SlideToggle name="theme" bind:checked label="themeToggle" on:change={onThemeChange} />

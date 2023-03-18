@@ -19,37 +19,32 @@
 
 <div
 	id={label}
-	class="slide-toggle"
 	on:keydown={onKeyDown}
 	role="switch"
 	aria-label={label}
 	aria-checked={checked}
 	tabindex="0"
 >
-	<label class="slide-toggle__label flex items-center">
-		<input
-			class="slide-toggle__hidden-input hidden"
-			type="checkbox"
-			bind:checked
-			on:change
-			{disabled}
-			{name}
-		/>
+	<label class="flex items-center">
+		<input class="hidden" type="checkbox" bind:checked on:change {disabled} {name} />
+		<!-- Track -->
 		<div
-			class="slide-toggle__track flex flex h-6 w-12 cursor-pointer items-center rounded-full transition-all duration-200"
+			class="flex h-6 w-12 cursor-pointer items-center rounded-full transition-all duration-200"
 			class:cursor-not-allowed={disabled}
 			class:bg-primary={checked}
 			class:dark:bg-bg-accent-dark={!checked}
 			class:bg-bg-accent-light={!checked}
 		>
+			<!-- Thumb -->
 			<div
-				class="slide-toggle__thumb h-6 w-6 scale-75 rounded-full bg-light shadow transition-all duration-200"
+				class="h-6 w-6 scale-75 rounded-full bg-light shadow transition-all duration-200"
 				class:cursor-not-allowed={disabled}
 				class:translate-x-full={checked}
 			/>
 		</div>
 
-		<span class="slide-toggle__text ml-3">
+		<!-- Label -->
+		<span class="ml-3">
 			{label}
 		</span>
 	</label>
