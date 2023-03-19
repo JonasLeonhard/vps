@@ -31,14 +31,14 @@ return [
     ]
   ],
   'home' => 'admin-panel',
-  # kirby-git plugin:
-  # path to .git
-  'oblik.git.repo' => '..',
+  'oblik.git.repo' => '..', # path to .git
   'oblik.git.merge' => 'master',
-  # when to commit changes:
-  # https://getkirby.com/docs/reference/plugins/hooks
-  // 'oblik.git.hooks' => [
-  //   'user.logout:after',
-  // ],
-  'oblik.git.log' => './kirby-git.log'
+  'oblik.git.log' => './kirby-git.log',
+  'kql' => [
+    'methods' => [
+      'allowed' => [
+        'Kirby\\Cms\\Languages::toJson'
+      ]
+    ]
+  ]
 ];

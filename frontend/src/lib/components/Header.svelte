@@ -3,8 +3,9 @@
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import Headroom from '$lib/components/Headroom.svelte';
 
-	import type { Language } from '$lib/types';
+	import type { Language, Header } from '$lib/types';
 
+	export let header: Header;
 	export let languages: Language[];
 	export let currentLanguage: Language;
 </script>
@@ -20,7 +21,13 @@
 			<!-- Nav-Items -->
 			<nav>
 				<ul>
-					<li>blog</li>
+					{#each header.navigation as navigation}
+						<li>
+							<a href={navigation.url}>
+								{navigation.text}
+							</a>
+						</li>
+					{/each}
 				</ul>
 			</nav>
 
