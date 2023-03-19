@@ -10,7 +10,7 @@
 	export let currentLanguage: Language;
 </script>
 
-<Headroom>
+<Headroom offset={40} tolerance={80}>
 	<div class="container m-auto flex">
 		<!-- Items: Left -->
 		<div class="mr-auto flex items-center">

@@ -29,7 +29,7 @@
 
 <svelte:window bind:scrollY={y} />
 <header
-	class="fixed flex h-20 w-full transition-all duration-500"
+	class="fixed flex h-20 w-full transition-all duration-700"
 	class:top-0={headerVisible}
 	class:-top-20={!headerVisible}
 >
