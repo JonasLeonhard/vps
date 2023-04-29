@@ -6,3 +6,7 @@ body {
 	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 	@apply bg-light text-text-light dark:bg-dark dark:text-text-dark;
 }
+
+a {
+	@apply underline;
+}

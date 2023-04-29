@@ -3,6 +3,8 @@
 
 	export let offset = 0;
 	export let tolerance = 0;
+	let className = '';
+	export { className as class };
 
 	let y = 0;
 	let lastY = 0;
@@ -29,7 +31,7 @@
 
 <svelte:window bind:scrollY={y} />
 <header
-	class="fixed flex h-20 w-full transition-all duration-700"
+	class={`fixed flex h-20 w-full flex-col transition-all duration-700 ${className}`}
 	class:top-0={headerVisible}
 	class:-top-20={!headerVisible}
 >
