@@ -6,16 +6,20 @@ Navigation:
 
 - 
   children: [ ]
-  text: blog
-  url: /blog
+  text: Blog
+  url: blog
   popup: false
   uuid: 2xppg8s9wwi
+  title: Visit my Blog!
+  id: Nav__Blog
 - 
   children: [ ]
-  id: error
-  text: Error
-  url: http://localhost:8000/en/error
-  uuid: 5cj02u22q1j
+  text: Jonas Leonhard.
+  url: ""
+  popup: false
+  uuid: amfgc632l4
+  id: Nav__Center
+  title: '~'
 
 ----
 

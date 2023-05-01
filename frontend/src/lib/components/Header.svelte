@@ -2,12 +2,16 @@
 	import Headroom from '$lib/components/Headroom.svelte';
 	import LanguageSelect from '$lib/components/LanguageSelect.svelte';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+	import SettingsIcon from '$lib/components/Icon/Settings.svelte';
 
 	import type { Language, Header } from '$lib/types';
 
 	export let currentLanguage: Language;
 	export let header: Header;
 	export let languages: Language[];
+
+	const CENTER_ITEM_ID = 'Nav__Center';
+	const centerNavItem = header.navigation.find((navigation) => navigation.id == CENTER_ITEM_ID);
 </script>
 
 <Headroom
@@ -15,17 +19,24 @@
 	tolerance={80}
 	class="to-transparent bg-gradient-to-b from-white after:absolute after:top-0 after:-z-10 after:contents after:h-[calc(100%-11px)] after:w-full after:backdrop-blur-[2px] dark:from-black"
 >
-	<div class="container m-auto flex">
+	<div class="container mx-auto flex py-3 px-3 md:px-0">
 		<!-- Items: Left -->
 		<div class="mr-auto flex items-center">
 			<nav>
 				<ul class="flex gap-3">
 					{#each header.navigation as navigation}
-						<li>
-							<a href={navigation.url}>
-								{navigation.text}
-							</a>
-						</li>
+						{#if navigation.id != CENTER_ITEM_ID}
+							<li>
+								<a
+									title={navigation.title}
+									id={navigation.id}
+									href={`/${currentLanguage.code}/${navigation.url}`}
+									target={navigation.popup ? '_blank' : '_self'}
+								>
+									{navigation.text}
+								</a>
+							</li>
+						{/if}
 					{/each}
 				</ul>
 			</nav>
@@ -34,6 +45,7 @@
 		<div class="ml-auto flex items-center gap-3">
 			<!-- Nav-Items -->
 
+			<SettingsIcon />
 			<LanguageSelect {languages} {currentLanguage} />
 			<ThemeToggle />
 		</div>
@@ -42,6 +54,15 @@
 	<div
 		class="absolute bottom-0 m-auto flex w-full items-center before:contents before:h-[2px] before:w-full before:bg-black after:contents after:h-[2px] after:w-full after:bg-black dark:before:bg-white dark:after:bg-white"
 	>
-		<span class="min-w-max px-5">Jonas Leonhard.</span>
+		<span class="min-w-max px-5">
+			<a
+				title={centerNavItem?.title || '~'}
+				id={centerNavItem?.id || 'Nav__Center'}
+				href={`/${currentLanguage?.code}/${centerNavItem?.url || ''}`}
+				target={centerNavItem?.popup ? '_blank' : '_self'}
+			>
+				{centerNavItem?.text || 'Jonas Leonhard.'}
+			</a>
+		</span>
 	</div>
 </Headroom>
