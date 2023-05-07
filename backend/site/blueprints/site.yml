@@ -14,9 +14,18 @@ tabs:
             empty: Please contact admin
             template:
               - error
+              - admin-panel
+              - home
           pages: sections/pages
-      - width: 1/2
+      - width: 1
         sections:
+          articlesPage:
+            type: pages
+            create: false
+            sortable: false
+            empty: Please contact admin
+            template:
+              - articles
           articles: sections/articles
 
   globals: sections/globals
@@ -25,6 +34,13 @@ tabs:
     icon: folder
     label: Media
     sections:
+      mediaPage:
+        type: pages
+        create: false
+        sortable: false
+        empty: Please contact admin
+        template:
+          - media
       media: sections/media
 
   seo:

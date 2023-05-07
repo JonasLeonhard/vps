@@ -1,6 +1,5 @@
-title: Error
-icon: bug
-
+title: AdminPanel
+icon: ⚙️
 status: unlisted
 options:
   create: false
@@ -8,8 +7,8 @@ options:
   duplicate: false
   changeSlug: false
   changeStatus: false
-
 fields:
   text:
+    label: Text
     type: textarea
-    size: huge
+    size: large
