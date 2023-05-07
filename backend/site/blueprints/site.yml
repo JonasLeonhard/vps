@@ -1,23 +1,32 @@
 title: Site
-icon: 📖
 
-columns:
-  - width: 3/3
+tabs:
+  content:
+    icon: dashboard
+    columns:
+      - width: 1/2
+        sections:
+          singles:
+            type: pages
+            create: false
+            sortable: false
+            sortBy: "title desc"
+            empty: Please contact admin
+            template:
+              - error
+          pages: sections/pages
+      - width: 1/2
+        sections:
+          articles: sections/articles
+
+  globals: sections/globals
+
+  media:
+    icon: folder
+    label: Media
     sections:
-      listed:
-        type: pages
-        create: default
-        status: listed
-        label: Listed
+      media: sections/media
 
-      unlisted:
-        type: pages
-        create: default
-        status: unlisted
-        label: Unlisted
-
-      draft:
-        type: pages
-        create: default
-        status: draft
-        label: Draft
+  seo:
+    label: Default SEO
+    extends: seo

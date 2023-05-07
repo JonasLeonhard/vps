@@ -1,0 +1,14 @@
+title: Error
+icon: bug
+
+options:
+  create: false
+  delete: false
+  duplicate: false
+  changeSlug: false
+  changeStatus: false
+
+fields:
+  text:
+    type: textarea
+    size: huge

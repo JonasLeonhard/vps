@@ -1,0 +1,9 @@
+title: Landing Page
+icon: grid
+
+tabs:
+  content: sections/content
+
+  seo:
+    label: SEO
+    extends: seo

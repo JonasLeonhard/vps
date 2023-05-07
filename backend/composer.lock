@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3956550820fc484c325b91cec9f6c52",
+    "content-hash": "e7410bc568c29e9dd2709b73e7f43a33",
     "packages": [
         {
             "name": "belugadigital/kirby-navigation",
@@ -180,6 +180,98 @@
                 }
             ],
             "time": "2022-04-01T19:23:25+00:00"
+        },
+        {
+            "name": "diesdasdigital/kirby-meta-knight",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/diesdasdigital/kirby-meta-knight.git",
+                "reference": "9c3da53a3abee5ffdd95c1363d679e9395794715"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/diesdasdigital/kirby-meta-knight/zipball/9c3da53a3abee5ffdd95c1363d679e9395794715",
+                "reference": "9c3da53a3abee5ffdd95c1363d679e9395794715",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.1"
+            },
+            "type": "kirby-plugin",
+            "autoload": {
+                "psr-4": {
+                    "diesdasdigital\\kirby-meta-knight\\": "src/models/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Muth",
+                    "email": "jonathan@diesdas.digital",
+                    "homepage": "https://diesdas.digital",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Meta Knight – SEO for Kirby",
+            "support": {
+                "issues": "https://github.com/diesdasdigital/kirby-meta-knight/issues",
+                "source": "https://github.com/diesdasdigital/kirby-meta-knight/tree/1.2.2"
+            },
+            "time": "2021-11-16T12:41:33+00:00"
+        },
+        {
+            "name": "fabianmichael/kirby-markdown-field",
+            "version": "2.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabianmichael/kirby-markdown-field.git",
+                "reference": "7102989c2dc6f434ade698d645ee30e13f95ea56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabianmichael/kirby-markdown-field/zipball/7102989c2dc6f434ade698d645ee30e13f95ea56",
+                "reference": "7102989c2dc6f434ade698d645ee30e13f95ea56",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/cms": ">=3.6.0",
+                "getkirby/composer-installer": "^1.2",
+                "php": ">=8.0.0"
+            },
+            "type": "kirby-plugin",
+            "extra": {
+                "installer-name": "markdown-field"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sylvain Julé",
+                    "email": "contact@sylvain-jule.fr"
+                },
+                {
+                    "name": "Fabian Michael",
+                    "email": "hallo@fabianmichael.de"
+                }
+            ],
+            "description": "Super-sophisticated markdown editor for Kirby 3",
+            "support": {
+                "issues": "https://github.com/fabianmichael/kirby-markdown-field/issues",
+                "source": "https://github.com/fabianmichael/kirby-markdown-field/tree/2.1.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/fabianmichael",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-01-25T08:19:18+00:00"
         },
         {
             "name": "filp/whoops",
@@ -529,6 +621,41 @@
                 }
             ],
             "time": "2022-07-30T15:56:11+00:00"
+        },
+        {
+            "name": "jg/kirby-fields-block",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jongacnik/kirby-fields-block.git",
+                "reference": "e56c4d109edd921a1b4436e3df0e64b1117f1b83"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jongacnik/kirby-fields-block/zipball/e56c4d109edd921a1b4436e3df0e64b1117f1b83",
+                "reference": "e56c4d109edd921a1b4436e3df0e64b1117f1b83",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.1"
+            },
+            "type": "kirby-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Gacnik",
+                    "email": "jon@folderstudio.com"
+                }
+            ],
+            "description": "Kirby Fields Block",
+            "support": {
+                "issues": "https://github.com/jongacnik/kirby-fields-block/issues",
+                "source": "https://github.com/jongacnik/kirby-fields-block/tree/v1.2.1"
+            },
+            "time": "2023-01-22T19:02:00+00:00"
         },
         {
             "name": "laminas/laminas-escaper",

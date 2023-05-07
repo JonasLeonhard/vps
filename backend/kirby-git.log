@@ -152,3 +152,7 @@ git -C /Users/jonas/Documents/Git/vps status -u --porcelain 2>&1
 git -C /Users/jonas/Documents/Git/vps rev-list --count master 2>&1
 git -C /Users/jonas/Documents/Git/vps log origin/master..master --format=%h 2>&1
 git -C /Users/jonas/Documents/Git/vps log master --pretty=format:"%h|%an|%ae|%ad|%s" --skip='0' --max-count='15' 2>&1
+git -C /Users/jonas.leonhard/Desktop/git_repos/jonas/vps status -u --porcelain 2>&1
+git -C /Users/jonas.leonhard/Desktop/git_repos/jonas/vps rev-list --count master 2>&1
+git -C /Users/jonas.leonhard/Desktop/git_repos/jonas/vps log origin/master..master --format=%h 2>&1
+git -C /Users/jonas.leonhard/Desktop/git_repos/jonas/vps log master --pretty=format:"%h|%an|%ae|%ad|%s" --skip='0' --max-count='15' 2>&1

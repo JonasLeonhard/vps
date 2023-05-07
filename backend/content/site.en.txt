@@ -1,1 +1,31 @@
-Title: Site Title
+Navigation:
+
+- 
+  children: [ ]
+  text: Blog
+  url: blog
+  popup: false
+  uuid: idoz0wdpc8
+- 
+  children: [ ]
+  id: Nav__Center
+  text: Jonas Leonhard.
+  url: ""
+  popup: false
+  uuid: b2ebw8ha0c
+
+----
+
+Footernavigation: 
+
+----
+
+Metanavigation: 
+
+----
+
+Footertext: 
+
+----
+
+Socialmedia: 

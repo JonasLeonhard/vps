@@ -1,0 +1,15 @@
+{
+  "name": "kirby-fields-block",
+  "version": "1.2.1",
+  "main": "src/index.js",
+  "repository": "https://github.com/jongacnik/kirby-fields-block.git",
+  "author": "jongacnik <jon@folderstudio.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "kirbyup": "latest"
+  },
+  "scripts": {
+    "dev": "kirbyup src/index.js --watch",
+    "build": "kirbyup src/index.js"
+  }
+}

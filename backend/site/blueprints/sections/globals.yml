@@ -1,0 +1,46 @@
+label: Globals
+icon: globe
+
+fields:
+  header:
+    label: Header
+    type: headline
+  navigation:
+    label: Navigation
+    type: navigation
+    levels: 2
+
+  footer:
+    label: Footer
+    type: headline
+  footerNavigation:
+    label: Footer Navigation
+    type: navigation
+    levels: 1
+    width: 1/2
+  metaNavigation:
+    label: Meta Navigation
+    type: navigation
+    levels: 1
+    width: 1/2
+  footerText:
+    extends: fields/markdown/default
+    label: Text
+    width: 1/2
+  socialMedia:
+    label: Social Media
+    type: structure
+    width: 1/2
+    fields:
+      service:
+        type: select
+        default: instagram
+        required: true
+        options:
+          instagram: Instagram
+          linkedin: LinkedIn
+          youtube: YouTube
+          twitter: Twitter
+      url:
+        label: URL
+        type: url

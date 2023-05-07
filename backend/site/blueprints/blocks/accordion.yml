@@ -1,0 +1,13 @@
+name: Accordion
+icon: server
+preview: fields
+fields:
+  items:
+    label: Items
+    type: structure
+    min: 1
+    fields:
+      title:
+        label: Title
+        type: text
+      text: fields/markdown

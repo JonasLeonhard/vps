@@ -1,0 +1,20 @@
+title: Home
+icon: home
+
+options:
+  create: false
+  delete: false
+  duplicate: false
+  changeSlug: false
+  changeStatus: false
+
+tabs:
+  content:
+    icon: dashboard
+    fields:
+      text:
+        type: blocks
+
+  seo:
+    label: SEO
+    extends: seo

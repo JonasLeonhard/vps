@@ -1,8 +1,9 @@
-title: Default Page
-preset: page
-icon: ⚙️
-fields:
-  text:
-    label: Text
-    type: textarea
-    size: large
+title: Content Page
+icon: page
+
+tabs:
+  content: sections/content
+
+  seo:
+    label: SEO
+    extends: seo

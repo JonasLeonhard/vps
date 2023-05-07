@@ -1,5 +1,0 @@
-Title: Admin-Panel
-
-----
-
-Text: Kirby CMS (de) (link: /panel text: Zum Panel)

@@ -1,0 +1,20 @@
+type: pages
+label: Articles
+
+parent: kirby.page("articles")
+info: "{{ page.published.toDate('d.m.Y') }}"
+
+template: article
+create: article
+
+empty: No articles yet
+
+sortBy: published desc
+sortable: false
+search: true
+limit: 20
+
+image:
+  query: page.cover.toFile
+  cover: true
+  ratio: 3/2

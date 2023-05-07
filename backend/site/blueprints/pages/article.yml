@@ -1,0 +1,31 @@
+title: Article
+icon: page
+
+num: '{{ page.created.toDate("Ymd") }}'
+
+tabs:
+  content: sections/content
+
+  settings:
+    label: Settings
+    icon: settings
+    fields:
+      created:
+        type: date
+        time: true
+        default: now
+        width: 1/2
+      tags:
+        label: Tags
+        type: tags
+        width: 1/2
+      related:
+        label: Related articles
+        type: pages
+        query: page.siblings(false).listed
+        max: 3
+        help: In addition to relations through tags, this field can connect articles with a higher priority.
+
+  seo:
+    label: SEO
+    extends: seo
