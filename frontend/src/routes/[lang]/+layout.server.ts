@@ -1,10 +1,10 @@
 import cms from '$lib/server/cms';
 import { redirect } from '@sveltejs/kit';
 
-import type { Header, Language } from '$lib/types/index';
+import type { Globals, Language } from '$lib/types/index';
 import type { LayoutServerLoad } from './$types';
 type Data = {
-	header: Header;
+	globals: Globals;
 	languages: Language[];
 	lang: Language;
 };
@@ -17,7 +17,7 @@ export const load: LayoutServerLoad<Data> = async ({ cookies, fetch, request, pa
 			body: JSON.stringify({
 				select: {
 					...cms.kql.languages,
-					...cms.kql.header
+					...cms.kql.globals
 				}
 			})
 		})
@@ -40,7 +40,7 @@ export const load: LayoutServerLoad<Data> = async ({ cookies, fetch, request, pa
 	cookies.set('lang', params.lang, { path: '/' });
 
 	return {
-		header: data?.header as Header,
+		globals: data?.globals as Globals,
 		languages: languages,
 		lang: cms.getCookieLanguage(languages, cookies.get('lang')) || defaultLanguage
 	};

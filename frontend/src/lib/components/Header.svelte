@@ -4,14 +4,14 @@
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import SettingsIcon from '$lib/components/Icon/Settings.svelte';
 
-	import type { Language, Header } from '$lib/types';
+	import type { Language, Globals } from '$lib/types';
 
 	export let currentLanguage: Language;
-	export let header: Header;
+	export let globals: Globals;
 	export let languages: Language[];
 
 	const CENTER_ITEM_ID = 'Nav__Center';
-	const centerNavItem = header.navigation.find((navigation) => navigation.id == CENTER_ITEM_ID);
+	const centerNavItem = globals.navigation.find((navigation) => navigation.id == CENTER_ITEM_ID);
 </script>
 
 <Headroom
@@ -24,7 +24,7 @@
 		<div class="mr-auto flex items-center">
 			<nav>
 				<ul class="flex gap-3">
-					{#each header.navigation as navigation}
+					{#each globals.navigation as navigation}
 						{#if navigation.id != CENTER_ITEM_ID}
 							<li>
 								<a

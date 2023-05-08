@@ -1,4 +1,4 @@
-import header from './header.kql';
+import globals from './globals.kql';
 import languages from './languages.kql';
 
-export { header, languages };
+export { globals, languages };

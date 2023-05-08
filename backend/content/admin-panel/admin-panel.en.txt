@@ -1,0 +1,9 @@
+Title: Admin-Panel
+
+----
+
+Text: Kirby CMS (en) (link: /panel text: Panel)
+
+----
+
+Uuid: 87CMtiAJmadhPbHs

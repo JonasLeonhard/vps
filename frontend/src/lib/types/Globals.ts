@@ -1,5 +1,5 @@
 import type { NavigationItem } from './NavigationItem';
 
-export interface Header {
+export interface Globals {
 	navigation: NavigationItem[];
 }

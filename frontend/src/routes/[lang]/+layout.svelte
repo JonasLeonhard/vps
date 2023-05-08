@@ -5,7 +5,7 @@
 	export let data: PageData;
 </script>
 
-<Header header={data.header} languages={data.languages} currentLanguage={data.lang} />
+<Header globals={data.globals} languages={data.languages} currentLanguage={data.lang} />
 <main class="pt-20">
 	<slot />
 </main>
