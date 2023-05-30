@@ -1,15 +1,16 @@
 import cms from '$lib/server/cms';
 import { redirect } from '@sveltejs/kit';
 
-import type { Globals, Language } from '$lib/types/index';
+import type { Globals, Language, DefaultPage } from '$lib/types/index';
 import type { LayoutServerLoad } from './$types';
-type Data = {
+type PageData = {
 	globals: Globals;
 	languages: Language[];
 	lang: Language;
+	page: DefaultPage;
 };
 
-export const load: LayoutServerLoad<Data> = async ({ cookies, fetch, request, params }) => {
+export const load: LayoutServerLoad<PageData> = async ({ cookies, fetch, request, params }) => {
 	const data = (
 		await fetch(`${cms.backendUrl}/api/query`, {
 			method: 'POST',
@@ -17,7 +18,8 @@ export const load: LayoutServerLoad<Data> = async ({ cookies, fetch, request, pa
 			body: JSON.stringify({
 				select: {
 					...cms.kql.languages,
-					...cms.kql.globals
+					...cms.kql.globals,
+					...cms.kql.getPageBySlug('home')
 				}
 			})
 		})
@@ -42,6 +44,7 @@ export const load: LayoutServerLoad<Data> = async ({ cookies, fetch, request, pa
 	return {
 		globals: data?.globals as Globals,
 		languages: languages,
-		lang: cms.getCookieLanguage(languages, cookies.get('lang')) || defaultLanguage
+		lang: cms.getCookieLanguage(languages, cookies.get('lang')) || defaultLanguage,
+		page: data?.page as DefaultPage
 	};
 };

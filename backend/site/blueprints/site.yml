@@ -4,9 +4,9 @@ tabs:
   content:
     icon: dashboard
     columns:
-      - width: 1/2
+      - width: 1
         sections:
-          singles:
+          Singles:
             type: pages
             create: false
             sortable: false
@@ -16,17 +16,8 @@ tabs:
               - error
               - admin-panel
               - home
-          pages: sections/pages
-      - width: 1
-        sections:
-          articlesPage:
-            type: pages
-            create: false
-            sortable: false
-            empty: Please contact admin
-            template:
               - articles
-          articles: sections/articles
+          pages: sections/pages
 
   globals: sections/globals
 

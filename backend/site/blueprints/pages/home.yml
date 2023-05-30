@@ -2,6 +2,7 @@ title: Home
 icon: home
 
 status: unlisted
+
 options:
   create: false
   delete: false
@@ -9,13 +10,4 @@ options:
   changeSlug: false
   changeStatus: false
 
-tabs:
-  content:
-    icon: dashboard
-    fields:
-      text:
-        type: blocks
-
-  seo:
-    label: SEO
-    extends: seo
+extends: layouts/default

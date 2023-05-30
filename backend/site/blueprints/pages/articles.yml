@@ -8,6 +8,8 @@ options:
   duplicate: false
   changeStatus: false
 
+extends: layouts/default
+
 tabs:
   articles:
     icon: grid

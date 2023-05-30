@@ -2,4 +2,20 @@ Title: Articles
 
 ----
 
+Blocks: [{"content":{"items":[{"title":"Test","text":"test"}]},"id":"dd26cafa-c5f6-4334-ad2a-6c35572b2090","isHidden":false,"type":"accordion"}]
+
+----
+
+Cover: 
+
+----
+
+Subline: 
+
+----
+
+Intro: 
+
+----
+
 Uuid: h8yu5sxFWpkVaqLY

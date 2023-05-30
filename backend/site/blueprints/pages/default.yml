@@ -1,9 +1,1 @@
-title: Content Page
-icon: page
-
-tabs:
-  content: sections/content
-
-  seo:
-    label: SEO
-    extends: seo
+extends: layouts/default

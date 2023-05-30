@@ -1,7 +1,7 @@
 label: Pages
 type: pages
 search: true
-templates: 
+templates:
   - default
   - landing
 limit: 25

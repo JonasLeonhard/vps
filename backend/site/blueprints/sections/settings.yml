@@ -1,0 +1,20 @@
+label: Settings
+icon: dashboard
+columns:
+  - width: 3/3
+    fields:
+      created:
+        type: date
+        time: true
+        default: now
+        width: 1/2
+      tags:
+        label: Tags
+        type: tags
+        width: 1/2
+      related:
+        label: Related pages
+        type: pages
+        query: page.siblings(false).listed
+        max: 3
+        help: In addition to relations through tags, this field can connect pages with a higher priority.

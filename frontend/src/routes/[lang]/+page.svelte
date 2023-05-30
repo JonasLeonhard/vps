@@ -4,6 +4,10 @@
 	export let data: PageData;
 </script>
 
+{#each data.page.blocks as block, index}
+	<li>{index} - {block.type}</li>
+{/each}
+
 <h1 class="text-3xl font-bold underline">
 	Hello {data.lang.code}!
 </h1>

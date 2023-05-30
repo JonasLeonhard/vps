@@ -1,8 +1,10 @@
-title: Landing Page
-icon: grid
+title: Content Page
+icon: page
 
 tabs:
   content: sections/content
+
+  settings: sections/settings
 
   seo:
     label: SEO
