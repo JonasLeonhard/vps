@@ -68,111 +68,118 @@ Socialmedia:
 
 ----
 
-Meta-title: 
+Meta-title: Default Seo Title test
 
 ----
 
-Meta-description: 
+Meta-description: desc
 
 ----
 
-Meta-canonical-url: 
+Meta-canonical-url: http://test.de
 
 ----
 
-Meta-author: 
+Meta-author: test
 
 ----
 
-Meta-image: 
+Meta-image: - file://er4VqXjwQIa0HKwC
 
 ----
 
-Meta-phone-number: 
+Meta-phone-number: test
 
 ----
 
-Og-title: 
+Og-title: test
 
 ----
 
-Og-description: 
+Og-description: test
 
 ----
 
-Og-image: 
+Og-image: - file://er4VqXjwQIa0HKwC
 
 ----
 
-Og-site-name: 
+Og-site-name: test
 
 ----
 
-Og-url: 
+Og-url: http://test.de
 
 ----
 
-Og-audio: 
+Og-audio: http://test.de
 
 ----
 
-Og-video: 
+Og-video: http://test.de
 
 ----
 
-Og-determiner: 
+Og-determiner: test
 
 ----
 
-Og-type: 
+Og-type: article
 
 ----
 
-Og-type-article-published-time: 
+Og-type-article-published-time: 2023-06-22 16:15:00
 
 ----
 
-Og-type-article-modified-time: 
+Og-type-article-modified-time: 2023-06-30 16:15:00
 
 ----
 
-Og-type-article-expiration-time: 
+Og-type-article-expiration-time: 2023-06-28 16:15:00
 
 ----
 
-Og-type-article-author: 
+Og-type-article-author:
+
+- 
+  url: http://test.de
+  firstname: test
+  lastname: test
+  username: test
+  gender: male
 
 ----
 
-Og-type-article-section: 
+Og-type-article-section: test
 
 ----
 
-Og-type-article-tag: 
+Og-type-article-tag: test
 
 ----
 
-Twitter-title: 
+Twitter-title: test
 
 ----
 
-Twitter-description: 
+Twitter-description: test
 
 ----
 
-Twitter-image: 
+Twitter-image: - file://er4VqXjwQIa0HKwC
 
 ----
 
-Twitter-card-type: 
+Twitter-card-type: summary
 
 ----
 
-Twitter-site: 
+Twitter-site: test
 
 ----
 
-Twitter-creator: 
+Twitter-creator: test
 
 ----
 

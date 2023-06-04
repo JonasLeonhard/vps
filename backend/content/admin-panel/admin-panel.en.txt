@@ -6,4 +6,132 @@ Text: Kirby CMS (en) (link: /panel text: Panel)
 
 ----
 
+Meta-title: test
+
+----
+
+Meta-description: test
+
+----
+
+Meta-canonical-url: https://test.de
+
+----
+
+Meta-author: test
+
+----
+
+Meta-image: 
+
+----
+
+Meta-phone-number: test
+
+----
+
+Og-title: test
+
+----
+
+Og-description: test
+
+----
+
+Og-image: 
+
+----
+
+Og-site-name: test
+
+----
+
+Og-url: https://test.de
+
+----
+
+Og-audio: https://test.de
+
+----
+
+Og-video: https://test.de
+
+----
+
+Og-determiner: https://test.de
+
+----
+
+Og-type: website
+
+----
+
+Og-type-article-published-time: 
+
+----
+
+Og-type-article-modified-time: 
+
+----
+
+Og-type-article-expiration-time: 
+
+----
+
+Og-type-article-author: 
+
+----
+
+Og-type-article-section: 
+
+----
+
+Og-type-article-tag: 
+
+----
+
+Twitter-title: test
+
+----
+
+Twitter-description: test
+
+----
+
+Twitter-image: 
+
+----
+
+Twitter-card-type: summary_large_image
+
+----
+
+Twitter-site: test
+
+----
+
+Twitter-creator: test
+
+----
+
+Robots-noindex: enabled
+
+----
+
+Robots-nofollow: enabled
+
+----
+
+Robots-noarchive: disabled
+
+----
+
+Robots-noimageindex: enabled
+
+----
+
+Robots-nosnippet: enabled
+
+----
+
 Uuid: 87CMtiAJmadhPbHs

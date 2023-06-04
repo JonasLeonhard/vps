@@ -22,35 +22,35 @@ Related:
 
 ----
 
-Meta-title: 
+Meta-title: Home Seo Title
 
 ----
 
-Meta-description: 
+Meta-description: Description
 
 ----
 
-Meta-canonical-url: 
+Meta-canonical-url: http://test.de
 
 ----
 
-Meta-author: 
+Meta-author: testingMetaAuthor
 
 ----
 
-Meta-image: 
+Meta-image: - file://Ub875FohfSsQf0Jf
 
 ----
 
-Meta-phone-number: 
+Meta-phone-number: 123123
 
 ----
 
-Og-title: 
+Og-title: test
 
 ----
 
-Og-description: 
+Og-description: test
 
 ----
 
@@ -58,27 +58,27 @@ Og-image:
 
 ----
 
-Og-site-name: 
+Og-site-name: test
 
 ----
 
-Og-url: 
+Og-url: http://test.de
 
 ----
 
-Og-audio: 
+Og-audio: http://test.de
 
 ----
 
-Og-video: 
+Og-video: http://test.de
 
 ----
 
-Og-determiner: 
+Og-determiner: test
 
 ----
 
-Og-type: 
+Og-type: website
 
 ----
 

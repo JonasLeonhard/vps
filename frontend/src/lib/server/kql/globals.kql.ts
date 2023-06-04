@@ -1,3 +1,5 @@
+import getSeo from './getSeo.kql';
+
 const globals = {
 	globals: {
 		query: 'site',
@@ -8,7 +10,8 @@ const globals = {
 			footerText: 'site.footerText',
 			socialMedia: 'site.socialMedia.toData("yaml")'
 		}
-	}
+	},
+	...getSeo()
 };
 
 export default globals;

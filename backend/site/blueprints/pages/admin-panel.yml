@@ -7,8 +7,17 @@ options:
   duplicate: false
   changeSlug: false
   changeStatus: false
-fields:
-  text:
-    label: Text
-    type: textarea
-    size: large
+tabs:
+  content:
+    label: Content
+    icon: dashboard
+    columns:
+      - width: 3/3
+        fields:
+          text:
+            label: Text
+            type: textarea
+            size: large
+  seo:
+    label: SEO
+    extends: seo

@@ -38,6 +38,7 @@ return [
     'methods' => [
       'allowed' => [
         'Kirby\\Cms\\Languages::toJson',
+        'Kirby\\Cms\\App::meta_information'
       ]
     ]
   ]

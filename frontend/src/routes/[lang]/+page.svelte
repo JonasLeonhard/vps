@@ -5,4 +5,5 @@
 	export let data: PageData;
 </script>
 
+{console.log('data', data)}
 <Blocks blocks={data.page.blocks} />

@@ -1,4 +1,5 @@
 import type { ContentBlock } from './ContentBlock';
+import type { Seo } from './Seo';
 
 export interface DefaultPage {
 	id: string;
@@ -11,4 +12,5 @@ export interface DefaultPage {
 		subline: string;
 		cover: string;
 	};
+	seo: Seo;
 }
