@@ -1,13 +1,13 @@
 type: pages
-label: Articles
+label: Projects
 
-parent: kirby.page("blog")
+parent: kirby.page("projects")
 info: "{{ page.published.toDate('d.m.Y') }}"
 
-template: article
-create: article
+template: project
+create: project
 
-empty: No articles yet
+empty: No projects yet
 
 sortBy: published desc
 sortable: false

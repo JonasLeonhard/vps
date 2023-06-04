@@ -16,7 +16,11 @@ tabs:
               - error
               - admin-panel
               - home
-              - articles
+              - blog
+              - impressum
+              - contact
+              - about
+              - projects
           pages: sections/pages
 
   globals: sections/globals

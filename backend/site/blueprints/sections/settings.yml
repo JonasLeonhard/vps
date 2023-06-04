@@ -1,5 +1,5 @@
 label: Settings
-icon: dashboard
+icon: settings
 columns:
   - width: 3/3
     fields:
