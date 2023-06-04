@@ -37,7 +37,7 @@ return [
   'kql' => [
     'methods' => [
       'allowed' => [
-        'Kirby\\Cms\\Languages::toJson'
+        'Kirby\\Cms\\Languages::toJson',
       ]
     ]
   ]

@@ -29,13 +29,6 @@ tabs:
     icon: folder
     label: Media
     sections:
-      mediaPage:
-        type: pages
-        create: false
-        sortable: false
-        empty: Please contact admin
-        template:
-          - media
       media: sections/media
 
   seo:

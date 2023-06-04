@@ -41,6 +41,7 @@ fields:
           linkedin: LinkedIn
           youtube: YouTube
           twitter: Twitter
+          github: Github
       url:
         label: URL
         type: url

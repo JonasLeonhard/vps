@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Header from '$lib/components/Header.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -9,3 +10,4 @@
 <main class="pt-20">
 	<slot />
 </main>
+<Footer globals={data.globals} />
