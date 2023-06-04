@@ -1,0 +1,15 @@
+name: Details
+icon: angle-right
+preview: fields
+
+fields:
+  summary:
+    label: Summary
+    type: text
+    width: 3/3
+    required: true
+  details:
+    label: Details
+    extends: fields/markdown/default
+    width: 3/3
+    required: true

@@ -7,7 +7,7 @@
 </script>
 
 <Header globals={data.globals} languages={data.languages} currentLanguage={data.lang} />
-<main class="pt-20">
+<main class="h-[calc(100vh+100px)] pt-20">
 	<slot />
 </main>
 <Footer globals={data.globals} />

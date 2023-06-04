@@ -15,3 +15,4 @@ fieldsets:
   richtext: blocks/richtext
   table: blocks/table
   video: blocks/video
+  details: blocks/details

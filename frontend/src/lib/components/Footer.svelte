@@ -4,19 +4,18 @@
 	export let globals: Globals;
 </script>
 
-footer here
+<footer class="container mx-auto my-8">
+	{#each globals.footerNavigation as footerNavigation}
+		{footerNavigation.text}
+	{/each}
 
-<br />
-{#each globals.footerNavigation as footerNavigation}
-	{footerNavigation.text}
-{/each}
+	<br />
+	{#each globals.metaNavigation as metaNavigation}
+		{metaNavigation.text}
+	{/each}
 
-<br />
-{#each globals.metaNavigation as metaNavigation}
-	{metaNavigation.text}
-{/each}
-
-<br />
-{#each globals.socialMedia as socialMedia}
-	{socialMedia.service}
-{/each}
+	<br />
+	{#each globals.socialMedia as socialMedia}
+		{socialMedia.service}
+	{/each}
+</footer>
