@@ -21,7 +21,7 @@ return [
     'basicAuth' => true,
     'allowInsecure' => $_ENV['isLocal'] === 'true'
   ],
-  'url' => $_ENV['url'] ?? 'http://127.0.0.1:8000/',
+  'url' => '/',
   'languages' => [
     'detect' => true
   ],
