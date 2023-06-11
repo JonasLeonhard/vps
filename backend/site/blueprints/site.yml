@@ -21,6 +21,7 @@ tabs:
               - contact
               - about
               - projects
+              - media
           pages: sections/pages
 
   globals: sections/globals

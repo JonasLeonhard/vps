@@ -2,7 +2,7 @@ Title: Blog
 
 ----
 
-Blocks: [{"content":{"items":[{"title":"Test","text":"test"}]},"id":"dd26cafa-c5f6-4334-ad2a-6c35572b2090","isHidden":false,"type":"accordion"},{"content":{"summary":"Summary","details":"Test Deails **bold** *italic*"},"id":"3f7998af-8d8b-48b4-a0fd-becb49dd5003","isHidden":false,"type":"details"}]
+Blocks: [{"content":{"items":[{"icon":"Settings","summary":"Summary","details":"Test Deails **bold** *italic*"},{"icon":"","summary":"summary2","details":"details2"}]},"id":"dd26cafa-c5f6-4334-ad2a-6c35572b2090","isHidden":false,"type":"accordion"},{"content":{"icon":"Settings","summary":"Summary","details":"Test Deails **bold** *italic*"},"id":"3f7998af-8d8b-48b4-a0fd-becb49dd5003","isHidden":false,"type":"details"}]
 
 ----
 

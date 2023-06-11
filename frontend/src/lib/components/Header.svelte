@@ -2,7 +2,7 @@
 	import Headroom from '$lib/components/Headroom.svelte';
 	import LanguageSelect from '$lib/components/LanguageSelect.svelte';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
-	import SettingsIcon from '$lib/components/Icon/Settings.svelte';
+	import Icon from '$lib/components/Icon/Icon.svelte';
 
 	import type { Language, Globals } from '$lib/types';
 
@@ -45,7 +45,7 @@
 		<div class="ml-auto flex items-center gap-3">
 			<!-- Nav-Items -->
 
-			<SettingsIcon />
+			<Icon name="Settings" />
 			<LanguageSelect {languages} {currentLanguage} />
 			<ThemeToggle />
 		</div>

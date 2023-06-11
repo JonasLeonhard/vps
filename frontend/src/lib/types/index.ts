@@ -1,6 +1,7 @@
 import type { ContentBlock } from './ContentBlock';
 import type { DefaultPage } from './DefaultPage';
 import type { Globals } from './Globals';
+import type { Icon } from './Icon';
 import type { Language } from './Language';
 import type { NavigationItem } from './NavigationItem';
 import type { ScrollDirection } from './ScrollDirection';
@@ -11,6 +12,7 @@ export type {
 	ContentBlock,
 	DefaultPage,
 	Globals,
+	Icon,
 	Language,
 	NavigationItem,
 	ScrollDirection,
