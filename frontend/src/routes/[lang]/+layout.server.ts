@@ -1,5 +1,6 @@
 import cms from '$lib/server/cms';
 import { redirect } from '@sveltejs/kit';
+import codeToHtml from '$lib/server/shiki';
 
 import type { Globals, Language, DefaultPage, Seo } from '$lib/types/index';
 import type { LayoutServerLoad } from './$types';
@@ -41,10 +42,21 @@ export const load: LayoutServerLoad<PageData> = async ({ cookies, fetch, request
 
 	cookies.set('lang', params.lang, { path: '/' });
 
+	const globals = { ...data?.globals, seo: data?.globalSeo } as Globals;
+	const page = { ...data?.page, seo: data?.pageSeo } as DefaultPage;
+
+	// transform pageblocks: prerender code blocks with shiki
+	for (const [index, block] of page.blocks.entries()) {
+		if (block.type === 'code') {
+			const rendered = await codeToHtml(block.content.language, block.content.code);
+			page.blocks[index].content.rendered = rendered;
+		}
+	}
+
 	return {
-		globals: { ...data?.globals, seo: data?.globalSeo } as Globals,
-		languages: languages,
+		globals,
+		languages,
 		lang: cms.getCookieLanguage(languages, cookies.get('lang')) || defaultLanguage,
-		page: { ...data?.page, seo: data?.pageSeo } as DefaultPage
+		page
 	};
 };
