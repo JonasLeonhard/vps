@@ -12,7 +12,7 @@
 	{@html theme}
 </svelte:head>
 
-{#await import(`./../../../node_modules/svelte-highlight/languages/${language}`)}
+{#await import(`./../../../node_modules/svelte-highlight/languages/${language}.js`)}
 	loading code...
 {:then syntaxHighlighter}
 	<Highlight language={syntaxHighlighter.default} {code} let:highlighted>
