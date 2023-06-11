@@ -2,7 +2,7 @@ Title: Blog
 
 ----
 
-Blocks: [{"content":{"items":[{"icon":"Settings","summary":"Summary","details":"Test Deails **bold** *italic*"},{"icon":"","summary":"summary2","details":"details2"}]},"id":"dd26cafa-c5f6-4334-ad2a-6c35572b2090","isHidden":false,"type":"accordion"},{"content":{"icon":"Settings","summary":"Summary","details":"Test Deails **bold** *italic*"},"id":"3f7998af-8d8b-48b4-a0fd-becb49dd5003","isHidden":false,"type":"details"}]
+Blocks: [{"content":{"items":[{"summary":"Summary","details":"Test Deails **bold** *italic*","icon":"Settings"},{"summary":"summary2","details":"details2","icon":""}]},"id":"dd26cafa-c5f6-4334-ad2a-6c35572b2090","isHidden":false,"type":"accordion"},{"content":{"summary":"Summary","details":"Test Deails **bold** *italic*"},"id":"3f7998af-8d8b-48b4-a0fd-becb49dd5003","isHidden":false,"type":"details"},{"content":{"highlightedlines":[{"linenr":1},{"linenr":2},{"linenr":4}],"startinglinenumber":3,"code":"console.log(\"hello world\");\nconst a = 0;\nconst b = 1;\nconst c = \"string\";","language":"javascript"},"id":"38b5ab75-7746-4e1f-b7df-0ba8e7e37c28","isHidden":false,"type":"code"}]
 
 ----
 
