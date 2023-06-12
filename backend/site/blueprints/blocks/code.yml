@@ -3,6 +3,9 @@ icon: code
 wysiwyg: true
 preview: code
 fields:
+  filename:
+    type: text
+    label: filename
   highlightedLines:
     label: highlightedLines
     type: structure
