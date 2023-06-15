@@ -26,10 +26,10 @@ jobs:
             cd ~/vps/backend
             composer install
 
-            # Frontend (build) 
+            # Frontend (build)
             cd ~/vps/frontend
-            yarn
-            yarn build
+            pnpm i
+            pnpm run build
 
             # Deploy (Restart with pm2)
             cd ~/vps
