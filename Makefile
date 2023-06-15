@@ -7,14 +7,14 @@ start:
 install:
 	make -j 3 backend-install frontend-install kirby-cli-install
 
-frontend-dev: 
-	@cd frontend && yarn dev
+frontend-dev:
+	@cd frontend && pnpm run dev
 
 frontend-start:
-	@cd frontend && yarn start
+	@cd frontend && pnpm run start
 
 frontend-install:
-	@cd frontend && yarn && cp .env.example .env
+	@cd frontend && pnpm i && cp .env.example .env
 
 backend-dev:
 	@cd backend && composer run start
@@ -32,7 +32,7 @@ nginx-update:
 	sudo rsync -a ./nginx/** /etc/nginx/sites-enabled
 	sudo nginx -s reload
 
-pm2-start: 
+pm2-start:
 	pm2 start "make backend-start" --name vps:backend
 	pm2 start "make frontend-start" --name vps:frontend
 
