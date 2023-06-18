@@ -32,7 +32,7 @@
     "belugadigital/kirby-navigation": "^3.0",
     "getkirby/kql": "^2.0",
     "diesdasdigital/kirby-meta-knight": "^1.2",
-    "jg/kirby-fields-block": "^1.2",
+    "jg/kirby-fields-block": "^1.2"
   },
   "scripts": {
     "start": [
