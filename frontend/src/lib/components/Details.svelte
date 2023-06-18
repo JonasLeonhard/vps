@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Richtext from '$lib/components/Richtext.svelte';
+
 	export let summary: string;
 	export let details: string;
 </script>
@@ -8,6 +10,8 @@
 >
 	<summary class="cursor-pointer select-none text-sm font-semibold leading-6">{summary}</summary>
 	<div class="mt-3 text-sm leading-6 text-text-accent">
-		<p>{details}</p>
+		<Richtext>
+			{@html details}
+		</Richtext>
 	</div>
 </details>

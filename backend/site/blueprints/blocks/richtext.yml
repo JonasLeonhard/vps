@@ -2,4 +2,4 @@ name: Richtext
 icon: text
 preview: fields
 fields:
-  text: fields/markdown/default
+  text: fields/writer/default

@@ -33,7 +33,6 @@
     "getkirby/kql": "^2.0",
     "diesdasdigital/kirby-meta-knight": "^1.2",
     "jg/kirby-fields-block": "^1.2",
-    "fabianmichael/kirby-markdown-field": "^2.1"
   },
   "scripts": {
     "start": [

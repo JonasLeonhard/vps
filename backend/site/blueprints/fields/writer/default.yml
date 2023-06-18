@@ -1,0 +1,15 @@
+label: Richtext
+type: writer
+inline: false
+nodes:
+  - heading
+  - bulletList
+  - orderedList
+marks:
+  - bold
+  - italic
+  - underline
+  - strike
+  - code
+  - link
+  - email

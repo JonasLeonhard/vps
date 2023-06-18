@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Richtext from '$lib/components/Richtext.svelte';
+
 	interface AccordionItem {
 		summary: string;
 		details: string;
@@ -27,7 +29,9 @@
 				{item.summary}
 			</summary>
 			<div class="mt-3 text-sm leading-6 text-text-accent">
-				<p>{item.details}</p>
+				<Richtext>
+					{@html item.details}
+				</Richtext>
 			</div>
 		</details>
 	{/each}
