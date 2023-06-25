@@ -17,9 +17,9 @@
 <Headroom
 	offset={40}
 	tolerance={80}
-	class="to-transparent bg-gradient-to-b from-white after:absolute after:top-0 after:-z-10 after:contents after:h-[calc(100%-11px)] after:w-full after:backdrop-blur-[2px] dark:from-black"
+	class="to-transparent z-50 bg-gradient-to-b from-white after:absolute after:top-0 after:-z-10 after:contents after:h-[calc(100%-11px)] after:w-full after:backdrop-blur-[2px] dark:from-black"
 >
-	<div class="container mx-auto flex py-3 px-3 md:px-0">
+	<div class="container mx-auto flex px-3 py-3 md:px-0">
 		<!-- Items: Left -->
 		<div class="mr-auto flex items-center">
 			<nav>
