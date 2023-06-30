@@ -2,13 +2,15 @@ import cms from '$lib/server/cms';
 import { redirect } from '@sveltejs/kit';
 import codeToHtml from '$lib/server/shiki';
 
-import type { Globals, Language, DefaultPage, Seo } from '$lib/types/index';
+import type { Globals, Language, DefaultPage } from '$lib/types/index';
 import type { LayoutServerLoad } from './$types';
+
 type PageData = {
 	globals: Globals;
 	languages: Language[];
 	lang: Language;
 	page: DefaultPage;
+	path?: string;
 };
 
 export const load: LayoutServerLoad<PageData> = async ({ cookies, fetch, request, params }) => {

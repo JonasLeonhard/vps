@@ -31,7 +31,8 @@
 									title={navigation.title}
 									id={navigation.id}
 									href={`/${currentLanguage.code}/${navigation.url}`}
-									target={navigation.popup ? '_blank' : '_self'}
+									target={navigation.popup ? '_blank' : undefined}
+									data-sveltekit-preload-data
 								>
 									{navigation.text}
 								</a>
@@ -59,7 +60,8 @@
 				title={centerNavItem?.title || '~'}
 				id={centerNavItem?.id || 'Nav__Center'}
 				href={`/${currentLanguage?.code}/${centerNavItem?.url || ''}`}
-				target={centerNavItem?.popup ? '_blank' : '_self'}
+				target={centerNavItem?.popup ? '_blank' : undefined}
+				data-sveltekit-preload-data
 			>
 				{centerNavItem?.text || 'Jonas Leonhard.'}
 			</a>

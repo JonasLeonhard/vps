@@ -6,7 +6,6 @@
 	import Richtext from '$lib/components/Richtext.svelte';
 
 	export let blocks: ContentBlock[];
-	console.log('blocks', blocks);
 </script>
 
 <ul class="container mx-auto my-4">
