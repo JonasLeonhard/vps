@@ -1,0 +1,4 @@
+Fonts:
+
+Inter: https://github.com/rsms/inter
+Ark-Pixel: https://github.com/TakWolf/ark-pixel-font

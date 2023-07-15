@@ -45,6 +45,11 @@ module.exports = {
 			royalBlue: '#4b7bec',
 			lighterPurple: '#a55eea',
 			gloomyPurple: '#8854d0'
+		},
+		fontFamily: {
+			pixel: ['ark-pixel-16px-monospaced-latin'],
+			interReg: ['inter-regular'],
+			interVar: ['inter-var']
 		}
 	},
 	plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')]
