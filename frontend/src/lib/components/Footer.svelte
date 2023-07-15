@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Globals } from '$lib/types';
+	import GameOfLife from '$lib/components/GameOfLife.svelte';
 	import getPercentageOfViewport from '$lib/utils/getPercentageOfViewport';
 	import getPercentageOfElementVisible from '$lib/utils/getPercentageOfElementVisible';
 
@@ -50,7 +51,7 @@
 				{/each}
 			</div>
 
-			<div class="h-32 w-1/2 bg-white text-gray">right side: contact conways game of life here</div>
+			<GameOfLife />
 		</div>
 	</div>
 	<div class="bg-bg-accent-light py-4 dark:bg-bg-accent-dark" bind:this={afterWrapper}>
