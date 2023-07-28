@@ -7,6 +7,7 @@ module.exports = {
 			// main colors
 			black: '#000000',
 			gray: '#abafb3',
+			lightGray: '#191821',
 			white: '#ffffff',
 			primary: '#f26c4f',
 			secondary: '#c473ff',
@@ -50,6 +51,17 @@ module.exports = {
 			pixel: ['ark-pixel-16px-monospaced-latin'],
 			interReg: ['inter-regular'],
 			interVar: ['inter-var']
+		},
+		extend: {
+			animation: {
+				borderGradient: 'background ease infinite'
+			},
+			keyframes: {
+				background: {
+					'0%, 100%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' }
+				}
+			}
 		}
 	},
 	plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')]
