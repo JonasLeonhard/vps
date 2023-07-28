@@ -1,1 +1,1 @@
-export type Icon = 'Settings' | 'Copy' | 'Copied';
+export type Icon = 'Settings' | 'Copy' | 'Copied' | 'Terminal' | 'Logo';

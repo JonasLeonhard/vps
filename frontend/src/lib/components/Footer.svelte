@@ -37,17 +37,23 @@
 		<div class="container mx-auto flex pb-32">
 			<div class="w-1/2">
 				{#each globals.footerNavigation as footerNavigation}
-					{footerNavigation.text}
+					<a href={footerNavigation.url} class="block">
+						{footerNavigation.text}
+					</a>
 				{/each}
 
 				<br />
 				{#each globals.metaNavigation as metaNavigation}
-					{metaNavigation.text}
+					<a href={metaNavigation.url} class="block">
+						{metaNavigation.text}
+					</a>
 				{/each}
 
 				<br />
 				{#each globals.socialMedia as socialMedia}
-					{socialMedia.service}
+					<a href={socialMedia.url} target="_blank" class="block">
+						{socialMedia.service}
+					</a>
 				{/each}
 			</div>
 

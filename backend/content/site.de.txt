@@ -2,13 +2,6 @@ Navigation:
 
 - 
   children: [ ]
-  id: Nav__Center
-  text: Jonas Leonhard.
-  url: ""
-  popup: false
-  uuid: b2ebw8ha0c
-- 
-  children: [ ]
   text: Blog
   url: blog
   popup: false
@@ -32,16 +25,16 @@ Footernavigation:
 
 - 
   children: [ ]
-  id: about
-  text: About
-  url: http://localhost:8000/de/about
-  uuid: d3agiv1wfhe
+  id: projects
+  text: Projects
+  url: /de/projects
+  uuid: 8acliic4b2e
 - 
   children: [ ]
-  id: impressum
-  text: Impressum
-  url: http://localhost:8000/de/impressum
-  uuid: gqy692jeafn
+  id: contact
+  text: Contact
+  url: /de/contact
+  uuid: rqjnmozcxdk
 
 ----
 
@@ -49,14 +42,16 @@ Metanavigation:
 
 - 
   children: [ ]
-  id: projects
-  text: Projects
-  url: http://localhost:8000/de/projects
-  uuid: hcifkyaopfo
-
-----
-
-Footertext: 
+  id: about
+  text: About
+  url: /de/about
+  uuid: txnuh0i1qw
+- 
+  children: [ ]
+  id: impressum
+  text: Impressum
+  url: /de/impressum
+  uuid: xduylh70u8
 
 ----
 

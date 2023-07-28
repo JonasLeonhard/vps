@@ -20,8 +20,8 @@ module.exports = {
 			light: '#f5f6fa',
 			dark: '#0f0d0b',
 			'bg-accent': {
-				light: '#d3d3d3',
-				dark: '#101010'
+				light: '#f2f1ed',
+				dark: '#161616'
 			},
 			text: {
 				light: '#000000',
