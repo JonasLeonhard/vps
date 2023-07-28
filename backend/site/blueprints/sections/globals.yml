@@ -24,7 +24,7 @@ fields:
     levels: 1
     width: 1/2
   footerText:
-    extends: fields/markdown/default
+    extends: fields/writer/default
     label: Text
     width: 1/2
   socialMedia:
