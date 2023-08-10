@@ -7,7 +7,7 @@
 	import Logo from './Logo.svelte';
 
 	export let name: Icon;
-	export let onClick: () => void | undefined;
+	export let onClick: () => void | null;
 </script>
 
 <button on:click={onClick} {...$$restProps}>
