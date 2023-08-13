@@ -1,10 +1,12 @@
 <script lang="ts">
-	import type { Icon } from '$lib/types';
-	import Settings from './Settings.svelte';
-	import Copy from './Copy.svelte';
+	import Close from './Close.svelte';
 	import Copied from './Copied.svelte';
-	import Terminal from './Terminal.svelte';
+	import Copy from './Copy.svelte';
 	import Logo from './Logo.svelte';
+	import Settings from './Settings.svelte';
+	import Terminal from './Terminal.svelte';
+
+	import type { Icon } from '$lib/types';
 
 	export let name: Icon;
 	export let onClick: () => void | null;
@@ -21,6 +23,8 @@
 		<Terminal />
 	{:else if name === 'Logo'}
 		<Logo />
+	{:else if name === 'Close'}
+		<Close />
 	{:else}
 		Icon undefined: {name}
 	{/if}

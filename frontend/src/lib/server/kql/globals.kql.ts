@@ -7,8 +7,18 @@ const globals = {
 			navigation: 'site.navigation.toNavigationArray',
 			footerNavigation: 'site.footerNavigation.toNavigationArray',
 			metaNavigation: 'site.metaNavigation.toNavigationArray',
+			socialMedia: 'site.socialMedia.toData("yaml")',
 			footerText: 'site.footerText',
-			socialMedia: 'site.socialMedia.toData("yaml")'
+			translations: {
+				query: 'site',
+				select: {
+					navigationLabel: 'site.navigationLabel',
+					language: 'site.language',
+					theme: 'site.theme',
+					themeLight: 'site.themeLight',
+					themeDark: 'site.themeDark'
+				}
+			}
 		}
 	},
 	...getSeo()

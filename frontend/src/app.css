@@ -48,3 +48,7 @@ em,
 a {
 	@apply font-pixel;
 }
+
+hr {
+	@apply text-bg-accent-light dark:text-bg-accent-dark;
+}

@@ -14,12 +14,12 @@
 </script>
 
 <form
-	class="text-text-light dark:text-text-light"
+	class="w-full px-4 text-text-light dark:text-text-light"
 	method="POST"
 	action="/?/setLang"
 	bind:this={formRef}
 >
-	<select name="lang" bind:value={currentLanguage.code} on:change={onSelectChange}>
+	<select class="w-full" name="lang" bind:value={currentLanguage.code} on:change={onSelectChange}>
 		{#each languages as lang}
 			<option value={lang.code} selected={lang.code === currentLanguage.code}>{lang.name}</option>
 		{/each}

@@ -45,3 +45,22 @@ fields:
       url:
         label: URL
         type: url
+
+  translations:
+    label: Global Translations
+    type: headline
+  navigationLabel:
+    label: NavigationLabel
+    type: text
+  language:
+    label: Language
+    type: text
+  theme:
+    label: Theme
+    type: text
+  themeLight:
+    label: ThemeLight
+    type: text
+  themeDark:
+    label: ThemeDark
+    type: text

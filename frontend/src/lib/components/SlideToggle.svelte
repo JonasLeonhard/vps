@@ -24,6 +24,7 @@
 	aria-label={label}
 	aria-checked={checked}
 	tabindex="0"
+	class={$$props.class}
 >
 	<label class="flex items-center">
 		<input class="hidden" type="checkbox" bind:checked on:change {disabled} {name} />

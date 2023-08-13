@@ -1,3 +1,7 @@
+Navigationlabel: Navigation
+
+----
+
 Navigation:
 
 - 
@@ -55,11 +59,31 @@ Metanavigation:
 
 ----
 
+Footertext: 
+
+----
+
 Socialmedia:
 
 - 
   service: github
   url: https://github.com/JonasLeonhard
+
+----
+
+Language: Sprache
+
+----
+
+Theme: Theme
+
+----
+
+Themelight: Hell
+
+----
+
+Themedark: Dunkel
 
 ----
 
@@ -188,3 +212,7 @@ Robots-noimageindex:
 ----
 
 Robots-nosnippet: 
+
+----
+
+Name: Navigation

@@ -1,10 +1,12 @@
 <script lang="ts">
-	export let text: string | undefined;
+	export let text: string | null = null;
 </script>
 
 <div
-	class="prose prose-neutral dark:prose-invert prose-code:bg-primary prose-code:rounded-sm prose-code:p-1 prose-code:before:content-none prose-code:after:content-none"
+	class={`prose prose-neutral dark:prose-invert prose-code:rounded-sm prose-code:bg-primary prose-code:p-1 prose-code:before:content-none prose-code:after:content-none ${$$props.class}`}
 >
-	{@html text}
+	{#if text}
+		{@html text}
+	{/if}
 	<slot />
 </div>

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon/Icon.svelte';
+	import Dialog from '$lib/components/Dialog.svelte';
+	import Richtext from '$lib/components/Richtext.svelte';
 	import type { Language, Globals } from '$lib/types';
 
 	export let globals: Globals;
@@ -17,24 +19,31 @@
 	}}
 />
 
-{#if isOpen}
-	<div class="mr-auto flex items-center">
-		<nav>
-			<ul class="flex gap-3">
-				{#each globals.navigation as navigation}
-					<li>
-						<a
-							title={navigation.title}
-							id={navigation.id}
-							href={`/${currentLanguage.code}/${navigation.url}`}
-							target={navigation.popup ? '_blank' : undefined}
-							data-sveltekit-preload-data
-						>
-							{navigation.text}
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</nav>
+<Dialog bind:open={isOpen}>
+	<div class="flex flex-col gap-4">
+		<input placeholder="WIP SEARCH FOR ARTICLES" />
+		<hr />
+		<Richtext class="px-4">
+			<h2>{globals.navigationLabel || 'Navigation'}</h2>
+		</Richtext>
+		<div class="mb-4 mr-auto flex items-center px-4">
+			<nav>
+				<ul class="flex w-full flex-col gap-3">
+					{#each globals.navigation as navigation}
+						<li>
+							<a
+								title={navigation.title}
+								id={navigation.id}
+								href={`/${currentLanguage.code}/${navigation.url}`}
+								target={navigation.popup ? '_blank' : undefined}
+								data-sveltekit-preload-data
+							>
+								{navigation.text}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</nav>
+		</div>
 	</div>
-{/if}
+</Dialog>
