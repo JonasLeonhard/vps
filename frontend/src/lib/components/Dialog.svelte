@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let open: boolean;
+	export let onClose: () => void = () => null;
 
 	let dialog: HTMLDialogElement;
 
@@ -15,9 +16,14 @@
 	bind:this={dialog}
 	on:close={() => {
 		open = false;
+		onClose();
 	}}
-	on:click|self={() => dialog.close()}
-	on:keydown|self={() => dialog.close()}
+	on:click|self={() => {
+		dialog.close();
+	}}
+	on:keydown|self={() => {
+		dialog.close();
+	}}
 >
 	<div on:click|stopPropagation on:keydown|stopPropagation>
 		<slot />

@@ -4,6 +4,7 @@
 	import LanguageSelect from '$lib/components/LanguageSelect.svelte';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import Richtext from '$lib/components/Richtext.svelte';
+	import { spring } from 'svelte/motion';
 
 	import type { Globals, Language } from '$lib/types';
 
@@ -12,20 +13,53 @@
 	export let languages: Language[];
 
 	let isOpen = false;
+	let mouseOver = false;
+
+	const coords = spring(
+		{ x: 0, y: 0 },
+		{
+			stiffness: 0.25,
+			damping: 0.5
+		}
+	);
+
+	$: mouseOverClasses =
+		mouseOver || isOpen
+			? 'z-10 animate-borderGradient bg-gradient-to-r from-primary via-secondary to-tertiary bg-[length:400%_400%] [animation-duration:4s] scale-110 transition-[bg-gradient-to-r] transition-[scale-110]'
+			: '';
 
 	console.log('globals', globals);
 </script>
 
 <Icon
 	name="Settings"
-	class="cursor-pointer rounded-md bg-bg-accent-light p-4 dark:bg-bg-accent-dark"
+	class={`vcursor-pointer rounded-md bg-bg-accent-light p-4 dark:bg-bg-accent-dark ${mouseOverClasses}`}
 	onClick={() => {
-		console.log('Settings clicked');
 		isOpen = !isOpen;
 	}}
+	onMouseover={(hovered) => {
+		mouseOver = hovered;
+	}}
+	onMousemove={(event) => {
+		const rect = event.currentTarget.getBoundingClientRect();
+		coords.set({
+			x: event.clientX - rect.left - rect.width / 2,
+			y: event.clientY - rect.top - rect.height / 2
+		});
+	}}
+	onMouseout={() => {
+		coords.set({ x: 0, y: 0 });
+	}}
+	style={`translate: ${$coords.x}px ${$coords.y}px;`}
 />
 
-<Dialog bind:open={isOpen}>
+<Dialog
+	bind:open={isOpen}
+	onClose={() => {
+		isOpen = false;
+		mouseOver = false;
+	}}
+>
 	<div class="my-4 flex flex-col gap-8">
 		<Richtext class="px-4">
 			<h2>{globals.translations.language || 'Language'}</h2>

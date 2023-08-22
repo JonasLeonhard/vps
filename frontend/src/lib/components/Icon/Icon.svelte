@@ -10,9 +10,22 @@
 
 	export let name: Icon;
 	export let onClick: () => void = () => null;
+	export let onMouseover: (hovered: boolean) => void = () => null;
+	export let onMousemove: (event: MouseEvent) => void = () => null;
+	export let onMouseout: (event: MouseEvent) => void = () => null;
 </script>
 
-<button on:click={onClick} {...$$restProps}>
+<button
+	on:click={onClick}
+	on:mouseenter={() => onMouseover(true)}
+	on:mouseover={() => onMouseover(true)}
+	on:focus={() => onMouseover(true)}
+	on:mouseleave={() => onMouseover(false)}
+	on:focusout={() => onMouseover(false)}
+	on:mousemove={onMousemove}
+	on:mouseout={onMouseout}
+	{...$$restProps}
+>
 	{#if name === 'Settings'}
 		<Settings />
 	{:else if name === 'Copy'}
