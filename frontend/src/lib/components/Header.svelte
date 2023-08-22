@@ -11,7 +11,7 @@
 	export let languages: Language[];
 </script>
 
-<Headroom offset={40} tolerance={80} class="">
+<Headroom offset={40} tolerance={180} class="">
 	<div class="container mx-auto flex px-3 py-3 md:px-0">
 		<!-- Items: Left -->
 		<a href={`/${currentLanguage.code}`} class="flex">

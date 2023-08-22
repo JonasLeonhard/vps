@@ -10,7 +10,7 @@
 	let lastY = 0;
 	let lastScrollDirection: ScrollDirection = 'up';
 	$: headerVisible = getScrollDirection(y) === 'down' ? false : true;
-	$: headerDocked = y <= 0;
+	$: headerDocked = y <= 0 && getScrollDirection(y) === 'up';
 	$: classesHeaderDocked = headerDocked
 		? 'py-12 after:h-0 after:opacity-0 after:duration-[0.25s]'
 		: 'after:h-full after:opacity-1';

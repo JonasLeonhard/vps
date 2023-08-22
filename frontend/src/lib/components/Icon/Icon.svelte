@@ -9,7 +9,7 @@
 	import type { Icon } from '$lib/types';
 
 	export let name: Icon;
-	export let onClick: () => void | null;
+	export let onClick: () => void = () => null;
 </script>
 
 <button on:click={onClick} {...$$restProps}>
