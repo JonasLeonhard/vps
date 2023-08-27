@@ -52,3 +52,7 @@ a {
 hr {
 	@apply text-bg-accent-light dark:text-bg-accent-dark;
 }
+
+input:focus {
+	outline: none;
+}

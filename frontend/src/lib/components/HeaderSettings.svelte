@@ -60,7 +60,7 @@
 		mouseOver = false;
 	}}
 >
-	<div class="my-4 flex flex-col gap-8">
+	<div class="my-4 flex min-w-[35vw] flex-col gap-8">
 		<Richtext class="px-4">
 			<h2>{globals.translations.language || 'Language'}</h2>
 		</Richtext>

@@ -64,3 +64,6 @@ fields:
   themeDark:
     label: ThemeDark
     type: text
+  results:
+    label: Results
+    type: text

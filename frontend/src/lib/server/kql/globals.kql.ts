@@ -8,15 +8,16 @@ const globals = {
 			footerNavigation: 'site.footerNavigation.toNavigationArray',
 			metaNavigation: 'site.metaNavigation.toNavigationArray',
 			socialMedia: 'site.socialMedia.toData("yaml")',
-			footerText: 'site.footerText',
 			translations: {
 				query: 'site',
 				select: {
+					footerText: 'site.footerText',
 					navigationLabel: 'site.navigationLabel',
 					language: 'site.language',
 					theme: 'site.theme',
 					themeLight: 'site.themeLight',
-					themeDark: 'site.themeDark'
+					themeDark: 'site.themeDark',
+					results: 'site.results'
 				}
 			}
 		}

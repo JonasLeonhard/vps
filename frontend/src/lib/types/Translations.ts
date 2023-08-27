@@ -4,4 +4,5 @@ export interface Translations {
   theme: string;
   themeDark: string;
   themeLight: string;
+  results: string;
 }

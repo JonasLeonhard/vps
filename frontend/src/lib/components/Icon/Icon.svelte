@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Article from './Article.svelte';
+	import Branch from './Branch.svelte';
 	import Close from './Close.svelte';
 	import Copied from './Copied.svelte';
 	import Copy from './Copy.svelte';
@@ -38,6 +40,10 @@
 		<Logo />
 	{:else if name === 'Close'}
 		<Close />
+	{:else if name === 'Branch'}
+		<Branch />
+	{:else if name === 'Article'}
+		<Article />
 	{:else}
 		Icon undefined: {name}
 	{/if}

@@ -11,6 +11,12 @@
 
 	let isOpen = false;
 	let mouseOver = false;
+	let search = '';
+
+	const closeDialog = () => {
+		isOpen = false;
+		mouseOver = false;
+	};
 
 	const coords = spring(
 		{ x: 0, y: 0 },
@@ -48,37 +54,60 @@
 	style={`translate: ${$coords.x}px ${$coords.y}px;`}
 />
 
-<Dialog
-	bind:open={isOpen}
-	onClose={() => {
-		isOpen = false;
-		mouseOver = false;
-	}}
->
-	<div class="flex flex-col gap-4">
-		<input placeholder="WIP SEARCH FOR ARTICLES" />
-		<hr />
-		<Richtext class="px-4">
-			<h2>{globals.navigationLabel || 'Navigation'}</h2>
-		</Richtext>
-		<div class="mb-4 mr-auto flex items-center px-4">
-			<nav>
-				<ul class="flex w-full flex-col gap-3">
-					{#each globals.navigation as navigation}
-						<li>
+<Dialog bind:open={isOpen} onClose={closeDialog}>
+	<div class="flex min-w-[35vw] flex-col">
+		<div class="relative p-4">
+			<input placeholder="WIP SEARCH FOR ARTICLES" bind:value={search} class="bg-primary/0" />
+			{#if search}
+				<div class="absolute right-6 top-[50%] -translate-y-[50%]">
+					{globals.translations.results || 'Results'}: <span class="text-secondary">1</span>
+				</div>
+			{/if}
+		</div>
+		<hr class="mb-4" />
+
+		{#if !search}
+			<Richtext class="mb-4 px-4">
+				<h4>{globals.translations.navigationLabel || 'Navigation'}</h4>
+			</Richtext>
+			<div class="mb-4 mr-auto flex w-full items-center px-2">
+				<nav class="w-full">
+					<ul class="flex flex-col gap-3">
+						{#each globals.navigation as navigation}
 							<a
 								title={navigation.title}
 								id={navigation.id}
 								href={`/${currentLanguage.code}/${navigation.url}`}
 								target={navigation.popup ? '_blank' : undefined}
 								data-sveltekit-preload-data
+								class="duration-400 cursor-pointer rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
+								on:click={closeDialog}
+								on:keypress={closeDialog}
 							>
-								{navigation.text}
+								<li class="flex gap-2">
+									<Icon name="Branch" />
+									{navigation.text}
+								</li>
 							</a>
-						</li>
-					{/each}
-				</ul>
-			</nav>
-		</div>
+						{/each}
+					</ul>
+				</nav>
+			</div>
+		{:else}
+			<ul class="mb-4 flex flex-col gap-3 px-2">
+				<a
+					class="duration-400 cursor-pointer rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
+					data-sveltekit-preload-data
+					href="/"
+					on:click={closeDialog}
+					on:keypress={closeDialog}
+				>
+					<li class="flex gap-2">
+						<Icon name="Article" />
+						article result wip
+					</li>
+				</a>
+			</ul>
+		{/if}
 	</div>
 </Dialog>
