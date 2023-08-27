@@ -61,13 +61,15 @@
 	}}
 >
 	<div class="my-4 flex min-w-[35vw] flex-col gap-8">
-		<Richtext class="px-4">
-			<h2>{globals.translations.language || 'Language'}</h2>
+		<Richtext class="flex gap-2 px-4">
+			<Icon class="my-auto h-min cursor-default" name="Language" />
+			<h2 class="mt-0">{globals.translations.language || 'Language'}</h2>
 		</Richtext>
 		<LanguageSelect {languages} {currentLanguage} />
 		<hr />
-		<Richtext class="px-4">
-			<h2>{globals.translations.theme || 'Theme'}</h2>
+		<Richtext class="flex gap-2 px-4">
+			<Icon class="my-auto h-min cursor-default" name="Brightness" />
+			<h2 class="mt-0">{globals.translations.theme || 'Theme'}</h2>
 		</Richtext>
 		<ThemeToggle {globals} />
 	</div>

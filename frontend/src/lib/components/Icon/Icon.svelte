@@ -1,9 +1,11 @@
 <script lang="ts">
 	import Article from './Article.svelte';
 	import Branch from './Branch.svelte';
+	import Brightness from './Brightness.svelte';
 	import Close from './Close.svelte';
 	import Copied from './Copied.svelte';
 	import Copy from './Copy.svelte';
+	import Language from './Language.svelte';
 	import Logo from './Logo.svelte';
 	import Settings from './Settings.svelte';
 	import Terminal from './Terminal.svelte';
@@ -44,6 +46,10 @@
 		<Branch />
 	{:else if name === 'Article'}
 		<Article />
+	{:else if name === 'Language'}
+		<Language />
+	{:else if name === 'Brightness'}
+		<Brightness />
 	{:else}
 		Icon undefined: {name}
 	{/if}
