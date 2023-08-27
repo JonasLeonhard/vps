@@ -6,16 +6,19 @@
 	font-family: 'ark-pixel-16px-monospaced-latin';
 	src: local('ark-pixel-16px-monospaced-latin'),
 		url('/fonts/ark-pixel-16px-monospaced-latin.otf') format('opentype');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: 'inter-regular';
 	src: local('Inter-Regular'), url('/fonts/Inter-Regular.woff2') format('woff2');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: 'inter-var';
 	src: local('Inter-Var'), url('/fonts/Inter-Var.ttf') format('truetype');
+	font-display: swap;
 }
 
 :root {

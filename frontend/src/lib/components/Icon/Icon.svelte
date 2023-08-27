@@ -20,6 +20,7 @@
 </script>
 
 <button
+	aria-label={name}
 	on:click={onClick}
 	on:mouseenter={() => onMouseover(true)}
 	on:mouseover={() => onMouseover(true)}

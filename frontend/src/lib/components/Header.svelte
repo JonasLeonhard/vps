@@ -14,7 +14,7 @@
 <Headroom offset={40} tolerance={180}>
 	<div class="container mx-auto flex px-3 py-3 md:px-0">
 		<!-- Items: Left -->
-		<a href={`/${currentLanguage.code}`} class="flex">
+		<a href={`/${currentLanguage.code}`} aria-label="Home" class="flex">
 			<Icon name="Logo" />
 		</a>
 		<!-- Items: Right -->
