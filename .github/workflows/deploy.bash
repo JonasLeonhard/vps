@@ -1,16 +1,7 @@
 #!/bin/bash
 
-source ~/.bashrc
-echo "after.. sourced bashrc"
-which fnm
-echo "after.. which fnm"
-eval $(fnm env)
-echo "after ... fnm env"
-
 export PATH="/home/ubuntu/.local/share/fnm:$PATH"
-echo "after path"
-eval "$(fnm env)"
-echo "after fnm env 2"
+fnm use 20.5.1
 
 # Setup (workdir + update repo)
 cd /var/www/html/vps
