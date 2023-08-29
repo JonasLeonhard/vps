@@ -1,8 +1,7 @@
 #!/bin/bash
 
-source ~/.bashrc
-
 export PATH="/home/ubuntu/.local/share/fnm:$PATH"
+eal "$(fnm env)"
 fnm use 20.5.1
 
 # pnpm
