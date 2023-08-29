@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.bashrc
+
 export PATH="/home/ubuntu/.local/share/fnm:$PATH"
 fnm use 20.5.1
 
