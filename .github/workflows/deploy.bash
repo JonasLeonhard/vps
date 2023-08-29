@@ -1,6 +1,8 @@
 #!/bin/bash
 
 source ~/.bashrc
+which fnm
+eval $(fnm env)
 
 # Setup (workdir + update repo)
 cd /var/www/html/vps
