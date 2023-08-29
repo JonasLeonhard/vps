@@ -17,20 +17,20 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             # Setup (workdir + update repo)
-            cd ~/vps
+            cd /var/www/html/vps
             git pull origin master
             git pull origin live
             git push
 
             # Backend (build)
-            cd ~/vps/backend
+            cd /var/www/html/vps/backend
             composer install
 
             # Frontend (build)
-            cd ~/vps/frontend
+            cd /var/www/html/vps/frontend
             pnpm i
             pnpm run build
 
             # Deploy (Restart with pm2)
-            cd ~/vps
+            cd /var/www/html/vps
             make pm2-restart
