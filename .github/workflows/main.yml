@@ -16,22 +16,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            exec bash \-l
-            # Setup (workdir + update repo)
-            cd /var/www/html/vps
-            git pull origin master
-            git pull origin live
-            git push
-
-            # Backend (build)
-            cd /var/www/html/vps/backend
-            composer install
-
-            # Frontend (build)
-            cd /var/www/html/vps/frontend
-            pnpm i
-            pnpm run build
-
-            # Deploy (Restart with pm2)
-            cd /var/www/html/vps
-            make pm2-restart
+            bash /var/www/html/vps/.github/workflows/deploy.bash
