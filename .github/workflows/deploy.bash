@@ -4,6 +4,9 @@ source ~/.bashrc
 which fnm
 eval $(fnm env)
 
+export PATH="/home/ubuntu/.local/share/fnm:$PATH"
+eval "$(fnm env)"
+
 # Setup (workdir + update repo)
 cd /var/www/html/vps
 git pull origin master
