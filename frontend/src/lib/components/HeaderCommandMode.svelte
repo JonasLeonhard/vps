@@ -81,7 +81,7 @@
 									href={`/${currentLanguage.code}/${navigation.url}`}
 									target={navigation.popup ? '_blank' : undefined}
 									data-sveltekit-preload-data
-									class="duration-400 cursor-pointer rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
+									class="duration-400 w-full cursor-pointer rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
 									on:click={closeDialog}
 									on:keypress={closeDialog}
 								>
@@ -97,7 +97,7 @@
 			<ul class="mb-4 flex flex-col gap-3 px-2">
 				<li class="flex gap-2">
 					<a
-						class="duration-400 cursor-pointer rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
+						class="duration-400 w-full cursor-pointer rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
 						data-sveltekit-preload-data
 						href="/"
 						on:click={closeDialog}
