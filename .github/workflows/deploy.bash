@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.bashrc
+
 # Setup (workdir + update repo)
 cd /var/www/html/vps
 git pull origin master
