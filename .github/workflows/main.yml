@@ -16,6 +16,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            cat ~/.bashrc
+            which fnm
             # Setup (workdir + update repo)
             cd /var/www/html/vps
             git pull origin master
