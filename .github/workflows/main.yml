@@ -16,5 +16,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            source ~/.bashrc
+            eval "`fnm env`
             bash /var/www/html/vps/.github/workflows/deploy.bash
