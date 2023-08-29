@@ -74,14 +74,14 @@
 				<nav class="w-full">
 					<ul class="flex flex-col gap-3">
 						{#each globals.navigation as navigation}
-							<li class="flex gap-2">
+							<li>
 								<a
 									title={navigation.title}
 									id={navigation.id}
 									href={`/${currentLanguage.code}/${navigation.url}`}
 									target={navigation.popup ? '_blank' : undefined}
 									data-sveltekit-preload-data
-									class="duration-400 w-full cursor-pointer rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
+									class="duration-400 flex w-full cursor-pointer gap-2 rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
 									on:click={closeDialog}
 									on:keypress={closeDialog}
 								>
@@ -95,9 +95,9 @@
 			</div>
 		{:else}
 			<ul class="mb-4 flex flex-col gap-3 px-2">
-				<li class="flex gap-2">
+				<li>
 					<a
-						class="duration-400 w-full cursor-pointer rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
+						class="duration-400 flex w-full cursor-pointer gap-2 rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
 						data-sveltekit-preload-data
 						href="/"
 						on:click={closeDialog}
