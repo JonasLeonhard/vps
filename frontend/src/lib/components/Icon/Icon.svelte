@@ -7,7 +7,9 @@
 	import Copy from './Copy.svelte';
 	import Language from './Language.svelte';
 	import Logo from './Logo.svelte';
+	import Moon from './Moon.svelte';
 	import Settings from './Settings.svelte';
+	import Sun from './Sun.svelte';
 	import Terminal from './Terminal.svelte';
 
 	import type { Icon } from '$lib/types';
@@ -16,7 +18,7 @@
 	export let onClick: () => void = () => null;
 	export let onMouseover: (hovered: boolean) => void = () => null;
 	export let onMousemove: (event: MouseEvent) => void = () => null;
-	export let onMouseout: (event: MouseEvent) => void = () => null;
+	export let onMouseout: (event: Event) => void = () => null;
 </script>
 
 <button
@@ -29,6 +31,7 @@
 	on:focusout={() => onMouseover(false)}
 	on:mousemove={onMousemove}
 	on:mouseout={onMouseout}
+	on:blur={onMouseout}
 	{...$$restProps}
 >
 	{#if name === 'Settings'}
@@ -51,6 +54,10 @@
 		<Language />
 	{:else if name === 'Brightness'}
 		<Brightness />
+	{:else if name === 'Sun'}
+		<Sun />
+	{:else if name === 'Moon'}
+		<Moon />
 	{:else}
 		Icon undefined: {name}
 	{/if}

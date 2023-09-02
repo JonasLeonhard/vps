@@ -31,4 +31,6 @@
 	bind:checked
 	label={$theme === 'light' ? globals.translations.themeLight : globals.translations.themeDark}
 	on:change={onThemeChange}
+	iconLeft="Sun"
+	iconRight="Moon"
 />

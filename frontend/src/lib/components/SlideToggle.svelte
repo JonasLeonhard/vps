@@ -1,12 +1,18 @@
 <script lang="ts">
 	// TODO: https://github.com/skeletonlabs/skeleton/blob/dev/src/lib/components/SlideToggle/SlideToggle.svelte
 	import { createEventDispatcher } from 'svelte/internal';
+	import { scale } from 'svelte/transition';
+	import Icon from '$lib/components/Icon/Icon.svelte';
+
+	import type { Icon as IconType } from '$lib/types';
 	const dispatch = createEventDispatcher();
 
 	export let name: string;
 	export let checked = false;
 	export let disabled = false;
 	export let label = '';
+	export let iconLeft: IconType | null = null;
+	export let iconRight: IconType | null = null;
 
 	const onKeyDown = (event: any) => {
 		if (['Enter', 'Space'].includes(event.code)) {
@@ -41,7 +47,19 @@
 				class="h-6 w-6 scale-75 rounded-full bg-light shadow transition-all duration-200"
 				class:cursor-not-allowed={disabled}
 				class:translate-x-full={checked}
-			/>
+			>
+				{#if iconLeft && checked}
+					<div class="absolute inset-0" transition:scale={{ start: 0, duration: 200, delay: 150 }}>
+						<Icon name={iconLeft} class="text-black" />
+					</div>
+				{/if}
+
+				{#if iconRight && !checked}
+					<div class="absolute inset-0" transition:scale={{ start: 0, duration: 200, delay: 150 }}>
+						<Icon name={iconRight} class="text-black" />
+					</div>
+				{/if}
+			</div>
 		</div>
 
 		<!-- Label -->

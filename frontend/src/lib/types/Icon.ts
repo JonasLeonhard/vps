@@ -7,5 +7,7 @@ export type Icon =
   | 'Copy'
   | 'Language'
   | 'Logo'
+  | 'Moon'
   | 'Settings'
+  | 'Sun'
   | 'Terminal';
