@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Globals } from '$lib/types';
 	import GameOfLife from '$lib/components/GameOfLife.svelte';
+	import Icon from '$lib/components/Icon/Icon.svelte';
 	import getPercentageOfViewport from '$lib/utils/getPercentageOfViewport';
 	import getPercentageOfElementVisible from '$lib/utils/getPercentageOfElementVisible';
 
@@ -50,11 +51,18 @@
 				{/each}
 
 				<br />
-				{#each globals.socialMedia as socialMedia}
-					<a href={socialMedia.url} target="_blank" class="block">
-						{socialMedia.service}
-					</a>
-				{/each}
+				<div class="flex flex-wrap gap-4">
+					{#each globals.socialMedia as socialMedia}
+						<a
+							href={socialMedia.url}
+							target="_blank"
+							title={socialMedia.service}
+							class="flex w-min gap-1"
+						>
+							<Icon name={socialMedia.service} />
+						</a>
+					{/each}
+				</div>
 			</div>
 
 			<GameOfLife />
@@ -67,9 +75,10 @@
 		>
 			© {new Date().getFullYear()} Jonas Leonhard - Build Version:
 			<a
-				class="rounded-2xl bg-nycTaxi p-2 px-4 text-black"
+				class="inline-flex w-min gap-1 rounded-2xl bg-nycTaxi p-2 px-4 text-black"
 				href={`https://github.com/JonasLeonhard/vps/commit/${globals.translations.currentGitHash}`}
-				target="_blank">{globals.translations.currentGitHash.slice(0, 7)}</a
+				target="_blank"
+				>{globals.translations.currentGitHash.slice(0, 7)} <Icon name="ExternalLink" /></a
 			>
 		</p>
 	</div>

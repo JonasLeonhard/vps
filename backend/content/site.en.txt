@@ -62,8 +62,24 @@ Footertext:
 Socialmedia:
 
 - 
-  service: github
+  service: Github
   url: https://github.com/JonasLeonhard
+- 
+  service: Instagram
+  url: >
+    https://www.youtube.com/watch?v=E4WlUXrJgy4
+- 
+  service: LinkedIn
+  url: >
+    https://www.youtube.com/watch?v=E4WlUXrJgy4
+- 
+  service: YouTube
+  url: >
+    https://www.youtube.com/watch?v=E4WlUXrJgy4
+- 
+  service: Twitter
+  url: >
+    https://www.youtube.com/watch?v=E4WlUXrJgy4
 
 ----
 

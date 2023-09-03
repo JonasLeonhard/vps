@@ -37,11 +37,11 @@ fields:
         default: instagram
         required: true
         options:
-          instagram: Instagram
-          linkedin: LinkedIn
-          youtube: YouTube
-          twitter: Twitter
-          github: Github
+          Instagram: Instagram
+          LinkedIn: LinkedIn
+          YouTube: YouTube
+          Twitter: Twitter
+          Github: Github
       url:
         label: URL
         type: url

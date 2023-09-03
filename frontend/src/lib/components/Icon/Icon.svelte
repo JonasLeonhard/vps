@@ -5,12 +5,18 @@
 	import Close from './Close.svelte';
 	import Copied from './Copied.svelte';
 	import Copy from './Copy.svelte';
+	import ExternalLink from './ExternalLink.svelte';
+	import Github from './Github.svelte';
+	import Instagram from './Instagram.svelte';
 	import Language from './Language.svelte';
+	import LinkedIn from './LinkedIn.svelte';
 	import Logo from './Logo.svelte';
 	import Moon from './Moon.svelte';
 	import Settings from './Settings.svelte';
 	import Sun from './Sun.svelte';
 	import Terminal from './Terminal.svelte';
+	import Twitter from './Twitter.svelte';
+	import YouTube from './YouTube.svelte';
 
 	import type { Icon } from '$lib/types';
 
@@ -58,6 +64,18 @@
 		<Sun />
 	{:else if name === 'Moon'}
 		<Moon />
+	{:else if name === 'ExternalLink'}
+		<ExternalLink />
+	{:else if name === 'Instagram'}
+		<Instagram />
+	{:else if name === 'LinkedIn'}
+		<LinkedIn />
+	{:else if name === 'YouTube'}
+		<YouTube />
+	{:else if name === 'Twitter'}
+		<Twitter />
+	{:else if name === 'Github'}
+		<Github />
 	{:else}
 		Icon undefined: {name}
 	{/if}
