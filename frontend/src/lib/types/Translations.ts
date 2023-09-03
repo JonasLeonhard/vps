@@ -5,4 +5,5 @@ export interface Translations {
   themeDark: string;
   themeLight: string;
   results: string;
+  currentGitHash: string;
 }

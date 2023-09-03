@@ -7,9 +7,9 @@
 		"node": ">=16.16.0"
 	},
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"start": "HOST=127.0.0.1 PORT=5173 node -r dotenv/config ./build/index.js",
+		"dev": "CURRENT_GIT_HASH=$(git rev-parse HEAD) vite dev",
+		"build": "CURRENT_GIT_HASH=$(git rev-parse HEAD) vite build",
+		"start": "CURRENT_GIT_HASH=$(git rev-parse HEAD) HOST=127.0.0.1 PORT=5173 node -r dotenv/config ./build/index.js",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",

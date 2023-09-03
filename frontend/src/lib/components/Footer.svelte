@@ -65,7 +65,12 @@
 			class="container mx-auto text-gray transition-all duration-300"
 			style={`transform: translateY(${100 - percentageAfter}%);`}
 		>
-			© {new Date().getFullYear()} Jonas Leonhard.
+			© {new Date().getFullYear()} Jonas Leonhard - Build Version:
+			<a
+				class="rounded-2xl bg-nycTaxi p-2 px-4 text-black"
+				href={`https://github.com/JonasLeonhard/vps/commit/${globals.translations.currentGitHash}`}
+				target="_blank">{globals.translations.currentGitHash.slice(0, 7)}</a
+			>
 		</p>
 	</div>
 </footer>
