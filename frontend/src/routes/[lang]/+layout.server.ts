@@ -20,6 +20,7 @@ export const load: LayoutServerLoad<PageData | void> = async ({
 	request,
 	params
 }) => {
+	console.log('layout.server.ts: load', params);
 	const data = (
 		await fetch(`${cms.backendUrl}/api/query`, {
 			method: 'POST',
@@ -28,7 +29,9 @@ export const load: LayoutServerLoad<PageData | void> = async ({
 				select: {
 					...cms.kql.languages,
 					...cms.kql.globals,
-					...cms.kql.getPageBySlug(params.slug || 'home')
+					...cms.kql.getPageBySlug(
+						`${params.slug || 'home'}${params.sslug ? `/${params.sslug}` : ''}`
+					)
 				}
 			})
 		})
