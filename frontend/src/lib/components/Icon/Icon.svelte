@@ -5,6 +5,7 @@
 	import Close from './Close.svelte';
 	import Copied from './Copied.svelte';
 	import Copy from './Copy.svelte';
+	import Error404 from './404.svelte';
 	import ExternalLink from './ExternalLink.svelte';
 	import Github from './Github.svelte';
 	import Instagram from './Instagram.svelte';
@@ -79,6 +80,8 @@
 		<Github />
 	{:else if name === 'Users'}
 		<Users />
+	{:else if name === '404'}
+		<Error404 />
 	{:else}
 		Icon undefined: {name}
 	{/if}

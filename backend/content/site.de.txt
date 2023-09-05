@@ -107,6 +107,10 @@ Results: Ergebnisse
 
 ----
 
+Noresults: Keine Ergebnisse gefunden
+
+----
+
 Meta-title: 
 
 ----

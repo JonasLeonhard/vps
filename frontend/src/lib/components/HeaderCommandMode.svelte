@@ -121,6 +121,13 @@
 						</a>
 					</li>
 				{/each}
+
+				{#if !results.length}
+					<div class="flex gap-1">
+						<Icon name="404" />
+						<span class="font-pixel">- {globals.translations.noResults}</span>
+					</div>
+				{/if}
 			</ul>
 		{/if}
 	</div>

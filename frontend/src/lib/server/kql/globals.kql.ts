@@ -17,7 +17,8 @@ const globals = {
 					theme: 'site.theme',
 					themeLight: 'site.themeLight',
 					themeDark: 'site.themeDark',
-					results: 'site.results'
+					results: 'site.results',
+					noResults: 'site.noResults'
 				}
 			}
 		}

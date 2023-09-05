@@ -1,4 +1,5 @@
 export type Icon =
+  | '404'
   | 'Article'
   | 'Branch'
   | 'Brightness'

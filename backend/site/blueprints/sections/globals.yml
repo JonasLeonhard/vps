@@ -67,3 +67,6 @@ fields:
   results:
     label: Results
     type: text
+  noResults:
+    label: NoResults
+    type: text

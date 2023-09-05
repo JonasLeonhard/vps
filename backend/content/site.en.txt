@@ -107,6 +107,10 @@ Results: Results
 
 ----
 
+Noresults: No Results found
+
+----
+
 Meta-title: Default Seo Title test
 
 ----
