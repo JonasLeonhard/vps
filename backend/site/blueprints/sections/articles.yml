@@ -4,8 +4,10 @@ label: Articles
 parent: kirby.page("blog")
 info: "{{ page.published.toDate('d.m.Y') }}"
 
-template: article
-create: article
+template:
+  - article
+create:
+  - article
 
 empty: No articles yet
 

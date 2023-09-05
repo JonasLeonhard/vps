@@ -3,8 +3,9 @@
 	import Dialog from '$lib/components/Dialog.svelte';
 	import Richtext from '$lib/components/Richtext.svelte';
 	import { spring } from 'svelte/motion';
+	import debounce from 'lodash.debounce';
 
-	import type { Language, Globals } from '$lib/types';
+	import type { Language, Globals, DefaultPage } from '$lib/types';
 
 	export let globals: Globals;
 	export let currentLanguage: Language;
@@ -12,6 +13,12 @@
 	let isOpen = false;
 	let mouseOver = false;
 	let search = '';
+	let results: DefaultPage[] = [];
+
+	$: mouseOverClasses =
+		mouseOver || isOpen
+			? 'z-10 animate-borderGradient bg-gradient-to-r from-primary via-secondary to-tertiary bg-[length:400%_400%] [animation-duration:4s] scale-110 transition-[bg-gradient-to-r]'
+			: '';
 
 	const closeDialog = () => {
 		isOpen = false;
@@ -26,10 +33,9 @@
 		}
 	);
 
-	$: mouseOverClasses =
-		mouseOver || isOpen
-			? 'z-10 animate-borderGradient bg-gradient-to-r from-primary via-secondary to-tertiary bg-[length:400%_400%] [animation-duration:4s] scale-110 transition-[bg-gradient-to-r]'
-			: '';
+	const handleSearch = debounce(async () => {
+		if (search) results = await fetch(`/api/search/${search}`).then((res) => res.json());
+	}, 300);
 </script>
 
 <Icon
@@ -57,10 +63,16 @@
 <Dialog bind:open={isOpen} onClose={closeDialog}>
 	<div class="flex min-w-[35vw] flex-col">
 		<div class="relative p-4">
-			<input placeholder="WIP SEARCH FOR ARTICLES" bind:value={search} class="bg-primary/0" />
+			<input
+				placeholder="WIP SEARCH FOR ARTICLES"
+				bind:value={search}
+				on:keyup={handleSearch}
+				class="bg-primary/0"
+			/>
 			{#if search}
 				<div class="absolute right-6 top-[50%] -translate-y-[50%]">
-					{globals.translations.results || 'Results'}: <span class="text-secondary">1</span>
+					{globals.translations.results || 'Results'}:
+					<span class="text-secondary">{results.length}</span>
 				</div>
 			{/if}
 		</div>
@@ -95,18 +107,20 @@
 			</div>
 		{:else}
 			<ul class="mb-4 flex flex-col gap-3 px-2">
-				<li>
-					<a
-						class="duration-400 flex w-full cursor-pointer gap-2 rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
-						data-sveltekit-preload-data
-						href="/"
-						on:click={closeDialog}
-						on:keypress={closeDialog}
-					>
-						<Icon name="Article" />
-						article result wip
-					</a>
-				</li>
+				{#each results as result}
+					<li>
+						<a
+							class="duration-400 flex w-full cursor-pointer gap-2 rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
+							data-sveltekit-preload-data
+							href={result.url}
+							on:click={closeDialog}
+							on:keypress={closeDialog}
+						>
+							<Icon name={result.intendedTemplate === 'project' ? 'Users' : 'Article'} />
+							{result.title}
+						</a>
+					</li>
+				{/each}
 			</ul>
 		{/if}
 	</div>

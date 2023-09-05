@@ -16,6 +16,7 @@
 	import Sun from './Sun.svelte';
 	import Terminal from './Terminal.svelte';
 	import Twitter from './Twitter.svelte';
+	import Users from './Users.svelte';
 	import YouTube from './YouTube.svelte';
 
 	import type { Icon } from '$lib/types';
@@ -76,6 +77,8 @@
 		<Twitter />
 	{:else if name === 'Github'}
 		<Github />
+	{:else if name === 'Users'}
+		<Users />
 	{:else}
 		Icon undefined: {name}
 	{/if}

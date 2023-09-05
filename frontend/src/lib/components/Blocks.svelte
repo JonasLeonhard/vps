@@ -5,7 +5,7 @@
 	import Details from '$lib/components/Details.svelte';
 	import Richtext from '$lib/components/Richtext.svelte';
 
-	export let blocks: ContentBlock[];
+	export let blocks: ContentBlock[] = [];
 </script>
 
 <ul class="container mx-auto my-4">

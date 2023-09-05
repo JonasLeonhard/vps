@@ -21,7 +21,6 @@ tabs:
             extends: sections/articles
             label: Published
             status: listed
-            search: true
             limit: 30
 
       - width: 1/3

@@ -44,6 +44,7 @@
 		"vite": "^4.3.9"
 	},
 	"dependencies": {
+		"lodash.debounce": "^4.0.8",
 		"shiki": "^0.14.2"
 	}
 }

@@ -13,4 +13,6 @@ export interface DefaultPage {
 		cover: string;
 	};
 	seo: Seo;
+	url: string;
+	intendedTemplate: string;
 }

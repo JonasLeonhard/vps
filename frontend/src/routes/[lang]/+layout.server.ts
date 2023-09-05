@@ -14,7 +14,12 @@ type PageData = {
 	path?: string;
 };
 
-export const load: LayoutServerLoad<PageData> = async ({ cookies, fetch, request, params }) => {
+export const load: LayoutServerLoad<PageData | void> = async ({
+	cookies,
+	fetch,
+	request,
+	params
+}) => {
 	const data = (
 		await fetch(`${cms.backendUrl}/api/query`, {
 			method: 'POST',
@@ -30,6 +35,11 @@ export const load: LayoutServerLoad<PageData> = async ({ cookies, fetch, request
 			.then((res) => res.json())
 			.catch((err) => console.error(err))
 	)?.result;
+
+	// is the page published?
+	if (!data.page) {
+		return;
+	}
 
 	const languages: Language[] = data?.languages ? Object.values(JSON.parse(data?.languages)) : [];
 	const defaultLanguage = cms.getDefaultLanguage(languages);
@@ -49,10 +59,12 @@ export const load: LayoutServerLoad<PageData> = async ({ cookies, fetch, request
 	const page = { ...data?.page, seo: data?.pageSeo } as DefaultPage;
 
 	// transform pageblocks: prerender code blocks with shiki
-	for (const [index, block] of page.blocks.entries()) {
-		if (block.type === 'code') {
-			const rendered = await codeToHtml(block.content.language, block.content.code);
-			page.blocks[index].content.rendered = rendered;
+	if (page?.blocks?.entries) {
+		for (const [index, block] of page.blocks.entries()) {
+			if (block.type === 'code') {
+				const rendered = await codeToHtml(block.content.language, block.content.code);
+				page.blocks[index].content.rendered = rendered;
+			}
 		}
 	}
 
