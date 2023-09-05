@@ -3,7 +3,7 @@ title: File
 fields:
   caption:
     label: Caption
-    type: markdown
+    type: writer
     width: 1/2
     inline: true
   copyright:

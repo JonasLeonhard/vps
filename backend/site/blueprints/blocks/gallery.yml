@@ -8,6 +8,6 @@ fields:
     multiple: true
   caption:
     label: Caption
-    type: markdown
+    type: writer
     icon: text
     inline: true
