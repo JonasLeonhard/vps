@@ -1,6 +1,6 @@
 import getSeo from './getSeo.kql';
 
-const globals = {
+const globals = (lang: string) => ({
 	globals: {
 		query: 'site',
 		select: {
@@ -9,21 +9,11 @@ const globals = {
 			metaNavigation: 'site.metaNavigation.toNavigationArray',
 			socialMedia: 'site.socialMedia.toData("yaml")',
 			translations: {
-				query: 'site',
-				select: {
-					footerText: 'site.footerText',
-					navigationLabel: 'site.navigationLabel',
-					language: 'site.language',
-					theme: 'site.theme',
-					themeLight: 'site.themeLight',
-					themeDark: 'site.themeDark',
-					results: 'site.results',
-					noResults: 'site.noResults'
-				}
+				query: `kirby.language('${lang}').translations`
 			}
 		}
 	},
 	...getSeo()
-};
+});
 
 export default globals;

@@ -20,7 +20,6 @@ export const load: LayoutServerLoad<PageData | void> = async ({
 	request,
 	params
 }) => {
-	console.log('layout.server.ts: load', params);
 	const data = (
 		await fetch(`${cms.backendUrl}/api/query`, {
 			method: 'POST',
@@ -28,7 +27,7 @@ export const load: LayoutServerLoad<PageData | void> = async ({
 			body: JSON.stringify({
 				select: {
 					...cms.kql.languages,
-					...cms.kql.globals,
+					...cms.kql.globals(params.lang),
 					...cms.kql.getPageBySlug(
 						`${params.slug || 'home'}${params.sslug ? `/${params.sslug}` : ''}`
 					)
@@ -38,6 +37,8 @@ export const load: LayoutServerLoad<PageData | void> = async ({
 			.then((res) => res.json())
 			.catch((err) => console.error(err))
 	)?.result;
+
+	console.log('data', data);
 
 	// is the page published?
 	if (!data.page) {

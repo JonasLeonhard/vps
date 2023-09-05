@@ -83,34 +83,6 @@ Socialmedia:
 
 ----
 
-Navigationlabel: Navigation
-
-----
-
-Language: Sprache
-
-----
-
-Theme: Theme
-
-----
-
-Themelight: Hell
-
-----
-
-Themedark: Dunkel
-
-----
-
-Results: Ergebnisse
-
-----
-
-Noresults: Keine Ergebnisse gefunden
-
-----
-
 Meta-title: 
 
 ----

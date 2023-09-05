@@ -13,7 +13,7 @@
 	description={pageSeo?.metaDescription || globalsSeo?.metaDescription}
 	canonical={pageSeo?.metaCanonicalUrl}
 	openGraph={{
-		type: pageSeo?.ogType || globalsSeo?.ogType,
+		type: pageSeo?.ogType || globalsSeo?.ogType || 'website',
 		title: pageSeo?.ogTitle || globalsSeo?.ogTitle || pageSeo?.metaImage || globalsSeo?.metaImage,
 		description: pageSeo?.ogDescription || globalsSeo?.ogDescription,
 		images: [

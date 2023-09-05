@@ -3,7 +3,12 @@ const getSearch = (query: string, templates = "['article', 'project']") => {
 		search: {
 			query: `site.search('${query}').filterBy('intendedTemplate', 'in', ${templates})`,
 			select: {
-				result: 'page'
+				title: 'page.title.toString',
+				id: 'page.id',
+				status: 'page.status',
+				slug: 'page.slug',
+				url: 'page.url',
+				intendedTemplate: 'page.intendedTemplate'
 			}
 		}
 	};

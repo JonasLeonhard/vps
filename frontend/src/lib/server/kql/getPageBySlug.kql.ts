@@ -5,7 +5,7 @@ const getPageBySlug = (slug: string) => ({
 		query: `page('${slug}')`,
 		select: {
 			id: 'page.id',
-			title: 'page.title',
+			title: 'page.title.toString',
 			status: 'page.status',
 			slug: 'page.slug',
 			blocks: 'page.content.blocks.toBlocks',

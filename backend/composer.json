@@ -24,20 +24,23 @@
     "forum": "https://forum.getkirby.com",
     "source": "https://github.com/getkirby/starterkit"
   },
+  "minimum-stability": "dev",
   "require": {
-    "php": ">=7.1.0",
-    "getkirby/cms": "^3.0",
+    "php": ">=8.2.8",
+    "getkirby/cms": "^4.0",
     "vlucas/phpdotenv": "^5.5",
-    "oblik/kirby-git": "^1.4",
     "belugadigital/kirby-navigation": "^3.0",
     "getkirby/kql": "^2.0",
     "diesdasdigital/kirby-meta-knight": "^1.2",
     "jg/kirby-fields-block": "^1.2"
   },
+  "extra": {
+    "kirby-cms-path": false
+  },
   "scripts": {
     "start": [
       "Composer\\Config::disableProcessTimeout",
-      "@php -S 127.0.0.1:8000 kirby/router.php"
+      "@php -S 127.0.0.1:8000 vendor/getkirby/cms/router.php"
     ],
     "kirby": "$(composer -n config --global home)/vendor/bin/kirby"
   },

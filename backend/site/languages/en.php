@@ -9,7 +9,13 @@ return [
     ],
     'name' => 'English',
     'translations' => [
-
+        'navigationLabel' => 'Navigation',
+        'languageSwitch' => 'Language',
+        'theme' => 'Theme',
+        'themeLight' => 'Light',
+        'themeDark' => 'Dark',
+        'results' => 'Results',
+        'noResults' => 'No Results'
     ],
     'url' => NULL
 ];

@@ -83,34 +83,6 @@ Socialmedia:
 
 ----
 
-Navigationlabel: Navigation
-
-----
-
-Language: Language
-
-----
-
-Theme: Theme
-
-----
-
-Themelight: Light
-
-----
-
-Themedark: Dark
-
-----
-
-Results: Results
-
-----
-
-Noresults: No Results found
-
-----
-
 Meta-title: Default Seo Title test
 
 ----

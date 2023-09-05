@@ -52,6 +52,7 @@
 
 				<br />
 				<div class="flex flex-wrap gap-4">
+					{console.log(globals.socialMedia)}
 					{#each globals.socialMedia as socialMedia}
 						<a
 							href={socialMedia.url}

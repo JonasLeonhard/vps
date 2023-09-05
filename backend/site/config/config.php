@@ -31,15 +31,27 @@ return [
     ]
   ],
   'home' => 'admin-panel',
-  'oblik.git.repo' => '..', # path to .git
-  'oblik.git.merge' => 'master',
-  'oblik.git.log' => './kirby-git.log',
   'kql' => [
     'methods' => [
       'allowed' => [
         'Kirby\\Cms\\Languages::toJson',
-        'Kirby\\Cms\\App::meta_information'
+        'Kirby\\Cms\\App::meta_information',
+        'Kirby\\Cms\\Languages::de',
+        'Kirby\\Cms\\App::kirby.languages'
+      ]
+    ],
+    'classes' => [
+      'allowed' => [
+        'Kirby\\Content\\Content',
+        'Kirby\\Content\\Field',
+        'Kirby\\Cms\\Language'
       ]
     ]
+  ],
+  'panel' => [
+    'install' => true
+  ],
+  'auth' => [
+    'debug' => $_ENV['isLocal'] === 'true',
   ]
 ];

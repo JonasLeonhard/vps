@@ -2,10 +2,6 @@ Title: Blog
 
 ----
 
-Related: - page://WX5rsLdS3s2Wy3xY
-
-----
-
 Blocks: [{"content":{"items":[{"summary":"Summary","details":"Test Deails <strong>bold <em><u><s>all<\/s><\/u><\/em><\/strong>","icon":"Settings"},{"summary":"summary2","details":"details2","icon":""}]},"id":"dd26cafa-c5f6-4334-ad2a-6c35572b2090","isHidden":false,"type":"accordion"},{"content":{"summary":"Summary","details":"<h1>details<br><strong>bold<br><\/strong><em>italic<br><u>underline<\/u><\/em><\/h1>"},"id":"3f7998af-8d8b-48b4-a0fd-becb49dd5003","isHidden":false,"type":"details"},{"content":{"filename":"filename","highlightedlines":[{"linenr":1},{"linenr":2},{"linenr":4}],"startinglinenumber":3,"code":"import adapter from '@sveltejs\/adapter-node';\nimport { vitePreprocess } from '@sveltejs\/kit\/vite';\nimport preprocess from 'svelte-preprocess';\n\n\/** @type {import('@sveltejs\/kit').Config} *\/\nconst config = {\n\t\/\/ Consult https:\/\/kit.svelte.dev\/docs\/integrations#preprocessors\n\t\/\/ for more information about preprocessors\n\tpreprocess: [\n\t\tvitePreprocess(),\n\t\tpreprocess({\n\t\t\tpostcss: true\n\t\t})\n\t],\n\n\tkit: {\n\t\tadapter: adapter(),\n\t\t\/\/ aliases have to be added to tsconfig.json\n\t\talias: {\n\t\t\t$src: '.\/src'\n\t\t}\n\t}\n};\n\nexport default config;","language":"javascript"},"id":"38b5ab75-7746-4e1f-b7df-0ba8e7e37c28","isHidden":false,"type":"code"},{"content":{"text":"<h1>H1<\/h1><h2>H2<\/h2><h3>H3<\/h3><h4>H4<\/h4><h5>H5<\/h5><h6>H6<\/h6><ul><li><p>bulletlist<\/p><\/li><li><p>bulletlist2<\/p><\/li><\/ul><ol><li><p>ordered list<\/p><\/li><li><p>orderedlist 2<\/p><\/li><\/ol><p>This is a markdown richtext module<br><strong>bold<\/strong><br><em>italic<br>italic <u>underline<br><\/u><\/em><s>strikethrough<br><\/s><code>code here<\/code><em><br><\/em><a href=\"www.duckduckgo.com\" target=\"_blank\" title=\"link\" rel=\"noopener noreferrer\">link<\/a><em><br><a href=\"mailto:test@mail.com\" title=\"mailto:link\">mailtolink<\/a><\/em><\/p>"},"id":"6c5268a4-fb9a-408c-ac5e-dc6543871e92","isHidden":false,"type":"richtext"}]
 
 ----
@@ -22,7 +18,11 @@ Created:
 
 ----
 
-Tags: 
+Tags: blog
+
+----
+
+Related: - page://WX5rsLdS3s2Wy3xY
 
 ----
 

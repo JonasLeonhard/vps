@@ -16,5 +16,5 @@ export async function GET({ cookies, params }) {
       .catch((err) => console.error(err))
   )?.result;
 
-  return json(data?.search?.map((item) => item.result) || []);
+  return json(data?.search || []);
 }

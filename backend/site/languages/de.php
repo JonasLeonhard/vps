@@ -9,7 +9,13 @@ return [
     ],
     'name' => 'German',
     'translations' => [
-
+        'languageSwitch' => 'Sprache',
+        'navigationLabel' => 'Navigation',
+        'noResults' => 'Keine Ergebnisse',
+        'results' => 'Ergebnisse',
+        'theme' => 'Theme',
+        'themeDark' => 'Dunkel',
+        'themeLight' => 'Hell'
     ],
     'url' => NULL
 ];
