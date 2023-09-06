@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# fnm
 export PATH="/home/ubuntu/.local/share/fnm:$PATH"
 eval "$(fnm env)"
 fnm use 20.5.1
@@ -10,7 +11,9 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
+
+# brew
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
 # Setup (workdir + update repo)
 cd /var/www/html/vps
