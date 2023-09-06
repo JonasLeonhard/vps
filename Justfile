@@ -13,7 +13,7 @@ start:
 
 # install composer and pnpm packages, copy example env files, install global kirby cli
 install:
-	[{ just backend-install }, { just frontend-install }, { kirby-cli-install }] | par-each { |c| do $c }
+	[{ just backend-install }, { just frontend-install }, { just kirby-cli-install }] | par-each { |c| do $c }
 
 # start frontend dev:server
 frontend-dev:
