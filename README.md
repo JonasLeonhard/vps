@@ -55,11 +55,11 @@ UNDER CONSTRUCTION 🚧
 ## Setup
 
 🚧
-[Make] To run this locally project using make
+[Just] To run this locally project using <a href="https://github.com/casey/just">just</a>
 
 ```bash
-$ make install # install yarn & composer dependencies
-$ make dev # start svelte-kit & cms on 127.0.0.1:5173 && 127.0.0.1:8000
+$ just install # install yarn & composer dependencies
+$ just dev # start svelte-kit & cms on 127.0.0.1:5173 && 127.0.0.1:8000
 ```
 
 ## Known Issues

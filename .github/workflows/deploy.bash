@@ -29,4 +29,4 @@ pnpm run build
 
 # Deploy (Restart with pm2)
 cd /var/www/html/vps
-make pm2-restart
+just pm2-restart
