@@ -8,7 +8,7 @@ const getPageBySlug = (slug: string) => ({
 			title: 'page.title.toString',
 			status: 'page.status',
 			slug: 'page.slug',
-			blocks: 'page.content.blocks.toBlocks',
+			blocks: 'page.blocks.toBlocks',
 			content: 'page.content'
 		}
 	},

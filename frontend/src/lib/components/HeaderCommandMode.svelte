@@ -36,6 +36,25 @@
 	const handleSearch = debounce(async () => {
 		if (search) results = await fetch(`/api/search/${search}`).then((res) => res.json());
 	}, 300);
+
+	const getResultMatch = (result: DefaultPage) => {
+		const matchData: Set<string> = new Set();
+
+		const markSearchText = (text: string) => {
+			if (text.includes(search))
+				matchData.add(text.replace(new RegExp(search, 'g'), `<mark>${search}</mark>`));
+		};
+
+		markSearchText(result.title);
+
+		result.blocks.forEach((block) => {
+			if (block.type === 'heading') {
+				markSearchText(block.content.text);
+			}
+		});
+
+		return Array.from(matchData);
+	};
 </script>
 
 <Icon
@@ -110,14 +129,19 @@
 				{#each results as result}
 					<li>
 						<a
-							class="duration-400 flex w-full cursor-pointer gap-2 rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
+							class="duration-400 flex w-full cursor-pointer flex-col gap-2 rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
 							data-sveltekit-preload-data
 							href={result.url}
 							on:click={closeDialog}
 							on:keypress={closeDialog}
 						>
-							<Icon name={result.intendedTemplate === 'project' ? 'Users' : 'Article'} />
-							{result.title}
+							<div class="flex gap-2">
+								<Icon name={result.intendedTemplate === 'project' ? 'Users' : 'Article'} />
+								<span>{result.title}</span>
+							</div>
+							{#each getResultMatch(result) as matchText}
+								<div>{@html matchText}</div>
+							{/each}
 						</a>
 					</li>
 				{/each}

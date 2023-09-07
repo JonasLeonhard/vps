@@ -2,7 +2,7 @@ Title: blogarticle
 
 ----
 
-Blocks: [{"content":{"level":"h2","text":"blogarticle test"},"id":"15aab9bc-c1eb-4239-9f82-77654ece4bf6","isHidden":false,"type":"heading"}]
+Blocks: [{"content":{"level":"h2","text":"heading2"},"id":"15aab9bc-c1eb-4239-9f82-77654ece4bf6","isHidden":false,"type":"heading"}]
 
 ----
 
