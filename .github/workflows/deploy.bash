@@ -12,6 +12,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# bun
+export BUN_INSTALL = "$HOME/.bun"
+export PATH = "$BUN_INSTALL/bin:$PATH"
+
 # brew
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
