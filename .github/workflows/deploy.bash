@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# fnm
+export PATH="/home/ubuntu/.local/share/fnm:$PATH"
+eval "$(fnm env)"
+fnm use 20.5.1
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
