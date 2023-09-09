@@ -1,17 +1,5 @@
 #!/bin/bash
 
-# fnm
-export PATH="/home/ubuntu/.local/share/fnm:$PATH"
-eval "$(fnm env)"
-fnm use 20.5.1
-
-# pnpm
-export PNPM_HOME="/home/ubuntu/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
