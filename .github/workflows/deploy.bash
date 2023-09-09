@@ -19,8 +19,8 @@ composer install
 
 # Frontend (build)
 cd /var/www/html/vps/frontend
-pnpm i
-pnpm run build
+bun install
+bun run build
 
 # Deploy (Restart with pm2)
 cd /var/www/html/vps
