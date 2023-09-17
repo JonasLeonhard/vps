@@ -16,13 +16,13 @@ npm create svelte@latest my-app
 
 ## Developing
 
-Once you've created a project and installed dependencies with `bun install`
+Once you've created a project and installed dependencies with `pnpm install`
 
 ```bash
-bun run dev
+pnpm run dev
 
 # or start the server and open the app in a new browser tab
-bun run dev -- --open
+pnpm run dev -- --open
 ```
 
 ## Building
@@ -30,7 +30,7 @@ bun run dev -- --open
 To create a production version of your app:
 
 ```bash
-bun run build
+pnpm run build
 ```
 
 You can preview the production build with `npm run preview`.

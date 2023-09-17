@@ -11,21 +11,21 @@ dev:
 start:
 	[{ just backend-start }, { just frontend-start }] | par-each { |c| do $c }
 
-# install composer and jspackages, copy example env files, install global kirby cli
+# install composer and pnpm packages, copy example env files, install global kirby cli
 install:
 	[{ just backend-install }, { just frontend-install }, { just kirby-cli-install }] | par-each { |c| do $c }
 
 # start frontend dev:server
 frontend-dev:
-	@cd frontend; bun run dev
+	@cd frontend; pnpm run dev
 
 # start frontend server
 frontend-start:
-	@cd frontend; bun run start
+	@cd frontend; pnpm run start
 
-# install frontend jspackages, copy example env
+# install frontend pnpm packages, copy example env
 frontend-install:
-	@cd frontend; bun install; cp .env.example .env
+	@cd frontend; pnpm i; cp .env.example .env
 
 # start backend dev:server
 backend-dev:
