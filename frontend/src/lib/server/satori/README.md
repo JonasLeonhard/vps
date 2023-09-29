@@ -21,8 +21,6 @@ export default config;
 Create a Endpoint where your png image should be rendered. Here in routes/api/og/+server.ts
 
 ```typescript
-export const prerender = true;
-
 import { OgImage } from '$lib/components';
 import renderComponentToPng from '$lib/server/satori/renderComponentToPng';
 

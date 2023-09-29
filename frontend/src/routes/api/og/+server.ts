@@ -1,5 +1,3 @@
-export const prerender = true;
-
 import { OgImage } from '$lib/components';
 import renderComponentToPng from '$lib/server/satori/renderComponentToPng';
 
