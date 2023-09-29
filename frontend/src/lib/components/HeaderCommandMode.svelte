@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Icon from '$lib/components/Icon/Icon.svelte';
-	import Dialog from '$lib/components/Dialog.svelte';
-	import Richtext from '$lib/components/Richtext.svelte';
+	import { Icon, Dialog, Richtext } from '$lib/components';
 	import { spring } from 'svelte/motion';
 	import debounce from 'lodash.debounce';
 

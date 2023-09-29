@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 import codeToHtml from '$lib/server/shiki';
 import { CURRENT_GIT_HASH } from '$env/static/private';
 
-import type { Globals, Language, DefaultPage } from '$lib/types/index';
+import type { Globals, Language, DefaultPage } from '$lib/types';
 import type { LayoutServerLoad } from './$types';
 
 type PageData = {

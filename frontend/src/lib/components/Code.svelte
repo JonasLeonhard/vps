@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from '$lib/components/Icon/Icon.svelte';
+	import { Icon } from '$lib/components';
 
 	export let language = 'typescript';
 	export let filename: string | undefined;

@@ -1,9 +1,5 @@
 <script lang="ts">
-	import Header from '$lib/components/Header.svelte';
-	import Footer from '$lib/components/Footer.svelte';
-	import Seo from '$lib/components/Seo.svelte';
-	import PageTransition from '$lib/components/PageTransition.svelte';
-
+	import { Header, Footer, Seo, PageTransition } from '$lib/components';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

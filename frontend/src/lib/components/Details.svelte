@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Richtext from '$lib/components/Richtext.svelte';
+	import { Richtext } from '$lib/components';
 
 	export let summary: string;
 	export let details: string;

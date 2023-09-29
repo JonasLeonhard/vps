@@ -1,9 +1,5 @@
 <script lang="ts">
-	import Dialog from '$lib/components/Dialog.svelte';
-	import Icon from '$lib/components/Icon/Icon.svelte';
-	import LanguageSelect from '$lib/components/LanguageSelect.svelte';
-	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
-	import Richtext from '$lib/components/Richtext.svelte';
+	import { Dialog, Icon, LanguageSelect, ThemeToggle, Richtext } from '$lib/components';
 	import { spring } from 'svelte/motion';
 
 	import type { Globals, Language } from '$lib/types';

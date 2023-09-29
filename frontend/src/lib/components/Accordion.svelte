@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Richtext from '$lib/components/Richtext.svelte';
+	import { Richtext } from '$lib/components';
 
 	interface AccordionItem {
 		summary: string;

@@ -1,10 +1,10 @@
 <script lang="ts">
-	// TODO: https://github.com/skeletonlabs/skeleton/blob/dev/src/lib/components/SlideToggle/SlideToggle.svelte
 	import { createEventDispatcher } from 'svelte/internal';
 	import { scale } from 'svelte/transition';
-	import Icon from '$lib/components/Icon/Icon.svelte';
+	import { Icon } from '$lib/components';
 
 	import type { Icon as IconType } from '$lib/types';
+
 	const dispatch = createEventDispatcher();
 
 	export let name: string;

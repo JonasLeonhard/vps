@@ -1,9 +1,6 @@
 <script lang="ts">
+	import { Accordion, Code, Details, Richtext } from '$lib/components';
 	import type { ContentBlock } from '$lib/types';
-	import Accordion from '$lib/components/Accordion.svelte';
-	import Code from '$lib/components/Code.svelte';
-	import Details from '$lib/components/Details.svelte';
-	import Richtext from '$lib/components/Richtext.svelte';
 
 	export let blocks: ContentBlock[] = [];
 </script>

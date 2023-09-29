@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SlideToggle from '$lib/components/SlideToggle.svelte';
+	import { SlideToggle } from '$lib/components';
 	import { theme } from '$lib/stores/theme';
 	import type { Globals } from '$lib/types';
 

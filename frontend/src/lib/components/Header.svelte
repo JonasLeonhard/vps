@@ -1,10 +1,6 @@
 <script lang="ts">
-	import HeaderCommandMode from '$lib/components/HeaderCommandMode.svelte';
-	import HeaderSettings from '$lib/components/HeaderSettings.svelte';
-	import Headroom from '$lib/components/Headroom.svelte';
-
+	import { HeaderCommandMode, HeaderSettings, Headroom, Icon } from '$lib/components';
 	import type { Language, Globals } from '$lib/types';
-	import Icon from './Icon/Icon.svelte';
 
 	export let currentLanguage: Language;
 	export let globals: Globals;

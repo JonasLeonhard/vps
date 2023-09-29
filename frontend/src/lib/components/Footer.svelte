@@ -1,9 +1,7 @@
 <script lang="ts">
+	import { Icon, GameOfLife } from '$lib/components';
+	import { getPercentageOfElementVisible, getPercentageOfViewport } from '$lib/utils';
 	import type { Globals } from '$lib/types';
-	import GameOfLife from '$lib/components/GameOfLife.svelte';
-	import Icon from '$lib/components/Icon/Icon.svelte';
-	import getPercentageOfViewport from '$lib/utils/getPercentageOfViewport';
-	import getPercentageOfElementVisible from '$lib/utils/getPercentageOfElementVisible';
 
 	export let globals: Globals;
 

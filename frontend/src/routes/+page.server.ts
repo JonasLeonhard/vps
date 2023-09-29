@@ -1,12 +1,36 @@
 import cms from '$lib/server/cms';
 import { redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
+import type { Language } from '$lib/types';
 
 /**
- * Permanently redirect all request to '/' to the set cookie language.
+ * Permanently redirect all request to '/' to the set cookie language, then the preferedBrowserLanguage, then en
  */
-export const load: PageServerLoad = async ({ cookies }) => {
-	throw redirect(303, `/${cookies.get('lang')}`);
+export const load: PageServerLoad = async ({ cookies, request }) => {
+	const cookieLang = cookies.get('lang');
+
+	if (cookieLang) {
+		throw redirect(303, `/${cookies.get('lang')}`);
+	}
+
+	const data = (
+		await fetch(`${cms.backendUrl}/api/query`, {
+			method: 'POST',
+			headers: cms.getHeaders('en'),
+			body: JSON.stringify({
+				select: {
+					...cms.kql.languages
+				}
+			})
+		})
+			.then((res) => res.json())
+			.catch((err) => console.error(err))
+	)?.result;
+
+	const languages: Language[] = data?.languages ? Object.values(JSON.parse(data?.languages)) : [];
+	const preferedBrowserLanguage = cms.getPreferedBrowserLanguage(languages, request.headers);
+
+	throw redirect(303, `/${preferedBrowserLanguage?.code || 'en'}`);
 };
 
 export const actions: Actions = {
