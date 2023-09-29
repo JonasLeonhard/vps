@@ -18,7 +18,12 @@
 		description: pageSeo?.ogDescription || globalsSeo?.ogDescription,
 		images: [
 			{
-				url: pageSeo?.ogImage || globalsSeo?.ogImage || pageSeo?.metaImage || globalsSeo?.metaImage
+				url:
+					pageSeo?.ogImage ||
+					globalsSeo?.ogImage ||
+					pageSeo?.metaImage ||
+					globalsSeo?.metaImage ||
+					`/api/og?headline=${pageTitle}&subline=Blog`
 			}
 		],
 		article: {
@@ -42,7 +47,10 @@
 		cardType: pageSeo?.twitterCardType || globalsSeo?.twitterCardType,
 		title: pageSeo?.twitterTitle || globalsSeo?.twitterTitle,
 		description: pageSeo?.twitterDescription || globalsSeo?.twitterDescription,
-		image: pageSeo?.twitterImage || globalsSeo?.twitterImage,
+		image:
+			pageSeo?.twitterImage ||
+			globalsSeo?.twitterImage ||
+			`/api/og?headline=${pageTitle}&subline=Blog`,
 		handle: pageSeo?.twitterCreator || globalsSeo?.twitterCreator,
 		site: pageSeo?.twitterSite || globalsSeo?.twitterSite
 	}}

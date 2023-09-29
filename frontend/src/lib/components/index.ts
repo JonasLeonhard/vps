@@ -11,6 +11,7 @@ import HeaderSettings from './HeaderSettings.svelte';
 import Headroom from './Headroom.svelte';
 import Icon from './Icon/Icon.svelte';
 import LanguageSelect from './LanguageSelect.svelte';
+import OgImage from './OgImage.svelte';
 import PageTransition from './PageTransition.svelte';
 import Richtext from './Richtext.svelte';
 import Seo from './Seo.svelte';
@@ -31,6 +32,7 @@ export {
   Headroom,
   Icon,
   LanguageSelect,
+  OgImage,
   PageTransition,
   Richtext,
   Seo,
