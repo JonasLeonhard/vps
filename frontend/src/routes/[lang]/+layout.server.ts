@@ -38,10 +38,8 @@ export const load: LayoutServerLoad<PageData | void> = async ({
 			.catch((err) => console.error(err))
 	)?.result;
 
-	console.log('data', data);
-
 	// is the page published?
-	if (!data.page) {
+	if (!data?.page) {
 		return;
 	}
 
