@@ -1,8 +1,12 @@
 import satori from 'satori';
-import { Resvg } from '@resvg/resvg-js';
 import { html as toReactNode } from 'satori-html';
-
+import { svg2png, initialize } from 'svg2png-wasm';
 import type { SvelteComponent } from 'svelte';
+import { readFileSync } from 'fs';
+
+await initialize(readFileSync('./node_modules/svg2png-wasm/svg2png_wasm_bg.wasm')).catch(
+	(e: string) => console.error(e)
+);
 
 export default async function renderComponentToPng(options: {
 	component: SvelteComponent;
@@ -20,16 +24,13 @@ export default async function renderComponentToPng(options: {
 		width: +width
 	});
 
-	const resvg = new Resvg(svg, {
-		fitTo: {
-			mode: 'width',
-			value: +width
-		}
+	const png = await svg2png(svg, {
+		width: +width,
+		height: +height,
+		fonts
 	});
 
-	const png = resvg.render();
-
-	return new Response(png.asPng(), {
+	return new Response(png, {
 		headers: {
 			'content-type': 'image/png'
 		}
