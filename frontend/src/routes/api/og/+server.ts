@@ -13,8 +13,8 @@ export const GET: RequestHandler = async ({ url }) => {
 			headline: url.searchParams.get('headline') || 'Jonasleonhard.de',
 			subline: url.searchParams.get('subline')
 		},
-		height: +(url.searchParams.get('width') || 1200),
-		width: +(url.searchParams.get('height') || 600),
+		width: +(url.searchParams.get('height') || 1200),
+		height: +(url.searchParams.get('width') || 600),
 		fonts: [
 			{
 				name: 'Inter-Var',
