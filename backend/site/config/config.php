@@ -19,7 +19,7 @@ return [
   'debug' => $_ENV['isLocal'] === 'true',
   'api' => [
     'basicAuth' => true,
-    'allowInsecure' => $_ENV['isLocal'] === 'true'
+    'allowInsecure' => true
   ],
   'url' => '/',
   'languages' => [
