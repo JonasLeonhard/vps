@@ -1,4 +1,5 @@
 import cms from '$lib/server/cms';
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import { redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import type { Language } from '$lib/types';
@@ -14,7 +15,7 @@ export const load: PageServerLoad = async ({ cookies, request }) => {
 	}
 
 	const data = (
-		await fetch(`${cms.backendUrl}/api/query`, {
+		await fetch(`${PUBLIC_BACKEND_URL}/api/query`, {
 			method: 'POST',
 			headers: cms.getHeaders('en'),
 			body: JSON.stringify({

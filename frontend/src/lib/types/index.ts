@@ -2,6 +2,7 @@ import type { ContentBlock } from './ContentBlock';
 import type { DefaultPage } from './DefaultPage';
 import type { Globals } from './Globals';
 import type { Icon } from './Icon';
+import type { Image } from './Image';
 import type { Language } from './Language';
 import type { NavigationItem } from './NavigationItem';
 import type { ScrollDirection } from './ScrollDirection';
@@ -13,6 +14,7 @@ export type {
 	DefaultPage,
 	Globals,
 	Icon,
+	Image,
 	Language,
 	NavigationItem,
 	ScrollDirection,

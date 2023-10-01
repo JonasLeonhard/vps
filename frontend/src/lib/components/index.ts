@@ -10,6 +10,8 @@ import HeaderCommandMode from './HeaderCommandMode.svelte';
 import HeaderSettings from './HeaderSettings.svelte';
 import Headroom from './Headroom.svelte';
 import Icon from './Icon/Icon.svelte';
+import Image from './Image.svelte';
+import Images from './Images.svelte';
 import LanguageSelect from './LanguageSelect.svelte';
 import OgImage from './OgImage.svelte';
 import PageTransition from './PageTransition.svelte';
@@ -31,6 +33,8 @@ export {
   HeaderSettings,
   Headroom,
   Icon,
+  Image,
+  Images,
   LanguageSelect,
   OgImage,
   PageTransition,

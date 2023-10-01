@@ -1,5 +1,17 @@
+Caption: Caption
+
+----
+
+Copyright: Copyright
+
+----
+
+Alt: Alt text
+
+----
+
 Uuid: N1joJwptxVDoH7I5
 
 ----
 
-Caption: 
+Focus: 28.4% 89.2%

@@ -1,4 +1,5 @@
 import cms from '$lib/server/cms';
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import { redirect } from '@sveltejs/kit';
 import codeToHtml from '$lib/server/shiki';
 import { CURRENT_GIT_HASH } from '$env/static/private';
@@ -21,7 +22,7 @@ export const load: LayoutServerLoad<PageData | void> = async ({
 	params
 }) => {
 	const data = (
-		await fetch(`${cms.backendUrl}/api/query`, {
+		await fetch(`${PUBLIC_BACKEND_URL}/api/query`, {
 			method: 'POST',
 			headers: cms.getHeaders(params.lang),
 			body: JSON.stringify({
