@@ -11,9 +11,13 @@ dev:
 start:
 	[{ just backend-start }, { just frontend-start }] | par-each { |c| do $c }
 
-# install composer and pnpm packages, copy example env files, install global kirby cli
+# install composer and pnpm packages
 install:
-	[{ just backend-install }, { just frontend-install }, { just kirby-cli-install }] | par-each { |c| do $c }
+	[{ just backend-install }, { just frontend-install }] | par-each { |c| do $c }
+
+# install composer and pnpm packages, copy example env files, install global kirby cli
+init:
+	[{ just backend-init }, { just frontend-init }, { just kirby-cli-install }] | par-each { |c| do $c }
 
 # start frontend dev:server
 frontend-dev:
@@ -23,8 +27,12 @@ frontend-dev:
 frontend-start:
 	@cd frontend; pnpm run start
 
-# install frontend pnpm packages, copy example env
+# install frontend pnpm packages
 frontend-install:
+	@cd frontend; pnpm i;
+
+# install frontend pnpm packages, copy example env
+frontend-init:
 	@cd frontend; pnpm i; cp .env.example .env
 
 # start backend dev:server
@@ -36,8 +44,12 @@ backend-start:
 	@cd backend; composer run start
 
 # install backend composer packages, copy example env
-backend-install:
+backend-init:
 	@cd backend; composer install; cp .env.example .env
+
+# install backend composer packages
+backend-install:
+	@cd backend; composer install;
 
 # install global kirby cli
 kirby-cli-install:
