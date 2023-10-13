@@ -36,7 +36,7 @@
 		<input class="hidden" type="checkbox" bind:checked on:change {disabled} {name} />
 		<!-- Track -->
 		<div
-			class="flex h-6 w-12 cursor-pointer items-center rounded-full transition-all duration-200"
+			class="pointer-events-auto flex h-6 w-12 cursor-pointer items-center rounded-full transition-all duration-200"
 			class:cursor-not-allowed={disabled}
 			class:bg-primary={checked}
 			class:dark:bg-bg-accent-dark={!checked}
@@ -44,7 +44,7 @@
 		>
 			<!-- Thumb -->
 			<div
-				class="h-6 w-6 scale-75 rounded-full bg-light shadow transition-all duration-200"
+				class="pointer-events-none h-6 w-6 scale-75 rounded-full bg-light shadow transition-all duration-200"
 				class:cursor-not-allowed={disabled}
 				class:translate-x-full={checked}
 			>

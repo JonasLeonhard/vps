@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Header, Footer, Seo, PageTransition } from '$lib/components';
+	import { Header, Footer, Seo, PageTransition, Noise } from '$lib/components';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -11,5 +11,6 @@
 	<PageTransition path={data.path}>
 		<slot />
 	</PageTransition>
+	<Noise />
 </main>
 <Footer globals={data.globals} />

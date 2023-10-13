@@ -13,6 +13,7 @@ import Icon from './Icon/Icon.svelte';
 import Image from './Image.svelte';
 import Images from './Images.svelte';
 import LanguageSelect from './LanguageSelect.svelte';
+import Noise from './Noise.svelte';
 import OgImage from './OgImage.svelte';
 import PageTransition from './PageTransition.svelte';
 import Richtext from './Richtext.svelte';
@@ -36,6 +37,7 @@ export {
   Image,
   Images,
   LanguageSelect,
+  Noise,
   OgImage,
   PageTransition,
   Richtext,

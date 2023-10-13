@@ -54,12 +54,31 @@ module.exports = {
 		},
 		extend: {
 			animation: {
-				borderGradient: 'background ease infinite'
+				borderGradient: 'background ease infinite',
+				noise: 'noise 2s steps(1) infinite'
+			},
+			backgroundImage: (_theme) => ({
+				noise: "url('images/noise.png')"
+			}),
+			backgroundSize: {
+				256: '256px'
 			},
 			keyframes: {
 				background: {
 					'0%, 100%': { backgroundPosition: '0% 50%' },
 					'50%': { backgroundPosition: '100% 50%' }
+				},
+				noise: {
+					'0%': { 'background-position': '0 0' },
+					'10%': { 'background-position': '-5% -10%' },
+					'20%': { 'background-position': '-15% 5%' },
+					'30%': { 'background-position': '7% -25%' },
+					'40%': { 'background-position': '20% 25%' },
+					'50%': { 'background-position': '-25% 10%' },
+					'60%': { 'background-position': '15% 5%' },
+					'70%': { 'background-position': '0% 15%' },
+					'80%': { 'background-position': '25% 35%' },
+					'90%': { 'background-position': '-10% 10%' }
 				}
 			}
 		}
