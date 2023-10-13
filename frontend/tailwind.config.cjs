@@ -58,7 +58,7 @@ module.exports = {
 				noise: 'noise 2s steps(1) infinite'
 			},
 			backgroundImage: (_theme) => ({
-				noise: "url('images/noise.png')"
+				noise: "url('/images/noise.png')"
 			}),
 			backgroundSize: {
 				256: '256px'
