@@ -8,8 +8,10 @@
 </script>
 
 <img
-	class={$$props.class || 'w-full rounded-3xl'}
+	class={$$props.class || 'h-full w-full rounded-3xl object-cover'}
 	src={`${PUBLIC_BACKEND_URL}${image.url}`}
 	alt={image.content.alt}
 	loading={loading || 'lazy'}
+	style={$$props.style || `object-position: ${image?.content?.focus || 'center'};`}
+	{...$$restProps}
 />

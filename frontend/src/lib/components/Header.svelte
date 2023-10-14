@@ -8,7 +8,7 @@
 </script>
 
 <Headroom offset={40} tolerance={180}>
-	<div class="container mx-auto flex px-3 py-3 md:px-0">
+	<div class="container mx-auto flex py-3">
 		<!-- Items: Left -->
 		<a href={`/${currentLanguage.code}`} aria-label="Home" class="flex">
 			<Icon name="Logo" />

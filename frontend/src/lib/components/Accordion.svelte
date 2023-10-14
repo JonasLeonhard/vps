@@ -20,7 +20,7 @@
 
 <div
 	class={`flex flex-col gap-6 rounded-lg p-6 ring-black/5 dark:ring-white/10 ${
-		open.length > 0 ? 'shadow-lg ring-1' : ''
+		open.length > 0 ? 'bg-light shadow-lg ring-1 dark:bg-dark' : ''
 	}`}
 >
 	{#each items as item, index}
