@@ -4,15 +4,10 @@
 
 	export let images: ImageT[] = [];
 
-	const randomOffset = (from: number, to: number) => {
-		return Math.floor(Math.random() * (to - from + 1) + from);
-	};
-
-	const getImageOffset = (image: ImageT, from: number, to: number) =>
-		`object-position: ${image.content.focus || 'center'}; --random-offset: -${randomOffset(
-			from,
-			to
-		)}px;`;
+	const getImageOffset = (image: ImageT, type: 'thumb' | 'hero') =>
+		`object-position: ${image.content.focus || 'center'}; --random-offset: -${
+			(type === 'thumb' ? image.serverThumbOffset : image.serverOffset) || 0
+		}px;`;
 </script>
 
 <div class="flex gap-5 lg:gap-8 xl:gap-20">
@@ -20,7 +15,7 @@
 		{#each images as image}
 			<Image
 				class="images__image h-auto w-full rounded-3xl object-cover md:max-h-[70vh]"
-				style={getImageOffset(image, 0, 160)}
+				style={getImageOffset(image, 'hero')}
 				{image}
 			/>
 		{/each}
@@ -30,7 +25,7 @@
 		{#each images as image}
 			<Image
 				class="images__image w-14 rounded-lg border lg:w-20"
-				style={getImageOffset(image, 0, 20)}
+				style={getImageOffset(image, 'thumb')}
 				{image}
 			/>
 		{/each}

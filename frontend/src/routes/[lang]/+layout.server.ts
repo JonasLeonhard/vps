@@ -1,8 +1,6 @@
 import cms from '$lib/server/cms';
 import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import { redirect } from '@sveltejs/kit';
-import codeToHtml from '$lib/server/shiki';
-import { CURRENT_GIT_HASH } from '$env/static/private';
 
 import type { Globals, Language, DefaultPage } from '$lib/types';
 import type { LayoutServerLoad } from './$types';
@@ -58,20 +56,11 @@ export const load: LayoutServerLoad<PageData | void> = async ({
 
 	cookies.set('lang', params.lang, { path: '/' });
 
-	const globals = { ...data?.globals, seo: data?.globalSeo } as Globals;
-	const page = { ...data?.page, seo: data?.pageSeo } as DefaultPage;
-
-	// transform pageblocks: prerender code blocks with shiki
-	if (page?.blocks?.entries) {
-		for (const [index, block] of page.blocks.entries()) {
-			if (block.type === 'code') {
-				const rendered = await codeToHtml(block.content.language, block.content.code);
-				page.blocks[index].content.rendered = rendered;
-			}
-		}
-	}
-
-	globals.translations.currentGitHash = CURRENT_GIT_HASH;
+	const globals = await cms.getTransformedGlobals({
+		...data?.globals,
+		seo: data?.globalSeo
+	} as Globals);
+	const page = await cms.getTransformedPage({ ...data?.page, seo: data?.pageSeo } as DefaultPage);
 
 	return {
 		globals,
