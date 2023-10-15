@@ -5,21 +5,6 @@
 
 	export let images: ImageT[] = [];
 
-	const getImageStyle = (image: ImageT, type: 'thumb' | 'hero', inView: boolean) => {
-		let style = `object-position: ${image.content.focus || 'center'};`;
-
-		if (type === 'hero') {
-			style += `--random-offset: -${image.serverOffset || 0}px;`;
-		}
-
-		if (type === 'thumb') {
-			style += `--random-offset: -${image.serverThumbOffset || 0}px;`;
-			style += `--scale: -${inView ? '100%' : '90%'}`;
-		}
-
-		return style;
-	};
-
 	let indexesInView: { [key: number]: boolean } = {};
 </script>
 
@@ -36,7 +21,8 @@
 			>
 				<Image
 					class="images__image h-auto w-full rounded-3xl object-cover transition-all md:max-h-[70vh]"
-					style={getImageStyle(image, 'hero', indexesInView?.[index])}
+					style="object-position: {image.content.focus ||
+						'center'};  --random-offset: {image.serverThumbOffset}px; --scale: 100%"
 					{image}
 				/>
 			</div>
@@ -46,10 +32,13 @@
 	<div class="sticky top-40 flex h-min max-h-[70vh] flex-col gap-5">
 		{#each images as image, index}
 			<Image
-				class={`images__image w-14 rounded-lg transition-all lg:w-20 ${
+				class={`images__image w-14 cursor-pointer rounded-lg transition-all hover:border hover:border-secondary lg:w-20 ${
 					indexesInView?.[index] ? 'border border-secondary' : ''
 				}`}
-				style={getImageStyle(image, 'thumb', indexesInView?.[index])}
+				style="object-position: {image.content.focus ||
+					'center'}; --random-offset: {image.serverThumbOffset}px; --scale: {indexesInView[index]
+					? '100'
+					: '90'}%"
 				{image}
 			/>
 		{/each}
