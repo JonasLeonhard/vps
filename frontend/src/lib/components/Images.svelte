@@ -31,16 +31,25 @@
 
 	<div class="sticky top-40 flex h-min max-h-[70vh] flex-col gap-5">
 		{#each images as image, index}
-			<Image
-				class={`images__image w-14 cursor-pointer rounded-lg transition-all hover:border hover:border-secondary lg:w-20 ${
-					indexesInView?.[index] ? 'border border-secondary' : ''
-				}`}
-				style="object-position: {image.content.focus ||
-					'center'}; --random-offset: {image.serverThumbOffset}px; --scale: {indexesInView[index]
+			<div
+				class="images__image relative cursor-pointer transition-all"
+				style="--random-offset: {image.serverThumbOffset}px; --scale: {indexesInView[index]
 					? '100'
 					: '90'}%"
-				{image}
-			/>
+			>
+				<Image
+					class={`w-14 rounded-lg transition-all hover:border hover:border-secondary lg:w-20 ${
+						indexesInView?.[index] ? 'border border-secondary' : ''
+					}`}
+					style="object-position: {image.content.focus || 'center'};"
+					{image}
+				/>
+				<div
+					class="absolute inset-0 h-full w-full bg-black transition-all duration-700 hover:opacity-0"
+					class:opacity-50={!indexesInView?.[index]}
+					class:opacity-0={indexesInView?.[index]}
+				/>
+			</div>
 		{/each}
 	</div>
 </div>
