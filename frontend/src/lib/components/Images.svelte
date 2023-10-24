@@ -6,6 +6,14 @@
 	export let images: ImageT[] = [];
 
 	let indexesInView: { [key: number]: boolean } = {};
+	let imageDivs: HTMLDivElement[] = [];
+
+	const onThumbnailClick = (index: number) => {
+		(imageDivs?.[index] as HTMLDivElement)?.scrollIntoView({
+			behavior: 'smooth',
+			block: 'center'
+		});
+	};
 </script>
 
 <div class="flex gap-5 lg:gap-8 xl:gap-20">
@@ -18,6 +26,7 @@
 					console.log(inView, entry, scrollDirection, observer, node, index);
 					indexesInView[index] = inView;
 				}}
+				bind:this={imageDivs[index]}
 			>
 				<Image
 					class="images__image h-auto w-full rounded-3xl object-cover transition-all md:max-h-[70vh]"
@@ -36,6 +45,8 @@
 				style="--random-offset: {image.serverThumbOffset}px; --scale: {indexesInView[index]
 					? '100'
 					: '90'}%"
+				on:click={() => onThumbnailClick(index)}
+				on:keydown={() => onThumbnailClick(index)}
 			>
 				<Image
 					class={`w-14 rounded-lg transition-all hover:border hover:border-secondary lg:w-20 ${
