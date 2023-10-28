@@ -5,10 +5,11 @@
 
 	export let images: ImageT[] = [];
 
-	let indexesInView: { [key: number]: boolean } = {};
+	let indexesInView: number[] = [];
 	let imageDivs: HTMLDivElement[] = [];
 
 	const onThumbnailClick = (index: number) => {
+		indexesInView = [index];
 		(imageDivs?.[index] as HTMLDivElement)?.scrollIntoView({
 			behavior: 'smooth',
 			block: 'center'
@@ -20,11 +21,14 @@
 	<div class="flex w-full flex-1 flex-col gap-5 lg:gap-10 lg:pl-40">
 		{#each images as image, index}
 			<div
-				use:inview
+				use:inview={{ threshold: 0.75 }}
 				on:inview_change={(event) => {
-					const { inView, entry, scrollDirection, observer, node } = event.detail;
-					console.log(inView, entry, scrollDirection, observer, node, index);
-					indexesInView[index] = inView;
+					const { inView } = event.detail;
+					if (inView) {
+						indexesInView = [...indexesInView, index];
+					} else {
+						indexesInView = indexesInView.filter((i) => i !== index);
+					}
 				}}
 				bind:this={imageDivs[index]}
 			>
@@ -42,9 +46,10 @@
 		{#each images as image, index}
 			<div
 				class={`images__image relative cursor-pointer overflow-hidden rounded-lg transition-all ${
-					indexesInView?.[index] ? 'border border-secondary' : ''
+					indexesInView?.at(0) === index ? 'border border-secondary' : ''
 				}`}
-				style="--random-offset: {image.serverThumbOffset}px; --scale: {indexesInView[index]
+				style="--random-offset: {image.serverThumbOffset}px; --scale: {indexesInView?.at(-1) ===
+				index
 					? '100'
 					: '90'}%"
 				on:click={() => onThumbnailClick(index)}
@@ -57,8 +62,8 @@
 				/>
 				<div
 					class="absolute inset-0 h-full w-full bg-black transition-all duration-700 hover:opacity-0"
-					class:opacity-50={!indexesInView?.[index]}
-					class:opacity-0={indexesInView?.[index]}
+					class:opacity-50={indexesInView?.at(-1) !== index}
+					class:opacity-0={indexesInView?.at(-1) === index}
 				/>
 			</div>
 		{/each}
