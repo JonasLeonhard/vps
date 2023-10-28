@@ -41,7 +41,9 @@
 	<div class="sticky top-40 flex h-min max-h-[70vh] flex-col gap-5">
 		{#each images as image, index}
 			<div
-				class="images__image relative cursor-pointer transition-all"
+				class={`images__image relative cursor-pointer overflow-hidden rounded-lg transition-all ${
+					indexesInView?.[index] ? 'border border-secondary' : ''
+				}`}
 				style="--random-offset: {image.serverThumbOffset}px; --scale: {indexesInView[index]
 					? '100'
 					: '90'}%"
@@ -49,9 +51,7 @@
 				on:keydown={() => onThumbnailClick(index)}
 			>
 				<Image
-					class={`w-14 rounded-lg transition-all hover:border hover:border-secondary lg:w-20 ${
-						indexesInView?.[index] ? 'border border-secondary' : ''
-					}`}
+					class="w-14 transition-all hover:border hover:border-secondary lg:w-20"
 					style="object-position: {image.content.focus || 'center'};"
 					{image}
 				/>
