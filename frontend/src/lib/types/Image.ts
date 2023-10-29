@@ -7,10 +7,6 @@ export type Image = {
 		focus: string;
 		loading?: 'lazy' | 'eager';
 	};
-	/** added in setTransformedBlocks for images block only */
-	serverOffset?: number;
-	/** added in setTransformedBlocks for images block only */
-	serverThumbOffset?: number;
 	dimensions: {
 		width: number;
 		height: number;

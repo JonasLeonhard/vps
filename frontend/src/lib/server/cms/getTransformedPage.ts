@@ -2,13 +2,6 @@ import codeToHtml from '$lib/server/shiki';
 
 import type { ContentBlock, DefaultPage } from '$lib/types';
 
-const transformImagesBlock = async (block: ContentBlock) => {
-	for (const image of block.content.images) {
-		image.serverOffset = Math.random() * 160;
-		image.serverThumbOffset = Math.random() * 20;
-	}
-};
-
 const transformCodeBlock = async (block: ContentBlock) => {
 	const rendered = await codeToHtml(block.content.language, block.content.code);
 	block.content.rendered = rendered;
@@ -26,10 +19,6 @@ const getTransformedPage = async (page: DefaultPage) => {
 			// prerender code blocks with shiki
 			if (block.type === 'code') {
 				await transformCodeBlock(block);
-			}
-
-			if (block.type === 'images') {
-				await transformImagesBlock(block);
 			}
 		}
 	}
