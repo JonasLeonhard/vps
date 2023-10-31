@@ -26,12 +26,6 @@ tabs:
 
   globals: sections/globals
 
-  media:
-    icon: folder
-    label: Media
-    sections:
-      media: sections/media
-
   seo:
     label: Default SEO
     extends: seo

@@ -1,0 +1,9 @@
+title: Content Page
+icon: page
+
+tabs:
+  media:
+    icon: folder
+    label: Media
+    sections:
+      media: sections/media

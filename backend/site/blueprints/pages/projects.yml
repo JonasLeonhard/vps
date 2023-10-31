@@ -6,7 +6,6 @@ options:
   create: false
   delete: false
   duplicate: false
-  changeStatus: false
 
 extends: layouts/default
 

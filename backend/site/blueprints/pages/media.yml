@@ -10,4 +10,4 @@ options:
   changeSlug: false
   changeStatus: false
 
-extends: layouts/default
+extends: layouts/media

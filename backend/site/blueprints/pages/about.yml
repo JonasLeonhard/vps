@@ -1,13 +1,10 @@
 title: About
 icon: user
 
-status: unlisted
-
 options:
   create: false
   delete: false
   duplicate: false
   changeSlug: false
-  changeStatus: false
 
 extends: layouts/default
