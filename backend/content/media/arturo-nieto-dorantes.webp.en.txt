@@ -10,7 +10,7 @@ Alt:
 
 ----
 
-Srcset: default
+Srcset: square
 
 ----
 
