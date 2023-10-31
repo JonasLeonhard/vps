@@ -1,14 +1,9 @@
 type: files
-multiple: false
 query: site.find('media').images
+uploads:
+  parent: kirby.page('media')
+  template: block_images # files/image.yml
+multiple: false
 layout: cards
 required: true
 label: Image
-image:
-  cover: false
-  ratio: 16/9
-  back: "#323232"
-uploads:
-  accept:
-    extension: jpg, jpeg, png, webp
-  parent: kirby.page('media')

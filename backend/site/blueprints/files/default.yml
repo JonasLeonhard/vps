@@ -1,5 +1,14 @@
 title: File
 
+accept:
+  extension: svg, webp
+  type: image
+
+create:
+  width: 800
+  height: 600
+  crop: true
+
 fields:
   caption:
     label: Caption
