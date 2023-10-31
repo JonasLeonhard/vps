@@ -10,6 +10,14 @@ Alt:
 
 ----
 
+Srcset: default
+
+----
+
+Sizes: ((min-width: 50em) and (max-width: 60em)) 50em, ((min-width: 30em) and (max-width: 50em)) 30em, (max-width: 30em) 20em
+
+----
+
 Uuid: wSYMPB8cU0kll7ZP
 
 ----

@@ -53,5 +53,23 @@ return [
   ],
   'auth' => [
     'debug' => $_ENV['isLocal'] === 'true',
+  ],
+  'thumbs' => [ // in toBlocksExtended this will be appended to images srcsets depending on the selected srcset in you files/default.yml -> srcset select
+    'srcsets' => [
+      'default' => [
+        '300w'  => ['width' => 300, 'format' => 'webp', 'quality' => 90],
+        '600w'  => ['width' => 600, 'format' => 'webp', 'quality' => 90],
+        '900w'  => ['width' => 900, 'format' => 'webp', 'quality' => 90],
+        '1200w' => ['width' => 1200, 'format' => 'webp', 'quality' => 90],
+        '1800w' => ['width' => 1800, 'format' => 'webp', 'quality' => 90]
+      ],
+      'square' => [
+        '300w'  => ['width' => 300, 'format' => 'webp', 'quality' => 90],
+        '600w'  => ['width' => 600, 'format' => 'webp', 'quality' => 90],
+        '900w'  => ['width' => 900, 'format' => 'webp', 'quality' => 90],
+        '1200w' => ['width' => 1200, 'format' => 'webp', 'quality' => 90],
+        '1800w' => ['width' => 1800, 'format' => 'webp', 'quality' => 90]
+      ]
+    ]
   ]
 ];

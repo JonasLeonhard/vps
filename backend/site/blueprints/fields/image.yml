@@ -2,7 +2,7 @@ type: files
 query: site.find('media').images
 uploads:
   parent: kirby.page('media')
-  template: block_images # files/image.yml
+  # template: block_images # files/block_image.yml
 multiple: false
 layout: cards
 required: true

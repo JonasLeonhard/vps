@@ -1,12 +1,11 @@
 title: File
 
 accept:
-  extension: svg, webp
   type: image
 
 create:
-  width: 800
-  height: 600
+  width: 4000
+  height: 4000
   crop: true
 
 fields:
@@ -23,3 +22,13 @@ fields:
     help: Used for alt attribute on images
     type: text
     width: 1/2
+  srcset:
+    label: SrcSet (config.php)
+    type: select
+    default: default
+    options:
+      default: default
+      square: square
+  sizes:
+    label: Sizes (https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes)
+    type: text

@@ -17,7 +17,11 @@ $extend = function (Block $block) {
   if ($blockType == 'images') {
     /** @var Files */
     $images = $block->content()->get('images')->toFiles();
-    $transformImage = fn (File $image) => $image->toArray();
+    $transformImage = function (File $image) {
+      $imageArray = $image->toArray();
+      $imageArray['srcset'] = $image->srcset($image->content->get('srcset')->value); // pick selected srcset from config.php
+      return $imageArray;
+    };
 
     $block->content()->update(['images' => $images->map($transformImage)->values()]);
   }

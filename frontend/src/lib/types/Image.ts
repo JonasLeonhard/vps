@@ -6,7 +6,10 @@ export type Image = {
 		uuid: string;
 		focus: string;
 		loading?: 'lazy' | 'eager';
+		sizes?: string;
+		srcset?: string;
 	};
+	srcset: string;
 	dimensions: {
 		width: number;
 		height: number;
