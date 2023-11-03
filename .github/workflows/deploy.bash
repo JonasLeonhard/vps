@@ -15,6 +15,9 @@ esac
 # brew
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
+# node options
+export NODE_OPTIONS="--max-old-space-size=8192"
+
 # Setup (workdir + update repo)
 cd /var/www/html/vps
 git pull origin master
