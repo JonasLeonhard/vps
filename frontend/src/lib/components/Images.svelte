@@ -26,11 +26,12 @@
 		const endPosition = END_POSITIONS[index % 5];
 
 		// only animate the current active section. If we look at an inactive section, set its progress to 1 or 0 respectivly
+		if (index === 0) return endPosition * 1;
 		if (index < sectionIndex) return endPosition * 0;
 		if (index > sectionIndex) return endPosition * 1;
 
-		// we start the animation at its endposition, then animate to its original position
-		const clampedProgress = 1 - Math.max(Math.min(prog, 1), 0);
+		// we start the animation at its endposition if its not the first index, then animate to its original position
+		const clampedProgress = (index === 0 ? 0 : 1) - Math.max(Math.min(prog, 1), 0);
 		return endPosition * clampedProgress;
 	};
 </script>
