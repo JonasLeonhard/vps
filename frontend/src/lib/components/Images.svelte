@@ -35,7 +35,6 @@
 	};
 </script>
 
-{console.log(END_POSITIONS)}
 <div class="flex gap-5 lg:gap-8 xl:gap-20">
 	<Scroller top={0} bottom={1} bind:index={sectionIndex} bind:offset={sectionOffset} bind:progress>
 		<div slot="foreground" class="flex w-full flex-1 flex-col gap-2 lg:gap-10 lg:pl-40">
