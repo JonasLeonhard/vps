@@ -13,15 +13,16 @@ tabs:
             sortBy: "title desc"
             empty: Please contact admin
             template:
-              - error
-              - admin-panel
-              - home
-              - blog
-              - impressum
-              - contact
               - about
-              - projects
+              - admin-panel
+              - blog
+              - contact
+              - error
+              - home
+              - impressum
               - media
+              - projects
+              - search
           pages: sections/pages
 
   globals: sections/globals

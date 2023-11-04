@@ -18,6 +18,8 @@
 			? 'z-10 animate-borderGradient bg-gradient-to-r from-primary via-secondary to-tertiary bg-[length:400%_400%] [animation-duration:4s] scale-110 transition-[bg-gradient-to-r]'
 			: '';
 
+	$: searchUrl = `/${currentLanguage.code}/search?q=${encodeURIComponent(search)}`;
+
 	const closeDialog = () => {
 		isOpen = false;
 		mouseOver = false;
@@ -57,6 +59,7 @@
 
 <Icon
 	name="Terminal"
+	title={globals.translations.doSearch}
 	class={`cursor-pointer rounded-md bg-bg-accent-light p-4 dark:bg-bg-accent-dark  ${mouseOverClasses}`}
 	onClick={() => {
 		isOpen = !isOpen;
@@ -84,12 +87,24 @@
 				placeholder="WIP SEARCH FOR ARTICLES"
 				bind:value={search}
 				on:keyup={handleSearch}
+				on:keydown={(e) => {
+					if (e.key === 'Enter') window.location.href = searchUrl;
+				}}
 				class="bg-primary/0"
 			/>
 			{#if search}
-				<div class="absolute right-6 top-[50%] -translate-y-[50%]">
-					{globals.translations.results || 'Results'}:
-					<span class="text-secondary">{results.length}</span>
+				<div class="absolute right-6 top-[50%] flex -translate-y-[50%] gap-4">
+					<p>
+						{globals.translations.results || 'Results'}:
+						<span class="text-secondary">{results.length}</span>
+					</p>
+					<a href={searchUrl}>
+						<Icon
+							name="Adjustments"
+							title={globals.translations.refineSearch}
+							class="cursor-pointer hover:text-secondary"
+						/>
+					</a>
 				</div>
 			{/if}
 		</div>

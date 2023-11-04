@@ -1,0 +1,28 @@
+name: Search
+icon: search
+preview: fields
+fields:
+  categories:
+    extends: fields/writer/default
+    label: Categories
+    required: true
+  postDates:
+    extends: fields/writer/default
+    label: Post Dates
+    required: true
+  resetFilter:
+    extends: fields/writer/default
+    label: Reset Filter
+    required: true
+  filter:
+    extends: fields/writer/default
+    label: Filter
+    required: true
+  results:
+    extends: fields/writer/default
+    label: Results
+    required: true
+  loadMore:
+    extends: fields/writer/default
+    label: Load More
+    required: true

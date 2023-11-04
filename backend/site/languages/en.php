@@ -15,7 +15,10 @@ return [
         'themeLight' => 'Light',
         'themeDark' => 'Dark',
         'results' => 'Results',
-        'noResults' => 'No Results'
+        'noResults' => 'No Results',
+        'doSearch' => 'Search',
+        'openSettings' => 'Settings',
+        'refineSearch' => 'Refine Search'
     ],
     'url' => NULL
 ];

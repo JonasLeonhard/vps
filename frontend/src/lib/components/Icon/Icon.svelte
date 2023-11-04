@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Adjustments from './Adjustments.svelte';
 	import Article from './Article.svelte';
 	import Branch from './Branch.svelte';
 	import Brightness from './Brightness.svelte';
@@ -44,6 +45,8 @@
 >
 	{#if name === 'Settings'}
 		<Settings />
+	{:else if name === 'Adjustments'}
+		<Adjustments />
 	{:else if name === 'Copy'}
 		<Copy />
 	{:else if name === 'Copied'}

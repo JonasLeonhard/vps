@@ -16,3 +16,4 @@ fieldsets:
   table: blocks/table
   video: blocks/video
   details: blocks/details
+  search: blocks/search

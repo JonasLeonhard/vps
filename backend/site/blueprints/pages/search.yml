@@ -1,0 +1,10 @@
+title: Search
+icon: search
+
+options:
+  create: false
+  delete: false
+  duplicate: false
+  changeSlug: false
+
+extends: layouts/default

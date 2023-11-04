@@ -29,6 +29,7 @@
 
 <Icon
 	name="Settings"
+	title={globals.translations.openSettings}
 	class={`vcursor-pointer rounded-md bg-bg-accent-light p-4 dark:bg-bg-accent-dark ${mouseOverClasses}`}
 	onClick={() => {
 		isOpen = !isOpen;
