@@ -18,19 +18,12 @@
 		});
 	};
 
-	const END_POSITIONS = [-50, 30, 50, 14, 12];
+	const END_POSITIONS = [10, 30, 20, 14, 12];
 	const SERVER_THUMB_OFFSET = [-20, 15, -10, 15, 0];
 	const SERVER_IMAGE_OFFSET = [-70, 20, -30, 10, -70];
 
-	const getEndposition = (index: number, prog: number, totalProg: number) => {
+	const getEndposition = (index: number, prog: number) => {
 		const endPosition = END_POSITIONS[index % 5];
-
-		// each 3rd image is animated by the total progress to get more variation
-		if (index % 3 === 0) {
-			// we start at the originial position, then animate to its endposition
-			const clampedProgress = Math.max(Math.min(totalProg, 1), 0);
-			return endPosition * clampedProgress;
-		}
 
 		// only animate the current active section. If we look at an inactive section, set its progress to 1 or 0 respectivly
 		if (index < sectionIndex) return endPosition * 0;
@@ -59,7 +52,7 @@
 					}}
 					bind:this={imageDivs[index]}
 					class="transition-all duration-75 will-change-transform"
-					style:transform="translateY({getEndposition(index, sectionOffset, progress)}%)"
+					style:transform="translateY({getEndposition(index, sectionOffset)}%)"
 					style:z-index={indexesInView?.at(-1) === index ? 1 : 0}
 				>
 					<Image
