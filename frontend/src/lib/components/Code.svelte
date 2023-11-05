@@ -30,7 +30,7 @@
 	class:delay-150={!open}
 	lang={language}
 >
-	<div class="absolute top-1 flex gap-2">
+	<div class="absolute top-1 flex gap-2" title="Toggle">
 		<div
 			class="h-4 w-4 cursor-pointer rounded-xl bg-fusionRed"
 			on:click={toggleCode}
