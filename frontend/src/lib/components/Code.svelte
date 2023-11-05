@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
 	import { Icon } from '$lib/components';
 
 	export let language = 'typescript';
@@ -25,12 +24,10 @@
 </script>
 
 <code
-	class="group relative block overflow-hidden rounded-xl bg-[#1e1e2e] pt-12 shadow-lg ring-1 ring-black/5 transition-all dark:ring-white/10 [&>*]:p-6"
-	class:pb-5={!open}
-	class:delay-150={!open}
+	class="group relative block overflow-hidden rounded-xl bg-[#1e1e2e] p-6 pb-3 pt-14 shadow-lg ring-1 ring-black/5 transition-all delay-300 dark:ring-white/10"
 	lang={language}
 >
-	<div class="absolute top-1 flex gap-2" title="Toggle">
+	<div class="absolute top-1 mt-6 flex gap-2" title="Toggle">
 		<div
 			class="h-4 w-4 cursor-pointer rounded-xl bg-fusionRed"
 			on:click={toggleCode}
@@ -48,7 +45,7 @@
 		/>
 	</div>
 	<div
-		class="absolute left-[50%] top-0 -translate-x-[50%] text-gray/50"
+		class="absolute left-[50%] top-0 -translate-x-[50%] p-6 text-gray/50"
 		title={filename || language}
 	>
 		{filename || language}
@@ -61,9 +58,7 @@
 	>
 		<Icon name={copied ? 'Copied' : 'Copy'} />
 	</button>
-	{#if open}
-		<div transition:fade={{ duration: 300 }}>
-			{@html rendered || code}
-		</div>
-	{/if}
+	<div class="overflow-auto transition-all" class:max-h-0={!open} class:max-h-96={open}>
+		{@html rendered || code}
+	</div>
 </code>
