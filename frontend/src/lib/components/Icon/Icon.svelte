@@ -20,11 +20,12 @@
 	import Twitter from './Twitter.svelte';
 	import Users from './Users.svelte';
 	import YouTube from './YouTube.svelte';
+	import Link from './Link.svelte';
 
 	import type { Icon } from '$lib/types';
 
 	export let name: Icon;
-	export let onClick: () => void = () => null;
+	export let onClick: (e: MouseEvent) => void = () => null;
 	export let onMouseover: (hovered: boolean) => void = () => null;
 	export let onMousemove: (event: MouseEvent) => void = () => null;
 	export let onMouseout: (event: Event) => void = () => null;
@@ -63,6 +64,8 @@
 		<Article />
 	{:else if name === 'Language'}
 		<Language />
+	{:else if name === 'Link'}
+		<Link />
 	{:else if name === 'Brightness'}
 		<Brightness />
 	{:else if name === 'Sun'}

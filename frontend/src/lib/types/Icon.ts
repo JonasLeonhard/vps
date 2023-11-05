@@ -11,6 +11,7 @@ export type Icon =
 	| 'Github'
 	| 'Instagram'
 	| 'Language'
+	| 'Link'
 	| 'LinkedIn'
 	| 'Logo'
 	| 'Moon'

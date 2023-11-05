@@ -8,6 +8,7 @@ import GameOfLife from './GameOfLife.svelte';
 import Header from './Header.svelte';
 import HeaderCommandMode from './HeaderCommandMode.svelte';
 import HeaderSettings from './HeaderSettings.svelte';
+import Heading from './Heading.svelte';
 import Headroom from './Headroom.svelte';
 import Icon from './Icon/Icon.svelte';
 import Image from './Image.svelte';
@@ -22,26 +23,27 @@ import SlideToggle from './SlideToggle.svelte';
 import ThemeToggle from './ThemeToggle.svelte';
 
 export {
-  Accordion,
-  Blocks,
-  Code,
-  Details,
-  Dialog,
-  Footer,
-  GameOfLife,
-  Header,
-  HeaderCommandMode,
-  HeaderSettings,
-  Headroom,
-  Icon,
-  Image,
-  Images,
-  LanguageSelect,
-  Noise,
-  OgImage,
-  PageTransition,
-  Richtext,
-  Seo,
-  SlideToggle,
-  ThemeToggle
+	Accordion,
+	Blocks,
+	Code,
+	Details,
+	Dialog,
+	Footer,
+	GameOfLife,
+	Header,
+	HeaderCommandMode,
+	HeaderSettings,
+	Heading,
+	Headroom,
+	Icon,
+	Image,
+	Images,
+	LanguageSelect,
+	Noise,
+	OgImage,
+	PageTransition,
+	Richtext,
+	Seo,
+	SlideToggle,
+	ThemeToggle
 };
