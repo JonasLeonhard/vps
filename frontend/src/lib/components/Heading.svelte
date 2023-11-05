@@ -19,7 +19,13 @@
 </script>
 
 <Richtext>
-	<svelte:element this={level || 'h2'} class="group relative" id={encodeURIComponent(text)}>
+	<svelte:element
+		this={level || 'h2'}
+		class="group relative"
+		id={encodeURIComponent(text)}
+		on:click={(e) => onCopyClick(e, text)}
+		title="Copy Link"
+	>
 		<Icon
 			name={clicked ? 'Copied' : 'Link'}
 			class="absolute -left-8 top-[50%] -translate-y-[50%] opacity-0 transition-all hover:opacity-100 group-hover:opacity-100"
