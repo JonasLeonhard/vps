@@ -25,7 +25,7 @@
 </script>
 
 <code
-	class="group relative block overflow-hidden rounded-xl bg-[#1e1e2e] pt-12 transition-all [&>*]:p-6"
+	class="group relative block overflow-hidden rounded-xl bg-[#1e1e2e] pt-12 shadow-lg ring-1 ring-black/5 transition-all dark:ring-white/10 [&>*]:p-6"
 	class:pb-5={!open}
 	class:delay-150={!open}
 	lang={language}
