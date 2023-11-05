@@ -58,7 +58,7 @@
 	>
 		<Icon name={copied ? 'Copied' : 'Copy'} />
 	</button>
-	<div class="overflow-auto transition-all" class:max-h-0={!open} class:max-h-96={open}>
+	<div class="overflow-auto transition-all" class:max-h-0={!open} class:max-h-[80vh]={open}>
 		{@html rendered || code}
 	</div>
 </code>
