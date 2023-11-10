@@ -2,6 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import { Icon, Richtext } from '$lib/components';
 	import { tableOfContentsActiveHeadlineId } from '$lib/stores/tableOfContentsActiveHeadlineId';
+	import { clickOutside } from '$lib/utils';
 
 	import type { ContentBlock } from '$lib/types';
 
@@ -29,6 +30,8 @@
 				<div
 					transition:fade
 					class="absolute left-0 top-20 max-h-[50vh] w-max max-w-[50vw] overflow-scroll rounded-lg bg-light/90 px-6 py-3 shadow-lg ring-1 ring-black/5 backdrop-blur-[2px] dark:bg-dark/90 dark:ring-white/10"
+					use:clickOutside
+					on:click_outside={toggleOpen}
 				>
 					<Richtext class="pb-0">
 						{#each blocks as block}
