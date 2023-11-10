@@ -7,6 +7,12 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+
+	namespace svelte.JSX {
+		interface HTMLAttributes {
+			onclick_outside: () => void;
+		}
+	}
 }
 
 export {};
