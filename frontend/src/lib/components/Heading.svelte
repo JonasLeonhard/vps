@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { Richtext, Icon } from '$lib/components';
+	import { tableOfContentsActiveHeadlineId } from '$lib/stores/tableOfContentsActiveHeadlineId';
+	import { inview } from 'svelte-inview';
+
 	export let level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 	export let text: string;
 
@@ -25,6 +28,13 @@
 		id={encodeURIComponent(text)}
 		on:click={(e) => onCopyClick(e, text)}
 		title="Copy Link"
+		use:inview={{ threshold: 0 }}
+		on:inview_change={(event) => {
+			const { inView } = event.detail;
+			if (inView) {
+				tableOfContentsActiveHeadlineId.update(() => text);
+			}
+		}}
 	>
 		<Icon
 			name={clicked ? 'Copied' : 'Link'}

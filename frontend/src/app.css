@@ -23,6 +23,7 @@
 
 :root {
 	@apply font-interReg;
+	scroll-behavior: smooth;
 }
 @supports (font-variation-settings: normal) {
 	:root {

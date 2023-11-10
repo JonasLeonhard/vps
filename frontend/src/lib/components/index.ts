@@ -20,6 +20,7 @@ import PageTransition from './PageTransition.svelte';
 import Richtext from './Richtext.svelte';
 import Seo from './Seo.svelte';
 import SlideToggle from './SlideToggle.svelte';
+import TableOfContents from './TableOfContents.svelte';
 import ThemeToggle from './ThemeToggle.svelte';
 
 export {
@@ -45,5 +46,6 @@ export {
 	Richtext,
 	Seo,
 	SlideToggle,
+	TableOfContents,
 	ThemeToggle
 };
