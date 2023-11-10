@@ -17,7 +17,7 @@
 {#if $tableOfContentsActiveHeadlineId && blocks.filter((block) => block.type === 'heading').length > 1 && scrollY > 0}
 	<nav class="relative flex items-center" transition:fade>
 		<details class="group" bind:open>
-			<summary class="cursor-pointer list-none">
+			<summary class="cursor-pointer list-none" class:pointer-events-none={open}>
 				<Richtext>
 					<h3 class="flex cursor-pointer items-center">
 						{$tableOfContentsActiveHeadlineId}
