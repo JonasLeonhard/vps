@@ -18,6 +18,7 @@ import Noise from './Noise.svelte';
 import OgImage from './OgImage.svelte';
 import PageTransition from './PageTransition.svelte';
 import Richtext from './Richtext.svelte';
+import Search from './Search.svelte';
 import Seo from './Seo.svelte';
 import SlideToggle from './SlideToggle.svelte';
 import TableOfContents from './TableOfContents.svelte';
@@ -44,6 +45,7 @@ export {
 	OgImage,
 	PageTransition,
 	Richtext,
+	Search,
 	Seo,
 	SlideToggle,
 	TableOfContents,

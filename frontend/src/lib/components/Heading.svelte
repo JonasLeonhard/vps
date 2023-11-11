@@ -2,6 +2,7 @@
 	import { Richtext, Icon } from '$lib/components';
 	import { tableOfContentsActiveHeadlineId } from '$lib/stores/tableOfContentsActiveHeadlineId';
 	import { inview } from 'svelte-inview';
+	import { page } from '$app/stores';
 
 	export let level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 	export let text: string;
@@ -19,6 +20,43 @@
 			clicked = false;
 		}, 1000);
 	};
+
+	const replaceQueryParams = (input: string) => {
+		let result = input;
+		$page.url.searchParams.forEach((value, key) => {
+			result = result.replace(`{${key}}`, value);
+		});
+		return result;
+	};
+
+	/**
+	 * this inserts query params inside of {queryParamName's}: eg: a search query param '?q=test' would render '{q}' to 'test'
+	 * To avoid xss attacks. We split the text from the cms into safe and unsafe parts. Unsafe beeing every part where query params would be replaced.
+	 * Safe parts get rendered via the {@html part.text} directive. Allowing text from the cms to still contain html tags. While every input from user params
+	 * gets rendered as unsafe. via {part.text}.
+	 * Eg. "<em>Search</em> <u>Results: {q}</u>" gets split into
+	 * [
+	 * {
+	 *  "text": "<em>Search</em> <u>Results: ",
+	 *  "isSafe": true
+	 * },
+	 * {
+	 *  "text": "<img src=x onerror=alert(1)>`",
+	 *  "isSafe": false
+	 * },
+	 * {
+	 *  "text": "</u>",
+	 *  "isSafe": true
+	 * }
+	 * ]
+	 * */
+	$: parts = text.split(/({.*?})/g).map((part) => {
+		if (part.startsWith('{') && part.endsWith('}')) {
+			return { text: replaceQueryParams(part), isSafe: false };
+		}
+
+		return { text: part, isSafe: true };
+	});
 </script>
 
 <Richtext>
@@ -41,6 +79,14 @@
 			class="absolute -left-8 top-[50%] -translate-y-[50%] opacity-0 transition-all hover:opacity-100 group-hover:opacity-100"
 			onClick={(e) => onCopyClick(e, text)}
 		/>
-		{@html text}
+		<div>
+			{#each parts as part}
+				{#if part.isSafe}
+					{@html part.text}
+				{:else}
+					<span class="text-secondary">{part.text}</span>
+				{/if}
+			{/each}
+		</div>
 	</svelte:element>
 </Richtext>

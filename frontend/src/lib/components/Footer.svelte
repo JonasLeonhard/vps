@@ -23,7 +23,7 @@
 		style={`height: calc(10px + ${Math.min(percentageSvg, 23)}vw)`}
 	>
 		<svg
-			class="relative left-[-25%] z-10 h-full w-[150%] translate-y-1 fill-bg-accent-light dark:fill-bg-accent-dark"
+			class="relative left-[-25%] -z-10 h-full w-[150%] translate-y-1 fill-bg-accent-light drop-shadow-[0px_-1px_1px_rgba(0,0,0,0.1)] dark:fill-bg-accent-dark dark:drop-shadow-[0px_-1px_1px_rgba(100,100,100,0.5)]"
 			preserveAspectRatio="none"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 40 20"

@@ -23,14 +23,12 @@
 		mouseOver || isOpen
 			? 'z-10 animate-borderGradient bg-gradient-to-r from-primary via-secondary to-tertiary bg-[length:400%_400%] [animation-duration:4s] scale-110 transition-[bg-gradient-to-r] transition-[scale-110]'
 			: '';
-
-	console.log('globals', globals);
 </script>
 
 <Icon
 	name="Settings"
 	title={globals.translations.openSettings}
-	class={`vcursor-pointer rounded-md bg-bg-accent-light p-4 dark:bg-bg-accent-dark ${mouseOverClasses}`}
+	class={`cursor-pointer rounded-md border border-black/10 bg-bg-accent-light p-4 dark:border-light/10 dark:bg-bg-accent-dark ${mouseOverClasses}`}
 	onClick={() => {
 		isOpen = !isOpen;
 	}}

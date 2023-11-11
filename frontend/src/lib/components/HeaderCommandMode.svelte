@@ -60,7 +60,7 @@
 <Icon
 	name="Terminal"
 	title={globals.translations.doSearch}
-	class={`cursor-pointer rounded-md bg-bg-accent-light p-4 dark:bg-bg-accent-dark  ${mouseOverClasses}`}
+	class={`cursor-pointer rounded-md border border-black/10 bg-bg-accent-light p-4 dark:border-light/10 dark:bg-bg-accent-dark ${mouseOverClasses}`}
 	onClick={() => {
 		isOpen = !isOpen;
 	}}

@@ -2,7 +2,7 @@ Title: Search
 
 ----
 
-Blocks: [{"content":{"level":"h2","text":"Suchergebnisse"},"id":"6b098ead-dcba-4518-8ca5-e4c6536183fb","isHidden":false,"type":"heading"},{"content":{"categories":"<p>Kategorien</p>","postdates":"<p>Erstell Datum</p>","resetfilter":"<p>Filter Zurücksetzen</p>","filter":"<p>Filter</p>","results":"<p>Ergebnisse</p>","loadmore":"<p>Mehr laden</p>"},"id":"a85baa4d-5933-4751-bef2-91f7e725987d","isHidden":false,"type":"search"}]
+Blocks: [{"content":{"level":"h1","text":"<em>Suchergebnisse</em>: {q}"},"id":"6b098ead-dcba-4518-8ca5-e4c6536183fb","isHidden":false,"type":"heading"},{"content":{"categories":"<p><u>Kategorien</u></p>","postdates":"<p><u>Erstell Datum</u></p>","resetfilter":"<p><u>Filter Zurücksetzen</u></p>","filter":"<p><u>Filter</u></p>","results":"<p><u>Ergebnisse</u></p>","loadmore":"<p><u>Mehr laden</u></p>"},"id":"a85baa4d-5933-4751-bef2-91f7e725987d","isHidden":false,"type":"search"}]
 
 ----
 
