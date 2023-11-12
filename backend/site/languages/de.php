@@ -15,7 +15,10 @@ return [
         'results' => 'Ergebnisse',
         'theme' => 'Theme',
         'themeDark' => 'Dunkel',
-        'themeLight' => 'Hell'
+        'themeLight' => 'Hell',
+        'doSearch' => 'Suchen (Ctrl-k)',
+        'openSettings' => 'Settings',
+        'refineSearch' => 'Filter'
     ],
     'url' => NULL
 ];

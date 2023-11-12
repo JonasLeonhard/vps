@@ -16,7 +16,7 @@ return [
         'themeDark' => 'Dark',
         'results' => 'Results',
         'noResults' => 'No Results',
-        'doSearch' => 'Search',
+        'doSearch' => 'Search (Ctrl-k)',
         'openSettings' => 'Settings',
         'refineSearch' => 'Refine Search'
     ],

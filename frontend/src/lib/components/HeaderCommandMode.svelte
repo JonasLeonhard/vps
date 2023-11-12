@@ -57,6 +57,15 @@
 	};
 </script>
 
+<svelte:window
+	on:keydown={(e) => {
+		if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+			e.preventDefault();
+			isOpen = !isOpen;
+		}
+	}}
+/>
+
 <Icon
 	name="Terminal"
 	title={globals.translations.doSearch}

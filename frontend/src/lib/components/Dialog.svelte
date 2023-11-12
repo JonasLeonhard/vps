@@ -5,6 +5,7 @@
 	let dialog: HTMLDialogElement;
 
 	$: if (dialog && open) dialog.showModal();
+	$: if (dialog && !open) dialog.close();
 </script>
 
 <dialog
@@ -21,11 +22,11 @@
 	on:click|self={() => {
 		dialog.close();
 	}}
-	on:keydown|self={() => {
-		dialog.close();
+	on:keydown={(e) => {
+		if (e.key === 'Escape') {
+			dialog.close();
+		}
 	}}
 >
-	<div on:click|stopPropagation on:keydown|stopPropagation>
-		<slot />
-	</div>
+	<slot />
 </dialog>
