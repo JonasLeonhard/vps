@@ -37,6 +37,8 @@
 			{@html filter}
 		</Richtext>
 
+		<input class="p-2 text-black" value="search" />
+
 		<div>
 			<Richtext>
 				{@html categories}
