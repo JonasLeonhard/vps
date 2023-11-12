@@ -2,7 +2,7 @@ Title: Home
 
 ----
 
-Blocks: [{"content":{"items":[{"title":"test","text":"test"}]},"id":"0783b1d2-a1b8-4dd6-ada5-c516eed3957a","isHidden":false,"type":"accordion"},{"content":{"level":"h2","text":"Heading"},"id":"50ed8a27-76eb-4bf9-a4c8-e2fa4de084a2","isHidden":false,"type":"heading"}]
+Blocks: [{"content":{"level":"h2","text":"Heading"},"id":"50ed8a27-76eb-4bf9-a4c8-e2fa4de084a2","isHidden":false,"type":"heading"}]
 
 ----
 
@@ -18,7 +18,7 @@ Created:
 
 ----
 
-Tags: 
+Tags: Home, Another
 
 ----
 

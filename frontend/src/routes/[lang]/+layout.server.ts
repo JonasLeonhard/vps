@@ -60,7 +60,10 @@ export const load: LayoutServerLoad<PageData | void> = async ({
 		...data?.globals,
 		seo: data?.globalSeo
 	} as Globals);
-	const page = await cms.getTransformedPage({ ...data?.page, seo: data?.pageSeo } as DefaultPage);
+	const page = await cms.getTransformedPage(
+		{ ...data?.page, seo: data?.pageSeo } as DefaultPage,
+		params
+	);
 
 	return {
 		globals,
