@@ -1,8 +1,8 @@
-Title: blogarticle
+Title: Impressum
 
 ----
 
-Blocks: [{"content":{"level":"h2","text":"heading2"},"id":"15aab9bc-c1eb-4239-9f82-77654ece4bf6","isHidden":false,"type":"heading"},{"content":{"text":"<p>english</p>"},"id":"fb2548a9-8778-4ec7-9601-0377dc9ad35e","isHidden":false,"type":"richtext"}]
+Blocks: [{"content":{"level":"h1","text":"Impressum"},"id":"923f4b94-c8f6-44b0-8037-1757f4352bba","isHidden":false,"type":"heading"}]
 
 ----
 
@@ -14,7 +14,7 @@ Excerpt:
 
 ----
 
-Created: 2023-09-05 07:25:00
+Created: 
 
 ----
 
@@ -82,19 +82,19 @@ Og-determiner:
 
 ----
 
-Og-type: website
+Og-type: 
 
 ----
 
-Og-type-article-published-time: 2023-09-05 07:25:00
+Og-type-article-published-time: 
 
 ----
 
-Og-type-article-modified-time: 2023-09-05 07:25:00
+Og-type-article-modified-time: 
 
 ----
 
-Og-type-article-expiration-time: 2023-09-05 07:25:00
+Og-type-article-expiration-time: 
 
 ----
 
@@ -134,24 +134,20 @@ Twitter-creator:
 
 ----
 
-Robots-noindex: default
+Robots-noindex: 
 
 ----
 
-Robots-nofollow: default
+Robots-nofollow: 
 
 ----
 
-Robots-noarchive: default
+Robots-noarchive: 
 
 ----
 
-Robots-noimageindex: default
+Robots-noimageindex: 
 
 ----
 
-Robots-nosnippet: default
-
-----
-
-Uuid: wgZa9Cbjn5ZDDr8w
+Robots-nosnippet: 

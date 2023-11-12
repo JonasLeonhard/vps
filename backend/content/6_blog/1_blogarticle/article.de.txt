@@ -2,7 +2,7 @@ Title: blogarticle
 
 ----
 
-Blocks: [{"content":{"level":"h2","text":"heading2"},"id":"15aab9bc-c1eb-4239-9f82-77654ece4bf6","isHidden":false,"type":"heading"},{"content":{"text":"<p>english</p>"},"id":"fb2548a9-8778-4ec7-9601-0377dc9ad35e","isHidden":false,"type":"richtext"}]
+Blocks: [{"content":{"level":"h2","text":"heading2"},"id":"15aab9bc-c1eb-4239-9f82-77654ece4bf6","isHidden":false,"type":"heading"},{"content":{"text":"<p>german</p>"},"id":"fb2548a9-8778-4ec7-9601-0377dc9ad35e","isHidden":false,"type":"richtext"}]
 
 ----
 
@@ -151,7 +151,3 @@ Robots-noimageindex: default
 ----
 
 Robots-nosnippet: default
-
-----
-
-Uuid: wgZa9Cbjn5ZDDr8w
