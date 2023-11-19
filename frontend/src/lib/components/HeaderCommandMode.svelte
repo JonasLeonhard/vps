@@ -4,6 +4,7 @@
 	import debounce from 'lodash.debounce';
 
 	import type { Language, Globals, DefaultPage } from '$lib/types';
+	import { goto } from '$app/navigation';
 
 	export let globals: Globals;
 	export let currentLanguage: Language;
@@ -97,7 +98,10 @@
 				bind:value={search}
 				on:keyup={handleSearch}
 				on:keydown={(e) => {
-					if (e.key === 'Enter') window.location.href = searchUrl;
+					if (e.key === 'Enter') {
+						closeDialog();
+						goto(searchUrl);
+					}
 				}}
 				class="bg-primary/0"
 			/>
@@ -107,7 +111,7 @@
 						{globals.translations.results || 'Results'}:
 						<span class="text-secondary">{results.length}</span>
 					</p>
-					<a href={searchUrl}>
+					<a href={searchUrl} on:click={closeDialog}>
 						<Icon
 							name="Adjustments"
 							title={globals.translations.refineSearch}
