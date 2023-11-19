@@ -8,6 +8,11 @@
 	export let text: string;
 
 	let clicked = false;
+	let searchParams: URLSearchParams;
+
+	page.subscribe(({ url }) => {
+		searchParams = url.searchParams;
+	});
 
 	const onCopyClick = (e: MouseEvent, text: string) => {
 		clicked = true;
@@ -21,9 +26,9 @@
 		}, 1000);
 	};
 
-	const replaceQueryParams = (input: string) => {
+	const replaceQueryParams = (input: string, searchParams: URLSearchParams) => {
 		let result = input;
-		$page.url.searchParams.forEach((value, key) => {
+		searchParams.forEach((value, key) => {
 			result = result.replace(`{${key}}`, value);
 		});
 		return result;
@@ -52,7 +57,7 @@
 	 * */
 	$: parts = text.split(/({.*?})/g).map((part) => {
 		if (part.startsWith('{') && part.endsWith('}')) {
-			return { text: replaceQueryParams(part), isSafe: false };
+			return { text: replaceQueryParams(part, searchParams), isSafe: false };
 		}
 
 		return { text: part, isSafe: true };

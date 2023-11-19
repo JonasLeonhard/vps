@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { Richtext } from '$lib/components';
+	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import debounce from 'lodash.debounce';
+	import type { DefaultPage } from '$lib/types';
+	import { goto } from '$app/navigation';
 
 	export let categories: string;
 	export let categoriesall: string;
@@ -14,21 +18,39 @@
 	export let searchFilter: { tags: Set<string>; created: Set<string> };
 
 	let appliedSearchFilter = {
-		tags: new Set(),
-		created: new Set()
+		query: $page.url.searchParams.get('q'),
+		page: $page.url.searchParams.get('page') || 1,
+		tags: new Set($page.url.searchParams.getAll('tags')),
+		min: $page.url.searchParams.get('min') || Array.from(searchFilter.created)?.at(0),
+		max: $page.url.searchParams.get('max') || Array.from(searchFilter.created)?.at(-1)
 	};
+	let searchResults: DefaultPage[] = [];
+	let searchLoading = true;
 
-	const applySearchFilter = () => {
-		console.log('search for ', appliedSearchFilter);
-	};
+	const applySearchFilter = debounce(async () => {
+		console.log('search for ', appliedSearchFilter, searchResults);
+		searchLoading = true;
+
+		if (appliedSearchFilter.query) {
+			$page.url.searchParams.set('q', appliedSearchFilter.query || '');
+			$page.url.searchParams.set('min', appliedSearchFilter.min || '');
+			$page.url.searchParams.set('max', appliedSearchFilter.max || '');
+			goto($page.url, {
+				noScroll: true,
+				invalidateAll: true
+			});
+			searchResults = await fetch(
+				`/api/search/${appliedSearchFilter.query}?${$page.url.searchParams.toString()}`
+			).then((res) => res.json());
+		}
+		searchLoading = false;
+	}, 300);
 
 	onMount(() => {
-		console.log(searchFilter);
 		applySearchFilter();
 	});
 </script>
 
-{console.log(searchFilter)}
 <div class="mb-4 grid gap-4 px-4 md:grid-cols-3">
 	<aside
 		class="sticky top-4 flex h-max max-h-screen flex-col gap-4 rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark md:col-span-1"
@@ -37,7 +59,11 @@
 			{@html filter}
 		</Richtext>
 
-		<input class="p-2 text-black" value="search" />
+		<input
+			class="p-2 text-black"
+			bind:value={appliedSearchFilter.query}
+			on:input={applySearchFilter}
+		/>
 
 		<div>
 			<Richtext>
@@ -46,7 +72,7 @@
 
 			<div class="mt-2 flex flex-wrap gap-4">
 				<p>{categoriesall}</p>
-				{#each Array.from(searchFilter.tags) as tag}
+				{#each Array.from(appliedSearchFilter.tags) as tag}
 					<p>{tag}</p>
 				{/each}
 			</div>
@@ -67,7 +93,8 @@
 					id="min-date"
 					class="text-black"
 					type="date"
-					value={Array.from(searchFilter.created)?.at(0)}
+					bind:value={appliedSearchFilter.min}
+					on:input={applySearchFilter}
 				/>
 			</div>
 
@@ -81,7 +108,8 @@
 					id="max-date"
 					class="text-black"
 					type="date"
-					value={Array.from(searchFilter.created)?.at(-1)}
+					bind:value={appliedSearchFilter.max}
+					on:input={applySearchFilter}
 				/>
 			</div>
 		</div>
@@ -94,14 +122,20 @@
 	<main
 		class="h-[80vh] rounded-md border border-black/10 bg-bg-accent-light p-4 shadow-lg dark:border-light/10 dark:bg-bg-accent-dark md:col-span-2"
 	>
-		search result cards here loading animation onMount...
-		<Richtext>
-			{@html results}
-		</Richtext>
-
-		<Richtext>
-			{@html loadmore}
-		</Richtext>
+		{#if searchLoading}
+			searchLoading
+		{:else}
+			<Richtext>
+				{@html results}
+			</Richtext>
+			{#each searchResults as result}
+				<div
+					class="rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark"
+				>
+					{result.title}
+				</div>
+			{/each}
+		{/if}
 	</main>
 </div>
 
@@ -109,4 +143,8 @@
 	class="col-span-3 mx-4 rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark"
 >
 	Timeline
+	<Richtext>
+		{@html loadmore}
+	</Richtext>
+	page: {appliedSearchFilter.page}
 </div>
