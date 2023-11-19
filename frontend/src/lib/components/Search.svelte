@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Richtext } from '$lib/components';
+	import { Richtext, Image } from '$lib/components';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import debounce from 'lodash.debounce';
@@ -128,11 +128,16 @@
 			<Richtext>
 				{@html results}
 			</Richtext>
+
+			{console.log(searchResults)}
 			{#each searchResults as result}
 				<div
 					class="rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark"
 				>
 					{result.title}
+					{#if result.cover}
+						<Image class="w-16" image={result.cover} loading="lazy" />
+					{/if}
 				</div>
 			{/each}
 		{/if}

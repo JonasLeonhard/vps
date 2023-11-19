@@ -1,5 +1,6 @@
 import type { ContentBlock } from './ContentBlock';
 import type { Seo } from './Seo';
+import type { Image } from '$lib/types';
 
 export interface DefaultPage {
 	id: string;
@@ -10,8 +11,8 @@ export interface DefaultPage {
 	content: {
 		intro: string;
 		subline: string;
-		cover: string;
 	};
+	cover?: Image;
 	seo: Seo;
 	url: string;
 	intendedTemplate: string;

@@ -54,6 +54,7 @@ return [
   'auth' => [
     'debug' => $_ENV['isLocal'] === 'true',
   ],
+  // CUSTOM FIELDS:
   'thumbs' => [ // in toBlocksExtended this will be appended to images srcsets depending on the selected srcset in you files/default.yml -> srcset select
     'srcsets' => [
       'default' => [

@@ -10,7 +10,8 @@ const getSearch = (query: string, templates = "['article', 'project']") => {
 				status: 'page.status',
 				slug: 'page.slug',
 				url: 'page.url',
-				intendedTemplate: 'page.intendedTemplate'
+				intendedTemplate: 'page.intendedTemplate',
+				cover: 'page.cover.toFileExtended'
 			}
 		}
 	};

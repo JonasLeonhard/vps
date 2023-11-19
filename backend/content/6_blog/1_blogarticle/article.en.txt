@@ -6,11 +6,11 @@ Blocks: [{"content":{"level":"h2","text":"heading2"},"id":"15aab9bc-c1eb-4239-9f
 
 ----
 
-Cover: 
+Cover: - file://va1X2UMBZFrNNs8W
 
 ----
 
-Excerpt: 
+Excerpt: excerpt
 
 ----
 
