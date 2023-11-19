@@ -55,7 +55,7 @@ return [
     'debug' => $_ENV['isLocal'] === 'true',
   ],
   // CUSTOM FIELDS:
-  'thumbs' => [ // in toBlocksExtended this will be appended to images srcsets depending on the selected srcset in you files/default.yml -> srcset select
+  'thumbs' => [ // in fieldMethodsExtended, we pass srcsetName as a fieldMethod for toBlocksExtended('srcsetName'). Or in toFileExtended('srcsetName')
     'srcsets' => [
       'default' => [
         '300w'  => ['width' => 300, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
@@ -70,7 +70,25 @@ return [
         '900w'  => ['width' => 900, 'height' => 900, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
         '1200w' => ['width' => 1200, 'height' => 1200, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
         '1800w' => ['width' => 1800, 'height' => 1800, 'format' => 'webp', 'quality' => 90, 'crop' => 'center']
-      ]
+      ],
+      'cover' => [
+        '300w'  => ['width' => 300, 'height' => 300, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
+        '600w'  => ['width' => 600, 'height' => 600, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
+        '900w'  => ['width' => 900, 'height' => 900, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
+        '1200w' => ['width' => 1200, 'height' => 1200, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
+        '1800w' => ['width' => 1800, 'height' => 1800, 'format' => 'webp', 'quality' => 90, 'crop' => 'center']
+      ],
+      'images' => [
+        '300w'  => ['width' => 300, 'height' => 300, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
+        '600w'  => ['width' => 600, 'height' => 600, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
+        '900w'  => ['width' => 900, 'height' => 900, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
+        '1200w' => ['width' => 1200, 'height' => 1200, 'format' => 'webp', 'quality' => 90, 'crop' => 'center'],
+        '1800w' => ['width' => 1800, 'height' => 1800, 'format' => 'webp', 'quality' => 90, 'crop' => 'center']
+      ],
     ]
+  ],
+  // picked in fieldMethodsExtended by srcsetName
+  'sizes' => [
+    'cover' => '((min-width: 50em) and (max-width: 60em)) 50em, ((min-width: 30em) and (max-width: 50em)) 30em, (max-width: 30em) 20em'
   ]
 ];

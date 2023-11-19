@@ -18,7 +18,7 @@
 		?.split(',')
 		?.map((srcset) => srcset.replace('/', `${PUBLIC_BACKEND_URL}/`))
 		?.join(',')}
-	sizes={image?.content?.sizes}
+	sizes={image?.sizes}
 	style={$$props.style || `object-position: ${image?.content?.focus || 'center'};`}
 	{...$$restProps}
 />

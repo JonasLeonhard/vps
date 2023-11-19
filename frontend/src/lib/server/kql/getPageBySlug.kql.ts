@@ -10,7 +10,7 @@ const getPageBySlug = (slug: string) => ({
 			slug: 'page.slug',
 			blocks: 'page.blocks.toBlocksExtended',
 			content: 'page.content',
-			cover: 'page.cover.toFileExtended',
+			cover: 'page.cover.toFileExtended("cover")',
 			excerpt: 'page.excerpt.toString'
 		}
 	},

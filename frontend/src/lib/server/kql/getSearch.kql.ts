@@ -10,7 +10,7 @@ const getSearch = (query: string, templates = "['article', 'project']") => {
 				slug: 'page.slug',
 				url: 'page.url',
 				intendedTemplate: 'page.intendedTemplate',
-				cover: 'page.cover.toFileExtended',
+				cover: 'page.cover.toFileExtended("cover")',
 				excerpt: 'page.excerpt.toString'
 			}
 		}

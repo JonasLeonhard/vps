@@ -9,9 +9,11 @@ use Kirby\Cms\File;
 /**
  * Appends srcset based on picked srcset in image
  */
-$transformImage = function (File $image) {
+$transformImage = function (File $image, null|array|string $srcsetName = null) {
   $imageArray = $image->toArray();
-  $imageArray['srcset'] = $image->srcset($image->content->get('srcset')->value); // pick selected srcset from config.php
+  $imageArray['srcset'] = $image->srcset($srcsetName); // pick selected srcset from config.php
+  $imageArray['srcsetName'] = $srcsetName;
+  $imageArray['sizes'] = option('sizes.' . $srcsetName);
   return $imageArray;
 };
 
@@ -25,7 +27,9 @@ $extend = function (Block $block) use ($transformImage) {
   if ($blockType == 'images') {
     /** @var Files */
     $images = $block->content()->get('images')->toFiles();
-    $block->content()->update(['images' => $images->map($transformImage)->values()]);
+    $block->content()->update(['images' => $images->map(function ($image) use ($transformImage) {
+      return $transformImage($image, 'images');
+    })->values()]);
   }
   return $block;
 };
@@ -37,11 +41,11 @@ Kirby::plugin('jonasleonhard/fieldMethodsExtended', [
         ->toBlocks()
         ->map($extend);
     },
-    'toFileExtended' => function (Field $field) use ($transformImage) {
+    'toFileExtended' => function (Field $field, null|array|string $srcsetName = null) use ($transformImage) {
       $file = $field->toFile();
       if (!$file) return $file;
 
-      return $transformImage($file);
+      return $transformImage($file, $srcsetName);
     }
   ]
 ]);

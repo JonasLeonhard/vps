@@ -11,3 +11,7 @@ Alt: 1200 x 1000 Pixel
 ----
 
 Uuid: SfyrQwpzOQweZMi9
+
+----
+
+Focus: 40.2% 44.3%
