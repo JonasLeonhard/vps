@@ -3,6 +3,16 @@ icon: settings
 columns:
   - width: 3/3
     fields:
+      cover:
+        extends: fields/image
+        label: Teaser Image
+        help: The Image shown in teaser cards linking to this page
+        required: false
+      excerpt:
+        label: Teaser Excerpt
+        help: The excerpt is used in the teaser
+        type: text
+        maxlength: 200
       created:
         type: date
         time: true

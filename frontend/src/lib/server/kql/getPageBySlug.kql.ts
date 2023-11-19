@@ -9,7 +9,9 @@ const getPageBySlug = (slug: string) => ({
 			status: 'page.status',
 			slug: 'page.slug',
 			blocks: 'page.blocks.toBlocksExtended',
-			content: 'page.content'
+			content: 'page.content',
+			cover: 'page.cover.toFileExtended',
+			excerpt: 'page.excerpt.toString'
 		}
 	},
 	...getSeo(slug)

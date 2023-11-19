@@ -36,5 +36,3 @@ tabs:
             label: In Review
             status: unlisted
             limit: 10
-
-  stage: sections/stage

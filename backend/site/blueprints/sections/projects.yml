@@ -10,7 +10,7 @@ create: project
 empty: No projects yet
 
 sortBy: published desc
-sortable: false
+sortable: true
 search: true
 limit: 20
 

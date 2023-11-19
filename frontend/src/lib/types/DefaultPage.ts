@@ -13,6 +13,7 @@ export interface DefaultPage {
 		subline: string;
 	};
 	cover?: Image;
+	exerpt?: string;
 	seo: Seo;
 	url: string;
 	intendedTemplate: string;
