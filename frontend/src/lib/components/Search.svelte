@@ -21,8 +21,8 @@
 		query: $page.url.searchParams.get('q'),
 		page: $page.url.searchParams.get('page') || 1,
 		tags: new Set($page.url.searchParams.getAll('tags')),
-		min: $page.url.searchParams.get('min') || Array.from(searchFilter.created)?.at(0),
-		max: $page.url.searchParams.get('max') || Array.from(searchFilter.created)?.at(-1)
+		min: $page.url.searchParams.get('min'),
+		max: $page.url.searchParams.get('max')
 	};
 	let searchResults: DefaultPage[] = [];
 	let searchLoading = true;
@@ -72,7 +72,7 @@
 
 			<div class="mt-2 flex flex-wrap gap-4">
 				<p>{categoriesall}</p>
-				{#each Array.from(appliedSearchFilter.tags) as tag}
+				{#each Array.from(searchFilter.tags) as tag}
 					<p>{tag}</p>
 				{/each}
 			</div>
@@ -147,4 +147,5 @@
 		{@html loadmore}
 	</Richtext>
 	page: {appliedSearchFilter.page}
+	todo: go through all {searchFilter.created.size} dates
 </div>
