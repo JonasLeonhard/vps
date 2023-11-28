@@ -3,7 +3,7 @@ const getSearch = (query: string, templates = "['article', 'project']") => {
 		search: {
 			query: `site.search('${query}', 'title|excerpt|blocks').filterBy('intendedTemplate', 'in', ${templates})`,
 			select: {
-				title: 'page.title.toString',
+				title: 'page.title',
 				blocks: 'page.blocks.toBlocks',
 				id: 'page.id',
 				status: 'page.status',
@@ -11,7 +11,7 @@ const getSearch = (query: string, templates = "['article', 'project']") => {
 				url: 'page.url',
 				intendedTemplate: 'page.intendedTemplate',
 				cover: 'page.cover.toFileExtended("cover")',
-				excerpt: 'page.excerpt.toString'
+				excerpt: 'page.excerpt'
 			}
 		}
 	};
