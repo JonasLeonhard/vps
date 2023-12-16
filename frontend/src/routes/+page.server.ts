@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ cookies, request }) => {
 	const cookieLang = cookies.get('lang');
 
 	if (cookieLang) {
-		throw redirect(303, `/${cookies.get('lang')}`);
+		redirect(303, `/${cookies.get('lang')}`);
 	}
 
 	const data = (
@@ -31,7 +31,7 @@ export const load: PageServerLoad = async ({ cookies, request }) => {
 	const languages: Language[] = data?.languages ? Object.values(JSON.parse(data?.languages)) : [];
 	const preferedBrowserLanguage = cms.getPreferedBrowserLanguage(languages, request.headers);
 
-	throw redirect(303, `/${preferedBrowserLanguage?.code || 'en'}`);
+	redirect(303, `/${preferedBrowserLanguage?.code || 'en'}`);
 };
 
 export const actions: Actions = {
@@ -41,6 +41,6 @@ export const actions: Actions = {
 		const formUrl = formData.get('url')?.toString() || '/en';
 
 		cookies.set('lang', formLang, { path: '/', maxAge: 60 * 60 * 24 * 365 });
-		throw redirect(303, cms.getLangReplacedUrl(formUrl, formLang));
+		redirect(303, cms.getLangReplacedUrl(formUrl, formLang));
 	}
 };

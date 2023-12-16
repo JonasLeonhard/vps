@@ -48,10 +48,10 @@ export const load: LayoutServerLoad<PageData | void> = async ({
 
 	if (!cms.requestedLanguageCodeExists(languages, params.lang)) {
 		cookies.set('lang', preferedBrowserLanguage?.code || defaultLanguage.code, { path: '/' });
-		throw redirect(
-			303,
-			cms.getLangReplacedUrl(request.url, cookies.get('lang') || defaultLanguage.code)
-		);
+		redirect(
+        			303,
+        			cms.getLangReplacedUrl(request.url, cookies.get('lang') || defaultLanguage.code)
+        		);
 	}
 
 	cookies.set('lang', params.lang, { path: '/' });
