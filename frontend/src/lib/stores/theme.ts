@@ -10,7 +10,7 @@ const theme = writable<Theme>(
 theme.subscribe((theme) => {
 	if (browser && theme) {
 		document.documentElement.dataset.theme = theme;
-		cookies.set('theme', theme.toString());
+		cookies.set('theme', theme.toString(), { path: '/' });
 	}
 });
 
