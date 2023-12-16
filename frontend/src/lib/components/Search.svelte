@@ -1,10 +1,13 @@
 <script lang="ts">
-	import { Richtext, Image } from '$lib/components';
-	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import debounce from 'lodash.debounce';
-	import type { DefaultPage } from '$lib/types';
+	import { fly } from 'svelte/transition';
+	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+	import debounce from 'lodash.debounce';
+
+	import { Richtext, Image } from '$lib/components';
+
+	import type { DefaultPage } from '$lib/types';
 
 	export let categories: string;
 	export let categoriesall: string;
@@ -17,6 +20,8 @@
 	export let loadmore: string;
 	export let searchFilter: { tags: Set<string>; created: Set<string> };
 
+	const CARD_OFFSET = 20;
+
 	let appliedSearchFilter = {
 		query: $page.url.searchParams.get('q'),
 		page: $page.url.searchParams.get('page') || 1,
@@ -26,6 +31,9 @@
 	};
 	let searchResults: DefaultPage[] = [];
 	let searchLoading = true;
+
+	let mouseover = false;
+	let containerScrollY = 0;
 
 	const applySearchFilter = debounce(async () => {
 		console.log('search for ', appliedSearchFilter, searchResults);
@@ -45,6 +53,22 @@
 		}
 		searchLoading = false;
 	}, 300);
+
+	const handleScroll = (e: WheelEvent) => {
+		if (e.deltaY && mouseover) {
+			containerScrollY += e.deltaY;
+
+			if (containerScrollY < 0) {
+				return (containerScrollY = 0);
+			}
+
+			if (containerScrollY > 20 * searchResults.length) {
+				return (containerScrollY = 20 * searchResults.length);
+			}
+
+			e.preventDefault();
+		}
+	};
 
 	onMount(() => {
 		applySearchFilter();
@@ -121,25 +145,51 @@
 
 	<main
 		class="h-[80vh] rounded-md border border-black/10 bg-bg-accent-light p-4 shadow-lg dark:border-light/10 dark:bg-bg-accent-dark md:col-span-2"
+		class:border-primary={mouseover}
 	>
 		{#if searchLoading}
-			searchLoading
+			searchLoading... TODO: teaser card in the middle with gradient and loading inside, same
+			position as start card
 		{:else}
 			<Richtext>
 				{@html results}
 			</Richtext>
 
-			{console.log(searchResults)}
-			{#each searchResults as result}
-				<div
-					class="rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark"
-				>
-					{result.title}
-					{#if result.cover}
-						<Image class="w-16" image={result.cover} loading="lazy" />
+			<div
+				class="relative mx-auto h-[100%] w-[100%]"
+				role="scrollbar"
+				tabindex="0"
+				aria-valuenow={containerScrollY}
+				aria-controls="teaser-card"
+				style="perspective: 1000px;"
+				on:wheel={handleScroll}
+				on:mouseenter={() => (mouseover = true)}
+				on:mouseleave={() => (mouseover = false)}
+			>
+				{#each searchResults as result, index}
+					{#if CARD_OFFSET * index - containerScrollY > 0}
+						<div
+							id="teaser-card"
+							transition:fly={{
+								duration: 75,
+								x: -CARD_OFFSET,
+								y: CARD_OFFSET,
+								opacity: 0.5
+							}}
+							class="absolute h-[80%] w-[80%] rounded-md border border-black/10 bg-light p-4 shadow-lg transition-all duration-0 dark:border-light/10 dark:bg-dark"
+							style="transform: translate3d({CARD_OFFSET * index -
+								containerScrollY}px, calc(-{CARD_OFFSET *
+								index}px + {containerScrollY}px), -{CARD_OFFSET *
+								index}px); z-index: {searchResults.length - index};"
+						>
+							{result.title} - {mouseover.toString()} - {containerScrollY}
+							{#if result.cover}
+								<Image class="w-16" image={result.cover} loading="lazy" />
+							{/if}
+						</div>
 					{/if}
-				</div>
-			{/each}
+				{/each}
+			</div>
 		{/if}
 	</main>
 </div>
@@ -147,7 +197,7 @@
 <div
 	class="col-span-3 mx-4 rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark"
 >
-	Timeline
+	Timeline: percentage scrolled: {containerScrollY / (CARD_OFFSET * searchResults.length)}
 	<Richtext>
 		{@html loadmore}
 	</Richtext>
