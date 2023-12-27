@@ -77,7 +77,7 @@
 
 <div class="mb-4 grid gap-4 px-4 md:grid-cols-3">
 	<aside
-		class="sticky top-4 flex h-max max-h-screen flex-col gap-4 rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark md:col-span-1"
+		class="sticky top-4 flex h-max max-h-screen flex-col gap-4 rounded-md border border-black/10 bg-light p-4 shadow-lg md:col-span-1 dark:border-light/10 dark:bg-dark"
 	>
 		<Richtext>
 			{@html filter}
@@ -144,17 +144,15 @@
 	</aside>
 
 	<main
-		class="h-[80vh] rounded-md border border-black/10 bg-bg-accent-light p-4 shadow-lg dark:border-light/10 dark:bg-bg-accent-dark md:col-span-2"
+		class="h-[60vh] md:col-span-2"
+		style="margin-top: {searchResults.length *
+			(CARD_OFFSET / 2)}px; padding-right: {searchResults.length * (CARD_OFFSET / 2)}px;"
 		class:border-primary={mouseover}
 	>
 		{#if searchLoading}
 			searchLoading... TODO: teaser card in the middle with gradient and loading inside, same
 			position as start card
 		{:else}
-			<Richtext>
-				{@html results}
-			</Richtext>
-
 			<div
 				class="relative mx-auto h-[100%] w-[100%]"
 				role="scrollbar"
@@ -168,28 +166,61 @@
 			>
 				{#each searchResults as result, index}
 					{#if CARD_OFFSET * index - containerScrollY > 0}
-						<div
+						<a
 							id="teaser-card"
+							href={result.url}
 							transition:fly={{
 								duration: 75,
 								x: -CARD_OFFSET,
 								y: CARD_OFFSET,
 								opacity: 0.5
 							}}
-							class="absolute h-[80%] w-[80%] rounded-md border border-black/10 bg-light p-4 shadow-lg transition-all duration-0 dark:border-light/10 dark:bg-dark"
-							style="transform: translate3d({CARD_OFFSET * index -
+							class="after:to-transparent
+							absolute
+							top-0
+							h-full
+							w-full
+							rounded-md
+							border
+							border-black/10
+							bg-light
+							shadow-lg
+							transition-colors
+							after:absolute
+							after:inset-0
+							after:z-10
+	            after:block
+							after:bg-gradient-to-r
+							after:from-black
+							after:via-black/40
+							after:opacity-30
+							after:content-['']
+							dark:border-light/10
+							dark:bg-dark"
+							class:border-primary={mouseover}
+							class:dark:border-primary={mouseover}
+							style="transform: translate3d({CARD_OFFSET * (index - 1) -
 								containerScrollY}px, calc(-{CARD_OFFSET *
-								index}px + {containerScrollY}px), -{CARD_OFFSET *
-								index}px); z-index: {searchResults.length - index};"
+								(index - 1)}px + {containerScrollY}px), -{CARD_OFFSET *
+								(index - 1)}px); z-index: {searchResults.length - (index - 1)};"
 						>
-							{result.title} - {mouseover.toString()} - {containerScrollY}
+							<Richtext class="absolute bottom-4 left-4 z-20 max-w-[50%]">
+								<h1>{result.title} - {index}</h1>
+							</Richtext>
 							{#if result.cover}
-								<Image class="w-16" image={result.cover} loading="lazy" />
+								<Image
+									class="h-full w-full rounded-md object-cover"
+									image={result.cover}
+									loading="lazy"
+								/>
 							{/if}
-						</div>
+						</a>
 					{/if}
 				{/each}
 			</div>
+			<Richtext>
+				{@html results}
+			</Richtext>
 		{/if}
 	</main>
 </div>

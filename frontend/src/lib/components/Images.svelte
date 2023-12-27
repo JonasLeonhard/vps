@@ -74,6 +74,8 @@
 				class={`images__image relative cursor-pointer overflow-hidden rounded-lg transition-all ${
 					indexesInView?.at(0) === index ? 'border border-secondary' : ''
 				}`}
+				role="button"
+				tabindex={index}
 				style="--random-offset: {SERVER_THUMB_OFFSET[
 					index % SERVER_THUMB_OFFSET.length
 				]}px; --scale: {indexesInView?.at(-1) === index ? '100' : '90'}%"
