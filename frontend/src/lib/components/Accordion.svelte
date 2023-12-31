@@ -2,8 +2,8 @@
 	import { Richtext } from '$lib/components';
 
 	interface AccordionItem {
-		summary: string;
 		details: string;
+		summary: string;
 	}
 	[];
 

@@ -4,9 +4,9 @@ const globals = (lang: string) => ({
 	globals: {
 		query: 'site',
 		select: {
-			navigation: 'site.navigation.toNavigationArray',
 			footerNavigation: 'site.footerNavigation.toNavigationArray',
 			metaNavigation: 'site.metaNavigation.toNavigationArray',
+			navigation: 'site.navigation.toNavigationArray',
 			socialMedia: 'site.socialMedia.toData("yaml")',
 			translations: {
 				query: `kirby.language('${lang}').translations`

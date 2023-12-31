@@ -1,1 +1,1 @@
-export type Theme = undefined | 'light' | 'dark';
+export type Theme = 'dark' | 'light' | undefined;

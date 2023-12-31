@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Icon, Dialog, Richtext } from '$lib/components';
-	import { spring } from 'svelte/motion';
-	import debounce from 'lodash.debounce';
+	import type { DefaultPage, Globals, Language } from '$lib/types';
 
-	import type { Language, Globals, DefaultPage } from '$lib/types';
 	import { goto } from '$app/navigation';
+	import { Dialog, Icon, Richtext } from '$lib/components';
+	import debounce from 'lodash.debounce';
+	import { spring } from 'svelte/motion';
 
 	export let globals: Globals;
 	export let currentLanguage: Language;
@@ -29,8 +29,8 @@
 	const coords = spring(
 		{ x: 0, y: 0 },
 		{
-			stiffness: 0.25,
-			damping: 0.5
+			damping: 0.5,
+			stiffness: 0.25
 		}
 	);
 

@@ -1,40 +1,38 @@
 export type Image = {
 	content: {
+		alt: string;
 		caption: string;
 		copyright: string;
-		alt: string;
-		uuid: string;
 		focus: string;
-		loading?: 'lazy' | 'eager';
+		loading?: 'eager' | 'lazy';
+		uuid: string;
 	};
-	srcset?: string;
-	srcsetName?: string;
-	sizes?: string;
 	dimensions: {
-		width: number;
 		height: number;
-		ratio: number;
 		orientation: 'landscape' | 'portrait';
+		ratio: number;
+		width: number;
 	};
 	exif: {
+		aperture?: string;
 		camera: {
 			make?: string;
 			model?: string;
 		};
+		exposure?: string;
+		focalLength?: string;
+		isColor?: boolean;
+		iso?: string;
 		location: {
 			lat?: number;
 			lng?: number;
 		};
 		timestamp: number;
-		exposure?: string;
-		aperture?: string;
-		iso?: string;
-		focalLength?: string;
-		isColor?: boolean;
 	};
 	extension: string;
 	filename: string;
 	hash: string;
+	id: string;
 	isReadable: boolean;
 	isResizable: boolean;
 	isWritable: boolean;
@@ -45,8 +43,10 @@ export type Image = {
 	root: string;
 	safeName: string;
 	size: number;
+	sizes?: string;
+	srcset?: string;
+	srcsetName?: string;
+	template?: string;
 	type: string;
 	url: string;
-	id: string;
-	template?: string;
 };

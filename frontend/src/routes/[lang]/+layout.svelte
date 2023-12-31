@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Header, Footer, Seo, PageTransition, Noise } from '$lib/components';
+	import { Footer, Header, Noise, PageTransition, Seo } from '$lib/components';
+
 	import type { PageData } from './$types';
 
 	export let data: PageData;

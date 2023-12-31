@@ -1,9 +1,9 @@
 export interface NavigationItem {
+	children: NavigationItem[];
 	id: string;
-	url: string;
+	isOpen: boolean;
+	popup: boolean;
 	text: string;
 	title: string | undefined;
-	popup: boolean;
-	isOpen: boolean;
-	children: NavigationItem[];
+	url: string;
 }

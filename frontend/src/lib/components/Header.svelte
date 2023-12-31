@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { ContentBlock, Globals, Language } from '$lib/types';
+
 	import {
 		HeaderCommandMode,
 		HeaderSettings,
@@ -6,7 +8,6 @@
 		Icon,
 		TableOfContents
 	} from '$lib/components';
-	import type { Language, Globals, ContentBlock } from '$lib/types';
 
 	export let currentLanguage: Language;
 	export let globals: Globals;

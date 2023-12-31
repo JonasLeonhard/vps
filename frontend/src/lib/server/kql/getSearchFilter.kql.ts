@@ -3,8 +3,8 @@ const getSearchFilter = (templates = "['article', 'project']") => {
 		searchFilter: {
 			query: `site.index(false).filterBy('intendedTemplate', 'in', ${templates})`,
 			select: {
-				tags: 'page.tags',
-				created: 'page.created'
+				created: 'page.created',
+				tags: 'page.tags'
 			}
 		}
 	};

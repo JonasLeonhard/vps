@@ -3,15 +3,15 @@ const getSearch = (query: string, templates = "['article', 'project']") => {
 		search: {
 			query: `site.search('${query}', 'title|excerpt|blocks').filterBy('intendedTemplate', 'in', ${templates})`,
 			select: {
-				title: 'page.title',
 				blocks: 'page.blocks.toBlocks',
-				id: 'page.id',
-				status: 'page.status',
-				slug: 'page.slug',
-				url: 'page.url',
-				intendedTemplate: 'page.intendedTemplate',
 				cover: 'page.cover.toFileExtended("cover")',
-				excerpt: 'page.excerpt'
+				excerpt: 'page.excerpt',
+				id: 'page.id',
+				intendedTemplate: 'page.intendedTemplate',
+				slug: 'page.slug',
+				status: 'page.status',
+				title: 'page.title',
+				url: 'page.url'
 			}
 		}
 	};

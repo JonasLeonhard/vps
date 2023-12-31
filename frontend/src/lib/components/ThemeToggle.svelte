@@ -1,7 +1,8 @@
 <script lang="ts">
+	import type { Globals } from '$lib/types';
+
 	import { SlideToggle } from '$lib/components';
 	import { theme } from '$lib/stores/theme';
-	import type { Globals } from '$lib/types';
 
 	export let globals: Globals;
 

@@ -1,13 +1,12 @@
 <script lang="ts">
+	import type { DefaultPage } from '$lib/types';
+
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import { Image, Loader, Richtext } from '$lib/components';
+	import debounce from 'lodash.debounce';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
-	import debounce from 'lodash.debounce';
-
-	import { Richtext, Image } from '$lib/components';
-
-	import type { DefaultPage } from '$lib/types';
 
 	export let categories: string;
 	export let categoriesall: string;
@@ -18,16 +17,16 @@
 	export let filter: string;
 	export let results: string;
 	export let loadmore: string;
-	export let searchFilter: { tags: Set<string>; created: Set<string> };
+	export let searchFilter: { created: Set<string>; tags: Set<string> };
 
 	const CARD_OFFSET = 20;
 
 	let appliedSearchFilter = {
-		query: $page.url.searchParams.get('q'),
-		page: $page.url.searchParams.get('page') || 1,
-		tags: new Set($page.url.searchParams.getAll('tags')),
+		max: $page.url.searchParams.get('max'),
 		min: $page.url.searchParams.get('min'),
-		max: $page.url.searchParams.get('max')
+		page: $page.url.searchParams.get('page') || 1,
+		query: $page.url.searchParams.get('q'),
+		tags: new Set($page.url.searchParams.getAll('tags'))
 	};
 	let searchResults: DefaultPage[] = [];
 	let searchLoading = true;
@@ -44,8 +43,8 @@
 			$page.url.searchParams.set('min', appliedSearchFilter.min || '');
 			$page.url.searchParams.set('max', appliedSearchFilter.max || '');
 			goto($page.url, {
-				noScroll: true,
-				invalidateAll: true
+				invalidateAll: true,
+				noScroll: true
 			});
 			searchResults = await fetch(
 				`/api/search/${appliedSearchFilter.query}?${$page.url.searchParams.toString()}`
@@ -79,6 +78,7 @@
 	<aside
 		class="sticky top-4 flex h-max max-h-screen flex-col gap-4 rounded-md border border-black/10 bg-light p-4 shadow-lg md:col-span-1 dark:border-light/10 dark:bg-dark"
 	>
+		<Loader />
 		<Richtext>
 			{@html filter}
 		</Richtext>
@@ -171,9 +171,9 @@
 							href={result.url}
 							transition:fly={{
 								duration: 75,
+								opacity: 0.5,
 								x: -CARD_OFFSET,
-								y: CARD_OFFSET,
-								opacity: 0.5
+								y: CARD_OFFSET
 							}}
 							class="after:to-transparent
 							absolute

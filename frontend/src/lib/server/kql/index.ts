@@ -1,8 +1,8 @@
-import globals from './globals.kql';
-import languages from './languages.kql';
 import getPageBySlug from './getPageBySlug.kql';
-import getSeo from './getSeo.kql';
 import getSearch from './getSearch.kql';
 import getSearchFilter from './getSearchFilter.kql';
+import getSeo from './getSeo.kql';
+import globals from './globals.kql';
+import languages from './languages.kql';
 
-export { globals, languages, getPageBySlug, getSeo, getSearch, getSearchFilter };
+export { getPageBySlug, getSearch, getSearchFilter, getSeo, globals, languages };

@@ -1,5 +1,7 @@
-import { sveltekit } from '@sveltejs/kit/vite';
 import type { UserConfig } from 'vite';
+
+import { sveltekit } from '@sveltejs/kit/vite';
+
 import rawFonts from './src/lib/server/satori/rawFontsVitePlugin';
 
 const config: UserConfig = {

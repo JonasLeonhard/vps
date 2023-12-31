@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Richtext, Icon } from '$lib/components';
+	import { page } from '$app/stores';
+	import { Icon, Richtext } from '$lib/components';
 	import { tableOfContentsActiveHeadlineId } from '$lib/stores/tableOfContentsActiveHeadlineId';
 	import { inview } from 'svelte-inview';
-	import { page } from '$app/stores';
 
 	export let level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 	export let text: string;
@@ -57,10 +57,10 @@
 	 * */
 	$: parts = text.split(/({.*?})/g).map((part) => {
 		if (part.startsWith('{') && part.endsWith('}')) {
-			return { text: replaceQueryParams(part, searchParams), isSafe: false };
+			return { isSafe: false, text: replaceQueryParams(part, searchParams) };
 		}
 
-		return { text: part, isSafe: true };
+		return { isSafe: true, text: part };
 	});
 </script>
 

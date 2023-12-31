@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Dialog, Icon, LanguageSelect, ThemeToggle, Richtext } from '$lib/components';
-	import { spring } from 'svelte/motion';
-
 	import type { Globals, Language } from '$lib/types';
+
+	import { Dialog, Icon, LanguageSelect, Richtext, ThemeToggle } from '$lib/components';
+	import { spring } from 'svelte/motion';
 
 	export let currentLanguage: Language;
 	export let globals: Globals;
@@ -14,8 +14,8 @@
 	const coords = spring(
 		{ x: 0, y: 0 },
 		{
-			stiffness: 0.25,
-			damping: 0.5
+			damping: 0.5,
+			stiffness: 0.25
 		}
 	);
 

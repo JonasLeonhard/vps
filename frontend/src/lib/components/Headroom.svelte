@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
-
 	import type { ScrollDirection } from '$lib/types';
+
+	import { fly } from 'svelte/transition';
 
 	export let offset = 0;
 	export let tolerance = 0;
@@ -45,8 +45,8 @@
 			transition:fly={{
 				delay: headerVisible ? 0 : 250,
 				duration: 800,
-				x: '-100%',
-				opacity: 0
+				opacity: 0,
+				x: '-100%'
 			}}
 			class="block w-screen animate-borderGradient bg-gradient-to-r from-primary via-secondary to-tertiary bg-[length:400%_400%] py-[1px] [animation-duration:10s]"
 		/>

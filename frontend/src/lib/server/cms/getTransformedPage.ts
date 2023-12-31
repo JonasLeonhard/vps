@@ -1,9 +1,11 @@
-import cms from '$lib/server/cms';
+import type { ContentBlock, DefaultPage } from '$lib/types';
+
 import { PUBLIC_BACKEND_URL } from '$env/static/public';
+import cms from '$lib/server/cms';
 import codeToHtml from '$lib/server/shiki';
 
-import type { ContentBlock, DefaultPage } from '$lib/types';
 import type { LayoutParams } from '../../../routes/$types';
+
 import { getSearchFilter } from '../kql';
 
 const transformCodeBlock = async (block: ContentBlock) => {
@@ -12,15 +14,15 @@ const transformCodeBlock = async (block: ContentBlock) => {
 };
 
 const transformSearchBlock = async (block: ContentBlock, params: LayoutParams) => {
-	const result: { searchFilter: { tags: string; created: string }[] } = (
+	const result: { searchFilter: { created: string; tags: string }[] } = (
 		await fetch(`${PUBLIC_BACKEND_URL}/api/query`, {
-			method: 'POST',
-			headers: cms.getHeaders(params?.lang || 'en'),
 			body: JSON.stringify({
 				select: {
 					...getSearchFilter()
 				}
-			})
+			}),
+			headers: cms.getHeaders(params?.lang || 'en'),
+			method: 'POST'
 		})
 			.then((res) => res.json())
 			.catch((err) => console.error(err))
@@ -35,8 +37,8 @@ const transformSearchBlock = async (block: ContentBlock, params: LayoutParams) =
 			return acc;
 		},
 		{
-			tags: new Set(),
-			created: new Set()
+			created: new Set(),
+			tags: new Set()
 		}
 	);
 };

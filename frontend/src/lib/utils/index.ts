@@ -1,5 +1,5 @@
+import clickOutside from './clickOutside';
 import getPercentageOfElementVisible from './getPercentageOfElementVisible';
 import getPercentageOfViewport from './getPercentageOfViewport';
-import clickOutside from './clickOutside';
 
-export { getPercentageOfElementVisible, getPercentageOfViewport, clickOutside };
+export { clickOutside, getPercentageOfElementVisible, getPercentageOfViewport };

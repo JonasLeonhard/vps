@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { Image } from '$lib/components';
 	import type { Image as ImageT } from '$lib/types';
-	import { inview } from 'svelte-inview';
+
+	import { Image } from '$lib/components';
 	import Scroller from '@sveltejs/svelte-scroller';
+	import { inview } from 'svelte-inview';
 
 	export let images: ImageT[] = [];
 

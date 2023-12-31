@@ -3,7 +3,7 @@
 	// INFO: this component gets loaded by Satori in renderComponentToPng. It only supports css/html that satori supports: https://github.com/vercel/satori#css
 	// og image rendered by satori in GET api/og
 	export let headline: string;
-	export let subline: string | null;
+	export let subline: null | string;
 </script>
 
 <div class="flex h-full h-full w-full flex-col items-center justify-center bg-[#0f0d0b]">

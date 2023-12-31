@@ -1,9 +1,9 @@
 <script lang="ts">
+	import type { Icon as IconType } from '$lib/types';
+
+	import { Icon } from '$lib/components';
 	import { createEventDispatcher } from 'svelte/internal';
 	import { scale } from 'svelte/transition';
-	import { Icon } from '$lib/components';
-
-	import type { Icon as IconType } from '$lib/types';
 
 	const dispatch = createEventDispatcher();
 
@@ -49,13 +49,13 @@
 				class:translate-x-full={checked}
 			>
 				{#if iconLeft && checked}
-					<div class="absolute inset-0" transition:scale={{ start: 0, duration: 200, delay: 150 }}>
+					<div class="absolute inset-0" transition:scale={{ delay: 150, duration: 200, start: 0 }}>
 						<Icon name={iconLeft} class="text-black" />
 					</div>
 				{/if}
 
 				{#if iconRight && !checked}
-					<div class="absolute inset-0" transition:scale={{ start: 0, duration: 200, delay: 150 }}>
+					<div class="absolute inset-0" transition:scale={{ delay: 150, duration: 200, start: 0 }}>
 						<Icon name={iconRight} class="text-black" />
 					</div>
 				{/if}

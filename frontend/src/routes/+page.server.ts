@@ -1,8 +1,10 @@
-import cms from '$lib/server/cms';
-import { PUBLIC_BACKEND_URL } from '$env/static/public';
-import { redirect } from '@sveltejs/kit';
-import type { Actions, PageServerLoad } from './$types';
 import type { Language } from '$lib/types';
+
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
+import cms from '$lib/server/cms';
+import { redirect } from '@sveltejs/kit';
+
+import type { Actions, PageServerLoad } from './$types';
 
 /**
  * Permanently redirect all request to '/' to the set cookie language, then the preferedBrowserLanguage, then en
@@ -16,13 +18,13 @@ export const load: PageServerLoad = async ({ cookies, request }) => {
 
 	const data = (
 		await fetch(`${PUBLIC_BACKEND_URL}/api/query`, {
-			method: 'POST',
-			headers: cms.getHeaders('en'),
 			body: JSON.stringify({
 				select: {
 					...cms.kql.languages
 				}
-			})
+			}),
+			headers: cms.getHeaders('en'),
+			method: 'POST'
 		})
 			.then((res) => res.json())
 			.catch((err) => console.error(err))
@@ -40,7 +42,7 @@ export const actions: Actions = {
 		const formLang = formData.get('lang')?.toString() || 'en';
 		const formUrl = formData.get('url')?.toString() || '/en';
 
-		cookies.set('lang', formLang, { path: '/', maxAge: 60 * 60 * 24 * 365 });
+		cookies.set('lang', formLang, { maxAge: 60 * 60 * 24 * 365, path: '/' });
 		redirect(303, cms.getLangReplacedUrl(formUrl, formLang));
 	}
 };

@@ -1,14 +1,13 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import type { Language } from '$lib/types/index';
+
+	import { page } from '$app/stores';
 
 	export let languages: Language[];
 	export let currentLanguage: Language;
 	let formRef: HTMLFormElement;
 
-	// TODO: what is the correct type here?
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const onSelectChange = (event: any) => {
+	const onSelectChange = () => {
 		formRef.submit();
 	};
 </script>

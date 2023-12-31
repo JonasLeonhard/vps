@@ -1,15 +1,17 @@
 <script lang="ts">
+	import type { Icon } from '$lib/types';
+
+	import Error404 from './404.svelte';
 	import Adjustments from './Adjustments.svelte';
 	import Article from './Article.svelte';
 	import Branch from './Branch.svelte';
 	import Brightness from './Brightness.svelte';
 	import ChevronDown from './ChevronDown.svelte';
-	import ChevronUp from './ChevronUp.svelte';
 	import ChevronRight from './ChevronRight.svelte';
+	import ChevronUp from './ChevronUp.svelte';
 	import Close from './Close.svelte';
 	import Copied from './Copied.svelte';
 	import Copy from './Copy.svelte';
-	import Error404 from './404.svelte';
 	import ExternalLink from './ExternalLink.svelte';
 	import Github from './Github.svelte';
 	import Instagram from './Instagram.svelte';
@@ -24,8 +26,6 @@
 	import Twitter from './Twitter.svelte';
 	import Users from './Users.svelte';
 	import YouTube from './YouTube.svelte';
-
-	import type { Icon } from '$lib/types';
 
 	export let name: Icon;
 	export let onClick: (e: MouseEvent) => void = () => null;

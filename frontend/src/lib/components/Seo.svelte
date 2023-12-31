@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Seo } from '$lib/types';
+
 	import { MetaTags } from 'svelte-meta-tags';
 
 	export let pageSeo: Seo;
@@ -13,9 +14,20 @@
 	description={pageSeo?.metaDescription || globalsSeo?.metaDescription}
 	canonical={pageSeo?.metaCanonicalUrl}
 	openGraph={{
-		type: pageSeo?.ogType || globalsSeo?.ogType || 'website',
-		title: pageSeo?.ogTitle || globalsSeo?.ogTitle || pageSeo?.metaImage || globalsSeo?.metaImage,
+		article: {
+			authors:
+				pageSeo?.ogTypeArticleAuthor?.map((author) => author.url) ||
+				globalsSeo?.ogTypeArticleAuthor?.map((author) => author.url),
+			expirationTime:
+				pageSeo?.ogTypeArticleExpirationTime || globalsSeo?.ogTypeArticleExpirationTime,
+			modifiedTime: pageSeo?.ogTypeArticleModifiedTime || globalsSeo?.ogTypeArticleModifiedTime,
+			publishedTime: pageSeo?.ogTypeArticlePublishedTime || globalsSeo?.ogTypeArticlePublishedTime,
+			section: pageSeo?.ogTypeArticleSection || globalsSeo?.ogTypeArticleSection,
+			tags: pageSeo?.ogTypeArticleTag || globalsSeo?.ogTypeArticleTag
+		},
+		audio: pageSeo?.ogAudio || globalsSeo?.ogAudio,
 		description: pageSeo?.ogDescription || globalsSeo?.ogDescription,
+		determiner: pageSeo?.ogDeterminer || globalsSeo?.ogDeterminer,
 		images: [
 			{
 				url:
@@ -26,42 +38,31 @@
 					`/api/og?headline=${pageTitle}&subline=Blog`
 			}
 		],
-		article: {
-			authors:
-				pageSeo?.ogTypeArticleAuthor?.map((author) => author.url) ||
-				globalsSeo?.ogTypeArticleAuthor?.map((author) => author.url),
-			expirationTime:
-				pageSeo?.ogTypeArticleExpirationTime || globalsSeo?.ogTypeArticleExpirationTime,
-			modifiedTime: pageSeo?.ogTypeArticleModifiedTime || globalsSeo?.ogTypeArticleModifiedTime,
-			publishedTime: pageSeo?.ogTypeArticlePublishedTime || globalsSeo?.ogTypeArticlePublishedTime,
-			tags: pageSeo?.ogTypeArticleTag || globalsSeo?.ogTypeArticleTag,
-			section: pageSeo?.ogTypeArticleSection || globalsSeo?.ogTypeArticleSection
-		},
-		determiner: pageSeo?.ogDeterminer || globalsSeo?.ogDeterminer,
-		audio: pageSeo?.ogAudio || globalsSeo?.ogAudio,
-		video: pageSeo?.ogVideo || globalsSeo?.ogVideo,
 		site_name: pageSeo?.ogSiteName || globalsSeo?.ogSiteName,
-		url: pageSeo?.ogUrl || globalsSeo?.ogUrl
+		title: pageSeo?.ogTitle || globalsSeo?.ogTitle || pageSeo?.metaImage || globalsSeo?.metaImage,
+		type: pageSeo?.ogType || globalsSeo?.ogType || 'website',
+		url: pageSeo?.ogUrl || globalsSeo?.ogUrl,
+		video: pageSeo?.ogVideo || globalsSeo?.ogVideo
 	}}
 	twitter={{
 		cardType: pageSeo?.twitterCardType || globalsSeo?.twitterCardType,
-		title: pageSeo?.twitterTitle || globalsSeo?.twitterTitle,
 		description: pageSeo?.twitterDescription || globalsSeo?.twitterDescription,
+		handle: pageSeo?.twitterCreator || globalsSeo?.twitterCreator,
 		image:
 			pageSeo?.twitterImage ||
 			globalsSeo?.twitterImage ||
 			`/api/og?headline=${pageTitle}&subline=Blog`,
-		handle: pageSeo?.twitterCreator || globalsSeo?.twitterCreator,
-		site: pageSeo?.twitterSite || globalsSeo?.twitterSite
+		site: pageSeo?.twitterSite || globalsSeo?.twitterSite,
+		title: pageSeo?.twitterTitle || globalsSeo?.twitterTitle
 	}}
 	robotsProps={{
 		noarchive:
 			(pageSeo?.robotsNoArchive || globalsSeo?.robotsNoArchive) === 'enabled' ? true : false,
-		nosnippet:
-			(pageSeo?.robotsNoSnippet || globalsSeo?.robotsNoSnippet) === 'enabled' ? true : false,
-		noindex: (pageSeo?.robotsNoIndex || globalsSeo?.robotsNoIndex) === 'enabled' ? true : false,
+		nofollow: (pageSeo?.robotsNoFollow || globalsSeo?.robotsNoFollow) === 'enabled' ? true : false,
 		noimageindex:
 			(pageSeo?.robotsNoIndex || globalsSeo?.robotsNoIndex) === 'enabled' ? true : false,
-		nofollow: (pageSeo?.robotsNoFollow || globalsSeo?.robotsNoFollow) === 'enabled' ? true : false
+		noindex: (pageSeo?.robotsNoIndex || globalsSeo?.robotsNoIndex) === 'enabled' ? true : false,
+		nosnippet:
+			(pageSeo?.robotsNoSnippet || globalsSeo?.robotsNoSnippet) === 'enabled' ? true : false
 	}}
 />

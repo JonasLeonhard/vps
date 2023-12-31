@@ -1,16 +1,9 @@
 <script lang="ts">
-	import { Accordion, Code, Details, Heading, Images, Richtext, Search } from '$lib/components';
 	import type { ContentBlock } from '$lib/types';
 
+	import { Accordion, Code, Details, Heading, Images, Richtext, Search } from '$lib/components';
+
 	export let blocks: ContentBlock[] = [];
-
-	const getClass = (block: ContentBlock) => {
-		if (block.type === 'search') {
-			return 'mx-auto my-4';
-		}
-
-		return 'container mx-auto my-4';
-	};
 </script>
 
 <ul class="my-4">

@@ -1,6 +1,6 @@
 export type ContentBlock = {
-	type: string;
-	isHidden: boolean;
-	id: string;
 	content: any;
+	id: string;
+	isHidden: boolean;
+	type: string;
 };

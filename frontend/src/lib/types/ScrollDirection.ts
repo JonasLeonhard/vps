@@ -1,1 +1,1 @@
-export type ScrollDirection = 'up' | 'down';
+export type ScrollDirection = 'down' | 'up';

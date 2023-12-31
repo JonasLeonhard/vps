@@ -4,9 +4,9 @@ import getDefaultLanguage from './getDefaultLanguage';
 import getHeaders from './getHeaders';
 import getLangReplacedUrl from './getLangReplacedUrl';
 import getPreferedBrowserLanguage from './getPreferedBrowserLanguage';
-import requestedLanguageCodeExists from './requestedLanguageCodeExists';
-import getTransformedPage from './getTransformedPage';
 import getTransformedGlobals from './getTransformedGlobals';
+import getTransformedPage from './getTransformedPage';
+import requestedLanguageCodeExists from './requestedLanguageCodeExists';
 
 const cms = {
 	getCookieLanguage,
@@ -14,10 +14,10 @@ const cms = {
 	getHeaders,
 	getLangReplacedUrl,
 	getPreferedBrowserLanguage,
-	kql,
-	requestedLanguageCodeExists,
+	getTransformedGlobals,
 	getTransformedPage,
-	getTransformedGlobals
+	kql,
+	requestedLanguageCodeExists
 };
 
 export default cms;

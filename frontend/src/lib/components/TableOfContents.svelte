@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
+	import type { ContentBlock } from '$lib/types';
+
 	import { Icon, Richtext } from '$lib/components';
 	import { tableOfContentsActiveHeadlineId } from '$lib/stores/tableOfContentsActiveHeadlineId';
 	import { clickOutside } from '$lib/utils';
-
-	import type { ContentBlock } from '$lib/types';
+	import { fade } from 'svelte/transition';
 
 	export let blocks: ContentBlock[];
 	let scrollY = 0;
