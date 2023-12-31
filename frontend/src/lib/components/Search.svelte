@@ -34,6 +34,8 @@
 	let mouseover = false;
 	let containerScrollY = 0;
 
+	$: timelinePercentageScrolled = containerScrollY / (CARD_OFFSET * searchResults.length);
+
 	const applySearchFilter = debounce(async () => {
 		console.log('search for ', appliedSearchFilter, searchResults);
 		searchLoading = true;
@@ -78,7 +80,6 @@
 	<aside
 		class="sticky top-4 flex h-max max-h-screen flex-col gap-4 rounded-md border border-black/10 bg-light p-4 shadow-lg md:col-span-1 dark:border-light/10 dark:bg-dark"
 	>
-		<Loader />
 		<Richtext>
 			{@html filter}
 		</Richtext>
@@ -150,8 +151,7 @@
 		class:border-primary={mouseover}
 	>
 		{#if searchLoading}
-			searchLoading... TODO: teaser card in the middle with gradient and loading inside, same
-			position as start card
+			<Loader />
 		{:else}
 			<div
 				class="relative mx-auto h-[100%] w-[100%]"
@@ -217,6 +217,7 @@
 						</a>
 					{/if}
 				{/each}
+				<Loader /> aftercards loader
 			</div>
 			<Richtext>
 				{@html results}
@@ -228,7 +229,8 @@
 <div
 	class="col-span-3 mx-4 rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark"
 >
-	Timeline: percentage scrolled: {containerScrollY / (CARD_OFFSET * searchResults.length)}
+	Timeline: percentage scrolled:
+	{timelinePercentageScrolled}
 	<Richtext>
 		{@html loadmore}
 	</Richtext>

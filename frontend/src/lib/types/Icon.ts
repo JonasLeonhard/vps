@@ -18,6 +18,8 @@ export type Icon =
 	| 'LinkedIn'
 	| 'Logo'
 	| 'Moon'
+	| 'Pacman'
+	| 'PointFilled'
 	| 'Settings'
 	| 'Sun'
 	| 'Terminal'

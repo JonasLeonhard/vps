@@ -20,6 +20,8 @@
 	import LinkedIn from './LinkedIn.svelte';
 	import Logo from './Logo.svelte';
 	import Moon from './Moon.svelte';
+	import Pacman from './Pacman.svelte';
+	import PointFilled from './PointFilled.svelte';
 	import Settings from './Settings.svelte';
 	import Sun from './Sun.svelte';
 	import Terminal from './Terminal.svelte';
@@ -97,6 +99,10 @@
 		<Users />
 	{:else if name === '404'}
 		<Error404 />
+	{:else if name === 'Pacman'}
+		<Pacman />
+	{:else if name === 'PointFilled'}
+		<PointFilled />
 	{:else}
 		Icon undefined: {name}
 	{/if}
