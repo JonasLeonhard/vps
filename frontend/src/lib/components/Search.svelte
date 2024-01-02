@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { DefaultPage } from '$lib/types';
+	import type { SearchResults } from '$lib/types';
 
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -28,13 +28,14 @@
 		query: $page.url.searchParams.get('q'),
 		tags: new Set($page.url.searchParams.getAll('tags'))
 	};
-	let searchResults: DefaultPage[] = [];
+	let searchResults: SearchResults | undefined = undefined;
 	let searchLoading = true;
 
 	let mouseover = false;
 	let containerScrollY = 0;
 
-	$: timelinePercentageScrolled = containerScrollY / (CARD_OFFSET * searchResults.length);
+	$: timelinePercentageScrolled =
+		containerScrollY / (CARD_OFFSET * (searchResults?.data?.length || 0));
 
 	const applySearchFilter = debounce(async () => {
 		console.log('search for ', appliedSearchFilter, searchResults);
@@ -44,6 +45,8 @@
 			$page.url.searchParams.set('q', appliedSearchFilter.query || '');
 			$page.url.searchParams.set('min', appliedSearchFilter.min || '');
 			$page.url.searchParams.set('max', appliedSearchFilter.max || '');
+			$page.url.searchParams.set('page', appliedSearchFilter.page.toString() || '1');
+			$page.url.searchParams.set('tags', Array.from(appliedSearchFilter.tags).join(',') || '1');
 			goto($page.url, {
 				invalidateAll: true,
 				noScroll: true
@@ -63,8 +66,8 @@
 				return (containerScrollY = 0);
 			}
 
-			if (containerScrollY > 20 * searchResults.length) {
-				return (containerScrollY = 20 * searchResults.length);
+			if (containerScrollY > 20 * (searchResults?.data?.length || 0)) {
+				return (containerScrollY = 20 * (searchResults?.data?.length || 0));
 			}
 
 			e.preventDefault();
@@ -146,12 +149,15 @@
 
 	<main
 		class="h-[60vh] md:col-span-2"
-		style="margin-top: {searchResults.length *
-			(CARD_OFFSET / 2)}px; padding-right: {searchResults.length * (CARD_OFFSET / 2)}px;"
+		style="margin-top: {(searchResults?.data?.length || 0) *
+			(CARD_OFFSET / 2)}px; padding-right: {(searchResults?.data?.length || 0) *
+			(CARD_OFFSET / 2)}px;"
 		class:border-primary={mouseover}
 	>
 		{#if searchLoading}
-			<Loader />
+			<div class="flex h-full w-full items-center justify-center">
+				<Loader />
+			</div>
 		{:else}
 			<div
 				class="relative mx-auto h-[100%] w-[100%]"
@@ -164,8 +170,8 @@
 				on:mouseenter={() => (mouseover = true)}
 				on:mouseleave={() => (mouseover = false)}
 			>
-				{#each searchResults as result, index}
-					{#if CARD_OFFSET * index - containerScrollY > 0}
+				{#each searchResults?.data || [] as result, index}
+					{#if CARD_OFFSET * index - containerScrollY > 0 || index === (searchResults?.data?.length || 0) - 1}
 						<a
 							id="teaser-card"
 							href={result.url}
@@ -202,25 +208,30 @@
 							style="transform: translate3d({CARD_OFFSET * (index - 1) -
 								containerScrollY}px, calc(-{CARD_OFFSET *
 								(index - 1)}px + {containerScrollY}px), -{CARD_OFFSET *
-								(index - 1)}px); z-index: {searchResults.length - (index - 1)};"
+								(index - 1)}px); z-index: {(searchResults?.data?.length || 0) - (index - 1)};"
 						>
-							<Richtext class="absolute bottom-4 left-4 z-20 max-w-[50%]">
-								<h1>{result.title} - {index}</h1>
-							</Richtext>
-							{#if result.cover}
-								<Image
-									class="h-full w-full rounded-md object-cover"
-									image={result.cover}
-									loading="lazy"
-								/>
+							{#if CARD_OFFSET * index - containerScrollY <= -CARD_OFFSET / 2 && index === (searchResults?.data?.length || 0) - 1}
+								<div class="flex h-full w-full items-center justify-center">
+									<Loader />
+								</div>
+							{:else}
+								<Richtext class="absolute bottom-4 left-4 z-20 max-w-[50%]">
+									<h1>{result.title} - {index}</h1>
+								</Richtext>
+								{#if result.cover}
+									<Image
+										class="h-full w-full rounded-md object-cover"
+										image={result.cover}
+										loading="lazy"
+									/>
+								{/if}
 							{/if}
 						</a>
 					{/if}
 				{/each}
-				<Loader /> aftercards loader
 			</div>
 			<Richtext>
-				{@html results}
+				{@html results}: {searchResults?.pagination?.page} / {searchResults?.pagination?.pages}
 			</Richtext>
 		{/if}
 	</main>

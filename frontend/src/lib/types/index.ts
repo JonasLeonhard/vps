@@ -6,6 +6,7 @@ import type { Image } from './Image';
 import type { Language } from './Language';
 import type { NavigationItem } from './NavigationItem';
 import type { ScrollDirection } from './ScrollDirection';
+import type { SearchResults } from './SearchResults';
 import type { Seo } from './Seo';
 import type { TableOfContentsActiveHeadlineId } from './TableOfContentsActiveHeadlineId';
 import type { Theme } from './Theme';
@@ -19,6 +20,7 @@ export type {
 	Language,
 	NavigationItem,
 	ScrollDirection,
+	SearchResults,
 	Seo,
 	TableOfContentsActiveHeadlineId,
 	Theme

@@ -1,6 +1,10 @@
-const getSearch = (query: string, templates = "['article', 'project']") => {
+const getSearch = (query: string, templates = "['article', 'project']", limit = 8, page = 0) => {
 	return {
 		search: {
+			pagination: {
+				limit,
+				page
+			},
 			query: `site.search('${query}', 'title|excerpt|blocks').filterBy('intendedTemplate', 'in', ${templates})`,
 			select: {
 				blocks: 'page.blocks.toBlocks',

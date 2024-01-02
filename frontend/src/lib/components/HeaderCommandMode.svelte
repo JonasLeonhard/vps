@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { DefaultPage, Globals, Language } from '$lib/types';
+	import type { DefaultPage, Globals, Language, SearchResults } from '$lib/types';
 
 	import { goto } from '$app/navigation';
 	import { Dialog, Icon, Richtext } from '$lib/components';
@@ -12,7 +12,7 @@
 	let isOpen = false;
 	let mouseOver = false;
 	let search = '';
-	let results: DefaultPage[] = [];
+	let results: SearchResults | undefined = undefined;
 
 	$: mouseOverClasses =
 		mouseOver || isOpen
@@ -109,7 +109,9 @@
 				<div class="absolute right-6 top-[50%] flex -translate-y-[50%] gap-4">
 					<p>
 						{globals.translations.results || 'Results'}:
-						<span class="text-secondary">{results.length}</span>
+						<span class="text-secondary"
+							>{results?.data?.length || 0} / {results?.pagination?.total || 0}</span
+						>
 					</p>
 					<a href={searchUrl} on:click={closeDialog}>
 						<Icon
@@ -152,7 +154,7 @@
 			</div>
 		{:else}
 			<ul class="mb-4 flex flex-col gap-3 px-2">
-				{#each results as result}
+				{#each results?.data || [] as result}
 					<li>
 						<a
 							class="duration-400 flex w-full cursor-pointer flex-col gap-2 rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
@@ -172,7 +174,7 @@
 					</li>
 				{/each}
 
-				{#if !results.length}
+				{#if !results?.data?.length}
 					<div class="flex gap-1">
 						<Icon name="404" />
 						<span class="font-pixel">- {globals.translations.noResults}</span>
