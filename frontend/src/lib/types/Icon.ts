@@ -16,6 +16,7 @@ export type Icon =
 	| 'Language'
 	| 'Link'
 	| 'LinkedIn'
+	| 'Loading'
 	| 'Logo'
 	| 'Moon'
 	| 'Pacman'

@@ -18,6 +18,7 @@
 	import Language from './Language.svelte';
 	import Link from './Link.svelte';
 	import LinkedIn from './LinkedIn.svelte';
+	import Loading from './Loading.svelte';
 	import Logo from './Logo.svelte';
 	import Moon from './Moon.svelte';
 	import Pacman from './Pacman.svelte';
@@ -103,6 +104,8 @@
 		<Pacman />
 	{:else if name === 'PointFilled'}
 		<PointFilled />
+	{:else if name === 'Loading'}
+		<Loading />
 	{:else}
 		Icon undefined: {name}
 	{/if}
