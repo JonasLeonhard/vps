@@ -33,6 +33,7 @@
 
 	let mouseover = false;
 	let containerScrollY = 0;
+	let touchStart = 0;
 
 	$: timelinePercentageScrolled =
 		containerScrollY / (CARD_OFFSET * (searchResults?.data?.length || 0));
@@ -58,9 +59,23 @@
 		searchLoading = false;
 	}, 300);
 
-	const handleScroll = (e: WheelEvent) => {
-		if (e.deltaY && mouseover) {
-			containerScrollY += e.deltaY;
+	const handleScroll = (e: TouchEvent | WheelEvent) => {
+		if (!mouseover) return;
+
+		let deltaY;
+
+		if (e.type === 'wheel') {
+			deltaY = (e as WheelEvent).deltaY;
+		} else {
+			const touch = (e as TouchEvent).touches[0];
+			deltaY = touchStart - touch.clientY;
+			touchStart = touch.clientY;
+		}
+
+		console.log('touchmove:', deltaY);
+
+		if (deltaY) {
+			containerScrollY += deltaY;
 
 			if (containerScrollY < 0) {
 				return (containerScrollY = 0);
@@ -81,7 +96,7 @@
 
 <div class="mb-4 grid gap-4 px-4 md:grid-cols-3">
 	<aside
-		class="sticky top-4 flex h-max max-h-screen flex-col gap-4 rounded-md border border-black/10 bg-light p-4 shadow-lg md:col-span-1 dark:border-light/10 dark:bg-dark"
+		class="relative top-4 flex h-max max-h-screen flex-col gap-4 rounded-md border border-black/10 bg-light p-4 shadow-lg md:sticky md:col-span-1 dark:border-light/10 dark:bg-dark"
 	>
 		<Richtext>
 			{@html filter}
@@ -166,9 +181,28 @@
 				aria-valuenow={containerScrollY}
 				aria-controls="teaser-card"
 				style="perspective: 1000px;"
-				on:wheel={handleScroll}
-				on:mouseenter={() => (mouseover = true)}
-				on:mouseleave={() => (mouseover = false)}
+				on:mouseenter={() => {
+					mouseover = true;
+				}}
+				on:mouseleave={() => {
+					mouseover = false;
+				}}
+				on:touchstart={(e) => {
+					console.log('ontouchstart');
+					touchStart = e.touches?.[0]?.clientY;
+					mouseover = true;
+				}}
+				on:touchend={() => {
+					console.log('ontouchend');
+					mouseover = false;
+				}}
+				on:touchcancel={() => {
+					console.log('ontouchend cancel');
+					mouseover = false;
+				}}
+				on:wheel|nonpassive={handleScroll}
+				on:touchmove|nonpassive={handleScroll}
+				on:mousemove|nonpassive={handleScroll}
 			>
 				{#each searchResults?.data || [] as result, index}
 					{#if CARD_OFFSET * index - containerScrollY > 0 || index === (searchResults?.data?.length || 0) - 1}
@@ -182,6 +216,7 @@
 								y: CARD_OFFSET
 							}}
 							class="after:to-transparent
+							pointer-events-none
 							absolute
 							top-0
 							h-full
@@ -194,13 +229,14 @@
 							transition-colors
 							after:absolute
 							after:inset-0
-							after:z-10
-	            after:block
+	            after:z-10
+							after:block
 							after:bg-gradient-to-r
 							after:from-black
 							after:via-black/40
 							after:opacity-30
 							after:content-['']
+							md:pointer-events-auto
 							dark:border-light/10
 							dark:bg-dark"
 							class:border-primary={mouseover}
@@ -216,11 +252,11 @@
 								</div>
 							{:else}
 								<Richtext class="absolute bottom-4 left-4 z-20 max-w-[50%]">
-									<h1>{result.title} - {index}</h1>
+									<h1>{result.title} - {index} - {mouseover}</h1>
 								</Richtext>
 								{#if result.cover}
 									<Image
-										class="h-full w-full rounded-md object-cover"
+										class="pointer-events-none -z-10 h-full w-full select-none rounded-md object-cover"
 										image={result.cover}
 										loading="lazy"
 									/>
