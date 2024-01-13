@@ -198,16 +198,13 @@
 					mousedown = false;
 				}}
 				on:touchstart={(e) => {
-					console.log('ontouchstart');
 					touchStart = e.touches?.[0]?.clientY;
 					mouseover = true;
 				}}
 				on:touchend={() => {
-					console.log('ontouchend');
 					mouseover = false;
 				}}
 				on:touchcancel={() => {
-					console.log('ontouchend cancel');
 					mouseover = false;
 				}}
 				on:wheel|nonpassive={handleScroll}
