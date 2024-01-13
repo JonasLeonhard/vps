@@ -32,6 +32,7 @@
 	let searchLoading = true;
 
 	let mouseover = false;
+	let mousedown = false;
 	let containerScrollY = 0;
 	let touchStart = 0;
 
@@ -59,13 +60,16 @@
 		searchLoading = false;
 	}, 300);
 
-	const handleScroll = (e: TouchEvent | WheelEvent) => {
+	const handleScroll = (e: MouseEvent | TouchEvent | WheelEvent) => {
 		if (!mouseover) return;
+		if (e.type === 'mousemove' && !mousedown) return;
 
 		let deltaY;
 
 		if (e.type === 'wheel') {
 			deltaY = (e as WheelEvent).deltaY;
+		} else if (e.type === 'mousemove') {
+			deltaY = (e as MouseEvent).movementY;
 		} else {
 			const touch = (e as TouchEvent).touches[0];
 			deltaY = touchStart - touch.clientY;
@@ -187,6 +191,12 @@
 				on:mouseleave={() => {
 					mouseover = false;
 				}}
+				on:mousedown={() => {
+					mousedown = true;
+				}}
+				on:mouseup={() => {
+					mousedown = false;
+				}}
 				on:touchstart={(e) => {
 					console.log('ontouchstart');
 					touchStart = e.touches?.[0]?.clientY;
@@ -215,6 +225,7 @@
 								x: -CARD_OFFSET,
 								y: CARD_OFFSET
 							}}
+							draggable="false"
 							class="after:to-transparent
 							pointer-events-none
 							absolute
@@ -241,6 +252,7 @@
 							dark:bg-dark"
 							class:border-primary={mouseover}
 							class:dark:border-primary={mouseover}
+							class:cursor-grabbing={mousedown}
 							style="transform: translate3d({CARD_OFFSET * (index - 1) -
 								containerScrollY}px, calc(-{CARD_OFFSET *
 								(index - 1)}px + {containerScrollY}px), -{CARD_OFFSET *
@@ -252,13 +264,14 @@
 								</div>
 							{:else}
 								<Richtext class="absolute bottom-4 left-4 z-20 max-w-[50%]">
-									<h1>{result.title} - {index} - {mouseover}</h1>
-								</Richtext>
+									<h1>{result.title}</h1></Richtext
+								>
 								{#if result.cover}
 									<Image
 										class="pointer-events-none -z-10 h-full w-full select-none rounded-md object-cover"
 										image={result.cover}
 										loading="lazy"
+										draggable="false"
 									/>
 								{/if}
 							{/if}
