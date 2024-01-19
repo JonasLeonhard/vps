@@ -74,10 +74,10 @@
 		>
 			© {new Date().getFullYear()} Jonas Leonhard - Build Version:
 			<a
-				class="inline-flex w-min gap-1 rounded-2xl bg-nycTaxi p-2 px-4 text-black"
+				class="inline-flex w-min gap-2 ml-4 rounded-md bg-nycTaxi p-1 px-4 text-black"
 				href={`https://github.com/JonasLeonhard/vps/commit/${globals.translations.currentGitHash}`}
 				target="_blank"
-				>{globals.translations.currentGitHash.slice(0, 7)} <Icon name="ExternalLink" /></a
+				>{globals.translations.currentGitHash.slice(0, 7)} <Icon name="ExternalLink" class="[&>*]:w-4 [&>*]:h-4" /></a
 			>
 		</p>
 	</div>

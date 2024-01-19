@@ -1,6 +1,8 @@
 export type Icon =
 	| '404'
 	| 'Adjustments'
+	| 'ArrowDown'
+	| 'ArrowUp'
 	| 'Article'
 	| 'Branch'
 	| 'Brightness'
@@ -24,6 +26,7 @@ export type Icon =
 	| 'Settings'
 	| 'Sun'
 	| 'Terminal'
+	| 'Triangle'
 	| 'Twitter'
 	| 'Users'
 	| 'YouTube';

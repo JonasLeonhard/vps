@@ -3,6 +3,8 @@
 
 	import Error404 from './404.svelte';
 	import Adjustments from './Adjustments.svelte';
+	import ArrowDown from './ArrowDown.svelte';
+	import ArrowUp from './ArrowUp.svelte';
 	import Article from './Article.svelte';
 	import Branch from './Branch.svelte';
 	import Brightness from './Brightness.svelte';
@@ -26,6 +28,7 @@
 	import Settings from './Settings.svelte';
 	import Sun from './Sun.svelte';
 	import Terminal from './Terminal.svelte';
+	import Triangle from './Triangle.svelte';
 	import Twitter from './Twitter.svelte';
 	import Users from './Users.svelte';
 	import YouTube from './YouTube.svelte';
@@ -106,6 +109,12 @@
 		<PointFilled />
 	{:else if name === 'Loading'}
 		<Loading />
+	{:else if name === 'ArrowUp'}
+		<ArrowUp />
+	{:else if name === 'ArrowDown'}
+		<ArrowDown />
+	{:else if name === 'Triangle'}
+		<Triangle />
 	{:else}
 		Icon undefined: {name}
 	{/if}

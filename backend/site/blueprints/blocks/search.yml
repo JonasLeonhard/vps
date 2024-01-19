@@ -34,7 +34,3 @@ fields:
     extends: fields/writer/default
     label: Results
     required: true
-  loadMore:
-    extends: fields/writer/default
-    label: Load More
-    required: true

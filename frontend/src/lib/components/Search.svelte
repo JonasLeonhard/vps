@@ -3,7 +3,7 @@
 
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { Image, Loader, Richtext } from '$lib/components';
+	import { Icon, Image, Loader, Richtext } from '$lib/components';
 	import debounce from 'lodash.debounce';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
@@ -16,7 +16,6 @@
 	export let resetfilter: string;
 	export let filter: string;
 	export let results: string;
-	export let loadmore: string;
 	export let searchFilter: { created: Set<string>; tags: Set<string> };
 
 	const CARD_OFFSET = 20;
@@ -35,13 +34,28 @@
 	let mousedown = false;
 	let containerScrollY = 0;
 	let touchStart = 0;
+	let lastDeltaY = 0;
 
 	$: timelinePercentageScrolled =
 		containerScrollY / (CARD_OFFSET * (searchResults?.data?.length || 0));
 
+	$: reachedLoaderForNextPage = timelinePercentageScrolled >= 0.98;
+	$: reachedLoaderForPreviousPage = timelinePercentageScrolled <= 0.02;
+
+	$: if (reachedLoaderForNextPage && +appliedSearchFilter.page < (searchResults?.pagination?.pages || 1) && !searchLoading && lastDeltaY > 0) {
+		appliedSearchFilter.page = +(appliedSearchFilter.page || 1) + 1;
+		applySearchFilter();
+	}
+
+	$: if (reachedLoaderForPreviousPage && +appliedSearchFilter.page > 1 && !searchLoading && lastDeltaY < 0) {
+		appliedSearchFilter.page = +(appliedSearchFilter.page || 1) - 1;
+		applySearchFilter();
+	}
+
 	const applySearchFilter = debounce(async () => {
 		console.log('search for ', appliedSearchFilter, searchResults);
 		searchLoading = true;
+		const scrollDirection = +appliedSearchFilter.page >= (searchResults?.pagination?.page || 1) ? 'forward' : 'backward';
 
 		if (appliedSearchFilter.query) {
 			$page.url.searchParams.set('q', appliedSearchFilter.query || '');
@@ -53,9 +67,18 @@
 				invalidateAll: true,
 				noScroll: true
 			});
-			searchResults = await fetch(
+			console.log("searching for ", $page.url.searchParams.toString());
+			const results = await fetch(
 				`/api/search/${appliedSearchFilter.query}?${$page.url.searchParams.toString()}`
 			).then((res) => res.json());
+
+			searchResults = results;
+			console.log('searchResults', searchResults, scrollDirection);
+			if (scrollDirection === "forward") {
+				containerScrollY = 0;
+			} else {
+				containerScrollY = CARD_OFFSET * (searchResults?.data?.length || 0);
+			}
 		}
 		searchLoading = false;
 	}, 300);
@@ -76,8 +99,6 @@
 			touchStart = touch.clientY;
 		}
 
-		console.log('touchmove:', deltaY);
-
 		if (deltaY) {
 			containerScrollY += deltaY;
 
@@ -91,6 +112,8 @@
 
 			e.preventDefault();
 		}
+
+		lastDeltaY = deltaY;
 	};
 
 	onMount(() => {
@@ -184,7 +207,6 @@
 				tabindex="0"
 				aria-valuenow={containerScrollY}
 				aria-controls="teaser-card"
-				style="perspective: 1000px;"
 				on:mouseenter={() => {
 					mouseover = true;
 				}}
@@ -250,12 +272,11 @@
 							class:border-primary={mouseover}
 							class:dark:border-primary={mouseover}
 							class:cursor-grabbing={mousedown}
-							style="transform: translate3d({CARD_OFFSET * (index - 1) -
+							style="transform: translate({CARD_OFFSET * (index - 1) -
 								containerScrollY}px, calc(-{CARD_OFFSET *
-								(index - 1)}px + {containerScrollY}px), -{CARD_OFFSET *
-								(index - 1)}px); z-index: {(searchResults?.data?.length || 0) - (index - 1)};"
+								(index - 1)}px + {containerScrollY}px)); z-index: {(searchResults?.data?.length || 0) - (index - 1)};"
 						>
-							{#if CARD_OFFSET * index - containerScrollY <= -CARD_OFFSET / 2 && index === (searchResults?.data?.length || 0) - 1}
+							{#if reachedLoaderForNextPage || reachedLoaderForPreviousPage}
 								<div class="flex h-full w-full items-center justify-center">
 									<Loader />
 								</div>
@@ -276,21 +297,48 @@
 					{/if}
 				{/each}
 			</div>
-			<Richtext>
-				{@html results}: {searchResults?.pagination?.page} / {searchResults?.pagination?.pages}
-			</Richtext>
 		{/if}
 	</main>
 </div>
 
 <div
-	class="col-span-3 mx-4 rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark"
+	class="flex col-span-3 mx-4 rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark"
 >
-	Timeline: percentage scrolled:
-	{timelinePercentageScrolled}
-	<Richtext>
-		{@html loadmore}
-	</Richtext>
-	page: {appliedSearchFilter.page}
-	todo: go through all {searchFilter.created.size} dates
+	<div class="w-max">
+		<div class:opacity-30={(searchResults?.pagination?.page || 1) >= (searchResults?.pagination?.pages || 1)}>
+			<Icon class="[&>*]:w-16 [&>*]:h-auto border-black/10 dark:border-light/10 border rounded-md" title="next page" name="ArrowUp" disabled={(searchResults?.pagination?.page || 1) >= (searchResults?.pagination?.pages || 1)} onClick={() => {
+				appliedSearchFilter.page = +(appliedSearchFilter.page || 1) + 1;
+				applySearchFilter();
+			}}/>
+		</div>
+		<div class="flex gap-4 w-max justify-center m-auto">
+			{#if searchResults}
+				{searchResults?.pagination?.page} / {searchResults?.pagination?.pages}
+			{:else}
+				<div role="status" class="animate-pulse flex gap-1 w-max justify-center items-center m-auto">
+					<div class="h-4 bg-gray rounded-full dark:bg-gray-700 w-2"></div> /
+					<div class="h-4 bg-gray rounded-full dark:bg-gray-700 w-2"></div>
+					<span class="sr-only">Loading...</span>
+				</div>
+			{/if}
+		</div>
+
+		<div class:opacity-30={+appliedSearchFilter.page <= 1}>
+			<Icon class="[&>*]:w-16 [&>*]:h-auto border-black/10 dark:border-light/10 border rounded-md" name="ArrowDown" disabled={+appliedSearchFilter.page <= 1} title="previous page" onClick={() => {
+				appliedSearchFilter.page = +(appliedSearchFilter.page || 1) - 1;
+				applySearchFilter();
+			}} />
+		</div>
+	</div>
+	<div class="w-full relative">
+		<div class="w-full h-0.5 bg-black/30 dark:bg-light/30 absolute top-[50%] -translate-y-[100%]">
+			<Icon name="Logo" class="absolute left-0 bottom-1 transition-all [&>*]:w-4 [&>*]:h-4" style="left: {timelinePercentageScrolled * 100}%"/>
+		</div>
+		<div class="absolute top-0 right-0">
+			Timeline: percentage scrolled:
+			{timelinePercentageScrolled}
+			page: {appliedSearchFilter.page}
+			todo: go through all {searchFilter.created.size} dates
+		</div>
+	</div>
 </div>

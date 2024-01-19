@@ -1,4 +1,11 @@
-const getSearch = (query: string, templates = "['article', 'project']", limit = 8, page = 0) => {
+type SearchQuery = {
+	limit?: number;
+	page?: number;
+	query: string;
+	templates?: string;
+};
+
+const getSearch = ({ limit = 8 , page = 0, query, templates = "['article', 'project']" }: SearchQuery) => {
 	return {
 		search: {
 			pagination: {
