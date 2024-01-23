@@ -335,14 +335,13 @@
 	</div>
 	<div class="w-full relative">
 		<div class="w-full h-0.5 bg-black/30 dark:bg-light/30 absolute top-[50%] -translate-y-[100%]">
-			<Icon name="Logo" class="absolute left-0 bottom-1 transition-all [&>*]:w-4 [&>*]:h-4" style="left: {timelinePercentageScrolled * 100}%"/>
+			<Icon name="Logo" class="absolute left-0 bottom-1 [&>*]:w-4 [&>*]:h-4" style="left: {timelinePercentageScrolled * 100}%"/>
 		</div>
 		<div class="absolute top-0 right-0">
 			Timeline: percentage scrolled:
 			{timelinePercentageScrolled}
 			page: {appliedSearchFilter.page}
 			todo: go through all {searchFilter.created.size} dates
-			DEBUG: {loadNextPage}
 		</div>
 	</div>
 </div>
