@@ -329,6 +329,7 @@
 				name="ArrowUp"
 				disabled={(searchResults?.pagination?.page || 1) >= (searchResults?.pagination?.pages || 1)}
 				onClick={() => {
+					lastDeltaY = 0;
 					appliedSearchFilter.page = +(appliedSearchFilter.page || 1) + 1;
 					applySearchFilter();
 				}}
@@ -357,6 +358,7 @@
 				disabled={+appliedSearchFilter.page <= 1}
 				title="previous page"
 				onClick={() => {
+					lastDeltaY = 0;
 					appliedSearchFilter.page = +(appliedSearchFilter.page || 1) - 1;
 					applySearchFilter();
 				}}
