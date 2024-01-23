@@ -39,21 +39,24 @@
 	$: timelinePercentageScrolled =
 		containerScrollY / (CARD_OFFSET * (searchResults?.data?.length || 0));
 
-	$: reachedLoaderForNextPage = timelinePercentageScrolled >= 0.98;
-	$: reachedLoaderForPreviousPage = timelinePercentageScrolled <= 0.02;
+	let loadNextPage = false;
+	let loadPreviousPage = false;
+	$: {
+		loadNextPage = timelinePercentageScrolled >= 0.98 && +appliedSearchFilter.page < (searchResults?.pagination?.pages || 1) && !searchLoading && lastDeltaY > 0;
+		loadPreviousPage = timelinePercentageScrolled <= 0.02 && +appliedSearchFilter.page > 1 && !searchLoading && lastDeltaY < 0;
 
-	$: if (reachedLoaderForNextPage && +appliedSearchFilter.page < (searchResults?.pagination?.pages || 1) && !searchLoading && lastDeltaY > 0) {
-		appliedSearchFilter.page = +(appliedSearchFilter.page || 1) + 1;
-		applySearchFilter();
-	}
+		if (loadNextPage) {
+			appliedSearchFilter.page = +(appliedSearchFilter.page || 1) + 1;
+			applySearchFilter();
+		}
 
-	$: if (reachedLoaderForPreviousPage && +appliedSearchFilter.page > 1 && !searchLoading && lastDeltaY < 0) {
-		appliedSearchFilter.page = +(appliedSearchFilter.page || 1) - 1;
-		applySearchFilter();
+		if (loadPreviousPage) {
+			appliedSearchFilter.page = +(appliedSearchFilter.page || 1) - 1;
+			applySearchFilter();
+		}
 	}
 
 	const applySearchFilter = debounce(async () => {
-		console.log('search for ', appliedSearchFilter, searchResults);
 		searchLoading = true;
 		const scrollDirection = +appliedSearchFilter.page >= (searchResults?.pagination?.page || 1) ? 'forward' : 'backward';
 
@@ -276,7 +279,7 @@
 								containerScrollY}px, calc(-{CARD_OFFSET *
 								(index - 1)}px + {containerScrollY}px)); z-index: {(searchResults?.data?.length || 0) - (index - 1)};"
 						>
-							{#if reachedLoaderForNextPage || reachedLoaderForPreviousPage}
+							{#if loadNextPage || loadPreviousPage }
 								<div class="flex h-full w-full items-center justify-center">
 									<Loader />
 								</div>
@@ -339,6 +342,7 @@
 			{timelinePercentageScrolled}
 			page: {appliedSearchFilter.page}
 			todo: go through all {searchFilter.created.size} dates
+			DEBUG: {loadNextPage}
 		</div>
 	</div>
 </div>
