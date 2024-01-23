@@ -42,8 +42,16 @@
 	let loadNextPage = false;
 	let loadPreviousPage = false;
 	$: {
-		loadNextPage = timelinePercentageScrolled >= 0.98 && +appliedSearchFilter.page < (searchResults?.pagination?.pages || 1) && !searchLoading && lastDeltaY > 0;
-		loadPreviousPage = timelinePercentageScrolled <= 0.02 && +appliedSearchFilter.page > 1 && !searchLoading && lastDeltaY < 0;
+		loadNextPage =
+			timelinePercentageScrolled >= 0.98 &&
+			+appliedSearchFilter.page < (searchResults?.pagination?.pages || 1) &&
+			!searchLoading &&
+			lastDeltaY > 0;
+		loadPreviousPage =
+			timelinePercentageScrolled <= 0.02 &&
+			+appliedSearchFilter.page > 1 &&
+			!searchLoading &&
+			lastDeltaY < 0;
 
 		if (loadNextPage) {
 			appliedSearchFilter.page = +(appliedSearchFilter.page || 1) + 1;
@@ -58,7 +66,8 @@
 
 	const applySearchFilter = debounce(async () => {
 		searchLoading = true;
-		const scrollDirection = +appliedSearchFilter.page >= (searchResults?.pagination?.page || 1) ? 'forward' : 'backward';
+		const scrollDirection =
+			+appliedSearchFilter.page >= (searchResults?.pagination?.page || 1) ? 'forward' : 'backward';
 
 		if (appliedSearchFilter.query) {
 			$page.url.searchParams.set('q', appliedSearchFilter.query || '');
@@ -70,14 +79,14 @@
 				invalidateAll: true,
 				noScroll: true
 			});
-			console.log("searching for ", $page.url.searchParams.toString());
+			console.log('searching for ', $page.url.searchParams.toString());
 			const results = await fetch(
 				`/api/search/${appliedSearchFilter.query}?${$page.url.searchParams.toString()}`
 			).then((res) => res.json());
 
 			searchResults = results;
 			console.log('searchResults', searchResults, scrollDirection);
-			if (scrollDirection === "forward") {
+			if (scrollDirection === 'forward') {
 				containerScrollY = 0;
 			} else {
 				containerScrollY = CARD_OFFSET * (searchResults?.data?.length || 0);
@@ -277,9 +286,11 @@
 							class:cursor-grabbing={mousedown}
 							style="transform: translate({CARD_OFFSET * (index - 1) -
 								containerScrollY}px, calc(-{CARD_OFFSET *
-								(index - 1)}px + {containerScrollY}px)); z-index: {(searchResults?.data?.length || 0) - (index - 1)};"
+								(index - 1)}px + {containerScrollY}px)); z-index: {(searchResults?.data?.length ||
+								0) -
+								(index - 1)};"
 						>
-							{#if loadNextPage || loadPreviousPage }
+							{#if loadNextPage || loadPreviousPage}
 								<div class="flex h-full w-full items-center justify-center">
 									<Loader />
 								</div>
@@ -305,39 +316,62 @@
 </div>
 
 <div
-	class="flex col-span-3 mx-4 rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark"
+	class="col-span-3 mx-4 flex rounded-md border border-black/10 bg-light p-4 shadow-lg dark:border-light/10 dark:bg-dark"
 >
 	<div class="w-max">
-		<div class:opacity-30={(searchResults?.pagination?.page || 1) >= (searchResults?.pagination?.pages || 1)}>
-			<Icon class="[&>*]:w-16 [&>*]:h-auto border-black/10 dark:border-light/10 border rounded-md" title="next page" name="ArrowUp" disabled={(searchResults?.pagination?.page || 1) >= (searchResults?.pagination?.pages || 1)} onClick={() => {
-				appliedSearchFilter.page = +(appliedSearchFilter.page || 1) + 1;
-				applySearchFilter();
-			}}/>
+		<div
+			class:opacity-30={(searchResults?.pagination?.page || 1) >=
+				(searchResults?.pagination?.pages || 1)}
+		>
+			<Icon
+				class="rounded-md border border-black/10 dark:border-light/10 [&>*]:h-auto [&>*]:w-16"
+				title="next page"
+				name="ArrowUp"
+				disabled={(searchResults?.pagination?.page || 1) >= (searchResults?.pagination?.pages || 1)}
+				onClick={() => {
+					appliedSearchFilter.page = +(appliedSearchFilter.page || 1) + 1;
+					applySearchFilter();
+				}}
+			/>
 		</div>
-		<div class="flex gap-4 w-max justify-center m-auto">
+		<div class="m-auto flex w-max justify-center gap-4">
 			{#if searchResults}
 				{searchResults?.pagination?.page} / {searchResults?.pagination?.pages}
 			{:else}
-				<div role="status" class="animate-pulse flex gap-1 w-max justify-center items-center m-auto">
-					<div class="h-4 bg-gray rounded-full dark:bg-gray-700 w-2"></div> /
-					<div class="h-4 bg-gray rounded-full dark:bg-gray-700 w-2"></div>
+				<div
+					role="status"
+					class="m-auto flex w-max animate-pulse items-center justify-center gap-1"
+				>
+					<div class="dark:bg-gray-700 h-4 w-2 rounded-full bg-gray"></div>
+					/
+					<div class="dark:bg-gray-700 h-4 w-2 rounded-full bg-gray"></div>
 					<span class="sr-only">Loading...</span>
 				</div>
 			{/if}
 		</div>
 
 		<div class:opacity-30={+appliedSearchFilter.page <= 1}>
-			<Icon class="[&>*]:w-16 [&>*]:h-auto border-black/10 dark:border-light/10 border rounded-md" name="ArrowDown" disabled={+appliedSearchFilter.page <= 1} title="previous page" onClick={() => {
-				appliedSearchFilter.page = +(appliedSearchFilter.page || 1) - 1;
-				applySearchFilter();
-			}} />
+			<Icon
+				class="rounded-md border border-black/10 dark:border-light/10 [&>*]:h-auto [&>*]:w-16"
+				name="ArrowDown"
+				disabled={+appliedSearchFilter.page <= 1}
+				title="previous page"
+				onClick={() => {
+					appliedSearchFilter.page = +(appliedSearchFilter.page || 1) - 1;
+					applySearchFilter();
+				}}
+			/>
 		</div>
 	</div>
-	<div class="w-full relative">
-		<div class="w-full h-0.5 bg-black/30 dark:bg-light/30 absolute top-[50%] -translate-y-[100%]">
-			<Icon name="Logo" class="absolute left-0 bottom-1 [&>*]:w-4 [&>*]:h-4" style="left: {timelinePercentageScrolled * 100}%"/>
+	<div class="relative w-full">
+		<div class="absolute top-[50%] h-0.5 w-full -translate-y-[100%] bg-black/30 dark:bg-light/30">
+			<Icon
+				name="Logo"
+				class="absolute bottom-1 left-0 [&>*]:h-4 [&>*]:w-4"
+				style="left: {timelinePercentageScrolled * 100}%"
+			/>
 		</div>
-		<div class="absolute top-0 right-0">
+		<div class="absolute right-0 top-0">
 			Timeline: percentage scrolled:
 			{timelinePercentageScrolled}
 			page: {appliedSearchFilter.page}
