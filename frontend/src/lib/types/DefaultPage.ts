@@ -10,12 +10,14 @@ export interface DefaultPage {
 		subline: string;
 	};
 	cover?: Image;
+	created: string;
 	exerpt?: string;
 	id: string;
 	intendedTemplate: string;
 	seo: Seo;
 	slug: string;
 	status: string;
+	tags: string;
 	title: string;
 	url: string;
 }

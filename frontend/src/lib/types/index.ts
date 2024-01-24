@@ -6,6 +6,7 @@ import type { Image } from './Image';
 import type { Language } from './Language';
 import type { NavigationItem } from './NavigationItem';
 import type { ScrollDirection } from './ScrollDirection';
+import type { SearchFilter } from './SearchFilter';
 import type { SearchResults } from './SearchResults';
 import type { Seo } from './Seo';
 import type { TableOfContentsActiveHeadlineId } from './TableOfContentsActiveHeadlineId';
@@ -20,6 +21,7 @@ export type {
 	Language,
 	NavigationItem,
 	ScrollDirection,
+	SearchFilter,
 	SearchResults,
 	Seo,
 	TableOfContentsActiveHeadlineId,

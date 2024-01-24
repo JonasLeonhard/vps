@@ -5,7 +5,12 @@ type SearchQuery = {
 	templates?: string;
 };
 
-const getSearch = ({ limit = 8 , page = 0, query, templates = "['article', 'project']" }: SearchQuery) => {
+const getSearch = ({
+	limit = 8,
+	page = 0,
+	query,
+	templates = "['article', 'project']"
+}: SearchQuery) => {
 	return {
 		search: {
 			pagination: {
@@ -16,11 +21,13 @@ const getSearch = ({ limit = 8 , page = 0, query, templates = "['article', 'proj
 			select: {
 				blocks: 'page.blocks.toBlocks',
 				cover: 'page.cover.toFileExtended("cover")',
+				created: 'page.created',
 				excerpt: 'page.excerpt',
 				id: 'page.id',
 				intendedTemplate: 'page.intendedTemplate',
 				slug: 'page.slug',
 				status: 'page.status',
+				tags: 'page.tags',
 				title: 'page.title',
 				url: 'page.url'
 			}

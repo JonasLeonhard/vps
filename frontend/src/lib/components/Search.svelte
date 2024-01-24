@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { SearchResults } from '$lib/types';
+	import type { SearchFilter, SearchResults } from '$lib/types';
 
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -15,8 +15,11 @@
 	export let postdatesmax: string;
 	export let resetfilter: string;
 	export let filter: string;
-	export let results: string;
-	export let searchFilter: { created: Set<string>; tags: Set<string> };
+	export let searchFilter: SearchFilter;
+	let resultsSearchFilter: SearchFilter = {
+		created: [],
+		tags: []
+	};
 
 	const CARD_OFFSET = 20;
 
@@ -80,20 +83,55 @@
 				noScroll: true
 			});
 			console.log('searching for ', $page.url.searchParams.toString());
-			const results = await fetch(
+			const results: SearchResults = await fetch(
 				`/api/search/${appliedSearchFilter.query}?${$page.url.searchParams.toString()}`
 			).then((res) => res.json());
 
 			searchResults = results;
-			console.log('searchResults', searchResults, scrollDirection);
+			console.log('searchResults', searchResults, scrollDirection, searchFilter);
 			if (scrollDirection === 'forward') {
 				containerScrollY = 0;
 			} else {
 				containerScrollY = CARD_OFFSET * (searchResults?.data?.length || 0);
 			}
+
+			const uniqueSearchFilterItems = results.data.reduce(
+				(acc, result) => {
+					if (result.created) {
+						const dateStr = result.created.split(' ').at(0) || '';
+						acc.created.add(dateStr);
+					}
+					if (result.tags) {
+						result.tags.split(',').forEach((tag) => {
+							if (tag) acc.tags.add(tag.trim());
+						});
+					}
+					return acc;
+				},
+				{
+					created: new Set<string>(),
+					tags: new Set<string>()
+				}
+			);
+
+			resultsSearchFilter = {
+				created: Array.from(uniqueSearchFilterItems.created).map((dateStr) => {
+					try {
+						return new Date(dateStr);
+					} catch (err) {
+						console.error(err);
+						return new Date();
+					}
+				}),
+				tags: Array.from(searchFilter.tags)
+			} as SearchFilter;
 		}
 		searchLoading = false;
 	}, 300);
+
+	$: {
+		resultsSearchFilter;
+	}
 
 	const handleScroll = (e: MouseEvent | TouchEvent | WheelEvent) => {
 		if (!mouseover) return;
@@ -128,6 +166,11 @@
 		lastDeltaY = deltaY;
 	};
 
+	const getPercentageOfDateInResultsSearchFilter = (date: Date) => {
+		console.log('get percentage of ', date, 'in', resultsSearchFilter);
+		return 0;
+	};
+
 	onMount(() => {
 		applySearchFilter();
 	});
@@ -154,7 +197,7 @@
 
 			<div class="mt-2 flex flex-wrap gap-4">
 				<p>{categoriesall}</p>
-				{#each Array.from(searchFilter.tags) as tag}
+				{#each searchFilter.tags as tag}
 					<p>{tag}</p>
 				{/each}
 			</div>
@@ -372,6 +415,15 @@
 				class="absolute bottom-1 left-0 [&>*]:h-4 [&>*]:w-4"
 				style="left: {timelinePercentageScrolled * 100}%"
 			/>
+			{#each resultsSearchFilter.created as date}
+				<div style="left: {getPercentageOfDateInResultsSearchFilter(date)}">
+					{date}
+				</div>
+			{/each}
+			{console.log(
+				'debug- todo, iterate dates, offset left by the percentage of the date between start and end date.',
+				resultsSearchFilter
+			)}
 		</div>
 		<div class="absolute right-0 top-0">
 			Timeline: percentage scrolled:

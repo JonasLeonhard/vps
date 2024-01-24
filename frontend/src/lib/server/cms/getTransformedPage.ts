@@ -1,4 +1,4 @@
-import type { ContentBlock, DefaultPage } from '$lib/types';
+import type { ContentBlock, DefaultPage, SearchFilter } from '$lib/types';
 
 import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import cms from '$lib/server/cms';
@@ -28,19 +28,34 @@ const transformSearchBlock = async (block: ContentBlock, params: LayoutParams) =
 			.catch((err) => console.error(err))
 	)?.result;
 
-	block.content.searchFilter = result.searchFilter?.reduce(
+	const searchFilter = result.searchFilter?.reduce(
 		(acc, searchFilterItem) => {
 			searchFilterItem.tags.split(',').forEach((tag) => {
 				if (tag) acc.tags.add(tag.trim());
 			});
-			if (searchFilterItem.created) acc.created.add(searchFilterItem.created?.split(' ')?.at(0)); // "<DATE> <TIME>"
+			if (searchFilterItem.created) {
+				const dateStr = searchFilterItem.created.split(' ').at(0) || '';
+				acc.created.add(dateStr);
+			}
 			return acc;
 		},
 		{
-			created: new Set(),
-			tags: new Set()
+			created: new Set<string>(),
+			tags: new Set<string>()
 		}
 	);
+
+	block.content.searchFilter = {
+		created: Array.from(searchFilter.created).map((dateStr) => {
+			try {
+				return new Date(dateStr);
+			} catch (err) {
+				console.error(err);
+				return new Date();
+			}
+		}),
+		tags: Array.from(searchFilter.tags)
+	} as SearchFilter;
 };
 
 /**
