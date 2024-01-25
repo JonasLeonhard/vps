@@ -11,7 +11,9 @@
 	import ChevronDown from './ChevronDown.svelte';
 	import ChevronRight from './ChevronRight.svelte';
 	import ChevronUp from './ChevronUp.svelte';
+	import CircleDot from './CircleDot.svelte';
 	import Close from './Close.svelte';
+	import Commit from './Commit.svelte';
 	import Copied from './Copied.svelte';
 	import Copy from './Copy.svelte';
 	import ExternalLink from './ExternalLink.svelte';
@@ -28,6 +30,7 @@
 	import Settings from './Settings.svelte';
 	import Sun from './Sun.svelte';
 	import Terminal from './Terminal.svelte';
+	import Timeline from './Timeline.svelte';
 	import Triangle from './Triangle.svelte';
 	import Twitter from './Twitter.svelte';
 	import Users from './Users.svelte';
@@ -115,6 +118,12 @@
 		<ArrowDown />
 	{:else if name === 'Triangle'}
 		<Triangle />
+	{:else if name === 'Timeline'}
+		<Timeline />
+	{:else if name === 'Commit'}
+		<Commit />
+	{:else if name === 'CircleDot'}
+		<CircleDot />
 	{:else}
 		Icon undefined: {name}
 	{/if}

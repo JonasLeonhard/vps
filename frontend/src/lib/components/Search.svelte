@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { SearchFilter, SearchResults } from '$lib/types';
+	import type { Language, SearchFilter, SearchResults } from '$lib/types';
 
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -16,6 +16,8 @@
 	export let resetfilter: string;
 	export let filter: string;
 	export let searchFilter: SearchFilter;
+	export let currentLanguage: Language;
+
 	let resultsSearchFilter: SearchFilter = {
 		created: [],
 		tags: []
@@ -168,7 +170,15 @@
 
 	const getPercentageOfDateInResultsSearchFilter = (date: Date) => {
 		console.log('get percentage of ', date, 'in', resultsSearchFilter);
-		return 0;
+		const startDate = resultsSearchFilter.created.at(0);
+		const endDate = resultsSearchFilter.created.at(-1); // <-- both created dates are of type Date
+
+		if (!startDate || !endDate) return 0;
+
+		const totalDuration = endDate.getTime() - startDate.getTime();
+		const dateDifference = date.getTime() - startDate.getTime();
+		const percentage = (dateDifference / totalDuration) * 100;
+		return percentage;
 	};
 
 	onMount(() => {
@@ -408,28 +418,57 @@
 			/>
 		</div>
 	</div>
-	<div class="relative w-full">
-		<div class="absolute top-[50%] h-0.5 w-full -translate-y-[100%] bg-black/30 dark:bg-light/30">
+	<div class="relative m-auto grid h-5 w-5">
+		<Icon
+			class="absolute col-span-1 row-span-1 animate-ping opacity-50 [&>*]:h-full [&>*]:w-full"
+			name="CircleDot"
+		/>
+		<Icon class="col-span-1 row-span-1 animate-pulse [&>*]:h-full [&>*]:w-full" name="CircleDot" />
+	</div>
+	<div class="relative flex w-full">
+		<div class="absolute top-[50%] flex w-full -translate-y-1/2 items-center justify-center">
+			<div class="top[50%] absolute left-0 origin-top-left -rotate-90">
+				{#if resultsSearchFilter.created.at(0)}
+					{resultsSearchFilter.created.at(0)?.toLocaleDateString(currentLanguage.code)}
+				{:else}
+					{searchFilter.created.at(0)?.toLocaleDateString(currentLanguage.code)}
+				{/if}
+			</div>
+			<Icon class="m-auto w-full" name="Timeline" />
 			<Icon
 				name="Logo"
-				class="absolute bottom-1 left-0 [&>*]:h-4 [&>*]:w-4"
+				class="absolute bottom-3.5 left-0 [&>*]:h-4 [&>*]:w-4"
 				style="left: {timelinePercentageScrolled * 100}%"
 			/>
-			{#each resultsSearchFilter.created as date}
-				<div style="left: {getPercentageOfDateInResultsSearchFilter(date)}">
-					{date}
-				</div>
-			{/each}
-			{console.log(
-				'debug- todo, iterate dates, offset left by the percentage of the date between start and end date.',
-				resultsSearchFilter
-			)}
+			<div class="top[50%] absolute right-0 origin-top-left -rotate-90">
+				{#if resultsSearchFilter.created.at(-1)}
+					{resultsSearchFilter.created.at(-1)?.toLocaleDateString(currentLanguage.code)}
+				{:else}
+					{searchFilter.created.at(-1)?.toLocaleDateString(currentLanguage.code)}
+				{/if}
+			</div>
 		</div>
+
+		{#each searchResults?.data || [] as result, index}
+			<div
+				class="absolute top-0"
+				style="left: {(100 / (searchResults?.data?.length || 8)) * index + 1}%; top: {index * 20}px"
+			>
+				TODO: card: {index} at {new Date(result.created).toLocaleDateString(currentLanguage.code)}
+			</div>
+		{/each}
 		<div class="absolute right-0 top-0">
 			Timeline: percentage scrolled:
 			{timelinePercentageScrolled}
 			page: {appliedSearchFilter.page}
-			todo: go through all {searchFilter.created.size} dates
+			todo: go through all {searchFilter.created.length} dates
 		</div>
+	</div>
+	<div class="relative m-auto grid h-5 w-5">
+		<Icon
+			class="absolute col-span-1 row-span-1 animate-ping opacity-50 [&>*]:h-full [&>*]:w-full"
+			name="CircleDot"
+		/>
+		<Icon class="col-span-1 row-span-1 animate-pulse [&>*]:h-full [&>*]:w-full" name="CircleDot" />
 	</div>
 </div>

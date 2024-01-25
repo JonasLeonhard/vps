@@ -6,4 +6,4 @@
 	export let data: PageData;
 </script>
 
-<Blocks blocks={data.page.blocks} />
+<Blocks blocks={data.page.blocks} currentLanguage={data.lang} />

@@ -1,9 +1,10 @@
 <script lang="ts">
-	import type { ContentBlock } from '$lib/types';
+	import type { ContentBlock, Language } from '$lib/types';
 
 	import { Accordion, Code, Details, Heading, Images, Richtext, Search } from '$lib/components';
 
 	export let blocks: ContentBlock[] = [];
+	export let currentLanguage: Language;
 </script>
 
 <ul class="my-4">
@@ -35,7 +36,7 @@
 				</li>
 			{:else if block.type === 'search'}
 				<li class="mx-auto my-8 max-w-[1600px]">
-					<Search {...block.content} />
+					<Search {...block.content} {currentLanguage} />
 				</li>
 			{:else}
 				<li>{index} - {block.type} : {console.log(blocks)}</li>
