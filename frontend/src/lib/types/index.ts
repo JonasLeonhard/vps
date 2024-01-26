@@ -1,3 +1,4 @@
+import type { AccordionItem } from './AccordionItem';
 import type { ContentBlock } from './ContentBlock';
 import type { DefaultPage } from './DefaultPage';
 import type { Globals } from './Globals';
@@ -15,6 +16,7 @@ import type { TableOfContentsActiveHeadlineId } from './TableOfContentsActiveHea
 import type { Theme } from './Theme';
 
 export type {
+	AccordionItem,
 	ContentBlock,
 	DefaultPage,
 	Globals,

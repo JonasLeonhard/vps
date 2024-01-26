@@ -1,11 +1,7 @@
 <script lang="ts">
-	import { Richtext } from '$lib/components';
+	import type { AccordionItem } from '$lib/types';
 
-	interface AccordionItem {
-		details: string;
-		summary: string;
-	}
-	[];
+	import { Richtext } from '$lib/components';
 
 	export let items: AccordionItem[] = [];
 
@@ -24,8 +20,12 @@
 	}`}
 >
 	{#each items as item, index}
-		<details on:click={() => onDetailsClick(index)} on:keydown={() => onDetailsClick(index)}>
-			<summary class="cursor-pointer select-none items-center text-sm font-semibold leading-6">
+		<details>
+			<summary
+				class="cursor-pointer select-none items-center text-sm font-semibold leading-6"
+				on:click={() => onDetailsClick(index)}
+				on:keydown={() => onDetailsClick(index)}
+			>
 				{item.summary}
 			</summary>
 			<div class="mt-3 text-sm leading-6 text-text-accent">
