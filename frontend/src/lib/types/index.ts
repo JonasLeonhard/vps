@@ -7,6 +7,7 @@ import type { Language } from './Language';
 import type { NavigationItem } from './NavigationItem';
 import type { PageData } from './PageData';
 import type { ScrollDirection } from './ScrollDirection';
+import type { SearchContext } from './SearchContext';
 import type { SearchFilter } from './SearchFilter';
 import type { SearchResults } from './SearchResults';
 import type { Seo } from './Seo';
@@ -23,6 +24,7 @@ export type {
 	NavigationItem,
 	PageData,
 	ScrollDirection,
+	SearchContext,
 	SearchFilter,
 	SearchResults,
 	Seo,
