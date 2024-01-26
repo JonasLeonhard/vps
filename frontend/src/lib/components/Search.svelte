@@ -1,11 +1,12 @@
 <script lang="ts">
-	import type { Language, SearchFilter, SearchResults } from '$lib/types';
+	import type { PageData } from '$lib/types';
+	import type { SearchFilter, SearchResults } from '$lib/types';
 
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { Icon, Image, Loader, Richtext } from '$lib/components';
 	import debounce from 'lodash.debounce';
-	import { onMount } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
 	export let categories: string;
@@ -16,7 +17,8 @@
 	export let resetfilter: string;
 	export let filter: string;
 	export let searchFilter: SearchFilter;
-	export let currentLanguage: Language;
+
+	const { lang } = getContext<PageData>('pageData');
 
 	let resultsSearchFilter: SearchFilter = {
 		created: [],
@@ -429,9 +431,9 @@
 		<div class="absolute top-[50%] flex w-full -translate-y-1/2 items-center justify-center">
 			<div class="top[50%] absolute left-0 origin-top-left -rotate-90">
 				{#if resultsSearchFilter.created.at(0)}
-					{resultsSearchFilter.created.at(0)?.toLocaleDateString(currentLanguage.code)}
+					{resultsSearchFilter.created.at(0)?.toLocaleDateString(lang.code)}
 				{:else}
-					{searchFilter.created.at(0)?.toLocaleDateString(currentLanguage.code)}
+					{searchFilter.created.at(0)?.toLocaleDateString(lang.code)}
 				{/if}
 			</div>
 			<Icon class="m-auto w-full" name="Timeline" />
@@ -442,9 +444,9 @@
 			/>
 			<div class="top[50%] absolute right-0 origin-top-left -rotate-90">
 				{#if resultsSearchFilter.created.at(-1)}
-					{resultsSearchFilter.created.at(-1)?.toLocaleDateString(currentLanguage.code)}
+					{resultsSearchFilter.created.at(-1)?.toLocaleDateString(lang.code)}
 				{:else}
-					{searchFilter.created.at(-1)?.toLocaleDateString(currentLanguage.code)}
+					{searchFilter.created.at(-1)?.toLocaleDateString(lang.code)}
 				{/if}
 			</div>
 		</div>
@@ -454,7 +456,7 @@
 				class="absolute top-0"
 				style="left: {(100 / (searchResults?.data?.length || 8)) * index + 1}%; top: {index * 20}px"
 			>
-				TODO: card: {index} at {new Date(result.created).toLocaleDateString(currentLanguage.code)}
+				TODO: card: {index} at {new Date(result.created).toLocaleDateString(lang.code)}
 			</div>
 		{/each}
 		<div class="absolute right-0 top-0">

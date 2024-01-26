@@ -1,12 +1,16 @@
 <script lang="ts">
-	import type { ContentBlock } from '$lib/types';
+	import type { PageData } from '$lib/types';
 
 	import { Icon, Richtext } from '$lib/components';
 	import { tableOfContentsActiveHeadlineId } from '$lib/stores/tableOfContentsActiveHeadlineId';
 	import { clickOutside } from '$lib/utils';
+	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 
-	export let blocks: ContentBlock[];
+	const {
+		page: { blocks }
+	} = getContext<PageData>('pageData');
+
 	let scrollY = 0;
 
 	let open = false;

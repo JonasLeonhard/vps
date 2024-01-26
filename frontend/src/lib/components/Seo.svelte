@@ -1,68 +1,64 @@
 <script lang="ts">
-	import type { Seo } from '$lib/types';
+	import type { PageData } from '$lib/types';
 
+	import { getContext } from 'svelte';
 	import { MetaTags } from 'svelte-meta-tags';
 
-	export let pageSeo: Seo;
-	export let globalsSeo: Seo;
-	export let pageTitle: string;
+	const {
+		globals,
+		page: { seo, title }
+	} = getContext<PageData>('pageData');
 </script>
 
 <MetaTags
-	title={pageSeo?.metaTitle || pageTitle || globalsSeo?.metaTitle}
+	title={seo?.metaTitle || title || globals.seo?.metaTitle}
 	titleTemplate="%s | Jonas Leonhard"
-	description={pageSeo?.metaDescription || globalsSeo?.metaDescription}
-	canonical={pageSeo?.metaCanonicalUrl}
+	description={seo?.metaDescription || globals.seo?.metaDescription}
+	canonical={seo?.metaCanonicalUrl}
 	openGraph={{
 		article: {
 			authors:
-				pageSeo?.ogTypeArticleAuthor?.map((author) => author.url) ||
-				globalsSeo?.ogTypeArticleAuthor?.map((author) => author.url),
-			expirationTime:
-				pageSeo?.ogTypeArticleExpirationTime || globalsSeo?.ogTypeArticleExpirationTime,
-			modifiedTime: pageSeo?.ogTypeArticleModifiedTime || globalsSeo?.ogTypeArticleModifiedTime,
-			publishedTime: pageSeo?.ogTypeArticlePublishedTime || globalsSeo?.ogTypeArticlePublishedTime,
-			section: pageSeo?.ogTypeArticleSection || globalsSeo?.ogTypeArticleSection,
-			tags: pageSeo?.ogTypeArticleTag || globalsSeo?.ogTypeArticleTag
+				seo?.ogTypeArticleAuthor?.map((author) => author.url) ||
+				globals.seo?.ogTypeArticleAuthor?.map((author) => author.url),
+			expirationTime: seo?.ogTypeArticleExpirationTime || globals.seo?.ogTypeArticleExpirationTime,
+			modifiedTime: seo?.ogTypeArticleModifiedTime || globals.seo?.ogTypeArticleModifiedTime,
+			publishedTime: seo?.ogTypeArticlePublishedTime || globals.seo?.ogTypeArticlePublishedTime,
+			section: seo?.ogTypeArticleSection || globals.seo?.ogTypeArticleSection,
+			tags: seo?.ogTypeArticleTag || globals.seo?.ogTypeArticleTag
 		},
-		audio: pageSeo?.ogAudio || globalsSeo?.ogAudio,
-		description: pageSeo?.ogDescription || globalsSeo?.ogDescription,
-		determiner: pageSeo?.ogDeterminer || globalsSeo?.ogDeterminer,
+		audio: seo?.ogAudio || globals.seo?.ogAudio,
+		description: seo?.ogDescription || globals.seo?.ogDescription,
+		determiner: seo?.ogDeterminer || globals.seo?.ogDeterminer,
 		images: [
 			{
 				url:
-					pageSeo?.ogImage ||
-					globalsSeo?.ogImage ||
-					pageSeo?.metaImage ||
-					globalsSeo?.metaImage ||
-					`/api/og?headline=${pageTitle}&subline=Blog`
+					seo?.ogImage ||
+					globals.seo?.ogImage ||
+					seo?.metaImage ||
+					globals.seo?.metaImage ||
+					`/api/og?headline=${title}&subline=Blog`
 			}
 		],
-		site_name: pageSeo?.ogSiteName || globalsSeo?.ogSiteName,
-		title: pageSeo?.ogTitle || globalsSeo?.ogTitle || pageSeo?.metaImage || globalsSeo?.metaImage,
-		type: pageSeo?.ogType || globalsSeo?.ogType || 'website',
-		url: pageSeo?.ogUrl || globalsSeo?.ogUrl,
-		video: pageSeo?.ogVideo || globalsSeo?.ogVideo
+		site_name: seo?.ogSiteName || globals.seo?.ogSiteName,
+		title: seo?.ogTitle || globals.seo?.ogTitle || seo?.metaImage || globals.seo?.metaImage,
+		type: seo?.ogType || globals.seo?.ogType || 'website',
+		url: seo?.ogUrl || globals.seo?.ogUrl,
+		video: seo?.ogVideo || globals.seo?.ogVideo
 	}}
 	twitter={{
-		cardType: pageSeo?.twitterCardType || globalsSeo?.twitterCardType,
-		description: pageSeo?.twitterDescription || globalsSeo?.twitterDescription,
-		handle: pageSeo?.twitterCreator || globalsSeo?.twitterCreator,
+		cardType: seo?.twitterCardType || globals.seo?.twitterCardType,
+		description: seo?.twitterDescription || globals.seo?.twitterDescription,
+		handle: seo?.twitterCreator || globals.seo?.twitterCreator,
 		image:
-			pageSeo?.twitterImage ||
-			globalsSeo?.twitterImage ||
-			`/api/og?headline=${pageTitle}&subline=Blog`,
-		site: pageSeo?.twitterSite || globalsSeo?.twitterSite,
-		title: pageSeo?.twitterTitle || globalsSeo?.twitterTitle
+			seo?.twitterImage || globals.seo?.twitterImage || `/api/og?headline=${title}&subline=Blog`,
+		site: seo?.twitterSite || globals.seo?.twitterSite,
+		title: seo?.twitterTitle || globals.seo?.twitterTitle
 	}}
 	robotsProps={{
-		noarchive:
-			(pageSeo?.robotsNoArchive || globalsSeo?.robotsNoArchive) === 'enabled' ? true : false,
-		nofollow: (pageSeo?.robotsNoFollow || globalsSeo?.robotsNoFollow) === 'enabled' ? true : false,
-		noimageindex:
-			(pageSeo?.robotsNoIndex || globalsSeo?.robotsNoIndex) === 'enabled' ? true : false,
-		noindex: (pageSeo?.robotsNoIndex || globalsSeo?.robotsNoIndex) === 'enabled' ? true : false,
-		nosnippet:
-			(pageSeo?.robotsNoSnippet || globalsSeo?.robotsNoSnippet) === 'enabled' ? true : false
+		noarchive: (seo?.robotsNoArchive || globals.seo?.robotsNoArchive) === 'enabled' ? true : false,
+		nofollow: (seo?.robotsNoFollow || globals.seo?.robotsNoFollow) === 'enabled' ? true : false,
+		noimageindex: (seo?.robotsNoIndex || globals.seo?.robotsNoIndex) === 'enabled' ? true : false,
+		noindex: (seo?.robotsNoIndex || globals.seo?.robotsNoIndex) === 'enabled' ? true : false,
+		nosnippet: (seo?.robotsNoSnippet || globals.seo?.robotsNoSnippet) === 'enabled' ? true : false
 	}}
 />

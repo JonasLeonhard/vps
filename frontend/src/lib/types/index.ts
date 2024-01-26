@@ -5,6 +5,7 @@ import type { Icon } from './Icon';
 import type { Image } from './Image';
 import type { Language } from './Language';
 import type { NavigationItem } from './NavigationItem';
+import type { PageData } from './PageData';
 import type { ScrollDirection } from './ScrollDirection';
 import type { SearchFilter } from './SearchFilter';
 import type { SearchResults } from './SearchResults';
@@ -20,6 +21,7 @@ export type {
 	Image,
 	Language,
 	NavigationItem,
+	PageData,
 	ScrollDirection,
 	SearchFilter,
 	SearchResults,

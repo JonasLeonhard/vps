@@ -1,10 +1,12 @@
 <script lang="ts">
-	import type { ContentBlock, Language } from '$lib/types';
+	import type { PageData } from '$lib/types';
 
 	import { Accordion, Code, Details, Heading, Images, Richtext, Search } from '$lib/components';
+	import { getContext } from 'svelte';
 
-	export let blocks: ContentBlock[] = [];
-	export let currentLanguage: Language;
+	const {
+		page: { blocks }
+	} = getContext<PageData>('pageData');
 </script>
 
 <ul class="my-4">
@@ -36,7 +38,7 @@
 				</li>
 			{:else if block.type === 'search'}
 				<li class="mx-auto my-8 max-w-[1600px]">
-					<Search {...block.content} {currentLanguage} />
+					<Search {...block.content} />
 				</li>
 			{:else}
 				<li>{index} - {block.type} : {console.log(blocks)}</li>

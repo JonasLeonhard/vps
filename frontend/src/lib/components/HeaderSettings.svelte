@@ -1,12 +1,11 @@
 <script lang="ts">
-	import type { Globals, Language } from '$lib/types';
+	import type { PageData } from '$lib/types';
 
 	import { Dialog, Icon, LanguageSelect, Richtext, ThemeToggle } from '$lib/components';
+	import { getContext } from 'svelte';
 	import { spring } from 'svelte/motion';
 
-	export let currentLanguage: Language;
-	export let globals: Globals;
-	export let languages: Language[];
+	const { globals, lang, languages } = getContext<PageData>('pageData');
 
 	let isOpen = false;
 	let mouseOver = false;
@@ -60,7 +59,7 @@
 			<Icon class="!my-auto h-min cursor-default" name="Language" />
 			<h2 class="!mt-0">{globals.translations.language || 'Language'}</h2>
 		</Richtext>
-		<LanguageSelect {languages} {currentLanguage} />
+		<LanguageSelect {languages} {lang} />
 		<hr />
 		<Richtext class="flex gap-2 px-4">
 			<Icon class="!my-auto h-min cursor-default" name="Brightness" />

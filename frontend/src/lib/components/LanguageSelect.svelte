@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { Language } from '$lib/types/index';
+	import type { PageData } from '$lib/types';
 
 	import { page } from '$app/stores';
+	import { getContext } from 'svelte';
 
-	export let languages: Language[];
-	export let currentLanguage: Language;
+	const { lang, languages } = getContext<PageData>('pageData');
 	let formRef: HTMLFormElement;
 
 	const onSelectChange = () => {
@@ -18,9 +18,11 @@
 	action="/?/setLang"
 	bind:this={formRef}
 >
-	<select class="w-full" name="lang" bind:value={currentLanguage.code} on:change={onSelectChange}>
-		{#each languages as lang}
-			<option value={lang.code} selected={lang.code === currentLanguage.code}>{lang.name}</option>
+	<select class="w-full" name="lang" bind:value={lang.code} on:change={onSelectChange}>
+		{#each languages as globalLang}
+			<option value={globalLang.code} selected={globalLang.code === lang.code}
+				>{globalLang.name}</option
+			>
 		{/each}
 	</select>
 	<input name="url" aria-hidden="true" class="hidden" bind:value={$page.url} />

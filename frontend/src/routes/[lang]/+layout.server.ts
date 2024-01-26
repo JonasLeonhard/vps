@@ -1,18 +1,10 @@
-import type { DefaultPage, Globals, Language } from '$lib/types';
+import type { DefaultPage, Globals, Language, PageData } from '$lib/types';
 
 import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import cms from '$lib/server/cms';
 import { redirect } from '@sveltejs/kit';
 
 import type { LayoutServerLoad } from './$types';
-
-type PageData = {
-	globals: Globals;
-	lang: Language;
-	languages: Language[];
-	page: DefaultPage;
-	path?: string;
-};
 
 export const load: LayoutServerLoad<PageData | void> = async ({
 	cookies,

@@ -1,10 +1,11 @@
 <script lang="ts">
-	import type { Globals } from '$lib/types';
+	import type { PageData } from '$lib/types';
 
 	import { GameOfLife, Icon } from '$lib/components';
 	import { getPercentageOfElementVisible, getPercentageOfViewport } from '$lib/utils';
+	import { getContext } from 'svelte';
 
-	export let globals: Globals;
+	const { globals } = getContext<PageData>('pageData');
 
 	let scrollY = 0;
 	let innerHeight = 0;
@@ -74,10 +75,11 @@
 		>
 			© {new Date().getFullYear()} Jonas Leonhard - Build Version:
 			<a
-				class="inline-flex w-min gap-2 ml-4 rounded-md bg-nycTaxi p-1 px-4 text-black"
+				class="ml-4 inline-flex w-min gap-2 rounded-md bg-nycTaxi p-1 px-4 text-black"
 				href={`https://github.com/JonasLeonhard/vps/commit/${globals.translations.currentGitHash}`}
 				target="_blank"
-				>{globals.translations.currentGitHash.slice(0, 7)} <Icon name="ExternalLink" class="[&>*]:w-4 [&>*]:h-4" /></a
+				>{globals.translations.currentGitHash.slice(0, 7)}
+				<Icon name="ExternalLink" class="[&>*]:h-4 [&>*]:w-4" /></a
 			>
 		</p>
 	</div>

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { DefaultPage, Globals, Language, SearchResults } from '$lib/types';
+	import type { DefaultPage, PageData, SearchResults } from '$lib/types';
 
 	import { goto } from '$app/navigation';
 	import { Dialog, Icon, Richtext } from '$lib/components';
 	import debounce from 'lodash.debounce';
+	import { getContext } from 'svelte';
 	import { spring } from 'svelte/motion';
 
-	export let globals: Globals;
-	export let currentLanguage: Language;
+	const { globals, lang } = getContext<PageData>('pageData');
 
 	let isOpen = false;
 	let mouseOver = false;
@@ -19,7 +19,7 @@
 			? 'z-10 animate-borderGradient bg-gradient-to-r from-primary via-secondary to-tertiary bg-[length:400%_400%] [animation-duration:4s] scale-110 transition-[bg-gradient-to-r]'
 			: '';
 
-	$: searchUrl = `/${currentLanguage.code}/search?q=${encodeURIComponent(search)}`;
+	$: searchUrl = `/${lang.code}/search?q=${encodeURIComponent(search)}`;
 
 	const closeDialog = () => {
 		isOpen = false;
@@ -137,7 +137,7 @@
 								<a
 									title={navigation.title}
 									id={navigation.id}
-									href={`/${currentLanguage.code}/${navigation.url}`}
+									href={`/${lang.code}/${navigation.url}`}
 									target={navigation.popup ? '_blank' : undefined}
 									data-sveltekit-preload-data
 									class="duration-400 flex w-full cursor-pointer gap-2 rounded-lg bg-secondary/0 p-2 transition-all hover:bg-bg-accent-light hover:text-primary dark:hover:bg-bg-accent-dark"
